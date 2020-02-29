@@ -1,0 +1,13 @@
+bin/
+build/
+dep/
+data/
+results/
+.vscode/
+.project/
+
+*.out
+*.tmp
+*.swp
+*.bak
+*.dump
