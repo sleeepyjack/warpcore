@@ -1,0 +1,18 @@
+{
+    "namespaceReplacements": {
+        "detail": "dt",
+        "warpcore": "wc",
+        "storage": "st",
+        "hashers": "hs",
+        "probing_schemes": "ps",
+        "single_value": "sv",
+        "multi_value": "mv",
+        "defaults": "df"
+    },
+
+    "genericReplacements": {
+        "unsigned int": "u",
+        "unsigned long": "ul",
+        "unsigned long long": "ull"
+    }
+}

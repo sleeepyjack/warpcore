@@ -1,0 +1,5 @@
+<map id="warpcore::BloomFilter::fpr" name="warpcore::BloomFilter::fpr">
+<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="225,39,375,80"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BloomFilter.html#a8dca50765c601cca8d85621fa8488ecc" title="get bits per slot " alt="" coords="423,5,572,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="423,71,572,112"/>
+</map>

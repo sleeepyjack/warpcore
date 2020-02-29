@@ -1,0 +1,61 @@
+\hypertarget{classwarpcore_1_1hashers_1_1IdentityMap}{}\section{warpcore\+:\+:hashers\+:\+:Identity\+Map$<$ K, H $>$ Class Template Reference}
+\label{classwarpcore_1_1hashers_1_1IdentityMap}\index{warpcore\+::hashers\+::\+Identity\+Map$<$ K, H $>$@{warpcore\+::hashers\+::\+Identity\+Map$<$ K, H $>$}}
+
+
+identity hash  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1IdentityMap_a99abe762a8cc3c40680331746e5c1e2f}\label{classwarpcore_1_1hashers_1_1IdentityMap_a99abe762a8cc3c40680331746e5c1e2f}} 
+using {\bfseries key\+\_\+type} = K
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1IdentityMap_a1b978a855ad6bbb1e3716fcd96d5f070}\label{classwarpcore_1_1hashers_1_1IdentityMap_a1b978a855ad6bbb1e3716fcd96d5f070}} 
+using {\bfseries hash\+\_\+type} = H
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1IdentityMap_a37b0f55ff0e51120e58e121685093749}\label{classwarpcore_1_1hashers_1_1IdentityMap_a37b0f55ff0e51120e58e121685093749}} 
+using {\bfseries tag} = tags\+::hasher\+\_\+tag
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type \hyperlink{classwarpcore_1_1hashers_1_1IdentityMap_a916ddad468ba57f3ce81e74c1ef8e57a}{hash} (key\+\_\+type x) noexcept
+\begin{DoxyCompactList}\small\item\em hash function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class K, class H = std\+::uint32\+\_\+t$>$\newline
+class warpcore\+::hashers\+::\+Identity\+Map$<$ K, H $>$}
+
+identity hash 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em K} & key type \\
+\hline
+{\em H} & hash type \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1IdentityMap_a916ddad468ba57f3ce81e74c1ef8e57a}\label{classwarpcore_1_1hashers_1_1IdentityMap_a916ddad468ba57f3ce81e74c1ef8e57a}} 
+\index{warpcore\+::hashers\+::\+Identity\+Map@{warpcore\+::hashers\+::\+Identity\+Map}!hash@{hash}}
+\index{hash@{hash}!warpcore\+::hashers\+::\+Identity\+Map@{warpcore\+::hashers\+::\+Identity\+Map}}
+\subsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily template$<$class K , class H  = std\+::uint32\+\_\+t$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type \hyperlink{classwarpcore_1_1hashers_1_1IdentityMap}{warpcore\+::hashers\+::\+Identity\+Map}$<$ K, H $>$\+::hash (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+hash function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & key to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash of {\ttfamily x} 
+\end{DoxyReturn}

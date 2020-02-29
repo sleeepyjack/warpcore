@@ -1,0 +1,4 @@
+<map id="warpcore::BloomFilter::block_bits" name="warpcore::BloomFilter::block_bits">
+<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#a8dca50765c601cca8d85621fa8488ecc" title="get bits per slot " alt="" coords="203,5,352,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="203,71,352,112"/>
+</map>

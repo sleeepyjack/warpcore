@@ -1,0 +1,6 @@
+<map id="warpcore::BloomFilter::insert" name="warpcore::BloomFilter::insert">
+<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="415,6,564,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3" title="get number of hash functions (k) " alt="" coords="203,27,367,53"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="210,78,359,119"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1BloomFilter.html#a8dca50765c601cca8d85621fa8488ecc" title="get bits per slot " alt="" coords="415,107,564,149"/>
+</map>

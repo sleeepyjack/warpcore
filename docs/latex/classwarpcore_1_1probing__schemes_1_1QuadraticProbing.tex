@@ -1,0 +1,153 @@
+\hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{}\section{warpcore\+:\+:probing\+\_\+schemes\+:\+:Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$ Class Template Reference}
+\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$}}
+
+
+quadratic probing scheme\+: $hash(k,i) = h(k)+i^2$  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad66a4c99e11be13be22a742aa9f502c9}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad66a4c99e11be13be22a742aa9f502c9}} 
+using {\bfseries key\+\_\+type} = typename Hasher\+::key\+\_\+type
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad8b8070e3d75f5480261d0beafbfb80d}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad8b8070e3d75f5480261d0beafbfb80d}} 
+using {\bfseries index\+\_\+type} = index\+\_\+t
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ac2f8b26473f87a3f6a024b06f67cfe5e}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ac2f8b26473f87a3f6a024b06f67cfe5e}} 
+using {\bfseries tag} = tags\+::probing\+\_\+scheme\+\_\+tag
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a90404a96e73f9914e7ea9b80b15895fa}{Quadratic\+Probing} (index\+\_\+type capacity, index\+\_\+type probing\+\_\+length, const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&group)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a396cb5e5d02bb51e4daf98262c888a2d}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a396cb5e5d02bb51e4daf98262c888a2d}} 
+{\footnotesize template$<$class T $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type {\bfseries begin} (T, T)=delete
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_aa48368d2e17761f75a351fde399c51bd}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_aa48368d2e17761f75a351fde399c51bd}} 
+{\footnotesize template$<$class T $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type {\bfseries begin} (T)=delete
+\item 
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a3468f7aba9ead442bb79385312d38b23}{begin} (key\+\_\+type key, key\+\_\+type seed=0) noexcept
+\begin{DoxyCompactList}\small\item\em begin probing sequence \end{DoxyCompactList}\item 
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad19ec9917173a2e4a1381f8848a367b8}{next} () noexcept
+\begin{DoxyCompactList}\small\item\em next probing index for {\ttfamily key} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a20549e7a675cd8e4c422990267becbed}{cg\+\_\+size} () noexcept
+\begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_aa1eabb3eed4c1f2400fee8d7b487267e}{end} () noexcept
+\begin{DoxyCompactList}\small\item\em end specifier of probing sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Hasher, index\+\_\+t C\+G\+Size = 1$>$\newline
+class warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$}
+
+quadratic probing scheme\+: $hash(k,i) = h(k)+i^2$ 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Hasher} & hash function \\
+\hline
+{\em C\+G\+Size} & cooperative group size \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a90404a96e73f9914e7ea9b80b15895fa}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a90404a96e73f9914e7ea9b80b15895fa}} 
+\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}!Quadratic\+Probing@{Quadratic\+Probing}}
+\index{Quadratic\+Probing@{Quadratic\+Probing}!warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}}
+\subsubsection{\texorpdfstring{Quadratic\+Probing()}{QuadraticProbing()}}
+{\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}$<$ Hasher, C\+G\+Size $>$\+::\hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{Quadratic\+Probing} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity,  }\item[{index\+\_\+type}]{probing\+\_\+length,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+constructor 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em capacity} & capacity of the underlying hash table \\
+\hline
+\mbox{\tt in}  & {\em probing\+\_\+length} & number of probing attempts \\
+\hline
+\mbox{\tt in}  & {\em group} & cooperative group \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a3468f7aba9ead442bb79385312d38b23}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a3468f7aba9ead442bb79385312d38b23}} 
+\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}!begin@{begin}}
+\index{begin@{begin}!warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}$<$ Hasher, C\+G\+Size $>$\+::begin (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{key\+\_\+type}]{seed = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+begin probing sequence 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em key} & key to be probed \\
+\hline
+\mbox{\tt in}  & {\em seed} & random seed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+initial probing index for {\ttfamily key} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a20549e7a675cd8e4c422990267becbed}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a20549e7a675cd8e4c422990267becbed}} 
+\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}!cg\+\_\+size@{cg\+\_\+size}}
+\index{cg\+\_\+size@{cg\+\_\+size}!warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}}
+\subsubsection{\texorpdfstring{cg\+\_\+size()}{cg\_size()}}
+{\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}$<$ Hasher, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+get cooperative group size 
+
+\begin{DoxyReturn}{Returns}
+cooperative group size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_aa1eabb3eed4c1f2400fee8d7b487267e}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_aa1eabb3eed4c1f2400fee8d7b487267e}} 
+\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}!end@{end}}
+\index{end@{end}!warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
+static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}$<$ Hasher, C\+G\+Size $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+end specifier of probing sequence 
+
+\begin{DoxyReturn}{Returns}
+end specifier 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad19ec9917173a2e4a1381f8848a367b8}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad19ec9917173a2e4a1381f8848a367b8}} 
+\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}!next@{next}}
+\index{next@{next}!warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}}
+\subsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing}$<$ Hasher, C\+G\+Size $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+next probing index for {\ttfamily key} 
+
+\begin{DoxyReturn}{Returns}
+next probing index 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad19ec9917173a2e4a1381f8848a367b8_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,11 @@
+<map id="warpcore::SingleValueHashTable::retrieve" name="warpcore::SingleValueHashTable::retrieve">
+<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#ab156b6726ca60e401fae990274b40cfc" title="retrieves a key from the hash table " alt="" coords="236,5,435,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#a05ca99d972b19ae69bbce6a9d6990b4c" title="retrieves a key from the hash table " alt="" coords="248,71,423,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#aae24b5424491ad31fea85d1d909af6e9" title="applies a funtion over all values of a corresponding key " alt="" coords="248,136,423,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1MultiValueHashTable.html#a8e1c0d96983af892804a6513964692c2" title="get number of values to a corresponding key inside the hash table " alt="" coords="248,201,423,243"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#a4f7941cfe49e656d0f31938f8c8c88f1" title="retrieve a set of keys from the hash table " alt="" coords="483,168,657,209"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1MultiValueHashTable.html#a158b338a5c798cc0775fd8874bc6e571" title="get the the number of bytes in this data structure occupied by values " alt="" coords="483,233,657,275"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#a977baa47c1b37eeeb591dd13d76d184a" title="get the the number of bytes in this data structure occupied by actual information ..." alt="" coords="713,200,887,241"/>
+<area shape="rect" id="node10" href="$classwarpcore_1_1MultiValueHashTable.html#a431ef6fae4419af72cf565430abbf7b6" title="get the ratio between actual payload bytes and occupied bytes inside the value store ..." alt="" coords="705,265,895,307"/>
+<area shape="rect" id="node9" href="$classwarpcore_1_1MultiValueHashTable.html#ab8731334f269b625d8fea853f81c05b4" title="current storage density of the hash table " alt="" coords="943,200,1117,241"/>
+</map>

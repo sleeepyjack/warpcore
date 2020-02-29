@@ -1,0 +1,65 @@
+\hypertarget{classwarpcore_1_1hashers_1_1MurmurHash}{}\section{warpcore\+:\+:hashers\+:\+:Murmur\+Hash$<$ K $>$ Class Template Reference}
+\label{classwarpcore_1_1hashers_1_1MurmurHash}\index{warpcore\+::hashers\+::\+Murmur\+Hash$<$ K $>$@{warpcore\+::hashers\+::\+Murmur\+Hash$<$ K $>$}}
+
+
+murmur integer finalizer  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MurmurHash_a5ef1db33365a012c05d3f1684d61d701}\label{classwarpcore_1_1hashers_1_1MurmurHash_a5ef1db33365a012c05d3f1684d61d701}} 
+using {\bfseries key\+\_\+type} = K
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MurmurHash_a158929bb0d2e8621bf365d638e3e9339}\label{classwarpcore_1_1hashers_1_1MurmurHash_a158929bb0d2e8621bf365d638e3e9339}} 
+using {\bfseries hash\+\_\+type} = K
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MurmurHash_a6000ee6d246c5de30ede7cf55e43c072}\label{classwarpcore_1_1hashers_1_1MurmurHash_a6000ee6d246c5de30ede7cf55e43c072}} 
+using {\bfseries tag} = tags\+::hasher\+\_\+tag
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ T \hyperlink{classwarpcore_1_1hashers_1_1MurmurHash_aa54d11b7c827b9d62c77dda71e505047}{hash} (T x) noexcept
+\begin{DoxyCompactList}\small\item\em hash function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class K$>$\newline
+class warpcore\+::hashers\+::\+Murmur\+Hash$<$ K $>$}
+
+murmur integer finalizer 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em K} & key type ({\ttfamily std\+::uint32\+\_\+t} or std\+::uint64\+\_\+t) \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MurmurHash_aa54d11b7c827b9d62c77dda71e505047}\label{classwarpcore_1_1hashers_1_1MurmurHash_aa54d11b7c827b9d62c77dda71e505047}} 
+\index{warpcore\+::hashers\+::\+Murmur\+Hash@{warpcore\+::hashers\+::\+Murmur\+Hash}!hash@{hash}}
+\index{hash@{hash}!warpcore\+::hashers\+::\+Murmur\+Hash@{warpcore\+::hashers\+::\+Murmur\+Hash}}
+\subsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily template$<$class K $>$ \\
+template$<$class T $>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ T \hyperlink{classwarpcore_1_1hashers_1_1MurmurHash}{warpcore\+::hashers\+::\+Murmur\+Hash}$<$ K $>$\+::hash (\begin{DoxyParamCaption}\item[{T}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+hash function 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & key type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & key to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash of {\ttfamily x} 
+\end{DoxyReturn}

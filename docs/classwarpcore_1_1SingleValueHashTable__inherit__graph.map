@@ -1,0 +1,4 @@
+<map id="warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;" name="warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;">
+<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html" title="warpcore::SingleValueHash\lTable\&lt; Key, Value, EmptyKey,\l TombstoneKey, ProbingScheme,\l TableStorage \&gt;" alt="" coords="488,5,707,76"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html" title="warpcore::SingleValueHash\lTable\&lt; Key, handle_type,\l EmptyKey, TombstoneKey,\l ProbingScheme \&gt;" alt="" coords="504,100,691,171"/>
+</map>

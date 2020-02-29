@@ -1,0 +1,4 @@
+<map id="warpcore::MultiValueHashTable::size_values" name="warpcore::MultiValueHashTable::size_values">
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#afa6513c27f8e27b256b45d992ba4c820" title="atomically fetches the next slot in the buffer " alt="" coords="252,5,387,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#a8b61ef0d87ebc9c793fc7daaf74835e3" title="applies a funtion over all key value pairs inside the table " alt="" coords="228,71,411,112"/>
+</map>

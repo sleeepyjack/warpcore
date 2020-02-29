@@ -1,0 +1,66 @@
+\hypertarget{classwarpcore_1_1hashers_1_1MuellerHash}{}\section{warpcore\+:\+:hashers\+:\+:Mueller\+Hash Class Reference}
+\label{classwarpcore_1_1hashers_1_1MuellerHash}\index{warpcore\+::hashers\+::\+Mueller\+Hash@{warpcore\+::hashers\+::\+Mueller\+Hash}}
+
+
+hash function proposed by Mueller  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MuellerHash_a14b100811e97a47b6ba363ee092f664a}\label{classwarpcore_1_1hashers_1_1MuellerHash_a14b100811e97a47b6ba363ee092f664a}} 
+using {\bfseries key\+\_\+type} = std\+::uint32\+\_\+t
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MuellerHash_a9085ddbded055d883f0f7a45b989a33e}\label{classwarpcore_1_1hashers_1_1MuellerHash_a9085ddbded055d883f0f7a45b989a33e}} 
+using {\bfseries hash\+\_\+type} = std\+::uint32\+\_\+t
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MuellerHash_abe3c671d003b820aecc6f3702f64cabc}\label{classwarpcore_1_1hashers_1_1MuellerHash_abe3c671d003b820aecc6f3702f64cabc}} 
+using {\bfseries tag} = tags\+::hasher\+\_\+tag
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type \hyperlink{classwarpcore_1_1hashers_1_1MuellerHash_af2d2d88d32709788964af04198e4f60c}{hash} (T)=delete
+\begin{DoxyCompactList}\small\item\em deleted hash function for types other than explicitly defined \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type \hyperlink{classwarpcore_1_1hashers_1_1MuellerHash_aa02ad6cfc87f45c9c16fb563811f8919}{hash} (key\+\_\+type x) noexcept
+\begin{DoxyCompactList}\small\item\em hash function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+hash function proposed by Mueller 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MuellerHash_af2d2d88d32709788964af04198e4f60c}\label{classwarpcore_1_1hashers_1_1MuellerHash_af2d2d88d32709788964af04198e4f60c}} 
+\index{warpcore\+::hashers\+::\+Mueller\+Hash@{warpcore\+::hashers\+::\+Mueller\+Hash}!hash@{hash}}
+\index{hash@{hash}!warpcore\+::hashers\+::\+Mueller\+Hash@{warpcore\+::hashers\+::\+Mueller\+Hash}}
+\subsubsection{\texorpdfstring{hash()}{hash()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type warpcore\+::hashers\+::\+Mueller\+Hash\+::hash (\begin{DoxyParamCaption}\item[{T}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [delete]}}
+
+
+
+deleted hash function for types other than explicitly defined 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & key type \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1MuellerHash_aa02ad6cfc87f45c9c16fb563811f8919}\label{classwarpcore_1_1hashers_1_1MuellerHash_aa02ad6cfc87f45c9c16fb563811f8919}} 
+\index{warpcore\+::hashers\+::\+Mueller\+Hash@{warpcore\+::hashers\+::\+Mueller\+Hash}!hash@{hash}}
+\index{hash@{hash}!warpcore\+::hashers\+::\+Mueller\+Hash@{warpcore\+::hashers\+::\+Mueller\+Hash}}
+\subsubsection{\texorpdfstring{hash()}{hash()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type warpcore\+::hashers\+::\+Mueller\+Hash\+::hash (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+hash function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & key to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash of {\ttfamily x} 
+\end{DoxyReturn}

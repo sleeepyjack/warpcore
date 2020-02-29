@@ -1,0 +1,66 @@
+\hypertarget{classwarpcore_1_1hashers_1_1NvidiaHash}{}\section{warpcore\+:\+:hashers\+:\+:Nvidia\+Hash Class Reference}
+\label{classwarpcore_1_1hashers_1_1NvidiaHash}\index{warpcore\+::hashers\+::\+Nvidia\+Hash@{warpcore\+::hashers\+::\+Nvidia\+Hash}}
+
+
+hash function proposed by N\+V\+I\+D\+IA  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1NvidiaHash_a3a9a637b8f756fc4a83139e91a13c78d}\label{classwarpcore_1_1hashers_1_1NvidiaHash_a3a9a637b8f756fc4a83139e91a13c78d}} 
+using {\bfseries key\+\_\+type} = std\+::uint32\+\_\+t
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1NvidiaHash_a0b44b557219bbe3ae15f942ed845eac5}\label{classwarpcore_1_1hashers_1_1NvidiaHash_a0b44b557219bbe3ae15f942ed845eac5}} 
+using {\bfseries hash\+\_\+type} = std\+::uint32\+\_\+t
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1NvidiaHash_a21f412ce0bf2ea966a246f558d4fb0e6}\label{classwarpcore_1_1hashers_1_1NvidiaHash_a21f412ce0bf2ea966a246f558d4fb0e6}} 
+using {\bfseries tag} = tags\+::hasher\+\_\+tag
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type \hyperlink{classwarpcore_1_1hashers_1_1NvidiaHash_acb6c24c9eaba45db786a261978f8f2ba}{hash} (T)=delete
+\begin{DoxyCompactList}\small\item\em deleted hash function for types other than explicitly defined \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type \hyperlink{classwarpcore_1_1hashers_1_1NvidiaHash_ad86796fdcf66b02789ec16f6d0936f3a}{hash} (key\+\_\+type x) noexcept
+\begin{DoxyCompactList}\small\item\em hash function \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+hash function proposed by N\+V\+I\+D\+IA 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1NvidiaHash_acb6c24c9eaba45db786a261978f8f2ba}\label{classwarpcore_1_1hashers_1_1NvidiaHash_acb6c24c9eaba45db786a261978f8f2ba}} 
+\index{warpcore\+::hashers\+::\+Nvidia\+Hash@{warpcore\+::hashers\+::\+Nvidia\+Hash}!hash@{hash}}
+\index{hash@{hash}!warpcore\+::hashers\+::\+Nvidia\+Hash@{warpcore\+::hashers\+::\+Nvidia\+Hash}}
+\subsubsection{\texorpdfstring{hash()}{hash()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type warpcore\+::hashers\+::\+Nvidia\+Hash\+::hash (\begin{DoxyParamCaption}\item[{T}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [delete]}}
+
+
+
+deleted hash function for types other than explicitly defined 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & key type \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{classwarpcore_1_1hashers_1_1NvidiaHash_ad86796fdcf66b02789ec16f6d0936f3a}\label{classwarpcore_1_1hashers_1_1NvidiaHash_ad86796fdcf66b02789ec16f6d0936f3a}} 
+\index{warpcore\+::hashers\+::\+Nvidia\+Hash@{warpcore\+::hashers\+::\+Nvidia\+Hash}!hash@{hash}}
+\index{hash@{hash}!warpcore\+::hashers\+::\+Nvidia\+Hash@{warpcore\+::hashers\+::\+Nvidia\+Hash}}
+\subsubsection{\texorpdfstring{hash()}{hash()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ hash\+\_\+type warpcore\+::hashers\+::\+Nvidia\+Hash\+::hash (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+hash function 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & key to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash of {\ttfamily x} 
+\end{DoxyReturn}

@@ -1,0 +1,5 @@
+<map id="warpcore::SingleValueHashTable::tombstone_key" name="warpcore::SingleValueHashTable::tombstone_key">
+<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html#a93e05fcb58ea20f8e0f12c7ce923bf35" title="erases a key from the hash table " alt="" coords="265,5,451,76"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#ae780824551ec26fb0db7e07018061099" title="checks if key is equal to TombstoneKey " alt="" coords="236,100,480,171"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#afc6413d2fe78d491628565025790c0fe" title="checks if key is equal to (EmptyKey||TombstoneKey) " alt="" coords="253,195,463,265"/>
+</map>

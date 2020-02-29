@@ -1,0 +1,417 @@
+\hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{}\section{warpcore\+:\+:storage\+:\+:multi\+\_\+value\+:\+:Dynamic\+Slab\+List\+Store$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$ Class Template Reference}
+\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$}}
+
+
+value store consisting of growing linked slabs of values  
+
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aef0ce2b1fce731fb35a82f9eb2b0a84b}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aef0ce2b1fce731fb35a82f9eb2b0a84b}} 
+using {\bfseries value\+\_\+type} = Value
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a5d04964b4d54427e763c76eabefb4e92}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a5d04964b4d54427e763c76eabefb4e92}} 
+using {\bfseries handle\+\_\+type} = detail\+::\+Dynamic\+Slab\+List\+Handle$<$ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{type} $>$
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aecd66efa9d87c97ecca83d1c09c2deff}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aecd66efa9d87c97ecca83d1c09c2deff}} 
+using {\bfseries index\+\_\+type} = index\+\_\+t
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a7da4283d7b7d754d56cb37b7ba13a33e}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a7da4283d7b7d754d56cb37b7ba13a33e}} 
+using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a1a35ca0d04bcbeb0dc40b0a26bace242}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a1a35ca0d04bcbeb0dc40b0a26bace242}} 
+using {\bfseries slab\+\_\+type} = detail\+::\+Dynamic\+Slab$<$ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{type} $>$
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a8699cd13072e14dc60eac3c0d0ec96e2}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a8699cd13072e14dc60eac3c0d0ec96e2}} 
+using {\bfseries tag} = tags\+::dynamic\+\_\+value\+\_\+storage\+\_\+tag
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab0c3eb9a8eaef07da0eb5d7d3c5f026a}{Dynamic\+Slab\+List\+Store} (index\+\_\+type max\+\_\+capacity, float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79fb2a41f22cf59f4edf49c3de82d9dd}{slab\+\_\+grow\+\_\+factor}=2.\+0, index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adb7da0e5836a0274de92f906acaf7a43}{min\+\_\+slab\+\_\+size}=1, index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58f11e19acf684db903b7985364ec73c}{max\+\_\+slab\+\_\+size}=handle\+\_\+type\+::max\+\_\+slab\+\_\+size()) noexcept
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a93d49c0a887055b282000cba031688d5}{Dynamic\+Slab\+List\+Store} (const \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store} \&o) noexcept
+\begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a7be0cfee3a16cba0eb6296168d518a58}{Dynamic\+Slab\+List\+Store} (\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store} \&\&o) noexcept
+\begin{DoxyCompactList}\small\item\em move-\/constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab53d32d2ef4976130ae986c866802b6d}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab53d32d2ef4976130ae986c866802b6d}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab53d32d2ef4976130ae986c866802b6d}{$\sim$\+Dynamic\+Slab\+List\+Store} () noexcept
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aa04bc2372b17856c61acd08d07381315}{init} (cuda\+Stream\+\_\+t stream=0) noexcept
+\begin{DoxyCompactList}\small\item\em (re)initialize storage \end{DoxyCompactList}\item 
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adc50985c5bd1ed3b507c1e3c7dda16db}{append} (handle\+\_\+type \&handle, const value\+\_\+type \&value) noexcept
+\begin{DoxyCompactList}\small\item\em append a value to a slab list \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58a0c59ab8d635869043921c9ec85c21}{for\+\_\+each} (handle\+\_\+type handle, Func f, const cg\+::thread\+\_\+group \&group=cg\+::this\+\_\+thread()) const noexcept
+\begin{DoxyCompactList}\small\item\em apply a (lambda-\/)function on each value inside a slab list \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a9f67ef2bd0b072938bce462656b2c8aa}{status} () const noexcept
+\begin{DoxyCompactList}\small\item\em get status \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ae1c489e608b429bb34ad138c59aded93}{capacity} () const noexcept
+\begin{DoxyCompactList}\small\item\em get maximum value capacity \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab9e38febbac249da5662580311a76f06}{load\+\_\+factor} (cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em get load factor \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a98fbded6fb4603336d5ea64b6e01aec9}{bytes\+\_\+occupied} (cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em get the number of occupied bytes \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79fb2a41f22cf59f4edf49c3de82d9dd}{slab\+\_\+grow\+\_\+factor} () const noexcept
+\begin{DoxyCompactList}\small\item\em get slab growth factor \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adb7da0e5836a0274de92f906acaf7a43}{min\+\_\+slab\+\_\+size} () const noexcept
+\begin{DoxyCompactList}\small\item\em get minimum slab capacity \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58f11e19acf684db903b7985364ec73c}{max\+\_\+slab\+\_\+size} () const noexcept
+\begin{DoxyCompactList}\small\item\em get maximum slab capacity \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ac26c2496f6c97b1f9ecbd64baa3b8496}{is\+\_\+copy} () const noexcept
+\begin{DoxyCompactList}\small\item\em indicates if this object is a shallow copy \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a20efaad0116184429778d736723c30f3}{slab\+\_\+index\+\_\+bits} () noexcept
+\begin{DoxyCompactList}\small\item\em get number of bits used to enumerate slabs \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aff75cc3f371c2b31b569ff585f9ac900}{value\+\_\+counter\+\_\+bits} () noexcept
+\begin{DoxyCompactList}\small\item\em get number of bits used to count values in a slab list \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a16f77ea7e30c30b17af19a229464ed42}{slab\+\_\+size\+\_\+bits} () noexcept
+\begin{DoxyCompactList}\small\item\em get number of bits used to hold the value capacity of a slab \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr handle\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a647790aa072589d7296b7ea57436f297}{uninitialized\+\_\+handle} () noexcept
+\begin{DoxyCompactList}\small\item\em get uninitialized handle \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79dffb54a0930061383f69bbc769c6d1}{size} (handle\+\_\+type handle) noexcept
+\begin{DoxyCompactList}\small\item\em get number of values in slab list \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Value, index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$\newline
+class warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$}
+
+value store consisting of growing linked slabs of values 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Value} & type to store \\
+\hline
+{\em Slab\+Index\+Bits} & number of bits used to enumerate slab I\+Ds \\
+\hline
+{\em Value\+Counter\+Bits} & number of bits used to count values in a slab list \\
+\hline
+{\em Slab\+Size\+Bits} & number of bits used to hold the value capacity of a slab \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab0c3eb9a8eaef07da0eb5d7d3c5f026a}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab0c3eb9a8eaef07da0eb5d7d3c5f026a}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!Dynamic\+Slab\+List\+Store@{Dynamic\+Slab\+List\+Store}}
+\index{Dynamic\+Slab\+List\+Store@{Dynamic\+Slab\+List\+Store}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{Dynamic\+Slab\+List\+Store()}{DynamicSlabListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{max\+\_\+capacity,  }\item[{float}]{slab\+\_\+grow\+\_\+factor = {\ttfamily 2.0},  }\item[{index\+\_\+type}]{min\+\_\+slab\+\_\+size = {\ttfamily 1},  }\item[{index\+\_\+type}]{max\+\_\+slab\+\_\+size = {\ttfamily handle\+\_\+type\+:\+:max\+\_\+slab\+\_\+size()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+constructor 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em max\+\_\+capacity} & maximum number of value slots \\
+\hline
+\mbox{\tt in}  & {\em slab\+\_\+grow\+\_\+factor} & factor which determines the growth of each newly allocated slab \\
+\hline
+\mbox{\tt in}  & {\em min\+\_\+slab\+\_\+size} & value capacity of the first slab of a slab list \\
+\hline
+\mbox{\tt in}  & {\em max\+\_\+slab\+\_\+size} & value capacity after which no more growth is allowed for newly allocated slabs \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a93d49c0a887055b282000cba031688d5}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a93d49c0a887055b282000cba031688d5}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!Dynamic\+Slab\+List\+Store@{Dynamic\+Slab\+List\+Store}}
+\index{Dynamic\+Slab\+List\+Store@{Dynamic\+Slab\+List\+Store}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{Dynamic\+Slab\+List\+Store()}{DynamicSlabListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store} (\begin{DoxyParamCaption}\item[{const \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+copy-\/constructor (shallow) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em object} & to be copied \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a7be0cfee3a16cba0eb6296168d518a58}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a7be0cfee3a16cba0eb6296168d518a58}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!Dynamic\+Slab\+List\+Store@{Dynamic\+Slab\+List\+Store}}
+\index{Dynamic\+Slab\+List\+Store@{Dynamic\+Slab\+List\+Store}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{Dynamic\+Slab\+List\+Store()}{DynamicSlabListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store} (\begin{DoxyParamCaption}\item[{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+move-\/constructor 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em object} & to be moved \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adc50985c5bd1ed3b507c1e3c7dda16db}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adc50985c5bd1ed3b507c1e3c7dda16db}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!append@{append}}
+\index{append@{append}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::append (\begin{DoxyParamCaption}\item[{handle\+\_\+type \&}]{handle,  }\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+append a value to a slab list 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & handle to the slab list \\
+\hline
+\mbox{\tt in}  & {\em value} & value to be inserted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a98fbded6fb4603336d5ea64b6e01aec9}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a98fbded6fb4603336d5ea64b6e01aec9}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!bytes\+\_\+occupied@{bytes\+\_\+occupied}}
+\index{bytes\+\_\+occupied@{bytes\+\_\+occupied}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{bytes\+\_\+occupied()}{bytes\_occupied()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::bytes\+\_\+occupied (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get the number of occupied bytes 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bytes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ae1c489e608b429bb34ad138c59aded93}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ae1c489e608b429bb34ad138c59aded93}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!capacity@{capacity}}
+\index{capacity@{capacity}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get maximum value capacity 
+
+\begin{DoxyReturn}{Returns}
+capacity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58a0c59ab8d635869043921c9ec85c21}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58a0c59ab8d635869043921c9ec85c21}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!for\+\_\+each@{for\+\_\+each}}
+\index{for\+\_\+each@{for\+\_\+each}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{for\+\_\+each()}{for\_each()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+template$<$class Func $>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{handle\+\_\+type}]{handle,  }\item[{Func}]{f,  }\item[{const cg\+::thread\+\_\+group \&}]{group = {\ttfamily cg\+:\+:this\+\_\+thread()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+apply a (lambda-\/)function on each value inside a slab list 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Func} & function to be executed for each value \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & handle to the slab list \\
+\hline
+\mbox{\tt in}  & {\em f} & function which takes the value together whith the index of the value inside the list as parameters \\
+\hline
+\mbox{\tt in}  & {\em group} & cooperative group used for hash table probing \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aa04bc2372b17856c61acd08d07381315}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aa04bc2372b17856c61acd08d07381315}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!init@{init}}
+\index{init@{init}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::init (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+(re)initialize storage 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ac26c2496f6c97b1f9ecbd64baa3b8496}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ac26c2496f6c97b1f9ecbd64baa3b8496}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!is\+\_\+copy@{is\+\_\+copy}}
+\index{is\+\_\+copy@{is\+\_\+copy}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{is\+\_\+copy()}{is\_copy()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+indicates if this object is a shallow copy 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily bool} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab9e38febbac249da5662580311a76f06}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab9e38febbac249da5662580311a76f06}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!load\+\_\+factor@{load\+\_\+factor}}
+\index{load\+\_\+factor@{load\+\_\+factor}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{load\+\_\+factor()}{load\_factor()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::load\+\_\+factor (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get load factor 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+load factor 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_ab9e38febbac249da5662580311a76f06_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58f11e19acf684db903b7985364ec73c}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a58f11e19acf684db903b7985364ec73c}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!max\+\_\+slab\+\_\+size@{max\+\_\+slab\+\_\+size}}
+\index{max\+\_\+slab\+\_\+size@{max\+\_\+slab\+\_\+size}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{max\+\_\+slab\+\_\+size()}{max\_slab\_size()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::max\+\_\+slab\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get maximum slab capacity 
+
+\begin{DoxyReturn}{Returns}
+capacity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adb7da0e5836a0274de92f906acaf7a43}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_adb7da0e5836a0274de92f906acaf7a43}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!min\+\_\+slab\+\_\+size@{min\+\_\+slab\+\_\+size}}
+\index{min\+\_\+slab\+\_\+size@{min\+\_\+slab\+\_\+size}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{min\+\_\+slab\+\_\+size()}{min\_slab\_size()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::min\+\_\+slab\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get minimum slab capacity 
+
+\begin{DoxyReturn}{Returns}
+capacity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79dffb54a0930061383f69bbc769c6d1}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79dffb54a0930061383f69bbc769c6d1}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!size@{size}}
+\index{size@{size}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::size (\begin{DoxyParamCaption}\item[{handle\+\_\+type}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+get number of values in slab list 
+
+\begin{DoxyReturn}{Returns}
+value count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79fb2a41f22cf59f4edf49c3de82d9dd}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a79fb2a41f22cf59f4edf49c3de82d9dd}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!slab\+\_\+grow\+\_\+factor@{slab\+\_\+grow\+\_\+factor}}
+\index{slab\+\_\+grow\+\_\+factor@{slab\+\_\+grow\+\_\+factor}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{slab\+\_\+grow\+\_\+factor()}{slab\_grow\_factor()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::slab\+\_\+grow\+\_\+factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get slab growth factor 
+
+\begin{DoxyReturn}{Returns}
+factor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a20efaad0116184429778d736723c30f3}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a20efaad0116184429778d736723c30f3}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!slab\+\_\+index\+\_\+bits@{slab\+\_\+index\+\_\+bits}}
+\index{slab\+\_\+index\+\_\+bits@{slab\+\_\+index\+\_\+bits}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{slab\+\_\+index\+\_\+bits()}{slab\_index\_bits()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::slab\+\_\+index\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+get number of bits used to enumerate slabs 
+
+\begin{DoxyReturn}{Returns}
+number of bits 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a16f77ea7e30c30b17af19a229464ed42}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a16f77ea7e30c30b17af19a229464ed42}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!slab\+\_\+size\+\_\+bits@{slab\+\_\+size\+\_\+bits}}
+\index{slab\+\_\+size\+\_\+bits@{slab\+\_\+size\+\_\+bits}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{slab\+\_\+size\+\_\+bits()}{slab\_size\_bits()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::slab\+\_\+size\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+get number of bits used to hold the value capacity of a slab 
+
+\begin{DoxyReturn}{Returns}
+number of bits 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a9f67ef2bd0b072938bce462656b2c8aa}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a9f67ef2bd0b072938bce462656b2c8aa}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!status@{status}}
+\index{status@{status}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{status()}{status()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get status 
+
+\begin{DoxyReturn}{Returns}
+status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a647790aa072589d7296b7ea57436f297}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_a647790aa072589d7296b7ea57436f297}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!uninitialized\+\_\+handle@{uninitialized\+\_\+handle}}
+\index{uninitialized\+\_\+handle@{uninitialized\+\_\+handle}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{uninitialized\+\_\+handle()}{uninitialized\_handle()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr handle\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::uninitialized\+\_\+handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+get uninitialized handle 
+
+\begin{DoxyReturn}{Returns}
+handle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aff75cc3f371c2b31b569ff585f9ac900}\label{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore_aff75cc3f371c2b31b569ff585f9ac900}} 
+\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}!value\+\_\+counter\+\_\+bits@{value\+\_\+counter\+\_\+bits}}
+\index{value\+\_\+counter\+\_\+bits@{value\+\_\+counter\+\_\+bits}!warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}}
+\subsubsection{\texorpdfstring{value\+\_\+counter\+\_\+bits()}{value\_counter\_bits()}}
+{\footnotesize\ttfamily template$<$class Value , index\+\_\+t Slab\+Index\+Bits = 30, index\+\_\+t Value\+Counter\+Bits = 22, index\+\_\+t Slab\+Size\+Bits = 10$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}$<$ Value, Slab\+Index\+Bits, Value\+Counter\+Bits, Slab\+Size\+Bits $>$\+::value\+\_\+counter\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+get number of bits used to count values in a slab list 
+
+\begin{DoxyReturn}{Returns}
+number of bits 
+\end{DoxyReturn}
