@@ -4,3 +4,6 @@
 [submodule "ext/hpc_helpers"]
 	path = ext/hpc_helpers
 	url = https://gitlab.rlp.net/pararch/hpc_helpers
+[submodule "ext/gossip"]
+	path = ext/gossip
+	url = https://github.com/Funatiq/gossip.git
