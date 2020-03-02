@@ -4,7 +4,7 @@
 #include "config.cuh"
 #include "hashers.cuh"
 
-namespace warpcore 
+namespace warpcore
 {
 
 /*! \brief probing scheme iterators
@@ -31,7 +31,7 @@ class DoubleHashing
 
     static_assert(
         std::is_same<
-            typename Hasher1::key_type, 
+            typename Hasher1::key_type,
             typename Hasher2::key_type>::value,
         "key types of both hashers must be the same");
 
@@ -75,42 +75,44 @@ public:
      * \return initial probing index for \c key
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    index_type begin(key_type key, key_type seed = 0) noexcept 
+    index_type begin(key_type key, key_type seed = 0) noexcept
     {
-        i_ = 0;
-        base1_ = Hasher1::hash(key + seed) + group_.thread_rank();
-        base2_ = Hasher2::hash(key + seed);
-        return (base1_ % capacity_);
+        i_ = group_.thread_rank();
+        pos_  = Hasher1::hash(key + seed) + group_.thread_rank();
+        base_ = Hasher2::hash(key + seed + 1) % (capacity_-1) + 1;
+
+        return (pos_ % capacity_);
     }
 
     /*! \brief next probing index for \c key
      * \return next probing index for \c key
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    index_type next() noexcept 
+    index_type next() noexcept
     {
         i_ += CGSize;
-        return (i_ + group_.thread_rank() < probing_length_) ?
-            ((base1_ + i_ * base2_) % capacity_) : end();
+        pos_ += base_;
+
+        return (i_ < probing_length_) ? (pos_ % capacity_) : end();
     }
 
     /*! \brief end specifier of probing sequence
      * \return end specifier
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type end() noexcept 
+    static constexpr index_type end() noexcept
     {
         return ~index_type(0);
     }
 
 private:
     const index_type capacity_; //< capacity of the underlying hash table
-    const index_type probing_length_; //< number of probing attempts
+    const index_type probing_length_; //< max number of probing attempts
     const cg::thread_block_tile<CGSize>& group_; //< cooperative group
 
-    index_type i_; //< current probing position
-    index_type base1_; //< \f$h_1(k)\f$
-    index_type base2_; //< \f$h_2(k)\f$
+    index_type i_; //< current probe count
+    index_type pos_; //< current probing position
+    index_type base_; //< step size
 
 }; // class DoubleHashing
 
@@ -119,7 +121,7 @@ private:
  * \tparam CGSize cooperative group size
  */
 template <class Hasher, index_t CGSize = 1>
-class LinearProbing 
+class LinearProbing
 {
     static_assert(
         checks::is_valid_cg_size(CGSize),
@@ -165,30 +167,31 @@ public:
      * \return initial probing index for \c key
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    index_type begin(key_type key, key_type seed = 0) noexcept 
+    index_type begin(key_type key, key_type seed = 0) noexcept
     {
-        i_ = 0;
-        base_ = Hasher::hash(key + seed) + group_.thread_rank();
+        i_ = group_.thread_rank();
+        pos_ = Hasher::hash(key + seed) + group_.thread_rank();
 
-        return (base_ % capacity_);
+        return (pos_ % capacity_);
     }
 
     /*! \brief next probing index for \c key
      * \return next probing index
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    index_type next() noexcept 
+    index_type next() noexcept
     {
         i_ += CGSize;
-        return (i_ + group_.thread_rank() < probing_length_) ?
-            ((base_ + i_) % capacity_) : end();
+        pos_ += CGSize;
+
+        return (i_ < probing_length_) ? (pos_ % capacity_) : end();
     }
 
     /*! \brief end specifier of probing sequence
      * \return end specifier
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type end() noexcept 
+    static constexpr index_type end() noexcept
     {
         return ~index_type(0);
     }
@@ -198,17 +201,17 @@ private:
     const index_type probing_length_; //< number of probing attempts
     const cg::thread_block_tile<CGSize>& group_; //< cooperative group
 
-    index_type i_; //< current probing position
-    index_type base_; //< \f$h(k)\f$
+    index_type i_; //< current probe count
+    index_type pos_; //< current probing position
 
 }; // class LinearProbing
 
-/*! \brief quadratic probing scheme: \f$hash(k,i) = h(k)+i^2\f$
+/*! \brief quadratic probing scheme: \f$hash(k,i) = h(k)+\frac{1}{2}\cdot i+\frac{1}{2}\cdot i^2\f$
  * \tparam Hasher hash function
  * \tparam CGSize cooperative group size
  */
 template <class Hasher, index_t CGSize = 1>
-class QuadraticProbing 
+class QuadraticProbing
 {
     static_assert(
         checks::is_valid_cg_size(CGSize),
@@ -254,11 +257,12 @@ public:
      * \return initial probing index for \c key
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    index_type begin(key_type key, key_type seed = 0) noexcept 
+    index_type begin(key_type key, key_type seed = 0) noexcept
     {
-        i_ = 0;
-        base_ = Hasher::hash(key + seed) + group_.thread_rank();
-        return (base_ % capacity_);
+        i_ = group_.thread_rank();
+        step_ = 1;
+        pos_ = Hasher::hash(key + seed) + group_.thread_rank();
+        return (pos_ % capacity_);
     }
 
     /*! \brief next probing index for \c key
@@ -268,8 +272,10 @@ public:
     index_type next() noexcept
     {
         i_ += CGSize;
-        return (i_ + group_.thread_rank() < probing_length_) ?
-            ((base_ + i_ * i_) % capacity_) : end();
+        pos_ += step_;
+        ++step_;
+
+        return (i_ < probing_length_) ? (pos_ % capacity_) : end();
     }
 
     /*! \brief end specifier of probing sequence
@@ -286,8 +292,9 @@ private:
     const index_type probing_length_; //< number of probing attempts
     const cg::thread_block_tile<CGSize>& group_; //< cooperative group
 
-    index_type i_; //< current probing position
-    index_type base_; //< \f$h(k)\f&
+    index_type i_; //< current probe count
+    index_type pos_; //< current probing position
+    index_type step_; //< current step size
 
 }; // class QuadraticProbing
 
