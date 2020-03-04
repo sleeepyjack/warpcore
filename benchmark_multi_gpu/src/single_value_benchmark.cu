@@ -40,7 +40,8 @@ template<class HashTable>
 HOSTQUALIFIER INLINEQUALIFIER
 void single_value_benchmark(
     const std::vector<typename HashTable::key_type>& keys,
-    const std::vector<uint16_t> dev_ids = {0},
+    const std::vector<uint16_t> dev_ids,
+    gossip::transfer_plan_t transfer_plan,
     bool print_headers = true,
     std::vector<uint64_t> input_sizes = {(1UL<<27)},
     std::vector<float> load_factors = {0.8},
@@ -49,7 +50,7 @@ void single_value_benchmark(
     float multi_split_overhead_factor = 1.5f)
 {
     auto context = std::make_unique< gossip::context_t >(dev_ids);
-    auto all2all = std::make_unique< gossip::all2all_t >(*context); //TODO use transfer plan
+    auto all2all = std::make_unique< gossip::all2all_t >(*context, transfer_plan);
     auto multisplit = std::make_unique< gossip::multisplit_t >(*context);
 
 
@@ -299,37 +300,38 @@ int main(int argc, char* argv[])
         defaults::probing_scheme_t<key_t, 8>,
         storage::key_value::AoSStore<key_t, value_t>>;
 
-    const uint64_t max_keys = 1UL << 28;
-    std::vector<key_t> keys;
-
+    uint16_t num_gpus = 2;
     if(argc > 1)
-    {
-        keys = load_binary<key_t>(argv[1], max_keys);
-    }
-    else
-    {
-        keys.resize(max_keys);
+        num_gpus = std::stoi(argv[1]);
 
-        key_t * keys_d = nullptr;
-        cudaMalloc(&keys_d, sizeof(key_t) * max_keys); CUERR
+    gossip::transfer_plan_t transfer_plan = gossip::all2all::default_plan(num_gpus);;
+    if(argc > 2)
+        transfer_plan = parse_plan(argv[2]);
+    gossip::all2all::verify_plan(transfer_plan);
 
-        lambda_kernel
-        <<<SDIV(max_keys, 1024), 1024>>>
-        ([=] DEVICEQUALIFIER
+    const uint64_t max_keys = 1UL << 28;
+    std::vector<key_t> keys(max_keys);
+    key_t * keys_d = nullptr;
+    cudaMalloc(&keys_d, sizeof(key_t) * max_keys); CUERR
+
+    lambda_kernel
+    <<<SDIV(max_keys, 1024), 1024>>>
+    ([=] DEVICEQUALIFIER
+    {
+        const uint32_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+
+        if(tid < max_keys)
         {
-            const uint32_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+            keys_d[tid] = warpcore::hashers::MurmurHash<std::uint32_t>::hash(tid + 1);
+        }
+    });
 
-            if(tid < max_keys)
-            {
-                keys_d[tid] = warpcore::hashers::MurmurHash<std::uint32_t>::hash(tid + 1);
-            }
-        });
+    cudaMemcpy(keys.data(), keys_d, sizeof(key_t) * max_keys, D2H); CUERR
 
-        cudaMemcpy(keys.data(), keys_d, sizeof(key_t) * max_keys, D2H); CUERR
+    cudaFree(keys_d); CUERR
 
-        cudaFree(keys_d); CUERR
-    }
+    std::vector<uint16_t> dev_ids(num_gpus);
+    std::iota(dev_ids.begin(), dev_ids.end(), 0);
 
-    const std::vector<uint16_t> dev_ids = {0,1};
-    single_value_benchmark<hash_table_t>(keys, dev_ids, true);
+    single_value_benchmark<hash_table_t>(keys, dev_ids, transfer_plan, true);
 }

@@ -18,8 +18,8 @@ INCPARAMS := $(addprefix -I, $(INCDIRS))
 
 all: single_value
 
-single_value: ${INCS} | bin
-	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/single_value_benchmark.cu -o bin/single_value_benchmark.out
+single_value: ${INCS} $(BINDIR)/plan_parser.o | $(BINDIR)
+	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) $(BINDIR)/plan_parser.o $(SRCDIR)/single_value_benchmark.cu -o $(BINDIR)/single_value_benchmark.out
 
 $(BINDIR)/plan_parser.o: ${INCS} | $(BINDIR)
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) -c ../ext/gossip/include/plan_parser.cpp -o $(BINDIR)/plan_parser.o
@@ -34,9 +34,9 @@ profile: NVCCFLAGS += -lineinfo -g -Xptxas -v -DNDEBUG
 profile: all
 
 clean:
-	$(RM) -r bin
+	$(RM) -r $(BINDIR)
 
 $(BINDIR):
 	mkdir -p $@
 
-.PHONY: clean all bin
+.PHONY: clean all $(BINDIR)
