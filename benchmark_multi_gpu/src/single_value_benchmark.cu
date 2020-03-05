@@ -21,7 +21,7 @@ bool sufficient_memory(
     const size_t capacity = size_per_gpu/load;
     const size_t key_val_bytes = sizeof(Key)+sizeof(Value);
     const size_t table_bytes = key_val_bytes*capacity;
-    const size_t io_bytes = key_val_bytes*size_per_gpu*(1+multi_split_overhead_factor);
+    const size_t io_bytes = key_val_bytes*size_per_gpu*(2+multi_split_overhead_factor);
     const size_t total_bytes = (table_bytes+io_bytes)*headroom_factor;
 
     bool sufficient = true;
@@ -36,14 +36,27 @@ bool sufficient_memory(
     return sufficient;
 }
 
+template<class Key>
+__global__
+void generate_keys(Key * keys, uint32_t start, uint32_t num_keys)
+{
+    const uint32_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const uint32_t gid = tid + start;
+
+    if(tid < num_keys)
+    {
+        keys[tid] = warpcore::hashers::MurmurHash<std::uint32_t>::hash(gid + 1);
+    }
+}
+
+
 template<class HashTable>
 HOSTQUALIFIER INLINEQUALIFIER
 void single_value_benchmark(
-    const std::vector<typename HashTable::key_type>& keys,
-    const std::vector<uint16_t> dev_ids,
+    const std::vector<uint32_t>& input_sizes,
+    const std::vector<uint16_t>& dev_ids,
     gossip::transfer_plan_t transfer_plan,
     bool print_headers = true,
-    std::vector<uint64_t> input_sizes = {(1UL<<27)},
     std::vector<float> load_factors = {0.8},
     uint8_t iters = 5,
     std::chrono::milliseconds thermal_backoff = std::chrono::milliseconds(100),
@@ -53,7 +66,6 @@ void single_value_benchmark(
     auto all2all = std::make_unique< gossip::all2all_t >(*context, transfer_plan);
     auto multisplit = std::make_unique< gossip::multisplit_t >(*context);
 
-
     using key_t = typename HashTable::key_type;
     using value_t = typename HashTable::value_type;
 
@@ -61,12 +73,6 @@ void single_value_benchmark(
         *std::max_element(input_sizes.begin(), input_sizes.end());
     const auto min_load_factor =
         *std::min_element(load_factors.begin(), load_factors.end());
-
-    if(max_input_size > keys.size())
-    {
-        std::cerr << "Maximum input size exceeded." << std::endl;
-        exit(1);
-    }
 
     float headroom_factor = 1.1;
     if(!sufficient_memory<key_t, value_t>(dev_ids, max_input_size, min_load_factor,
@@ -77,8 +83,8 @@ void single_value_benchmark(
     }
 
     const uint32_t num_gpus = dev_ids.size();
-    const uint64_t max_input_size_per_gpu = max_input_size / num_gpus;
-    const uint64_t max_overhead_size_per_gpu = max_input_size_per_gpu * multi_split_overhead_factor;
+    const uint32_t max_input_size_per_gpu = max_input_size / num_gpus;
+    const uint32_t max_overhead_size_per_gpu = max_input_size_per_gpu * multi_split_overhead_factor;
 
     std::vector<key_t*> keys_d(num_gpus, nullptr);
     std::vector<key_t*> keys_split_d(num_gpus, nullptr);
@@ -89,15 +95,17 @@ void single_value_benchmark(
 
     for(uint32_t i = 0; i < num_gpus; ++i) {
         cudaSetDevice(dev_ids[i]); CUERR
-        cudaMalloc(&keys_d[i], sizeof(key_t)*max_overhead_size_per_gpu); CUERR
+        cudaMalloc(&keys_d[i], sizeof(key_t)*max_input_size_per_gpu); CUERR
         cudaMalloc(&keys_split_d[i], sizeof(key_t)*max_overhead_size_per_gpu); CUERR
         cudaMalloc(&keys_transfer_d[i], sizeof(key_t)*max_overhead_size_per_gpu); CUERR
-        cudaMalloc(&values_d[i], sizeof(value_t)*max_overhead_size_per_gpu); CUERR
+
+        cudaMalloc(&values_d[i], sizeof(value_t)*max_input_size_per_gpu); CUERR
         cudaMalloc(&values_split_d[i], sizeof(value_t)*max_overhead_size_per_gpu); CUERR
         cudaMalloc(&values_transfer_d[i], sizeof(value_t)*max_overhead_size_per_gpu); CUERR
 
-        cudaMemcpy(keys_d[i], keys.data()+i*max_input_size_per_gpu,
-                   sizeof(key_t)*max_input_size_per_gpu, H2D); CUERR
+        generate_keys<<<SDIV(max_input_size_per_gpu, 1024), 1024>>>
+            (keys_d[i], max_input_size_per_gpu*i, max_input_size_per_gpu);
+        cudaDeviceSynchronize(); CUERR
     }
 
     for(auto size : input_sizes)
@@ -309,29 +317,10 @@ int main(int argc, char* argv[])
         transfer_plan = parse_plan(argv[2]);
     gossip::all2all::verify_plan(transfer_plan);
 
-    const uint64_t max_keys = 1UL << 28;
-    std::vector<key_t> keys(max_keys);
-    key_t * keys_d = nullptr;
-    cudaMalloc(&keys_d, sizeof(key_t) * max_keys); CUERR
-
-    lambda_kernel
-    <<<SDIV(max_keys, 1024), 1024>>>
-    ([=] DEVICEQUALIFIER
-    {
-        const uint32_t tid = blockDim.x * blockIdx.x + threadIdx.x;
-
-        if(tid < max_keys)
-        {
-            keys_d[tid] = warpcore::hashers::MurmurHash<std::uint32_t>::hash(tid + 1);
-        }
-    });
-
-    cudaMemcpy(keys.data(), keys_d, sizeof(key_t) * max_keys, D2H); CUERR
-
-    cudaFree(keys_d); CUERR
+    std::vector<uint32_t> input_sizes = {(1UL<<27)};
 
     std::vector<uint16_t> dev_ids(num_gpus);
     std::iota(dev_ids.begin(), dev_ids.end(), 0);
 
-    single_value_benchmark<hash_table_t>(keys, dev_ids, transfer_plan, true);
+    single_value_benchmark<hash_table_t>(input_sizes, dev_ids, transfer_plan, true);
 }
