@@ -79,9 +79,11 @@ public:
     {
         i_ = group_.thread_rank();
         pos_  = Hasher1::hash(key + seed) + group_.thread_rank();
-        base_ = Hasher2::hash(key + seed + 1) % (capacity_-1) + 1;
+        pos_ = pos_ % capacity_;
+        // step size in range [group_size, capacity - group_size]
+        base_ = Hasher2::hash(key + seed + 1) % (capacity_-2*group_.size()+1) + group_.size();
 
-        return (pos_ % capacity_);
+        return pos_;
     }
 
     /*! \brief next probing index for \c key
@@ -91,9 +93,9 @@ public:
     index_type next() noexcept
     {
         i_ += CGSize;
-        pos_ += base_;
+        pos_ = (pos_ + base_) % capacity_;
 
-        return (i_ < probing_length_) ? (pos_ % capacity_) : end();
+        return (i_ < probing_length_) ? pos_ : end();
     }
 
     /*! \brief end specifier of probing sequence
@@ -171,8 +173,9 @@ public:
     {
         i_ = group_.thread_rank();
         pos_ = Hasher::hash(key + seed) + group_.thread_rank();
+        pos_ = pos_ % capacity_;
 
-        return (pos_ % capacity_);
+        return pos_;
     }
 
     /*! \brief next probing index for \c key
@@ -182,9 +185,9 @@ public:
     index_type next() noexcept
     {
         i_ += CGSize;
-        pos_ += CGSize;
+        pos_ = (pos_ + CGSize) % capacity_;
 
-        return (i_ < probing_length_) ? (pos_ % capacity_) : end();
+        return (i_ < probing_length_) ? pos_ : end();
     }
 
     /*! \brief end specifier of probing sequence
@@ -262,7 +265,9 @@ public:
         i_ = group_.thread_rank();
         step_ = 1;
         pos_ = Hasher::hash(key + seed) + group_.thread_rank();
-        return (pos_ % capacity_);
+        pos_ = pos_ % capacity_;
+
+        return pos_;
     }
 
     /*! \brief next probing index for \c key
@@ -272,10 +277,10 @@ public:
     index_type next() noexcept
     {
         i_ += CGSize;
-        pos_ += step_;
+        pos_ = (pos_ + step_) % capacity_;
         ++step_;
 
-        return (i_ < probing_length_) ? (pos_ % capacity_) : end();
+        return (i_ < probing_length_) ? pos_ : end();
     }
 
     /*! \brief end specifier of probing sequence
