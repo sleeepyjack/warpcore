@@ -80,8 +80,8 @@ public:
         i_ = group_.thread_rank();
         pos_  = Hasher1::hash(key + seed) + group_.thread_rank();
         pos_ = pos_ % capacity_;
-        // step size in range [group_size, capacity - group_size]
-        base_ = Hasher2::hash(key + seed + 1) % (capacity_-2*group_.size()+1) + group_.size();
+        // step size in range [1, capacity-1] * group_size
+        base_ = (Hasher2::hash(key + seed + 1) % (capacity_ / group_.size() - 1) + 1) * group_.size();
 
         return pos_;
     }

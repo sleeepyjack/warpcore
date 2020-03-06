@@ -117,7 +117,7 @@ public:
         key_type seed = defaults::seed<key_type>(),
         bool no_init = false) noexcept :
         status_(nullptr),
-        table_(get_valid_capacity(min_capacity)),
+        table_(get_valid_capacity(SDIV(min_capacity, cg_size())) * cg_size()),
         temp_(TempMemoryBytes / sizeof(index_type)),
         seed_(seed),
         is_initialized_(false),
