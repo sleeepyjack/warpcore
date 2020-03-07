@@ -24,7 +24,8 @@ TEMPLATE_TEST_CASE_SIG(
             defaults::temp_memory_bytes()>;
 
     const index_t min_capacity = GENERATE(as<index_t>{}, 12345, 4242424, 696969);
-    const index_t valid_capacity = get_valid_capacity(SDIV(min_capacity, probing_scheme_t::cg_size())) * probing_scheme_t::cg_size();
+    const index_t valid_capacity =
+        get_valid_capacity(min_capacity, probing_scheme_t::cg_size());
     const float load = GENERATE(as<float>{}, 0.5, 0.7, 0.8);
     const Key seed = GENERATE(as<Key>{}, 5, 42);
     const index_t n = float(valid_capacity) * load;

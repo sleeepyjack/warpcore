@@ -8224,11 +8224,12 @@ constexpr std::array<std::uint64_t, 8192> valid_capacities =
 };
 
 HOSTQUALIFIER INLINEQUALIFIER
-index_t get_valid_capacity(index_t x) noexcept
+index_t get_valid_capacity(index_t min_capacity, index_t cg_size) noexcept
 {
+    const auto x = SDIV(min_capacity, cg_size);
     const auto y =
         std::lower_bound(valid_capacities.begin(), valid_capacities.end(), x);
-    return (y == valid_capacities.end()) ? 0 : *y;
+    return (y == valid_capacities.end()) ? 0 : (*y) * cg_size;
 }
 
 } // namespace warpcore
