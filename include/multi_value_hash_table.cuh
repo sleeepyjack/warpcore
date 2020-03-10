@@ -616,16 +616,6 @@ public:
         return bytes_keys(stream) + bytes_values(stream);
     }
 
-    /*! \brief get the ratio between actual payload bytes and occupied bytes inside the value store
-     * \param stream CUDA stream in which this operation is executed in
-     * \return ratio
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    float value_to_header_ratio(cudaStream_t stream = 0) noexcept
-    {
-        return float(bytes_values(stream)) / float(value_store_.bytes_occupied(stream));
-    }
-
     /*! \brief current storage density of the hash table
      * \param stream CUDA stream in which this operation is executed in
      * \return storage density

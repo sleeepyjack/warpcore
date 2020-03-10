@@ -200,7 +200,6 @@ void multi_value_benchmark(
             float density = hash_table.storage_density();
             warpcore::Status status = hash_table.pop_status();
 
-
             if(print_headers)
             {
                 const char d = ' ';
@@ -217,7 +216,6 @@ void multi_value_benchmark(
                     << d << "max_slab_size=" << max_slab_size
                     << d << "key_load=" << key_load
                     << d << "value_load=" << value_load
-                    << d << "value_to_header_ratio=" << hash_table.value_to_header_ratio()
                     << d << "density=" << density
                     << d << "insert_ms=" << insert_time
                     << d << "query_ms=" << query_time
@@ -244,7 +242,6 @@ void multi_value_benchmark(
                     << d << max_slab_size
                     << d << key_load
                     << d << value_load
-                    << d << hash_table.value_to_header_ratio()
                     << d << density
                     << d << insert_time
                     << d << query_time
@@ -272,7 +269,7 @@ int main(int argc, char* argv[])
 {
     using namespace warpcore;
 
-    using key_t = std::uint32_t;
+    using key_t = std::uint64_t;
     using value_t = std::uint64_t;
 
     using hash_table_t = MultiValueHashTable<
@@ -284,7 +281,7 @@ int main(int argc, char* argv[])
         defaults::probing_scheme_t<key_t, 8>>;
 
 
-    const uint64_t max_keys = 1UL << 22;
+    const uint64_t max_keys = 1UL << 27;
     uint64_t dev_id = 0;
     std::vector<key_t> keys;
 
@@ -322,10 +319,12 @@ int main(int argc, char* argv[])
     std::cout << "unique_keys: " <<  num_unique(keys) << "\tvalues: " << keys.size() << std::endl;
     multi_value_benchmark<hash_table_t>(
         keys,
-        num_unique(keys) / 0.95,
-        keys.size() / 0.95,
+        num_unique(keys) / 0.90,
+        keys.size() / 0.80,
         {max_keys},
-        {{1.1, 8, 0}},
+        {{1.1, 1, 0}},
         0x5ad0ded,
         dev_id);
+
+    cudaDeviceSynchronize(); CUERR
 }
