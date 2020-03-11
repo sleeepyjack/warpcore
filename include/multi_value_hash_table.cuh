@@ -626,6 +626,21 @@ public:
         return float(bytes_payload(stream)) / float(bytes_total());
     }
 
+    /*! \brief current relative storage density of the hash table
+     * \param stream CUDA stream in which this operation is executed in
+     * \return storage density
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    float relative_storage_density(cudaStream_t stream = 0) noexcept
+    {
+        const float bytes_hash_table =
+            hash_table_.capacity() * (sizeof(key_type) + sizeof(handle_type));
+        const float bytes_value_store =
+            value_store_.bytes_occupied(stream);
+
+        return float(bytes_payload(stream)) / (bytes_value_store + bytes_hash_table);
+    }
+
     /*! \brief indicates if the hash table is properly initialized
      * \return \c true iff the hash table is properly initialized
      */

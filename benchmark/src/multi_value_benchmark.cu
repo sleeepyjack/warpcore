@@ -198,6 +198,7 @@ void multi_value_benchmark(
             float key_load = hash_table.key_load_factor();
             float value_load = hash_table.value_load_factor();
             float density = hash_table.storage_density();
+            float relative_density = hash_table.relative_storage_density();
             warpcore::Status status = hash_table.pop_status();
 
             if(print_headers)
@@ -217,6 +218,7 @@ void multi_value_benchmark(
                     << d << "key_load=" << key_load
                     << d << "value_load=" << value_load
                     << d << "density=" << density
+                    << d << "relative_density=" << relative_density
                     << d << "insert_ms=" << insert_time
                     << d << "query_ms=" << query_time
                     << d << "IPS=" << ips
@@ -243,6 +245,7 @@ void multi_value_benchmark(
                     << d << key_load
                     << d << value_load
                     << d << density
+                    << d << relative_density
                     << d << insert_time
                     << d << query_time
                     << d << ips
@@ -320,7 +323,7 @@ int main(int argc, char* argv[])
     multi_value_benchmark<hash_table_t>(
         keys,
         num_unique(keys) / 0.90,
-        keys.size() / 0.80,
+        keys.size() / 0.60,
         {max_keys},
         {{1.1, 1, 0}},
         0x5ad0ded,
