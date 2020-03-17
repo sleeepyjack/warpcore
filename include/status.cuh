@@ -196,8 +196,7 @@ private:
     base_type status_;
 
     // some handlers need to access a private constructor
-    template<       base_type> friend class status_handlers::ReturnBooleanFlags;
-    template<class, base_type> friend class status_handlers::ReturnBitFlags;
+    template<base_type> friend class status_handlers::ReturnBoolean;
 
 }; // class Status
 
