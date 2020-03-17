@@ -10,10 +10,7 @@ namespace warpcore
 namespace status_handlers
 {
     template<status_base_t Ignore>
-    class ReturnBooleanFlags;
-
-    template<class T, status_base_t Ignore>
-    class ReturnBitFlags;
+    class ReturnBoolean;
 }
 
 /*! \brief status/error indicator
