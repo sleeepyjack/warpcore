@@ -91,7 +91,7 @@ public:
     template<
         class T = value_store_type,
         class = std::enable_if_t<
-            std::is_same<typename T::tag, tags::static_value_storage_tag>::value>>
+            std::is_same<typename T::tag, tags::static_value_storage>::value>>
     HOSTQUALIFIER
     explicit MultiValueHashTable(
         index_type key_capacity,
@@ -118,7 +118,7 @@ public:
     template<
         class T = value_store_type,
         class = std::enable_if_t<
-            std::is_same<typename T::tag, tags::dynamic_value_storage_tag>::value>>
+            std::is_same<typename T::tag, tags::dynamic_value_storage>::value>>
     HOSTQUALIFIER
     explicit MultiValueHashTable(
         index_type key_capacity,

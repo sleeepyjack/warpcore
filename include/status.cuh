@@ -257,7 +257,7 @@ class ReturnNothing
 {
 public:
     using base_type = void;
-    using tag = tags::status_handler_tag;
+    using tag = tags::status_handler;
 
     DEVICEQUALIFIER INLINEQUALIFIER
     static void handle(
@@ -275,7 +275,7 @@ class ReturnStatus
 {
 public:
     using base_type = Status;
-    using tag = tags::status_handler_tag;
+    using tag = tags::status_handler;
 
     DEVICEQUALIFIER INLINEQUALIFIER
     static void handle(
@@ -294,7 +294,7 @@ class ReturnBoolean
 {
 public:
     using base_type = bool;
-    using tag = tags::status_handler_tag;
+    using tag = tags::status_handler;
 
     DEVICEQUALIFIER INLINEQUALIFIER
     static void handle(

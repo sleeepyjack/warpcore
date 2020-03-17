@@ -216,7 +216,7 @@ public:
     using value_type = Value;
     using status_type = Status;
     using index_type = index_t;
-    using tag = tags::key_value_storage_tag;
+    using tag = tags::key_value_storage;
 
     /*! \brief constructor
      * \param[in] capacity number of key/value slots
@@ -428,7 +428,7 @@ public:
     using value_type = Value;
     using status_type = Status;
     using index_type = index_t;
-    using tag = tags::key_value_storage_tag;
+    using tag = tags::key_value_storage;
 
     /*! \brief constructor
      * \param[in] capacity number of key/value slots
@@ -1025,7 +1025,7 @@ public:
     using status_type = Status;
     using slab_type = detail::StaticSlab<type>;
     using index_type = index_t;
-    using tag = tags::static_value_storage_tag;
+    using tag = tags::static_value_storage;
 
     /*! \brief get slab size
      * \return slab size
@@ -1507,7 +1507,7 @@ public:
     using index_type = index_t;
     using status_type = Status;
     using slab_type = detail::DynamicSlab<type>;
-    using tag = tags::dynamic_value_storage_tag;
+    using tag = tags::dynamic_value_storage;
 
     /*! \brief get number of bits used to enumerate slabs
      * \return number of bits

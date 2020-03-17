@@ -9,12 +9,14 @@ namespace warpcore
 namespace tags
 {
 
-    struct hasher_tag {};
-    struct probing_scheme_tag {};
-    struct key_value_storage_tag {};
-    struct static_value_storage_tag {};
-    struct dynamic_value_storage_tag {};
-    struct status_handler_tag {};
+    struct hasher {};
+    struct true_permutation_hasher {};
+    struct probing_scheme {};
+    struct cycle_free_probing_scheme {};
+    struct key_value_storage {};
+    struct static_value_storage {};
+    struct dynamic_value_storage {};
+    struct status_handler {};
 
 } // namespace tags
 
