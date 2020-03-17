@@ -10,10 +10,7 @@ namespace warpcore
 namespace status_handlers
 {
     template<status_base_t Ignore>
-    class ReturnBooleanFlags;
-
-    template<class T, status_base_t Ignore>
-    class ReturnBitFlags;
+    class ReturnBoolean;
 }
 
 /*! \brief status/error indicator
@@ -63,9 +60,32 @@ public:
     static constexpr Status out_of_memory() noexcept { return Status(one << 7); }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status not_initialized() noexcept { return Status(one << 8); }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr Status dry_run() noexcept { return Status(one << 9); }
+
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr Status error_mask() noexcept
+    {
+        return
+            unknown_error() +
+            invalid_configuration() +
+            index_overflow() +
+            out_of_memory() +
+            not_initialized();
+    }
+
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr Status warning_mask() noexcept
+    {
+        return all() - error_mask();
+    }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_any(const Status& s = all()) const noexcept { return status_ & s.status_; }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool has_any_errors() const noexcept { return has_any(error_mask()); }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool has_any_warnings() const noexcept { return has_any(warning_mask()); }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_all(const Status& s = all()) const noexcept { return (status_ & s.status_) == s.status_; }
 
@@ -87,6 +107,8 @@ public:
     constexpr bool has_out_of_memory() const noexcept { return status_ & out_of_memory().status_; }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_not_initialized() const noexcept { return status_ & not_initialized().status_; }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool has_dry_run() const noexcept { return status_ & dry_run().status_; }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr Status& operator=(const Status& a) noexcept
@@ -166,13 +188,12 @@ private:
     explicit constexpr Status(base_type s) noexcept : status_{s} {}
 
     static constexpr base_type one = 1;
-    static constexpr base_type mask = 0x1FF; // INFO change when adding new status
+    static constexpr base_type mask = 0x3FF; // INFO change when adding new status
 
     base_type status_;
 
     // some handlers need to access a private constructor
-    template<       base_type> friend class status_handlers::ReturnBooleanFlags;
-    template<class, base_type> friend class status_handlers::ReturnBitFlags;
+    template<base_type> friend class status_handlers::ReturnBoolean;
 
 }; // class Status
 
@@ -199,6 +220,8 @@ OStream& operator<<(OStream& os, Status status)
         msg.push_back("out of memory");
     if(status.has_not_initialized())
         msg.push_back("not initialized");
+    if(status.has_dry_run())
+        msg.push_back("dry run");
     // if(!status.has_any())
     //     msg.push_back("none");
 
