@@ -66,21 +66,39 @@ namespace checks
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool is_hasher() noexcept
     {
-        return std::is_same<typename T::tag, tags::hasher_tag>::value;
+        return
+            std::is_same<typename T::tag, tags::hasher>::value ||
+            std::is_same<typename T::tag, tags::true_permutation_hasher>::value;
+    }
+
+    template<class T>
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool is_true_permutation_hasher() noexcept
+    {
+        return std::is_same<typename T::tag, tags::true_permutation_hasher>::value;
     }
 
     template<class T>
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool is_probing_scheme() noexcept
     {
-        return std::is_same<typename T::tag, tags::probing_scheme_tag>::value;
+        return
+            std::is_same<typename T::tag, tags::probing_scheme>::value ||
+            std::is_same<typename T::tag, tags::cycle_free_probing_scheme>::value;
+    }
+
+    template<class T>
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool is_cycle_free_probing_scheme() noexcept
+    {
+        return std::is_same<typename T::tag, tags::cycle_free_probing_scheme>::value;
     }
 
     template<class T>
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool is_key_value_storage() noexcept
     {
-        return std::is_same<typename T::tag, tags::key_value_storage_tag>::value;
+        return std::is_same<typename T::tag, tags::key_value_storage>::value;
     }
 
     template<class T>
@@ -88,15 +106,15 @@ namespace checks
     constexpr bool is_value_storage() noexcept
     {
         return
-            std::is_same<typename T::tag, tags::static_value_storage_tag>::value ||
-            std::is_same<typename T::tag, tags::dynamic_value_storage_tag>::value;
+            std::is_same<typename T::tag, tags::static_value_storage>::value ||
+            std::is_same<typename T::tag, tags::dynamic_value_storage>::value;
     }
 
     template<class T>
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool is_status_handler() noexcept
     {
-        return std::is_same<typename T::tag, tags::status_handler_tag>::value;
+        return std::is_same<typename T::tag, tags::status_handler>::value;
     }
 
 } // namespace checks

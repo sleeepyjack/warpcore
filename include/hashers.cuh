@@ -3,7 +3,7 @@
 
 #include "config.cuh"
 
-namespace warpcore 
+namespace warpcore
 {
 
 /*! \brief hash functions
@@ -13,13 +13,13 @@ namespace hashers
 
 /*! \brief hash function proposed by NVIDIA
 */
-class NvidiaHash 
+class NvidiaHash
 {
 
 public:
     using key_type = std::uint32_t;
     using hash_type = std::uint32_t;
-    using tag = tags::hasher_tag;
+    using tag = tags::hasher;
 
     /*! \brief deleted hash function for types other than explicitly defined
      * \tparam T key type
@@ -33,7 +33,7 @@ public:
      * \return hash of \c x
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static hash_type hash(key_type x) noexcept 
+    static hash_type hash(key_type x) noexcept
     {
         x = (x + 0x7ed55d16) + (x << 12);
         x = (x ^ 0xc761c23c) ^ (x >> 19);
@@ -49,13 +49,13 @@ public:
 
 /*! \brief hash function proposed by Mueller
  */
-class MuellerHash 
+class MuellerHash
 {
 
 public:
     using key_type = std::uint32_t;
     using hash_type = std::uint32_t;
-    using tag = tags::hasher_tag;
+    using tag = tags::true_permutation_hasher;
 
     /*! \brief deleted hash function for types other than explicitly defined
      * \tparam T key type
@@ -85,13 +85,13 @@ public:
  * \tparam K key type (\c std::uint32_t or std::uint64_t)
  */
 template<class K>
-class MurmurHash 
+class MurmurHash
 {
 
 public:
     using key_type = K;
     using hash_type = K;
-    using tag = tags::hasher_tag;
+    using tag = tags::true_permutation_hasher;
 
     /*! \brief hash function
      * \tparam T key type
@@ -103,9 +103,9 @@ public:
     static T hash(T x) noexcept
     {
         static_assert(
-            std::is_same<T, key_type>::value, 
+            std::is_same<T, key_type>::value,
             "invalid key type");
-            
+
         return hash_(x);
     }
 
@@ -124,7 +124,7 @@ private:
         x ^= x >> 16;
         return x;
     }
-    
+
     /*! \brief hash function
      * \param[in] x key to be hashed
      * \return hash of \c x
@@ -147,13 +147,13 @@ private:
  * \tparam H hash type
  */
 template<class K, class H = std::uint32_t>
-class IdentityMap 
+class IdentityMap
 {
 
 public:
     using key_type  = K;
     using hash_type = H;
-    using tag = tags::hasher_tag;
+    using tag = tags::true_permutation_hasher;
 
     static_assert(
         std::is_same<hash_type, std::uint32_t>::value ||

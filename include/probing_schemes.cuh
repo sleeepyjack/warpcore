@@ -38,7 +38,11 @@ class DoubleHashing
 public:
     using key_type = typename Hasher1::key_type;
     using index_type = index_t;
-    using tag = tags::probing_scheme_tag;
+    using tag = typename std::conditional<
+        checks::is_true_permutation_hasher<Hasher1>() &&
+        checks::is_true_permutation_hasher<Hasher2>(),
+        tags::cycle_free_probing_scheme,
+        tags::probing_scheme>::type;
 
     /*! \brief get cooperative group size
      * \return cooperative group size
@@ -132,7 +136,7 @@ class LinearProbing
 public:
     using key_type = typename Hasher::key_type;
     using index_type = index_t;
-    using tag = tags::probing_scheme_tag;
+    using tag = tags::cycle_free_probing_scheme;
 
     /*! \brief get cooperative group size
      * \return cooperative group size
@@ -223,7 +227,7 @@ class QuadraticProbing
 public:
     using key_type = typename Hasher::key_type;
     using index_type = index_t;
-    using tag = tags::probing_scheme_tag;
+    using tag = tags::probing_scheme;
 
     /*! \brief get cooperative group size
      * \return cooperative group size

@@ -27,6 +27,8 @@ TEMPLATE_TEST_CASE(
     using index_t = warpcore::index_t;
     static constexpr index_t cg_size = probing_t::cg_size();
 
+    CHECK(warpcore::checks::is_cycle_free_probing_scheme<probing_t>());
+
     const index_t min_capacity = GENERATE(as<index_t>{}, 12345, 42424, 6969);
     const index_t valid_capacity =
         warpcore::detail::get_valid_capacity(min_capacity, probing_t::cg_size());
