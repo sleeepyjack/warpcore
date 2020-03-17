@@ -32,6 +32,16 @@ TEST_CASE("Status", "[status]")
         s = s - Status::key_not_found();
         CHECK(s == Status::none());
         CHECK((~Status::none()) != s);
+
+        Status err = Status::error_mask();
+        CHECK(err.has_any_errors());
+        CHECK(!err.has_any_warnings());
+
+        Status warn = Status::warning_mask();
+        CHECK(warn.has_any_warnings());
+        CHECK(!warn.has_any_errors());
+
+        CHECK(!err.has_any(warn));
     }
 
     SECTION("CUDA atomics")
