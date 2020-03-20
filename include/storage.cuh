@@ -34,7 +34,7 @@ public:
     explicit CyclicStore(index_type capacity) noexcept :
         store_(nullptr),
         capacity_(capacity),
-        current_(0),
+        current_(nullptr),
         status_(status_type::not_initialized()),
         is_copy_(false)
     {
@@ -45,6 +45,7 @@ public:
             if(available_gpu_memory() >= total_bytes && capacity_ > 0)
             {
                 cudaMalloc(&store_, sizeof(T) * capacity_);
+                current_ = new index_type(0);
                 status_ = status_type::none();
             }
             else
@@ -92,23 +93,25 @@ public:
         if(!is_copy_)
         {
             if(store_ != nullptr) cudaFree(store_);
+            delete current_;
         }
     }
 
     /*! \brief atomically fetches the next slot in the buffer
      *  \return pointer to the next slot in the buffer
+     *  \info \c const on purpose
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    T * get() noexcept
+    T * get() const noexcept
     {
         index_type old;
         index_type val;
 
         do
         {
-            old = current_;
+            old = *current_;
             val = (old == capacity_ - 1) ? 0 : old + 1;
-        }while(!__sync_bool_compare_and_swap(&current_, old, val));
+        }while(!__sync_bool_compare_and_swap(current_, old, val));
 
         return store_ + old;
     }
@@ -134,7 +137,7 @@ public:
 private:
     base_type * store_; //< actual buffer
     const index_type capacity_; //< buffer capacity
-    index_type current_; //< current active buffer slot
+    index_type * current_; //< current active buffer slot
     status_type status_; //< buffer status
     bool is_copy_;
 
