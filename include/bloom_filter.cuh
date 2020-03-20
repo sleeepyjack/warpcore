@@ -123,6 +123,7 @@ public:
         o.is_copy_ = true;
     }
 
+    #ifndef __CUDA_ARCH__
     /*! \brief destructor
      */
     HOSTQUALIFIER
@@ -133,6 +134,7 @@ public:
             if(bloom_filter_ != nullptr) cudaFree(bloom_filter_);
         }
     }
+    #endif
 
     /*! \brief re-initialize the hash table
     * \param[in] stream CUDA stream in which this operation is executed in
