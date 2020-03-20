@@ -85,6 +85,7 @@ public:
         o.is_copy_ = true;
     }
 
+    #ifndef __CUDA_ARCH__
     /*! \brief destructor
      */
     HOSTQUALIFIER INLINEQUALIFIER
@@ -96,6 +97,7 @@ public:
             delete current_;
         }
     }
+    #endif
 
     /*! \brief atomically fetches the next slot in the buffer
      *  \return pointer to the next slot in the buffer
@@ -281,6 +283,7 @@ public:
         o.is_copy_ = true;
     }
 
+    #ifndef __CUDA_ARCH__
     /*! \brief destructor
      */
     HOSTQUALIFIER INLINEQUALIFIER
@@ -292,6 +295,7 @@ public:
             if(values_ != nullptr) cudaFree(values_);
         }
     }
+    #endif
 
     /*! \brief initialize keys
      * \param[in] key initializer key
@@ -488,6 +492,7 @@ public:
         o.is_copy_ = true;
     }
 
+    #ifndef __CUDA_ARCH__
     /*! \brief destructor
      */
     HOSTQUALIFIER INLINEQUALIFIER
@@ -498,6 +503,7 @@ public:
             if(pairs_ != nullptr) cudaFree(pairs_);
         }
     }
+    #endif
 
     /*! \brief initialize keys
      * \param[in] key initializer key
@@ -1147,6 +1153,7 @@ public:
         o.is = true;
     }
 
+    #ifndef __CUDA_ARCH__
     /*! \brief destructor
      */
     HOSTQUALIFIER INLINEQUALIFIER
@@ -1158,6 +1165,7 @@ public:
             if(next_free_slab_ != nullptr) cudaFree(next_free_slab_);
         }
     }
+    #endif
 
     /*! \brief (re)initialize the store
      * \param[in] stream CUDA stream in which this operation is executed in
@@ -1652,6 +1660,7 @@ public:
         o.is_copy_ = true;
     }
 
+    #ifndef __CUDA_ARCH__
     /*! \brief destructor
      */
     HOSTQUALIFIER INLINEQUALIFIER
@@ -1663,6 +1672,7 @@ public:
             if(next_free_slab_ != nullptr) cudaFree(next_free_slab_);
         }
     }
+    #endif
 
     /*! \brief (re)initialize storage
      * \param[in] stream CUDA stream in which this operation is executed in

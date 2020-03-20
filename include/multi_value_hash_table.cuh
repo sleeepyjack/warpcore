@@ -158,12 +158,6 @@ public:
         o.is_copy_ = true;
     }
 
-    /*! \brief destructor
-     */
-     HOSTQUALIFIER INLINEQUALIFIER
-     ~MultiValueHashTable() noexcept
-     {}
-
      /*! \brief re-initialize the hash table
     * \param stream CUDA stream in which this operation is executed
     */
