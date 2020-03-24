@@ -20,7 +20,7 @@ void memset(
     T * arr,
     index_t size)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     if(tid >= size) return;
     arr[tid] = Val;
 }
@@ -32,7 +32,7 @@ void insert(
     index_t size_in,
     Core core)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -52,7 +52,7 @@ void insert(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -79,7 +79,7 @@ void insert(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -104,7 +104,7 @@ void retrieve(
     typename Core::value_type * values_out,
     Core core)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -130,7 +130,7 @@ void retrieve(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -166,7 +166,7 @@ void retrieve(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -204,7 +204,7 @@ void retrieve(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -252,7 +252,7 @@ void erase(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -279,7 +279,7 @@ void size_values(
     Core core,
     typename StatusHandler::base_type * status_out)
 {
-    const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const index_t tid = global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
