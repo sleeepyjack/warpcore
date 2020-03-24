@@ -504,7 +504,7 @@ public:
         <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
         ([=, *this] DEVICEQUALIFIER
         {
-            const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+            const index_type tid = global_thread_id();
 
             if(tid < capacity())
             {
@@ -537,7 +537,7 @@ public:
         {
             __shared__ index_type smem;
 
-            const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+            const index_type tid = global_thread_id();
             const auto block = cg::this_thread_block();
 
             if(tid >= capacity()) return;
@@ -865,7 +865,7 @@ private:
         Key_ TombstoneKey_,
         class ValueStore_,
         class ProbingScheme_>
-    friend class MultiValueHashTable;
+    friend class BucketListHashTable;
 
 
 }; // class SingleValueHashTable

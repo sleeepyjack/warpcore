@@ -310,7 +310,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -333,7 +333,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -360,7 +360,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -518,7 +518,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -541,7 +541,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -568,7 +568,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -1686,7 +1686,7 @@ public:
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER () mutable
             {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
+                const index_type tid = global_thread_id();
 
                 if(tid < capacity_)
                 {

@@ -40,7 +40,7 @@ bool check_unique(T * in_d, std::uint64_t n) noexcept
     ([=] DEVICEQUALIFIER
     {
         // determine the global thread ID
-        const std::uint64_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+        const std::uint64_t tid = global_thread_id();
 
         // if neighbouring elements are equal throw error
         if(tid < n-1 && out_d[tid] == out_d[tid+1])
