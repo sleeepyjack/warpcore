@@ -18,7 +18,7 @@ __global__ void filter_and_count(
     using namespace warpcore;
 
     // global thread id
-    const auto tid = blockDim.x * blockIdx.x + threadIdx.x;
+    const auto tid = global_thread_id();
     // cooperative group to use for hash table probing
     auto ht_group =
         cg::tiled_partition<hash_table.cg_size()>(cg::this_thread_block());
