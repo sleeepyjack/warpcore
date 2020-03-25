@@ -62,6 +62,8 @@ public:
     static constexpr Status not_initialized() noexcept { return Status(one << 8); }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status dry_run() noexcept { return Status(one << 9); }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr Status invalid_phase_overlap() noexcept { return Status(one << 10); }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status error_mask() noexcept
@@ -71,7 +73,8 @@ public:
             invalid_configuration() +
             index_overflow() +
             out_of_memory() +
-            not_initialized();
+            not_initialized() +
+            invalid_phase_overlap();
     }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
@@ -109,6 +112,8 @@ public:
     constexpr bool has_not_initialized() const noexcept { return status_ & not_initialized().status_; }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_dry_run() const noexcept { return status_ & dry_run().status_; }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool has_invalid_phase_overlap() const noexcept { return status_ & invalid_phase_overlap().status_; }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr Status& operator=(const Status& a) noexcept
@@ -188,7 +193,7 @@ private:
     explicit constexpr Status(base_type s) noexcept : status_{s} {}
 
     static constexpr base_type one = 1;
-    static constexpr base_type mask = 0x3FF; // INFO change when adding new status
+    static constexpr base_type mask = 0x7FF; // INFO change when adding new status
 
     base_type status_;
 
