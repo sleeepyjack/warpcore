@@ -84,6 +84,11 @@ public:
     }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr Status get_errors() const noexcept { return Status(status_ & error_mask().status_); }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr Status get_warnings() const noexcept { return Status(status_ & warning_mask().status_); }
+
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_any(const Status& s = all()) const noexcept { return status_ & s.status_; }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_any_errors() const noexcept { return has_any(error_mask()); }
