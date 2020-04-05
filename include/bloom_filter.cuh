@@ -76,9 +76,9 @@ public:
      */
     HOSTQUALIFIER
     explicit BloomFilter(
-        index_type num_bits,
-        index_type k,
-        key_type seed = defaults::seed<key_type>()) noexcept :
+        const index_type num_bits,
+        const index_type k,
+        const key_type seed = defaults::seed<key_type>()) noexcept :
         bloom_filter_(nullptr),
         num_bits_(num_bits),
         num_slots_(SDIV(num_bits, slot_bits())),
@@ -135,15 +135,29 @@ public:
     }
     #endif
 
-    /*! \brief re-initialize the hash table
-    * \param[in] stream CUDA stream in which this operation is executed in
-    */
+    /*! \brief (re)initialize the hash table
+     * \param[in] seed random seed
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init(cudaStream_t stream = 0) noexcept
+    void init(
+        const key_type seed,
+        const cudaStream_t stream = 0) noexcept
     {
+        seed_ = seed;
+
         kernels::memset
         <<<SDIV(num_slots_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
         (bloom_filter_, num_slots_);
+    }
+
+    /*! \brief (re)initialize the hash table
+    * \param[in] stream CUDA stream in which this operation is executed in
+    */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void init(const cudaStream_t stream = 0) noexcept
+    {
+        init(seed_, stream);
     }
 
     /*! \brief inserts a key into the bloom filter
@@ -152,7 +166,7 @@ public:
      */
     DEVICEQUALIFIER INLINEQUALIFIER
     void insert(
-        key_type key,
+        const key_type key,
         const cg::thread_block_tile<cg_size()>& group) noexcept
     {
         const index_type slot_index =
@@ -179,18 +193,18 @@ public:
 
     /*! \brief inserts a set of keys into the bloom filter
      * \param[in] keys_in pointer to keys to insert into the bloom filter
-     * \param[in] size_in number of keys to insert
+     * \param[in] num_in number of keys to insert
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
     void insert(
-        Key * keys_in,
-        index_t size_in,
-        cudaStream_t stream = 0) noexcept
+        const Key * const keys_in,
+        const index_t num_in,
+        const cudaStream_t stream = 0) noexcept
     {
-        kernels::insert
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, *this);
+        kernels::bloom_filter::insert
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, *this);
     }
 
     /*! \brief retrieve a key
@@ -200,7 +214,7 @@ public:
      */
     DEVICEQUALIFIER INLINEQUALIFIER
     bool retrieve(
-        key_type key,
+        const key_type key,
         const cg::thread_block_tile<cg_size()>& group) const noexcept
     {
         const index_type slot_index =
@@ -224,20 +238,20 @@ public:
 
     /*! \brief retrieve a set of keys
      * \param[in] keys_in pointer to keys
-     * \param[in] size_in number of keys
+     * \param[in] num_in number of keys
      * \param[out] flags_out result per key
      ' \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
     void retrieve(
-        key_type * keys_in,
-        index_type size_in,
-        bool * flags_out,
-        cudaStream_t stream = 0) const noexcept
+        const key_type * const keys_in,
+        const index_type num_in,
+        bool * const flags_out,
+        const cudaStream_t stream = 0) const noexcept
     {
-        kernels::retrieve
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, flags_out, *this);
+        kernels::bloom_filter::retrieve
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, flags_out, *this);
     }
 
     /*! \brief queries and subsequently inserts a key into the bloom filter
@@ -251,7 +265,7 @@ public:
         class = std::enable_if_t<CGSize_ == 1>>
      DEVICEQUALIFIER INLINEQUALIFIER
      bool insert_and_query(
-         key_type key,
+         const key_type key,
          const cg::thread_block_tile<cg_size()>& group) noexcept
      {
         const index_type slot_index =
@@ -325,7 +339,7 @@ public:
      * \warning computationally expensive for large filters
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    double fpr(index_type n) const noexcept
+    double fpr(const index_type n) const noexcept
     {
         double res = 0.0;
         const double b = num_bits_ / block_bits();
@@ -357,9 +371,9 @@ private:
      */
     HOSTQUALIFIER INLINEQUALIFIER
     double binom(
-        index_type n,
-        index_type k,
-        double p) const noexcept
+        const index_type n,
+        const index_type k,
+        const double p) const noexcept
     {
         double res = 1.0;
 
@@ -386,9 +400,9 @@ private:
      */
     HOSTQUALIFIER INLINEQUALIFIER
     double fpr_base(
-        index_type m,
-        index_type n,
-        index_type k) const noexcept
+        const index_type m,
+        const index_type n,
+        const index_type k) const noexcept
     {
         return std::pow(1.0 - std::pow(1.0 - 1.0 / m, n * k), k);
     }
@@ -398,7 +412,7 @@ private:
     const index_type num_slots_; //< number of slots
     const index_type num_blocks_; //< number of CG blocks
     const index_type k_; //< number of hash functions
-    const key_type seed_; //< initial random seed
+    key_type seed_; //< random seed
     bool is_copy_; //< indicates if this object is a shallow copy
 
 }; // class BloomFilter

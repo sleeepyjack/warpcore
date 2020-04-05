@@ -1,19 +1,27 @@
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
 #include <numeric>
 #include <vector>
+#include <set>
+#include <tuple>
 #include <thread>
 #include <chrono>
 #include "warpcore.cuh"
 
 template<class Key, class Value>
-bool sufficient_memory(size_t size, float load, float headroom_factor = 1.1)
+bool sufficient_memory(
+    size_t input_size,
+    size_t key_store_capacity,
+    size_t value_store_capacity,
+    float headroom_factor = 1.1)
 {
-    const size_t capacity = size/load;
-    const size_t key_val_bytes = sizeof(Key)+sizeof(Value);
-    const size_t table_bytes = key_val_bytes*capacity;
-    const size_t io_bytes = key_val_bytes*size;
-    const size_t total_bytes = (table_bytes+io_bytes)*headroom_factor;
+    const size_t key_handle_bytes = sizeof(Key)+sizeof(uint64_t);
+    const size_t table_bytes = key_handle_bytes*key_store_capacity;
+    const size_t value_bytes = std::min(sizeof(Value), sizeof(uint64_t));
+    const size_t value_store_bytes = value_bytes * value_store_capacity;
+    const size_t io_bytes = (sizeof(Key)+sizeof(Value)+sizeof(uint64_t))*input_size;
+    const size_t total_bytes = (table_bytes+value_store_bytes+io_bytes)*headroom_factor;
 
     size_t bytes_free, bytes_total;
     cudaMemGetInfo(&bytes_free, &bytes_total); CUERR
@@ -47,25 +55,26 @@ uint64_t num_unique(const std::vector<T>& v) noexcept
 
 template<class HashTable>
 HOSTQUALIFIER INLINEQUALIFIER
-void multi_value_benchmark(
+void bucket_list_benchmark(
     const std::vector<typename HashTable::key_type>& keys,
+    uint64_t key_store_capacity,
+    uint64_t value_store_capacity,
     std::vector<uint64_t> input_sizes = {(1UL<<27)},
-    std::vector<float> load_factors = {0.8},
+    std::vector<std::tuple<float, uint64_t, uint64_t>> slab_list_configs = {{1.1, 1, 0}},
+    typename HashTable::key_type seed = warpcore::defaults::seed<key_t>(),
     uint64_t dev_id = 0,
     bool print_headers = true,
-    uint8_t iters = 5,
+    uint8_t iters = 1,
     std::chrono::milliseconds thermal_backoff = std::chrono::milliseconds(100))
 {
+    using index_t = typename HashTable::index_type;
     cudaSetDevice(dev_id); CUERR
 
-    using index_t = typename HashTable::index_type;
     using key_t = typename HashTable::key_type;
     using value_t = typename HashTable::value_type;
 
     const auto max_input_size =
         *std::max_element(input_sizes.begin(), input_sizes.end());
-    const auto min_load_factor =
-        *std::min_element(load_factors.begin(), load_factors.end());
 
     if(max_input_size > keys.size())
     {
@@ -73,7 +82,8 @@ void multi_value_benchmark(
         exit(1);
     }
 
-    if(!sufficient_memory<key_t, value_t>(max_input_size, min_load_factor))
+    if(!sufficient_memory<key_t, value_t>(
+            max_input_size, key_store_capacity, value_store_capacity))
     {
         std::cerr << "Not enough GPU memory." << std::endl;
         exit(1);
@@ -90,13 +100,20 @@ void multi_value_benchmark(
 
     cudaMemcpy(keys_d, keys.data(), sizeof(key_t)*max_input_size, H2D); CUERR
 
-    for(auto size : input_sizes)
+    for(const auto& size : input_sizes)
     {
-        for(auto load : load_factors)
+        for(const auto& slab_list_config : slab_list_configs)
         {
-            const std::uint64_t capacity = size / load;
+            const float slab_grow_factor = std::get<0>(slab_list_config);
+            const index_t min_slab_size = std::get<1>(slab_list_config);
+            const index_t max_slab_size = std::get<2>(slab_list_config);
 
-            HashTable hash_table(capacity);
+            HashTable hash_table(
+                key_store_capacity,
+                value_store_capacity,
+                seed,
+                slab_grow_factor,
+                min_slab_size);
 
             std::vector<float> insert_times(iters);
             for(uint64_t i = 0; i < iters; i++)
@@ -113,7 +130,7 @@ void multi_value_benchmark(
                 cudaEventElapsedTime(&t, insert_start, insert_stop);
                 cudaDeviceSynchronize(); CUERR
                 insert_times[i] = t;
-                std::this_thread::sleep_for (thermal_backoff);
+                std::this_thread::sleep_for(thermal_backoff);
             }
             const float insert_time =
                 *std::min_element(insert_times.begin(), insert_times.end());
@@ -122,6 +139,19 @@ void multi_value_benchmark(
             index_t value_size_out = 0;
 
             hash_table.retrieve_all_keys(unique_keys_d, key_size_out);
+
+            /*
+            key_size_out = size;
+            lambda_kernel<<<SDIV(size, MAXBLOCKSIZE), MAXBLOCKSIZE>>>(
+                [=] DEVICEQUALIFIER
+                {
+                    const auto tid = blockDim.x * blockIdx.x + threadIdx.x;
+
+                    if(tid >= size) return;
+                    unique_keys_d[tid] = tid + 1;
+                });
+            cudaDeviceSynchronize(); CUERR
+            */
 
             std::vector<float> query_times(iters);
             for(uint64_t i = 0; i < iters; i++)
@@ -153,7 +183,10 @@ void multi_value_benchmark(
             uint64_t qps = size/(query_time/1000);
             float itp = B2GB(total_bytes) / (insert_time/1000);
             float qtp = B2GB(total_bytes) / (query_time/1000);
-            float actual_load = hash_table.load_factor();
+            float key_load = hash_table.key_load_factor();
+            float value_load = hash_table.value_load_factor();
+            float density = hash_table.storage_density();
+            float relative_density = hash_table.relative_storage_density();
             warpcore::Status status = hash_table.pop_status();
 
             if(print_headers)
@@ -161,13 +194,19 @@ void multi_value_benchmark(
                 const char d = ' ';
 
                 std::cout << "N=" << size << std::fixed
-                    << d << "C=" << capacity
+                    << d << "key_capacity=" << key_store_capacity
+                    << d << "value_capacity=" << value_store_capacity
                     << d << "bits_key=" << sizeof(key_t)*CHAR_BIT
                     << d << "bits_value=" << sizeof(value_t)*CHAR_BIT
                     << d << "mb_keys=" << uint64_t(B2MB(sizeof(key_t)*size))
                     << d << "mb_values=" << uint64_t(B2MB(sizeof(value_t)*size))
-                    << d << "load=" << actual_load
-                    << d << "density=" << actual_load
+                    << d << "grow_factor=" << slab_grow_factor
+                    << d << "min_slab_size=" << min_slab_size
+                    << d << "max_slab_size=" << max_slab_size
+                    << d << "key_load=" << key_load
+                    << d << "value_load=" << value_load
+                    << d << "density=" << density
+                    << d << "relative_density=" << relative_density
                     << d << "insert_ms=" << insert_time
                     << d << "query_ms=" << query_time
                     << d << "IPS=" << ips
@@ -182,13 +221,19 @@ void multi_value_benchmark(
 
                 std::cout << std::fixed
                     << size
-                    << d << capacity
+                    << d << key_store_capacity
+                    << d << value_store_capacity
                     << d << sizeof(key_t)*CHAR_BIT
                     << d << sizeof(value_t)*CHAR_BIT
                     << d << uint64_t(B2MB(sizeof(key_t)*size))
                     << d << uint64_t(B2MB(sizeof(value_t)*size))
-                    << d << actual_load
-                    << d << actual_load
+                    << d << slab_grow_factor
+                    << d << min_slab_size
+                    << d << max_slab_size
+                    << d << key_load
+                    << d << value_load
+                    << d << density
+                    << d << relative_density
                     << d << insert_time
                     << d << query_time
                     << d << ips
@@ -201,7 +246,11 @@ void multi_value_benchmark(
     }
 
     cudaFree(keys_d); CUERR
+    cudaFree(unique_keys_d); CUERR
     cudaFree(values_d); CUERR
+    cudaFree(offsets_d); CUERR
+
+    cudaDeviceSynchronize(); CUERR
 }
 
 int main(int argc, char* argv[])
@@ -211,13 +260,14 @@ int main(int argc, char* argv[])
     using key_t = std::uint32_t;
     using value_t = std::uint32_t;
 
-    using hash_table_t = MultiValueHashTable<
+    using hash_table_t = BucketListHashTable<
         key_t,
         value_t,
         defaults::empty_key<key_t>(),
         defaults::tombstone_key<key_t>(),
-        defaults::probing_scheme_t<key_t, 8>,
-        storage::key_value::AoSStore<key_t, value_t>>;
+        storage::multi_value::BucketListStore<value_t, 29, 18, 15>,
+        defaults::probing_scheme_t<key_t, 8>>;
+
 
     const uint64_t max_keys = 1UL << 27;
     uint64_t dev_id = 0;
@@ -244,6 +294,7 @@ int main(int argc, char* argv[])
 
             if(tid < max_keys)
             {
+                // 8 values per key
                 keys_d[tid] = (tid % (max_keys / 8)) + 1;
             }
         });
@@ -253,10 +304,15 @@ int main(int argc, char* argv[])
         cudaFree(keys_d); CUERR
     }
 
-    multi_value_benchmark<hash_table_t>(
+    std::cout << "unique_keys: " <<  num_unique(keys) << "\tvalues: " << keys.size() << std::endl;
+    bucket_list_benchmark<hash_table_t>(
         keys,
+        num_unique(keys) / 0.90,
+        keys.size() / 0.50,
         {max_keys},
-        {0.8},
+        {{1.1, 1, 0}},
+        0x5ad0ded,
         dev_id);
 
+    cudaDeviceSynchronize(); CUERR
 }

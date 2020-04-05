@@ -4,8 +4,6 @@
 namespace warpcore
 {
 
-namespace cg = cooperative_groups;
-
 /*! \brief storage classes
  */
 namespace storage
@@ -26,7 +24,7 @@ public:
      * \param[in] capacity buffer capacity
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    explicit CyclicStore(index_type capacity) noexcept :
+    explicit CyclicStore(const index_type capacity) noexcept :
         store_(nullptr),
         capacity_(capacity),
         current_(nullptr),
@@ -131,6 +129,15 @@ public:
         return capacity_;
     }
 
+    /*! \brief get the total number of bytes occupied by this data structure
+     *  \return bytes
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type bytes_total() const noexcept
+    {
+        return capacity_ * sizeof(base_type) + sizeof(index_type);
+    }
+
 private:
     base_type * store_; //< actual buffer
     const index_type capacity_; //< buffer capacity
@@ -222,7 +229,7 @@ public:
      * \param[in] capacity number of key/value slots
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    explicit SoAStore(index_type capacity) noexcept :
+    explicit SoAStore(const index_type capacity) noexcept :
         status_(Status::not_initialized()),
         capacity_(capacity),
         keys_(nullptr),
@@ -297,7 +304,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init_keys(key_type key, cudaStream_t stream = 0) noexcept
+    void init_keys(const key_type key, const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_any())
         {
@@ -320,7 +327,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init_values(value_type value, cudaStream_t stream = 0) noexcept
+    void init_values(const value_type value, const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_any())
         {
@@ -345,9 +352,9 @@ public:
      */
     HOSTQUALIFIER INLINEQUALIFIER
     void init_pairs(
-        key_type key,
-        value_type value,
-        cudaStream_t stream = 0) noexcept
+        const key_type key,
+        const value_type value,
+        const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_any())
         {
@@ -383,9 +390,8 @@ public:
      */
     DEVICEQUALIFIER INLINEQUALIFIER
     detail::pair_const_ref_t<key_type, value_type> operator[](
-        index_type i) const noexcept
+        const index_type i) const noexcept
     {
-        assert(i < capacity_);
         return detail::pair_const_ref_t<key_type, value_type>{keys_[i], values_[i]};
     }
 
@@ -405,6 +411,15 @@ public:
     index_type capacity() const noexcept
     {
         return capacity_;
+    }
+
+    /*! \brief get the total number of bytes occupied by this data structure
+     *  \return bytes
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type bytes_total() const noexcept
+    {
+        return capacity_ * (sizeof(key_type) + sizeof(value_type));
     }
 
 private:
@@ -436,7 +451,7 @@ public:
      * \param[in] capacity number of key/value slots
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    explicit AoSStore(index_type capacity) noexcept :
+    explicit AoSStore(const index_type capacity) noexcept :
         status_(status_type::not_initialized()),
         capacity_(capacity),
         pairs_(nullptr),
@@ -505,7 +520,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init_keys(key_type key, cudaStream_t stream = 0) noexcept
+    void init_keys(const key_type key, const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_any())
         {
@@ -528,7 +543,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init_values(value_type value, cudaStream_t stream = 0) noexcept
+    void init_values(const value_type value, const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_any())
         {
@@ -553,9 +568,9 @@ public:
      */
     HOSTQUALIFIER INLINEQUALIFIER
     void init_pairs(
-        key_type key,
-        value_type value,
-        cudaStream_t stream = 0) noexcept
+        const key_type key,
+        const value_type value,
+        const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_any())
         {
@@ -579,9 +594,8 @@ public:
      * \return pair at position \c i
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    pair_t& operator[](index_type i) noexcept
+    pair_t& operator[](const index_type i) noexcept
     {
-        assert(i < capacity_);
         return pairs_[i];
     }
 
@@ -590,9 +604,8 @@ public:
      * \return pair at position \c i
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    const pair_t& operator[](index_type i) const noexcept
+    const pair_t& operator[](const index_type i) const noexcept
     {
-        assert(i < capacity_);
         return pairs_[i];
     }
 
@@ -612,6 +625,15 @@ public:
     index_type capacity() const noexcept
     {
         return capacity_;
+    }
+
+    /*! \brief get the total number of bytes occupied by this data structure
+     *  \return bytes
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type bytes_total() const noexcept
+    {
+        return capacity_ * sizeof(pair_t);
     }
 
 private:
@@ -639,51 +661,45 @@ namespace detail
         full          = 3
     };
 
-    template<class Store>
-    struct StaticSlab
-    {
-        typename Store::value_type values[Store::slab_size()];
-        index_t previous;
-    };
 
     template<class Store>
-    union DynamicSlab
+    union Bucket
     {
     private:
         using value_type = typename Store::value_type;
         using info_type =
-            PackedPair<Store::slab_index_bits(), Store::slab_size_bits()>;
+            PackedPair<Store::bucket_index_bits(), Store::bucket_size_bits()>;
 
         value_type value_;
         info_type info_;
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlab(
-            info_type info) noexcept : info_{info}
+        constexpr explicit Bucket(
+            const info_type info) noexcept : info_{info}
         {}
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlab(
-            value_type value) noexcept : value_{value}
+        constexpr explicit Bucket(
+            const value_type value) noexcept : value_{value}
         {}
 
     public:
         // FIXME friend
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlab(
-            index_t previous,
-            index_t slab_size) noexcept : info_{previous, slab_size}
+        constexpr explicit Bucket(
+            const index_t previous,
+            const index_t bucket_size) noexcept : info_{previous, bucket_size}
         {}
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlab() noexcept :
+        constexpr explicit Bucket() noexcept :
         info_()
         {};
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        DynamicSlab<Store> atomic_exchange_info(DynamicSlab<Store> slab) noexcept
+        Bucket<Store> atomic_exchange_info(const Bucket<Store> bucket) noexcept
         {
-            return DynamicSlab<Store>(atomicExch(&info_, slab.info_));
+            return Bucket<Store>(atomicExch(&info_, bucket.info_));
         }
 
         DEVICEQUALIFIER INLINEQUALIFIER
@@ -699,7 +715,7 @@ namespace detail
         }
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr index_t slab_size() const noexcept
+        constexpr index_t bucket_size() const noexcept
         {
             return info_.second();
         }
@@ -711,152 +727,29 @@ namespace detail
         }
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr void previous(index_t prev) noexcept
+        constexpr void previous(const index_t prev) noexcept
         {
             info_.first(prev);
         }
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr void slab_size(index_t size) noexcept
+        constexpr void bucket_size(const index_t size) noexcept
         {
             info_.second(size);
         }
     };
 
     template<class Store>
-    class StaticSlabListHandle
-    {
-        using packed_type = PackedTriple<
-            2,
-            Store::slab_index_bits(),
-            Store::value_counter_bits()>;
-
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit StaticSlabListHandle(
-            LinkedListState state,
-            index_t index,
-            index_t counter) noexcept : pack_()
-        {
-            pack_.first(state);
-            pack_.second(index);
-            pack_.third(counter);
-        };
-
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit StaticSlabListHandle(packed_type pack) noexcept :
-        pack_(pack)
-        {};
-
-    public:
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit StaticSlabListHandle() noexcept :
-        pack_()
-        {};
-
-    private:
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr LinkedListState linked_list_state() const noexcept
-        {
-            return pack_.template first_as<LinkedListState>();
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr index_t slab_index() const noexcept
-        {
-            return pack_.second();
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr index_t value_count() const noexcept
-        {
-            return pack_.third();
-        }
-
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        static constexpr index_t max_slab_index() noexcept
-        {
-            return (index_t{1} << Store::slab_index_bits()) - 1;
-        }
-
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        static constexpr index_t max_value_count() noexcept
-        {
-            return (index_t{1} << Store::value_counter_bits()) - 1;
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr bool is_uninitialized() const noexcept
-        {
-            return (linked_list_state() == LinkedListState::uninitialized);
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr bool is_initialized() const noexcept
-        {
-            return (linked_list_state() == LinkedListState::initialized);
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr bool is_blocking() const noexcept
-        {
-            return (linked_list_state() == LinkedListState::blocking);
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr bool is_full() const noexcept
-        {
-            return (linked_list_state() == LinkedListState::full);
-        }
-
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr bool operator==(
-            StaticSlabListHandle<Store> other) const noexcept
-        {
-            return pack_ == other.pack_;
-        }
-
-        HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr bool operator!=(
-            StaticSlabListHandle<Store> other) const noexcept
-        {
-            return !(*this == other);
-        }
-
-        packed_type pack_;
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        friend StaticSlabListHandle<Store> atomicCAS(
-            StaticSlabListHandle<Store> * address_,
-            StaticSlabListHandle<Store>   compare_,
-            StaticSlabListHandle<Store>   val_) noexcept
-        {
-            return StaticSlabListHandle(
-                atomicCAS(&(address_->pack_), compare_.pack_, val_.pack_));
-        }
-
-        DEVICEQUALIFIER INLINEQUALIFIER
-        friend StaticSlabListHandle<Store> atomicExch(
-            StaticSlabListHandle<Store> * address_,
-            StaticSlabListHandle<Store>   val_) noexcept
-        {
-            return StaticSlabListHandle(
-                atomicExch(&(address_->pack_), val_.pack_));
-        }
-
-        friend Store;
-    };
-
-    template<class Store>
-    class DynamicSlabListHandle
+    class BucketListHandle
     {
         using packed_type = PackedQuadruple<
             2,
-            Store::slab_index_bits(),
+            Store::bucket_index_bits(),
             Store::value_counter_bits(),
-            Store::slab_size_bits()>;
+            Store::bucket_size_bits()>;
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlabListHandle(
+        constexpr explicit BucketListHandle(
             LinkedListState state,
             index_t index,
             index_t counter,
@@ -869,13 +762,13 @@ namespace detail
         };
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlabListHandle(packed_type pack) noexcept :
+        constexpr explicit BucketListHandle(const packed_type pack) noexcept :
         pack_(pack)
         {};
 
     public:
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        constexpr explicit DynamicSlabListHandle() noexcept :
+        constexpr explicit BucketListHandle() noexcept :
         pack_()
         {};
 
@@ -887,7 +780,7 @@ namespace detail
         }
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        constexpr index_t slab_index() const noexcept
+        constexpr index_t bucket_index() const noexcept
         {
             return pack_.second();
         }
@@ -906,9 +799,9 @@ namespace detail
 
     public:
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        static constexpr index_t max_slab_index() noexcept
+        static constexpr index_t max_bucket_index() noexcept
         {
-            return (index_t{1} << Store::slab_index_bits()) - 1;
+            return (index_t{1} << Store::bucket_index_bits()) - 1;
         }
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
@@ -918,9 +811,9 @@ namespace detail
         }
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
-        static constexpr index_t max_slab_size() noexcept
+        static constexpr index_t max_bucket_size() noexcept
         {
-            return (index_t{1} << Store::slab_size_bits()) - 1;
+            return (index_t{1} << Store::bucket_size_bits()) - 1;
         }
 
     private:
@@ -950,14 +843,14 @@ namespace detail
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
         constexpr bool operator==(
-            DynamicSlabListHandle<Store> other) const noexcept
+            const BucketListHandle<Store> other) const noexcept
         {
             return pack_ == other.pack_;
         }
 
         HOSTDEVICEQUALIFIER INLINEQUALIFIER
         constexpr bool operator!=(
-            DynamicSlabListHandle<Store> other) const noexcept
+            const BucketListHandle<Store> other) const noexcept
         {
             return !(*this == other);
         }
@@ -965,42 +858,40 @@ namespace detail
         packed_type pack_;
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        friend DynamicSlabListHandle<Store> atomicCAS(
-            DynamicSlabListHandle<Store> * address_,
-            DynamicSlabListHandle<Store>   compare_,
-            DynamicSlabListHandle<Store>   val_) noexcept
+        friend BucketListHandle<Store> atomicCAS(
+            BucketListHandle<Store> * const address_,
+            const BucketListHandle<Store> compare_,
+            const BucketListHandle<Store> val_) noexcept
         {
-            return DynamicSlabListHandle(
+            return BucketListHandle(
                 atomicCAS(&(address_->pack_), compare_.pack_, val_.pack_));
         }
 
         DEVICEQUALIFIER INLINEQUALIFIER
-        friend DynamicSlabListHandle<Store> atomicExch(
-            DynamicSlabListHandle<Store> * address_,
-            DynamicSlabListHandle<Store>   val_) noexcept
+        friend BucketListHandle<Store> atomicExch(
+            BucketListHandle<Store> * address_,
+            const BucketListHandle<Store> val_) noexcept
         {
-            return DynamicSlabListHandle(
+            return BucketListHandle(
                 atomicExch(&(address_->pack_), val_.pack_));
         }
 
         friend Store;
     };
-
 } // namespace detail
 
-/*! \brief value store consisting of same-sized linked slabs of values
- * \warning broken DO NOT USE
+/*! \brief value store consisting of growing linked buckets of values
  * \tparam Value type to store
- * \tparam SlabSize size of each linked slab of memory
- * \tparam SlabIndexBits number of bits used to enumerate slab IDs
- * \tparam ValueCounterBits number of bits used to count values in a slab list
+ * \tparam BucketIndexBits number of bits used to enumerate bucket IDs
+ * \tparam ValueCounterBits number of bits used to count values in a bucket list
+ * \tparam bucketSizeBits number of bits used to hold the value capacity of a bucket
  */
 template<
     class   Value,
-    index_t SlabSize = 8,
-    index_t SlabIndexBits = 31,
-    index_t ValueCounterBits = 31>
-class StaticSlabListStore
+    index_t BucketIndexBits = 32,
+    index_t ValueCounterBits = 20,
+    index_t BucketSizeBits = 10>
+class BucketListStore
 {
 private:
     static_assert(
@@ -1008,523 +899,35 @@ private:
         "Value type must be trivially copyable.");
 
     static_assert(
-        (SlabSize > 0),
-        "Invalid slab size.");
+        (BucketIndexBits + ValueCounterBits + BucketSizeBits + 2 <= 64),
+        "Too many bits for bucket index and value counter and bucket size.");
 
-    static_assert(
-        (SlabIndexBits + ValueCounterBits <= 64 - 2),
-        "Too many bits for slab index and value counter.");
-
-    using type = StaticSlabListStore<
+    using type = BucketListStore<
         Value,
-        SlabSize,
-        SlabIndexBits,
-        ValueCounterBits>;
-
-    friend detail::StaticSlabListHandle<type>;
-
-public:
-    using value_type = Value;
-    using handle_type = detail::StaticSlabListHandle<type>;
-    using status_type = Status;
-    using slab_type = detail::StaticSlab<type>;
-    using index_type = index_t;
-    using tag = tags::static_value_storage;
-
-    /*! \brief get slab size
-     * \return slab size
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type slab_size() noexcept { return SlabSize; };
-
-    /*! \brief get number of bits used to enumerate slabs
-     * \return number of bits
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type slab_index_bits() noexcept { return SlabIndexBits; };
-
-    /*! \brief get number of bits used to count values in a slab list
-     * \return number of bits
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type value_counter_bits() noexcept { return ValueCounterBits; };
-
-private:
-
-    friend slab_type;
-
-    /*! \brief head slab identifier
-     *  \return identifier
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type head() noexcept
-    {
-        return handle_type::max_slab_index();
-    }
-
-public:
-    /*! \brief get uninitialized handle
-     *  \return handle
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr handle_type uninitialized_handle() noexcept
-    {
-        return handle_type{
-            detail::LinkedListState::uninitialized,
-            head(),
-            0};
-    }
-
-    /*! \brief get number of values in slab list
-     *  \return value count
-     */
-    DEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type size(handle_type handle) noexcept
-    {
-        return handle.value_count();
-    }
-
-    /*! \brief constructor
-     * \param[in] min_capacity minimum number of value slots
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    explicit StaticSlabListStore(index_type min_capacity) noexcept :
-        status_(status_type::not_initialized()),
-        capacity_(SDIV(min_capacity, slab_size()) * slab_size()),
-        num_slabs_(capacity_ / slab_size()),
-        slabs_(nullptr),
-        next_free_slab_(nullptr),
-        is_copy_(false)
-    {
-        if(num_slabs_ <= head())
-        {
-            const auto total_bytes =
-                sizeof(slab_type) * num_slabs_ + sizeof(index_type);
-
-            if(available_gpu_memory() >= total_bytes)
-            {
-                cudaMalloc(&slabs_, sizeof(slab_type) * num_slabs_);
-                cudaMalloc(&next_free_slab_, sizeof(index_type));
-
-                status_ = status_type::none();
-                init();
-            }
-            else
-            {
-                status_ += status_type::out_of_memory();
-            }
-        }
-        else
-        {
-            status_ += status_type::invalid_configuration();
-        }
-    }
-
-    /*! \brief copy-constructor (shallow)
-     *  \param[in] object to be copied
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    StaticSlabListStore(const StaticSlabListStore& o) noexcept :
-        status_(o.status_),
-        capacity_(o.capacity_),
-        num_slabs_(o.num_slabs_),
-        slabs_(o.slabs_),
-        next_free_slab_(o.next_free_slab_),
-        is_copy_(true)
-    {}
-
-    /*! \brief move-constructor
-     *  \param[in] object to be moved
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    StaticSlabListStore(StaticSlabListStore&& o) noexcept :
-        status_(std::move(o.status_)),
-        capacity_(std::move(o.capacity_)),
-        num_slabs_(std::move(o.num_slabs_)),
-        slabs_(std::move(o.slabs_)),
-        next_free_slab_(std::move(o.next_free_slab_)),
-        is_copy_(std::move(o.is_copy_))
-    {
-        o.is = true;
-    }
-
-    #ifndef __CUDA_ARCH__
-    /*! \brief destructor
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    ~StaticSlabListStore() noexcept
-    {
-        if(!is_copy_)
-        {
-            if(slabs_ != nullptr) cudaFree(slabs_);
-            if(next_free_slab_ != nullptr) cudaFree(next_free_slab_);
-        }
-    }
-    #endif
-
-    /*! \brief (re)initialize the store
-     * \param[in] stream CUDA stream in which this operation is executed in
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    void init(cudaStream_t stream = 0) noexcept
-    {
-        if(!status_.has_not_initialized())
-        {
-            lambda_kernel
-            <<<SDIV(num_slabs_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-            ([=, *this] DEVICEQUALIFIER () mutable
-            {
-                const index_type tid = blockDim.x * blockIdx.x + threadIdx.x;
-
-                if(tid < num_slabs_)
-                {
-                    if(tid == 0)
-                    {
-                        *next_free_slab_ = 0;
-                    }
-
-                    slabs_[tid].previous = head();
-                }
-            });
-
-            status_ = status_type::none();
-        }
-    }
-
-    // FIXME
-    /*! \brief append a value to a slab list
-     * \param[in] handle handle to the slab list
-     * \param[in] value value to be inserted
-     * \return status
-     */
-    DEVICEQUALIFIER INLINEQUALIFIER
-    status_type append(
-        handle_type& handle,
-        const value_type& value) noexcept
-    {
-        auto current_handle = cub::ThreadLoad<cub::LOAD_VOLATILE>(&handle);
-
-        if(current_handle.is_uninitialized())
-        {
-            // block handle
-            const auto old_handle = atomicCAS(
-                &handle,
-                current_handle,
-                handle_type{
-                    detail::LinkedListState::blocking,
-                    0,
-                    0});
-
-            // winner allocates first slab
-            if(old_handle == current_handle)
-            {
-                // get index of next free slab
-                const index_type alloc = atomicAdd(next_free_slab_, 1);
-
-                // if not full
-                if(alloc < num_slabs_)
-                {
-                    value_type val;
-                    val.key = value.key;
-                    val.slab_index = alloc;
-                    val.value_index = 1;
-                    slabs_[alloc].values[0] = val;
-
-                    // write value
-                    //slabs_[alloc].values[0] = value;
-
-                    // unblock handle
-                    atomicExch(
-                        &handle,
-                        handle_type{
-                            detail::LinkedListState::initialized,
-                            alloc,
-                            1});
-
-                    return status_type::none();
-                }
-                else
-                {
-                    // mark as full
-                    atomicExch(
-                        &handle,
-                        handle_type{
-                            detail::LinkedListState::full,
-                            0,
-                            0});
-
-                    //status_.atomic_join(Status::out_of_memory();
-                    return status_type::out_of_memory();
-                }
-            }
-        }
-
-        // try to find a slot until there is no more space
-        while(true)
-        {
-            current_handle = cub::ThreadLoad<cub::LOAD_VOLATILE>(&handle);
-
-            if(current_handle.is_blocking())
-            {
-                //__nanosleep(100); // why not?
-                continue;
-            }
-
-            if(current_handle.is_full())
-            {
-                return status_type::out_of_memory();
-            }
-
-            // if the current slab is already full allocate new slab
-            if((current_handle.value_count() % slab_size()) == 0)
-            {
-                const auto old_handle = atomicCAS(
-                    &handle,
-                    current_handle,
-                    handle_type{
-                        detail::LinkedListState::blocking,
-                        current_handle.slab_index(),
-                        current_handle.value_count()});
-
-                // TODO == initialized
-                if(old_handle == current_handle)
-                {
-
-                    // get index of next free slab
-                    const index_type alloc = atomicAdd(next_free_slab_, 1);
-
-                    // if not full
-                    if(alloc < num_slabs_)
-                    {
-                        value_type val;
-                        val.key = value.key;
-                        val.slab_index = alloc;
-                        val.value_index = 1;
-                        slabs_[alloc].values[0] = val;
-
-                        // write value
-                        //slabs_[alloc].values[0] = value;
-
-                        // establish link between slabs
-                        // FIXME
-                        slabs_[alloc].previous =
-                            current_handle.slab_index();
-
-                        // unblock handle
-                        atomicExch(
-                            &handle,
-                            handle_type{
-                                detail::LinkedListState::initialized,
-                                alloc,
-                                current_handle.value_count() + 1});
-
-                        return status_type::none();
-                    }
-                    else
-                    {
-                        // mark as full
-                        atomicExch(
-                            &handle,
-                            handle_type{
-                                detail::LinkedListState::full,
-                                current_handle.slab_index(),
-                                current_handle.value_count()});
-
-                        return status_type::out_of_memory();
-                    }
-                }
-            }
-            else
-            {
-                const auto old_handle = atomicCAS(
-                    &handle,
-                    current_handle,
-                    handle_type{
-                        current_handle.linked_list_state(),
-                        current_handle.slab_index(),
-                        current_handle.value_count() + 1});
-
-                if(old_handle == current_handle)
-                {
-                    const auto i = current_handle.slab_index();
-                    const auto j = current_handle.value_count() % slab_size();
-
-                    value_type val;
-                    val.key = value.key;
-                    val.slab_index = i;
-                    val.value_index = j+1;
-                    slabs_[i].values[j] = val;
-
-                    //slabs_[i].values[j] = value;
-
-                    return status_type::none();
-                }
-            }
-        }
-
-        return status_type::unknown_error();
-    }
-
-    /*! \brief apply a (lambda-)function on each value inside a slab list
-     * \tparam Func function to be executed for each value
-     * \param[in] handle handle to the slab list
-     * \param[in] f function which takes the value together whith the index of the value inside the list as parameters
-     * \param[in] group cooperative group used for hash table probing
-     */
-    template<class Func>
-    DEVICEQUALIFIER INLINEQUALIFIER
-    void for_each(
-        handle_type handle,
-        Func f,
-        const cg::thread_group& group = cg::this_thread()) const noexcept
-    {
-        const index_type rank = group.thread_rank();
-        const index_type group_size = group.size();
-        index_type local_index = rank;
-        index_type global_index = rank;
-        const index_type num_tail_values = handle.value_count() % slab_size();
-
-        // return if nothing is to be done
-        if(!handle.is_initialized() || handle.slab_index() == head()) return;
-
-        slab_type& current_slab = slabs_[handle.slab_index()];
-
-        // process remaining values residing in tail slab
-        while (local_index < num_tail_values)
-        {
-            f(current_slab.values[local_index], global_index);
-            local_index += group_size;
-            global_index += group_size;
-        }
-
-        local_index -= num_tail_values;
-
-        // as long as processed slabs are full
-        while(current_slab.previous != head())
-        {
-            current_slab = slabs_[current_slab.previous];
-
-            while (local_index < slab_size())
-            {
-                f(current_slab.values[local_index], global_index);
-                local_index += group_size;
-                global_index += group_size;
-            }
-
-            local_index -= slab_size();
-        }
-    }
-
-    /*! \brief get status
-     * \return status
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    status_type status() const noexcept
-    {
-        return status_;
-    }
-
-    /*! \brief get value capacity
-     * \return capacity
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    index_type capacity() const noexcept
-    {
-        return capacity_;
-    }
-
-    /*! \brief get load factor
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \return load factor
-     */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     float load_factor(cudaStream_t stream = 0) const noexcept
-     {
-         index_type load = 0;
-
-         cudaMemcpyAsync(
-             &load, next_free_slab_, sizeof(index_type), D2H, stream);
-
-         cudaStreamSynchronize(stream);
-
-         return float(load) / float(num_slabs_);
-     }
-
-    /*! \brief get number of slabs
-     * \return number of slabs
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    index_type num_slabs() const noexcept
-    {
-        return num_slabs_;
-    }
-
-    /*! \brief indicates if this object is a shallow copy
-     * \return \c bool
-     */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    bool is_copy() const noexcept
-    {
-        return is_copy_;
-    }
-
-private:
-    status_type status_; //< status of the store
-    const index_type capacity_; //< value capacity
-    const index_type num_slabs_; //< number of slabs
-    slab_type * slabs_; //< pointer to slab store
-    index_type * next_free_slab_; //< index of next non-occupied slab
-    bool is_copy_; //< indicates if this object is a shallow copy
-};
-
-/*! \brief value store consisting of growing linked slabs of values
- * \tparam Value type to store
- * \tparam SlabIndexBits number of bits used to enumerate slab IDs
- * \tparam ValueCounterBits number of bits used to count values in a slab list
- * \tparam SlabSizeBits number of bits used to hold the value capacity of a slab
- */
-template<
-    class   Value,
-    index_t SlabIndexBits = 30,
-    index_t ValueCounterBits = 22,
-    index_t SlabSizeBits = 10>
-class DynamicSlabListStore
-{
-private:
-    static_assert(
-        checks::is_valid_value_type<Value>(),
-        "Value type must be trivially copyable.");
-
-    static_assert(
-        (SlabIndexBits + ValueCounterBits + SlabSizeBits + 2 <= 64),
-        "Too many bits for slab index and value counter and slab size.");
-
-    using type = DynamicSlabListStore<
-        Value,
-        SlabIndexBits,
+        BucketIndexBits,
         ValueCounterBits,
-        SlabSizeBits>;
+        BucketSizeBits>;
 
-    friend detail::DynamicSlabListHandle<type>;
+    friend detail::BucketListHandle<type>;
 
 public:
     using value_type = Value;
-    using handle_type = detail::DynamicSlabListHandle<type>;
+    using handle_type = detail::BucketListHandle<type>;
     using index_type = index_t;
     using status_type = Status;
-    using slab_type = detail::DynamicSlab<type>;
+    using bucket_type = detail::Bucket<type>;
     using tag = tags::dynamic_value_storage;
 
-    /*! \brief get number of bits used to enumerate slabs
+    /*! \brief get number of bits used to enumerate buckets
      * \return number of bits
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type slab_index_bits() noexcept
+    static constexpr index_type bucket_index_bits() noexcept
     {
-        return SlabIndexBits;
+        return BucketIndexBits;
     };
 
-    /*! \brief get number of bits used to count values in a slab list
+    /*! \brief get number of bits used to count values in a bucket list
      * \return number of bits
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
@@ -1533,25 +936,25 @@ public:
         return ValueCounterBits;
     };
 
-    /*! \brief get number of bits used to hold the value capacity of a slab
+    /*! \brief get number of bits used to hold the value capacity of a bucket
      * \return number of bits
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type slab_size_bits() noexcept
+    static constexpr index_type bucket_size_bits() noexcept
     {
-        return SlabSizeBits;
+        return BucketSizeBits;
     };
 
 private:
-    friend slab_type;
+    friend bucket_type;
 
-    /*! \brief head slab identifier
+    /*! \brief head bucket identifier
      *  \return identifier
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr index_type head() noexcept
     {
-        return handle_type::max_slab_index();
+        return handle_type::max_bucket_index();
     }
 
 public:
@@ -1564,11 +967,11 @@ public:
         return handle_type{detail::LinkedListState::uninitialized, head(), 0, 0};
     }
 
-    /*! \brief get number of values in slab list
+    /*! \brief get number of values in bucket list
      *  \return value count
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr index_type size(handle_type handle) noexcept
+    static constexpr index_type size(const handle_type& handle) noexcept
     {
         return handle.value_count();
     }
@@ -1576,38 +979,38 @@ public:
 
     /*! \brief constructor
      * \param[in] max_capacity maximum number of value slots
-     * \param[in] slab_grow_factor factor which determines the growth of each newly allocated slab
-     * \param[in] min_slab_size value capacity of the first slab of a slab list
-     * \param[in] max_slab_size value capacity after which no more growth is allowed for newly allocated slabs
+     * \param[in] bucket_grow_factor factor which determines the growth of each newly allocated bucket
+     * \param[in] min_bucket_size value capacity of the first bucket of a bucket list
+     * \param[in] max_bucket_size value capacity after which no more growth is allowed for newly allocated buckets
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    explicit DynamicSlabListStore(
-        index_type max_capacity,
-        float slab_grow_factor = 2.0,
-        index_type min_slab_size = 1,
-        index_type max_slab_size = handle_type::max_slab_size()) noexcept :
+    explicit BucketListStore(
+        const index_type max_capacity,
+        const float bucket_grow_factor = 1.1,
+        const index_type min_bucket_size = 1,
+        const index_type max_bucket_size = handle_type::max_bucket_size()) noexcept :
         status_(Status::not_initialized()),
         capacity_(max_capacity),
-        slab_grow_factor_(slab_grow_factor),
-        min_slab_size_(min_slab_size),
-        max_slab_size_(max_slab_size),
-        next_free_slab_(nullptr),
-        slabs_(nullptr),
+        bucket_grow_factor_(bucket_grow_factor),
+        min_bucket_size_(min_bucket_size),
+        max_bucket_size_(max_bucket_size),
+        next_free_bucket_(nullptr),
+        buckets_(nullptr),
         is_copy_(false)
     {
-        if(capacity_ < handle_type::max_slab_index() &&
-            slab_grow_factor_ >= 1.0 &&
-            min_slab_size_ >= 1 &&
-            max_slab_size_ >= min_slab_size_ &&
-            max_slab_size_ <= handle_type::max_slab_size())
+        if(capacity_ < handle_type::max_bucket_index() &&
+            bucket_grow_factor_ >= 1.0 &&
+            min_bucket_size_ >= 1 &&
+            max_bucket_size_ >= min_bucket_size_ &&
+            max_bucket_size_ <= handle_type::max_bucket_size())
         {
             const auto total_bytes =
-                sizeof(slab_type) * capacity_ + sizeof(index_type);
+                sizeof(bucket_type) * capacity_ + sizeof(index_type);
 
             if(available_gpu_memory() >= total_bytes)
             {
-                cudaMalloc(&slabs_, sizeof(slab_type) * capacity_);
-                cudaMalloc(&next_free_slab_, sizeof(index_type));
+                cudaMalloc(&buckets_, sizeof(bucket_type) * capacity_);
+                cudaMalloc(&next_free_bucket_, sizeof(index_type));
 
                 status_ = status_type::none();
                 init();
@@ -1627,14 +1030,14 @@ public:
      *  \param[in] object to be copied
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    DynamicSlabListStore(const DynamicSlabListStore& o) noexcept :
+    BucketListStore(const BucketListStore& o) noexcept :
         status_(o.status_),
         capacity_(o.capacity_),
-        slab_grow_factor_(o.slab_grow_factor_),
-        min_slab_size_(o.min_slab_size_),
-        max_slab_size_(o.max_slab_size_),
-        slabs_(o.slabs_),
-        next_free_slab_(o.next_free_slab_),
+        bucket_grow_factor_(o.bucket_grow_factor_),
+        min_bucket_size_(o.min_bucket_size_),
+        max_bucket_size_(o.max_bucket_size_),
+        buckets_(o.buckets_),
+        next_free_bucket_(o.next_free_bucket_),
         is_copy_(true)
     {}
 
@@ -1642,14 +1045,14 @@ public:
      *  \param[in] object to be moved
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    DynamicSlabListStore(DynamicSlabListStore&& o) noexcept :
+    BucketListStore(BucketListStore&& o) noexcept :
         status_(std::move(o.status_)),
         capacity_(std::move(o.capacity_)),
-        slab_grow_factor_(std::move(o.slab_grow_factor_)),
-        min_slab_size_(std::move(o.min_slab_size_)),
-        max_slab_size_(std::move(o.max_slab_size_)),
-        slabs_(std::move(o.slabs_)),
-        next_free_slab_(std::move(o.next_free_slab_)),
+        bucket_grow_factor_(std::move(o.bucket_grow_factor_)),
+        min_bucket_size_(std::move(o.min_bucket_size_)),
+        max_bucket_size_(std::move(o.max_bucket_size_)),
+        buckets_(std::move(o.buckets_)),
+        next_free_bucket_(std::move(o.next_free_bucket_)),
         is_copy_(std::move(o.is_copy_))
     {
         o.is_copy_ = true;
@@ -1659,12 +1062,12 @@ public:
     /*! \brief destructor
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    ~DynamicSlabListStore() noexcept
+    ~BucketListStore() noexcept
     {
         if(!is_copy_)
         {
-            if(slabs_ != nullptr) cudaFree(slabs_);
-            if(next_free_slab_ != nullptr) cudaFree(next_free_slab_);
+            if(buckets_ != nullptr) cudaFree(buckets_);
+            if(next_free_bucket_ != nullptr) cudaFree(next_free_bucket_);
         }
     }
     #endif
@@ -1673,7 +1076,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init(cudaStream_t stream = 0) noexcept
+    void init(const cudaStream_t stream = 0) noexcept
     {
         if(!status_.has_not_initialized())
         {
@@ -1687,11 +1090,11 @@ public:
                 {
                     if(tid == 0)
                     {
-                        *next_free_slab_ = 0;
+                        *next_free_bucket_ = 0;
                     }
 
-                    slabs_[tid].previous(head());
-                    slabs_[tid].slab_size(min_slab_size_);
+                    buckets_[tid].previous(head());
+                    buckets_[tid].bucket_size(min_bucket_size_);
                 }
             });
 
@@ -1699,8 +1102,8 @@ public:
         }
     }
 
-    /*! \brief append a value to a slab list
-     * \param[in] handle handle to the slab list
+    /*! \brief append a value to a bucket list
+     * \param[in] handle handle to the bucket list
      * \param[in] value value to be inserted
      * \return status
      */
@@ -1723,17 +1126,17 @@ public:
                     0,
                     0});
 
-            // winner allocates first slab
+            // winner allocates first bucket
             if(old_handle == current_handle)
             {
                 const index_type alloc =
-                        atomicAdd(next_free_slab_, min_slab_size_);
+                        atomicAdd(next_free_bucket_, min_bucket_size_);
 
-                if(alloc + min_slab_size_ <= capacity_)
+                if(alloc + min_bucket_size_ <= capacity_)
                 {
-                    slabs_[alloc].value(value);
+                    buckets_[alloc].value(value);
 
-                    // successfully allocated initial slab
+                    // successfully allocated initial bucket
                     atomicExch(
                     &handle,
                     handle_type{
@@ -1776,25 +1179,25 @@ public:
 
             if(current_handle.value_count() == handle_type::max_value_count())
             {
-                return status_type::index_overflow();
+                return status_type::max_values_for_key_reached();
             }
 
-            const auto current_slab = cub::ThreadLoad<cub::LOAD_VOLATILE>(
-                slabs_ + current_handle.slab_index());
+            const auto current_bucket = cub::ThreadLoad<cub::LOAD_VOLATILE>(
+                buckets_ + current_handle.bucket_index());
 
-            const auto current_slab_size =
-                (current_handle.value_count() <= min_slab_size_) ?
-                    min_slab_size_ : current_slab.slab_size();
+            const auto current_bucket_size =
+                (current_handle.value_count() <= min_bucket_size_) ?
+                    min_bucket_size_ : current_bucket.bucket_size();
 
-            // if the slab is already full allocate a new slab
-            if(current_handle.num_values_tail() == current_slab_size)
+            // if the bucket is already full allocate a new bucket
+            if(current_handle.num_values_tail() == current_bucket_size)
             {
                 const auto old_handle = atomicCAS(
                     &handle,
                     current_handle,
                     handle_type{
                         detail::LinkedListState::blocking,
-                        current_handle.slab_index(),
+                        current_handle.bucket_index(),
                         current_handle.value_count(),
                         current_handle.num_values_tail()});
 
@@ -1804,26 +1207,26 @@ public:
                     continue;
                 }
 
-                // compute new slab size
-                const index_type new_slab_size = min(
-                    float(max_slab_size_),
-                    ceilf(float(current_slab_size) * slab_grow_factor_));
+                // compute new bucket size
+                const index_type new_bucket_size = min(
+                    float(max_bucket_size_),
+                    ceilf(float(current_bucket_size) * bucket_grow_factor_));
 
-                // get index of next free slab in pool
+                // get index of next free bucket in pool
                 const index_type alloc =
-                    atomicAdd(next_free_slab_, new_slab_size + 1);
+                    atomicAdd(next_free_bucket_, new_bucket_size + 1);
 
-                if(alloc + new_slab_size + 1 <= capacity_)
+                if(alloc + new_bucket_size + 1 <= capacity_)
                 {
-                    slabs_[alloc + 1].value(value);
+                    buckets_[alloc + 1].value(value);
 
-                    const auto old = slabs_[alloc].atomic_exchange_info(
-                        slab_type{current_handle.slab_index(),
-                        new_slab_size});
+                    const auto old = buckets_[alloc].atomic_exchange_info(
+                        bucket_type{current_handle.bucket_index(),
+                        new_bucket_size});
 
-                    if(old.slab_size() != 0)
+                    if(old.bucket_size() != 0)
                     {
-                        // slab allocation successful
+                        // bucket allocation successful
                         atomicExch(
                         &handle,
                         handle_type{
@@ -1842,7 +1245,7 @@ public:
                         &handle,
                         handle_type{
                             detail::LinkedListState::full,
-                            current_handle.slab_index(),
+                            current_handle.bucket_index(),
                             current_handle.value_count(),
                             current_handle.num_values_tail()});
 
@@ -1856,19 +1259,19 @@ public:
                     current_handle,
                     handle_type{
                     detail::LinkedListState::initialized,
-                    current_handle.slab_index(),
+                    current_handle.bucket_index(),
                     current_handle.value_count() + 1,
                     current_handle.num_values_tail() + 1});
 
             if(old_handle == current_handle)
             {
-                const auto i = current_handle.slab_index();
+                const auto i = current_handle.bucket_index();
                 const auto j =
-                    (current_handle.value_count() + 1 <= min_slab_size_) ?
+                    (current_handle.value_count() + 1 <= min_bucket_size_) ?
                         current_handle.num_values_tail() :
                         current_handle.num_values_tail() + 1;
 
-                slabs_[i + j].value(value);
+                buckets_[i + j].value(value);
 
                 return status_type::none();
             }
@@ -1877,17 +1280,17 @@ public:
         return status_type::unknown_error();
     }
 
-    /*! \brief apply a (lambda-)function on each value inside a slab list
+    /*! \brief apply a (lambda-)function on each value inside a bucket list
      * \tparam Func function to be executed for each value
-     * \param[in] handle handle to the slab list
+     * \param[in] handle handle to the bucket list
      * \param[in] f function which takes the value together whith the index of the value inside the list as parameters
      * \param[in] group cooperative group used for hash table probing
      */
     template<class Func>
     DEVICEQUALIFIER INLINEQUALIFIER
     void for_each(
-        handle_type handle,
-        Func f,
+        Func f, // TODO const
+        const handle_type& handle,
         const cg::thread_group& group = cg::this_thread()) const noexcept
     {
         const index_type rank = group.thread_rank();
@@ -1895,17 +1298,17 @@ public:
         index_type local_index = rank;
 
         // return if nothing is to be done
-        if(!handle.is_initialized() || handle.slab_index() == head()) return;
+        if(!handle.is_initialized() || handle.bucket_index() == head()) return;
 
-        slab_type * slab_ptr = slabs_ + handle.slab_index();
+        bucket_type * bucket_ptr = buckets_ + handle.bucket_index();
 
-        const index_type slab_offset =
-            (handle.value_count() <= min_slab_size_) ? 0 : 1;
+        const index_type bucket_offset =
+            (handle.value_count() <= min_bucket_size_) ? 0 : 1;
 
-        // process first slab
+        // process first bucket
         while(local_index < handle.num_values_tail())
         {
-            f((slab_ptr + local_index + slab_offset)->value(), local_index);
+            f((bucket_ptr + local_index + bucket_offset)->value(), local_index);
             local_index += group_size;
         }
 
@@ -1915,26 +1318,26 @@ public:
         // while there are more values left, process them, too
         while(global_index < handle.value_count())
         {
-            slab_ptr = slabs_ + slab_ptr->previous();
+            bucket_ptr = buckets_ + bucket_ptr->previous();
 
-            // check if we are at the final slab
+            // check if we are at the final bucket
             const bool last =
-                (global_index >= (handle.value_count() - min_slab_size_));
-            const auto current_slab_size =
-                last ? min_slab_size_ : slab_ptr->slab_size();
-            const index_type slab_offset =
+                (global_index >= (handle.value_count() - min_bucket_size_));
+            const auto current_bucket_size =
+                last ? min_bucket_size_ : bucket_ptr->bucket_size();
+            const index_type bucket_offset =
                 last ? 0 : 1;
 
-            // while there are more values to be processed in the current slab
-            while(local_index < current_slab_size)
+            // while there are more values to be processed in the current bucket
+            while(local_index < current_bucket_size)
             {
-                f((slab_ptr + local_index + slab_offset)->value(), global_index);
+                f((bucket_ptr + local_index + bucket_offset)->value(), global_index);
 
                 local_index += group_size;
                 global_index += group_size;
             }
 
-            local_index -= slab_ptr->slab_size();
+            local_index -= bucket_ptr->bucket_size();
         }
     }
 
@@ -1956,17 +1359,26 @@ public:
         return capacity_;
     }
 
+    /*! \brief get the total number of bytes occupied by this data structure
+     *  \return bytes
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type bytes_total() const noexcept
+    {
+        return capacity_ * sizeof(bucket_type) + sizeof(index_type);
+    }
+
     /*! \brief get load factor
      * \param[in] stream CUDA stream in which this operation is executed in
      * \return load factor
      */
      HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     float load_factor(cudaStream_t stream = 0) const noexcept
+     float load_factor(const cudaStream_t stream = 0) const noexcept
      {
          index_type load = 0;
 
          cudaMemcpyAsync(
-             &load, next_free_slab_, sizeof(index_type), D2H, stream);
+             &load, next_free_bucket_, sizeof(index_type), D2H, stream);
 
          cudaStreamSynchronize(stream);
 
@@ -1978,43 +1390,43 @@ public:
      * \return bytes
      */
      HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     index_type bytes_occupied(cudaStream_t stream = 0) const noexcept
+     index_type bytes_occupied(const cudaStream_t stream = 0) const noexcept
      {
          index_type occupied = 0;
 
          cudaMemcpyAsync(
-             &occupied, next_free_slab_, sizeof(index_type), D2H, stream);
+             &occupied, next_free_bucket_, sizeof(index_type), D2H, stream);
 
          cudaStreamSynchronize(stream);
 
-         return occupied * sizeof(slab_type);
+         return occupied * sizeof(bucket_type);
      }
 
-    /*! \brief get slab growth factor
+    /*! \brief get bucket growth factor
      * \return factor
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    float slab_grow_factor() const noexcept
+    float bucket_grow_factor() const noexcept
     {
-        return slab_grow_factor_;
+        return bucket_grow_factor_;
     }
 
-    /*! \brief get minimum slab capacity
+    /*! \brief get minimum bucket capacity
      * \return capacity
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    index_type min_slab_size() const noexcept
+    index_type min_bucket_size() const noexcept
     {
-        return min_slab_size_;
+        return min_bucket_size_;
     }
 
-    /*! \brief get maximum slab capacity
+    /*! \brief get maximum bucket capacity
      * \return capacity
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    index_type max_slab_size() const noexcept
+    index_type max_bucket_size() const noexcept
     {
-        return max_slab_size_;
+        return max_bucket_size_;
     }
 
     /*! \brief indicates if this object is a shallow copy
@@ -2029,13 +1441,14 @@ public:
 private:
     status_type status_; //< status of the store
     const index_type capacity_; //< value capacity
-    const float slab_grow_factor_; //< grow factor for allocated slabs
-    const index_type min_slab_size_; //< initial slab size
-    const index_type max_slab_size_; //< slab size after which no more growth occurs
-    slab_type * slabs_; //< pointer to slab store
-    index_type * next_free_slab_; //< index of next non-occupied slab
+    const float bucket_grow_factor_; //< grow factor for allocated buckets
+    const index_type min_bucket_size_; //< initial bucket size
+    const index_type max_bucket_size_; //< bucket size after which no more growth occurs
+    bucket_type * buckets_; //< pointer to bucket store
+    index_type * next_free_bucket_; //< index of next non-occupied bucket
     bool is_copy_; //< indicates if this object is a shallow copy
-};
+
+}; // class BucketListStore
 
 } // namespace multi_value
 

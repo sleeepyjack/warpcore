@@ -1,77 +1,91 @@
 #ifndef WARPCORE_MULTI_VALUE_HASH_TABLE_CUH
 #define WARPCORE_MULTI_VALUE_HASH_TABLE_CUH
 
-#include "single_value_hash_table.cuh"
+#include "hash_set.cuh"
 
 namespace warpcore
 {
 
 /*! \brief multi-value hash table
- * \tparam Key key type (\c std::uint32_t or \c std::uint64_t)
+ * \tparam Key key type ( \c std::uint32_t or \c std::uint64_t )
  * \tparam Value value type
  * \tparam EmptyKey key which represents an empty slot
  * \tparam TombstoneKey key which represents an erased slot
- * \tparam ValueStore storage class from \c warpcore::storage::multi_value
  * \tparam ProbingScheme probing scheme from \c warpcore::probing_schemes
+ * \tparam TableStorage memory layout from \c warpcore::storage::key_value
+ * \tparam TempMemoryBytes size of temporary storage (typically a few kB)
  */
 template<
     class Key,
     class Value,
-    Key   EmptyKey = defaults::empty_key<Key>(),
-    Key   TombstoneKey = defaults::tombstone_key<Key>(),
-    class ValueStore = defaults::value_storage_t<Value>,
-    class ProbingScheme = defaults::probing_scheme_t<Key, 8>>
+    Key EmptyKey = defaults::empty_key<Key>(),
+    Key TombstoneKey = defaults::tombstone_key<Key>(),
+    class ProbingScheme = defaults::probing_scheme_t<Key, 8>,
+    class TableStorage = defaults::table_storage_t<Key, Value>,
+    index_t TempMemoryBytes = defaults::temp_memory_bytes()>
 class MultiValueHashTable
 {
     static_assert(
-        checks::is_value_storage<ValueStore>(),
+        checks::is_valid_key_type<Key>(),
+        "invalid key type");
+
+    static_assert(
+        EmptyKey != TombstoneKey,
+        "empty key and tombstone key must not be identical");
+
+    static_assert(
+        checks::is_cycle_free_probing_scheme<ProbingScheme>(),
+        "not a valid probing scheme type");
+
+    static_assert(
+        std::is_same<typename ProbingScheme::key_type, Key>::value,
+        "probing key type differs from table's key type");
+
+    static_assert(
+        checks::is_key_value_storage<TableStorage>(),
         "not a valid storage type");
 
-public:
-    // TODO why public?
-    using handle_type = typename ValueStore::handle_type;
+    static_assert(
+        std::is_same<typename TableStorage::key_type, Key>::value,
+        "storage's key type differs from table's key type");
 
-private:
-    using hash_table_type = SingleValueHashTable<
-        Key,
-        handle_type,
-        EmptyKey,
-        TombstoneKey,
-        ProbingScheme>;
+    static_assert(
+        std::is_same<typename TableStorage::value_type, Value>::value,
+        "storage's value type differs from table's value type");
 
-    using value_store_type = ValueStore;
+    static_assert(
+        TempMemoryBytes >= sizeof(index_t),
+        "temporary storage must at least be of size index_type");
+
+    using temp_type = storage::CyclicStore<index_t>;
 
 public:
     using key_type = Key;
     using value_type = Value;
     using index_type = index_t;
     using status_type = Status;
+    using key_set_type = HashSet<
+            Key,
+            EmptyKey,
+            TombstoneKey,
+            defaults::probing_scheme_t<Key, 1>>;
 
     /*! \brief get empty key
      * \return empty key
      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     static constexpr key_type empty_key() noexcept
-     {
-         return EmptyKey;
-     }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr key_type empty_key() noexcept
+    {
+        return EmptyKey;
+    }
 
-     /*! \brief get tombstone key
-      * \return tombstone key
-      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     static constexpr key_type tombstone_key() noexcept
-     {
-         return TombstoneKey;
-     }
-
-    /*! \brief checks if \c key is equal to \c (EmptyKey||TombstoneKey)
-     * \return \c bool
+    /*! \brief get tombstone key
+     * \return tombstone key
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr bool is_valid_key(key_type key) noexcept
+    static constexpr key_type tombstone_key() noexcept
     {
-        return (key != empty_key() && key != tombstone_key());
+        return TombstoneKey;
     }
 
     /*! \brief get cooperative group size
@@ -80,58 +94,33 @@ public:
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr index_type cg_size() noexcept
     {
-        return hash_table_type::cg_size();
+        return ProbingScheme::cg_size();
     }
 
     /*! \brief constructor
-    * \param[in] key_capacity guaranteed number of key slots in the hash table
-    * \param[in] value_capacity total number of value slots
-    * \param[in] seed random seed
-    */
-    template<
-        class T = value_store_type,
-        class = std::enable_if_t<
-            std::is_same<typename T::tag, tags::static_value_storage>::value>>
-    HOSTQUALIFIER
+     * \param[in] min_capacity minimum number of slots in the hash table
+     * \param[in] seed random seed
+     * \param[in] max_values_per_key maximum number of values to store per key
+     * \param[in] no_init whether to initialize the table at construction or not
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
     explicit MultiValueHashTable(
-        index_type key_capacity,
-        index_type value_capacity,
-        key_type seed = defaults::seed<key_type>(),
-        bool no_init = false) noexcept :
-        hash_table_(key_capacity, seed, true),
-        value_store_(value_capacity),
-        is_copy_(false)
+        const index_type min_capacity,
+        const key_type seed = defaults::seed<key_type>(),
+        const index_type max_values_per_key =
+            std::numeric_limits<index_type>::max(),
+        const bool no_init = false) noexcept :
+        status_(nullptr),
+        table_(detail::get_valid_capacity(min_capacity, cg_size())),
+        temp_(TempMemoryBytes / sizeof(index_type)),
+        seed_(seed),
+        max_values_per_key_(max_values_per_key),
+        is_copy_(false),
+        is_initialized_(false)
     {
-        hash_table_.join_status(value_store_.status());
+        cudaMalloc(&status_, sizeof(status_type));
 
-        if(!no_init) init();
-    }
-
-    /*! \brief constructor
-    * \param[in] key_capacity guaranteed number of key slots in the hash table
-    * \param[in] value_capacity total number of value slots
-    * \param[in] seed random seed
-    * \param[in] grow_factor slab grow factor for \c warpcore::storage::multi_value::DynamicSlabListStore
-    * \param[in] min_slab_size initial size of value slabs for \c warpcore::storage::multi_value::DynamicSlabListStore
-    * \param[in] max_slab_size slab size of \c warpcore::storage::multi_value::DynamicSlabListStore after which no more growth occurs
-    */
-    template<
-        class T = value_store_type,
-        class = std::enable_if_t<
-            std::is_same<typename T::tag, tags::dynamic_value_storage>::value>>
-    HOSTQUALIFIER
-    explicit MultiValueHashTable(
-        index_type key_capacity,
-        index_type value_capacity,
-        key_type seed = defaults::seed<key_type>(),
-        float grow_factor = 1.1,
-        index_type min_slab_size = 1,
-        index_type max_slab_size = handle_type::max_slab_size(),
-        bool no_init = false) noexcept :
-        hash_table_(key_capacity, seed, true),
-        value_store_(value_capacity, grow_factor, min_slab_size, max_slab_size)
-    {
-        hash_table_.join_status(value_store_.status());
+        assign_status(table_.status() + temp_.status());
 
         if(!no_init) init();
     }
@@ -141,9 +130,13 @@ public:
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     MultiValueHashTable(const MultiValueHashTable& o) noexcept :
-        hash_table_(o.hash_table_),
-        value_store_(o.value_store_),
-        is_copy_(true)
+        status_(o.status_),
+        table_(o.table_),
+        temp_(o.temp_),
+        seed_(o.seed_),
+        max_values_per_key_(o.max_values_per_key_),
+        is_copy_(true),
+        is_initialized_(o.is_initialized_)
     {}
 
     /*! \brief move-constructor
@@ -151,133 +144,146 @@ public:
      */
     HOSTQUALIFIER INLINEQUALIFIER
     MultiValueHashTable(MultiValueHashTable&& o) noexcept :
-        hash_table_(std::move(o.hash_table_)),
-        value_store_(std::move(o.value_store_)),
-        is_copy_(std::move(o.is_copy_))
+        status_(std::move(o.status_)),
+        table_(std::move(o.table_)),
+        temp_(std::move(o.temp_)),
+        seed_(std::move(o.seed_)),
+        max_values_per_key_(std::move(o.max_values_per_key_)),
+        is_copy_(std::move(o.is_copy_)),
+        is_initialized_(std::move(o.is_initialized_))
     {
         o.is_copy_ = true;
     }
 
-     /*! \brief re-initialize the hash table
-    * \param stream CUDA stream in which this operation is executed
-    */
+    #ifndef __CUDA_ARCH__
+    /*! \brief destructor
+     */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init(cudaStream_t stream = 0) noexcept
+    ~MultiValueHashTable() noexcept
     {
-        const auto status = hash_table_.peek_status(stream);
-
-        if(!status.has_not_initialized())
+        if(!is_copy_)
         {
-            hash_table_.init(stream);
-            value_store_.init(stream);
-            hash_table_.table_.init_values(
-                ValueStore::uninitialized_handle(), stream);
+            if(status_ != nullptr) cudaFree(status_);
+        }
+    }
+    #endif
+
+    /*! \brief (re)initialize the hash table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void init(const cudaStream_t stream = 0) noexcept
+    {
+        is_initialized_ = false;
+
+        if(!table_.status().has_not_initialized() &&
+            !temp_.status().has_not_initialized())
+        {
+            table_.init_keys(empty_key(), stream);
+
+            assign_status(table_.status() + temp_.status(), stream);
+
+            is_initialized_ = true;
         }
     }
 
-    /*
-    DEVICEQUALIFIER INLINEQUALIFIER
-    status_type insert(
-        key_type key_in,
-        const value_type& value_in,
-        const cg::thread_block_tile<cg_size()>& group,
-        index_type probing_length,
-        index_type max_values) noexcept
-    {
-        status_type status = status_type::unknown_error();
-
-        handle_type * handle_ptr =
-            hash_table_.insert_impl(key_in, status, group, probing_length);
-
-        if(handle_ptr != nullptr)
-        {
-            status_type append_status = Status::unknown_error();
-
-            if(group.thread_rank() == 0 &&
-                value_store_.size(*handle_ptr) < max_values)
-            {
-                append_status = value_store_.append(*handle_ptr, value_in);
-
-                if(append_status.has_any())
-                {
-                    hash_table_.status_->atomic_join(append_status);
-                }
-            }
-
-            status += append_status.group_shuffle(group, 0);
-        }
-
-        return status - status_type::duplicate_key();
-    }
-    */
-
-    /*! \brief inserts a key/value pair into the hash table
+    /*! \brief inserts a key into the hash table
      * \param[in] key_in key to insert into the hash table
      * \param[in] value_in value that corresponds to \c key_in
      * \param[in] group cooperative group
      * \param[in] probing_length maximum number of probing attempts
      * \return status (per thread)
      */
-    DEVICEQUALIFIER INLINEQUALIFIER
-    status_type insert(
-        key_type key_in,
-        const value_type& value_in,
-        const cg::thread_block_tile<cg_size()>& group,
-        index_type probing_length = defaults::probing_length()) noexcept
-    {
-        status_type status = status_type::unknown_error();
-
-        handle_type * handle_ptr =
-            hash_table_.insert_impl(key_in, status, group, probing_length);
-
-        if(handle_ptr != nullptr)
+     DEVICEQUALIFIER INLINEQUALIFIER
+     status_type insert(
+         const key_type key_in,
+         const value_type& value_in,
+         const cg::thread_block_tile<cg_size()>& group,
+         const index_type probing_length = defaults::probing_length()) noexcept
+     {
+        if(!is_initialized_)
         {
-            status_type append_status = Status::unknown_error();
+            return status_type::not_initialized();
+        }
 
-            if(group.thread_rank() == 0)
+        if(!is_valid_key(key_in))
+        {
+            device_join_status(status_type::invalid_key());
+            return status_type::invalid_key();
+        }
+
+        ProbingScheme iter(capacity(), probing_length, group);
+        index_type num_values = 0;
+
+        for(index_type i = iter.begin(key_in, seed_); i != iter.end(); i = iter.next())
+        {
+            const key_type table_key = table_[i].key;
+
+            auto empty_mask = group.ballot(is_empty_key(table_key));
+
+            if(max_values_per_key_ != ~index_type(0))
             {
-                append_status = value_store_.append(*handle_ptr, value_in);
+                num_values += __popc(group.ballot((table_key == key_in)));
 
-                if(append_status.has_any())
+                if(num_values >= max_values_per_key_)
                 {
-                    hash_table_.status_->atomic_join(append_status);
+                    device_join_status(
+                        status_type::max_values_for_key_reached());
+                    return status_type::max_values_for_key_reached();
                 }
             }
 
-            status += append_status.group_shuffle(group, 0);
+            bool success = false; // no hash collision
+            bool key_collision = false;
+
+            while(empty_mask)
+            {
+                const auto leader = ffs(empty_mask) - 1;
+
+                if(group.thread_rank() == leader)
+                {
+                    const auto old =
+                       atomicCAS(&(table_[i].key), table_key, key_in);
+
+                    success = (old == table_key);
+                    key_collision = (old == key_in);
+
+                    if(success)
+                    {
+                        table_[i].value = value_in;
+                    }
+                }
+
+                if(max_values_per_key_ != ~index_type(0))
+                {
+                    num_values += __popc(group.ballot(key_collision));
+
+                    if(num_values >= max_values_per_key_)
+                    {
+                        device_join_status(
+                            status_type::max_values_for_key_reached());
+                        return status_type::max_values_for_key_reached();
+                    }
+                }
+
+                if(group.any(success))
+                {
+                    return status_type::none();
+                }
+
+                empty_mask ^= 1UL << leader;
+            }
         }
 
-        return status - status_type::duplicate_key();
-    }
-
-    /*
-    template<class StatusHandler = defaults::status_handler_t>
-    HOSTQUALIFIER INLINEQUALIFIER
-    void insert(
-        key_type * keys_in,
-        value_type * values_in,
-        index_type size_in,
-        index_type probing_length,
-        cudaStream_t stream = 0,
-        typename StatusHandler::base_type * status_out = nullptr) noexcept
-    {
-        static_assert(
-            checks::is_status_handler<StatusHandler>(),
-            "not a valid status handler type");
-
-        if(!hash_table_.is_initialized_) return;
-
-        kernels::insert<MultiValueHashTable, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, values_in, size_in, probing_length, *this, status_out);
-    }
-    */
+        device_join_status(status_type::probing_length_exceeded());
+        return status_type::probing_length_exceeded();
+     }
 
     /*! \brief insert a set of keys into the hash table
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to insert into the hash table
      * \param[in] values_in corresponds values to \c keys_in
-     * \param[in] size_in number of keys to insert
+     * \param[in] num_in number of keys to insert
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
      * \param[out] status_out status information per key
@@ -285,89 +291,163 @@ public:
     template<class StatusHandler = defaults::status_handler_t>
     HOSTQUALIFIER INLINEQUALIFIER
     void insert(
-        key_type * keys_in,
-        value_type * values_in,
-        index_type size_in,
-        cudaStream_t stream = 0,
-        index_type probing_length = defaults::probing_length(),
-        typename StatusHandler::base_type * status_out = nullptr) noexcept
+        const key_type * const keys_in,
+        const value_type * const values_in,
+        const index_type num_in,
+        const cudaStream_t stream = 0,
+        const index_type probing_length = defaults::probing_length(),
+        typename StatusHandler::base_type * const status_out = nullptr) noexcept
     {
         static_assert(
             checks::is_status_handler<StatusHandler>(),
             "not a valid status handler type");
 
-        if(!hash_table_.is_initialized_) return;
+        if(!is_initialized_) return;
 
-        static constexpr index_type block_size = 1024;
-        static constexpr index_type groups_per_block = block_size / cg_size();
-        static constexpr index_type smem_status_size =
-            std::is_same<StatusHandler, status_handlers::ReturnNothing>::value ?
-            1 : groups_per_block;
+        kernels::insert<MultiValueHashTable, StatusHandler>
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, values_in, num_in, *this, probing_length, status_out);
+    }
 
-        lambda_kernel
-        <<<SDIV(size_in * cg_size(), block_size), block_size, 0, stream>>>
-        ([=, *this] DEVICEQUALIFIER () mutable
+     /*! \brief retrieves all values to a corresponding key
+     * \param[in] key_in key to retrieve from the hash table
+     * \param[out] values_out values for \c key_in
+     * \param[out] num_out number of retrieved values
+     * \param[in] group cooperative group
+     * \param[in] probing_length maximum number of probing attempts
+     * \return status (per thread)
+     */
+    DEVICEQUALIFIER INLINEQUALIFIER
+    status_type retrieve(
+        const key_type key_in,
+        value_type * const values_out,
+        index_type& num_out,
+        const cg::thread_block_tile<cg_size()>& group,
+        const index_type probing_length = defaults::probing_length()) const noexcept
+    {
+        if(values_out == nullptr)
         {
-            const index_type  tid = blockDim.x * blockIdx.x + threadIdx.x;
-            const index_type btid = threadIdx.x;
-            const index_type  gid = tid / cg_size();
-            const index_type bgid = gid % groups_per_block;
-            const auto block = cg::this_thread_block();
-            const auto group = cg::tiled_partition<cg_size()>(block);
+            const auto status = num_values(key_in, num_out, group, probing_length);
+            device_join_status(status_type::dry_run());
+            return status_type::dry_run() + status;
+        }
+        else
+        {
+            return for_each([=, *this] DEVICEQUALIFIER
+                (const key_type /* key */, const value_type& value, const index_type index)
+                {
+                    values_out[index] = value;
+                },
+                key_in,
+                num_out,
+                group,
+                probing_length);
+        }
+    }
 
-            __shared__ handle_type * handles[groups_per_block];
-            __shared__ status_type status[smem_status_size];
+    /*! \brief retrieve a set of keys from the hash table
+     * \note this method has a dry-run mode where it only calculates the needed array sizes in case no memory (aka \c nullptr ) is provided
+     * \note \c end_offsets_out can be \c begin_offsets_out+1
+     * \tparam StatusHandler handles returned status per key (see \c status_handlers)
+     * \param[in] keys_in pointer to keys to retrieve from the hash table
+     * \param[in] num_in number of keys to retrieve
+     * \param[out] begin_offsets_out begin of value range for a corresponding key in \c values_out
+     * \param[out] end_offsets_out end of value range for a corresponding key in \c values_out
+     * \param[out] num_out total number of values retrieved by this operation
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \param[in] probing_length maximum number of probing attempts
+     * \param[out] status_out status information (per key)
+     */
+    template<class StatusHandler = defaults::status_handler_t>
+    HOSTQUALIFIER INLINEQUALIFIER
+    void retrieve(
+        const key_type * const keys_in,
+        const index_type num_in,
+        index_type * const begin_offsets_out,
+        index_type * const end_offsets_out,
+        value_type * const values_out,
+        index_type& num_out,
+        const cudaStream_t stream = 0,
+        const index_type probing_length = defaults::probing_length(),
+        typename StatusHandler::base_type * const status_out = nullptr) const noexcept
+    {
+        static_assert(
+            checks::is_status_handler<StatusHandler>(),
+            "not a valid status handler type");
 
-            if(gid < size_in)
+        if(!is_initialized_) return;
+
+        // cub::DeviceScan::InclusiveSum takes input sizes of type int
+        if(num_in > std::numeric_limits<int>::max())
+        {
+            join_status(status_type::index_overflow(), stream);
+
+            return;
+        }
+
+        num_values(
+            keys_in,
+            num_in,
+            num_out,
+            end_offsets_out,
+            stream,
+            probing_length);
+
+        if(values_out != nullptr)
+        {
+            index_type temp_bytes = num_out * sizeof(value_type);
+
+            cub::DeviceScan::InclusiveSum(
+                values_out,
+                temp_bytes,
+                end_offsets_out,
+                end_offsets_out,
+                num_in,
+                stream);
+
+            cudaMemsetAsync(begin_offsets_out, 0, sizeof(index_type), stream);
+
+            if(end_offsets_out != begin_offsets_out + 1)
             {
-                status_type probing_status = status_type::unknown_error();
-
-                handles[bgid] = hash_table_.insert_impl(
-                    keys_in[gid],
-                    probing_status,
-                    group,
-                    probing_length);
-
-                if(!std::is_same<
-                    StatusHandler,
-                    status_handlers::ReturnNothing>::value &&
-                    group.thread_rank() == 0)
-                {
-                    status[bgid] = probing_status;
-                }
-
-                block.sync();
-
-
-                if(btid < groups_per_block && handles[btid] != nullptr)
-                {
-                    const index_type block_offset =
-                        blockIdx.x * groups_per_block;
-
-                    const status_type append_status = value_store_.append(
-                        *(handles[btid]),
-                        values_in[block_offset + btid]);
-
-
-                    if(append_status.has_any())
-                    {
-                        hash_table_.status_->atomic_join(append_status);
-                    }
-
-                    // TODO not zero-cost
-                    if(!std::is_same<
-                        StatusHandler,
-                        status_handlers::ReturnNothing>::value)
-                    {
-                        StatusHandler::handle(
-                            status[btid]+append_status-status_type::duplicate_key(),
-                            status_out,
-                            block_offset + btid);
-                    }
-                }
+                cudaMemcpyAsync(
+                    begin_offsets_out + 1,
+                    end_offsets_out,
+                    sizeof(index_type) * (num_in - 1),
+                    D2D,
+                    stream);
             }
 
-        });
+            kernels::retrieve<MultiValueHashTable, StatusHandler>
+            <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            (
+                keys_in,
+                num_in,
+                begin_offsets_out,
+                end_offsets_out,
+                values_out,
+                *this,
+                probing_length,
+                status_out);
+        }
+        else
+        {
+            if(status_out != nullptr)
+            {
+                lambda_kernel
+                <<<SDIV(num_in, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+                ([=, *this] DEVICEQUALIFIER
+                {
+                    const index_type tid = global_thread_id();
+
+                    if(tid < num_in)
+                    {
+                        StatusHandler::handle(Status::dry_run(), status_out, tid);
+                    }
+                });
+            }
+
+            join_status(status_type::dry_run(), stream);
+        }
 
         if(stream == 0)
         {
@@ -375,264 +455,380 @@ public:
         }
     }
 
-    /*! \brief retrieves a key from the hash table
-     * \param[in] key_in key to retrieve from the hash table
-     * \param[out] values_out pointer to storage fo the retrieved values
-     * \param[out] size_out number of values retrieved
+    /*! \brief retrieves all elements from the hash table
+     * \note this method has a dry-run mode where it only calculates the needed array sizes in case no memory (aka \c nullptr ) is provided
+     * \note this method implements a multi-stage dry-run mode
+     * \param[out] keys_out pointer to the set of unique keys
+     * \param[out] num_keys_out number of unique keys
+     * \param[out] begin_offsets_out begin of value range for a corresponding key in \c values_out
+     * \param[out] end_offsets_out end of value range for a corresponding key in \c values_out
+     * \param[out] values_out array which holds all retrieved values
+     * \param[out] num_values_out total number of values retrieved by this operation
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void retrieve_all(
+        key_type * const keys_out,
+        index_type& num_keys_out,
+        index_type * const begin_offsets_out,
+        index_type * const end_offsets_out,
+        value_type * const values_out,
+        value_type& num_values_out,
+        const cudaStream_t stream = 0) const noexcept
+    {
+        if(!is_initialized_) return;
+
+        retrieve_all_keys(keys_out, num_keys_out, stream);
+
+        if(keys_out != nullptr)
+        {
+            retrieve(
+                keys_out,
+                num_keys_out,
+                begin_offsets_out,
+                end_offsets_out,
+                values_out,
+                num_values_out,
+                stream);
+        }
+
+        if(stream == 0)
+        {
+            cudaStreamSynchronize(stream);
+        }
+    }
+
+   /*! \brief retrieve all unqiue keys
+    * \info this method has a dry-run mode where it only calculates the needed array sizes in case no memory (aka \c nullptr ) is provided
+    * \param[out] keys_out retrieved unqiue keys
+    * \param[out] num_out numof unique keys
+    * \param[in] stream CUDA stream in which this operation is executed in
+    */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void retrieve_all_keys(
+        key_type * const keys_out,
+        index_type& num_out,
+        const cudaStream_t stream = 0) const noexcept
+    {
+        if(!is_initialized_) return;
+
+        const auto key_set = get_key_set(stream);
+
+        if(keys_out != nullptr)
+        {
+            key_set.retrieve_all(keys_out, num_out, stream);
+        }
+        else
+        {
+            num_out = key_set.size(stream);
+            join_status(status_type::dry_run(), stream);
+        }
+
+        if(stream == 0)
+        {
+            cudaStreamSynchronize(stream);
+        }
+    }
+
+    /*! \brief applies a funtion over all values of a specified key
+     * \tparam Func type of map i.e. CUDA device lambda
+     * \param[in] f map to apply
+     * \param[in] key_in key to consider
+     * \param[out] num_values_out number of values associated to \c key_in
      * \param[in] group cooperative group
      * \param[in] probing_length maximum number of probing attempts
      * \return status (per thread)
      */
+    template<class Func>
     DEVICEQUALIFIER INLINEQUALIFIER
-    status_type retrieve(
-        key_type key_in,
-        value_type * values_out,
-        index_type& size_out,
+    status_type for_each(
+        Func f,
+        const key_type key_in,
+        index_type& num_values_out,
         const cg::thread_block_tile<cg_size()>& group,
-        index_type probing_length = defaults::probing_length()) const noexcept
+        const index_type probing_length = defaults::probing_length()) const noexcept
     {
-        handle_type handle;
+        if(!is_initialized_) return status_type::not_initialized();
 
-        status_type status =
-            hash_table_.retrieve(key_in, handle, group, probing_length);
-
-        if(!status.has_any())
+        if(!is_valid_key(key_in))
         {
-            value_store_.for_each(
-                handle,
-                [=] DEVICEQUALIFIER (
-                    const value_type& value,
-                    index_type offset)
+            num_values_out = 0;
+            device_join_status(status_type::invalid_key());
+            return status_type::invalid_key();
+        }
+
+        ProbingScheme iter(capacity(), min(probing_length, capacity()), group);
+
+        index_type num = 0;
+        for(index_type i = iter.begin(key_in, seed_); i != iter.end(); i = iter.next())
+        {
+            const auto table_key = table_[i].key;
+            const auto hit = (table_key == key_in);
+            const auto hit_mask = group.ballot(hit);
+
+            if(hit)
+            {
+                const auto j =
+                    num + __popc(hit_mask & ~((2UL << group.thread_rank()) - 1));
+
+                f(key_in, table_[i].value, j);
+            }
+
+            num += __popc(hit_mask);
+
+            if(group.any(is_empty_key(table_key) || num >= max_values_per_key_))
+            {
+                num_values_out = num;
+
+                if(num == 0)
                 {
-                    values_out[offset] = value;
-                },
-                group);
-
-            size_out = value_store_.size(handle);
+                    device_join_status(status_type::key_not_found());
+                    return status_type::key_not_found();
+                }
+                else
+                {
+                    return status_type::none();
+                }
+            }
         }
-        else
-        {
-            size_out = 0;
-        }
 
-        return status - status_type::duplicate_key();
+        num_values_out = num;
+        device_join_status(status_type::probing_length_exceeded());
+        return status_type::probing_length_exceeded();
     }
 
-    /*! \brief retrieve a set of keys from the hash table
+    /*! \brief applies a funtion over all key value pairs inside the table
+     * \tparam Func type of map i.e. CUDA device lambda
+     * \param[in] f map to apply
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \param[in] size of dynamic shared memory to reserve for this execution
+     */
+    template<class Func>
+    HOSTQUALIFIER INLINEQUALIFIER
+    void for_each(
+        Func f, // TODO const?
+        const cudaStream_t stream = 0,
+        const index_type smem_bytes = 0) const noexcept
+    {
+        if(!is_initialized_) return;
+
+        kernels::for_each<Func, MultiValueHashTable>
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        (f, *this);
+    }
+
+    /*! \brief applies a funtion over all key value pairs
+     * \tparam Func type of map i.e. CUDA device lambda
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)
-     * \param[in] keys_in pointer to keys to retrieve from the hash table
-     * \param[in] size_in number of keys to retrieve
-     * \param[out] offsets_out
-     * \param[out] values_out retrieved values of keys in \c key_in
-     * \param[out] value_size_out total number of values retrieved by this operation
-     * \param[in] temp pointer to auxillary device memory required by this operation
-     * \param[out] temp_bytes size of required auxillary memory in bytes
+     * \param[in] f map to apply
+     * \param[in] keys_in keys to consider
+     * \param[in] num_in number of keys
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
      * \param[out] status_out status information (per key)
-     * \note if \c temp==nullptr||values_out==nullptr then only \c temp_bytes and \c value_size_out will be computed
+     * \param[in] size of dynamic shared memory to reserve for this execution
      */
-    template<class StatusHandler = defaults::status_handler_t>
+    template<class Func, class StatusHandler = defaults::status_handler_t>
     HOSTQUALIFIER INLINEQUALIFIER
-    void retrieve(
-        key_type * keys_in,
-        index_type size_in,
-        index_type * offsets_out,
-        value_type * values_out,
-        index_type& value_size_out,
-        void * temp,
-        index_t& temp_bytes,
-        cudaStream_t stream = 0,
-        index_type probing_length = defaults::probing_length(),
-        typename StatusHandler::base_type * status_out = nullptr) const noexcept
+    void for_each(
+        Func f, // TODO const?
+        const key_type * const keys_in,
+        const index_type num_in,
+        const cudaStream_t stream = 0,
+        const index_type probing_length = defaults::probing_length(),
+        typename StatusHandler::base_type * const status_out = nullptr,
+        const index_type smem_bytes = 0) const noexcept
     {
         static_assert(
             checks::is_status_handler<StatusHandler>(),
             "not a valid status handler type");
 
-        if(!hash_table_.is_initialized_) return;
+        if(!is_initialized_) return;
 
-        size_values(keys_in, size_in, offsets_out, probing_length, stream);
+        kernels::for_each<Func, MultiValueHashTable>
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        (f, keys_in, num_in, *this, status_out);
+    }
 
-        cub::DeviceScan::InclusiveSum(
-            temp, temp_bytes, offsets_out, offsets_out, size_in, stream);
+    /*! \brief \c warpcore::HashSet of unique keys inside the table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \param[in] size_fraction capacity of the hash set in relation to the size of the table
+     * \return \c warpcore::HashSet
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    const key_set_type get_key_set(
+        const cudaStream_t stream = 0,
+        const float size_fraction = 0.9) const noexcept
+    {
+        const index_type set_capacity = size(stream) / size_fraction;
+        key_set_type hash_set(set_capacity, seed_);
+
+        for_each([=] DEVICEQUALIFIER
+        (const key_type key, const value_type& /* value */) mutable
+        {
+            hash_set.insert(key, cg::tiled_partition<1>(cg::this_thread_block()));
+        }, stream);
+
+        const status_type hash_set_status =
+            hash_set.peek_status(stream) - status_type::duplicate_key();
+
+        if(hash_set_status.has_any())
+        {
+            join_status(hash_set_status, stream);
+        }
+
+        cudaStreamSynchronize(stream);
+
+        return std::move(hash_set);
+    }
+
+    /*! \brief number of unique keys inside the table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \return number of unique keys
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type num_keys(const cudaStream_t stream = 0) const noexcept
+    {
+        return get_key_set(stream).size(stream);
+    }
+
+    /*! \brief total number of values inside the table
+     * \param[in] key_in key to be probed
+     * \param[out] num_out number of values associated to \c key_in*
+     * \param[in] group cooperative group
+     * \param[in] probing_length maximum number of probing attempts
+     * \return status (per thread)
+     */
+    DEVICEQUALIFIER INLINEQUALIFIER
+    status_type num_values(
+        const key_type key_in,
+        index_type& num_out,
+        const cg::thread_block_tile<cg_size()>& group,
+        const index_type probing_length = defaults::probing_length()) const noexcept
+    {
+        return for_each([=] DEVICEQUALIFIER (
+                const key_type /* key */,
+                const value_type& /* value */,
+                const index_type /* index */) {},
+            key_in,
+            num_out,
+            group,
+            probing_length);
+    }
+
+    /*! \brief number of values associated to a set of keys
+     * \info this function returns only \c num_out if \c num_per_key_out==nullptr
+     * \tparam StatusHandler handles returned status per key (see \c status_handlers)
+     * \param[in] keys_in keys to consider
+     * \param[in] num_in number of keys
+     * \param[out] num_out total number of values
+     * \param[out] num_per_key_out number of values per key
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \param[in] probing_length maximum number of probing attempts
+     * \param[out] status_out status information (per key)
+     */
+    template<class StatusHandler = defaults::status_handler_t>
+    HOSTQUALIFIER INLINEQUALIFIER
+    void num_values(
+        const key_type * const keys_in,
+        const index_type num_in,
+        index_type& num_out,
+        index_type * const num_per_key_out = nullptr,
+        const cudaStream_t stream = 0,
+        const index_type probing_length = defaults::probing_length(),
+        typename StatusHandler::base_type * const status_out = nullptr) const noexcept
+    {
+        if(!is_initialized_) return;
+
+        // TODO check if shared memory is benefitial
+
+        index_type * const tmp = temp_.get();
+        cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
+
+        kernels::num_values<MultiValueHashTable, StatusHandler>
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, tmp, num_per_key_out, *this, probing_length, status_out);
+
+        cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H, stream);
+
+        if(stream == 0)
+        {
+            cudaStreamSynchronize(stream);
+        }
+    }
+
+    /*! \brief number of values stored inside the hash table
+     * \info alias for \c size()
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \return the number of values
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type num_values(const cudaStream_t stream = 0) const noexcept
+    {
+        return size(stream);
+    }
+
+    /*! \brief number of values stored inside the hash table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \return the number of values
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type size(const cudaStream_t stream = 0) const noexcept
+    {
+        if(!is_initialized_) return 0;
+
+        index_type out;
+        index_type * tmp = temp_.get();
+
+        cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
+
+        kernels::size
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (tmp, *this);
 
         cudaMemcpyAsync(
-            &value_size_out,
-            offsets_out + size_in - 1,
+            &out,
+            tmp,
             sizeof(index_type),
             D2H,
             stream);
 
-        if(temp != nullptr && values_out != nullptr)
-        {
-            kernels::retrieve<MultiValueHashTable, StatusHandler>
-            <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-            (keys_in, size_in, offsets_out, values_out, probing_length, *this, status_out);
-        }
+        cudaStreamSynchronize(stream);
 
-        if(stream == 0 || temp == nullptr || values_out == nullptr)
-        {
-            cudaStreamSynchronize(stream);
-        }
+        return out;
     }
 
-    // TODO host retrieve which also returns the set of unique keys
-
-    /*! \brief applies a funtion over all values of a corresponding key
-     * \tparam Func type of map i.e. CUDA device lambda
-     * \param[in] key_in key to retrieve
+    /*! \brief current load factor of the hash table
      * \param[in] stream CUDA stream in which this operation is executed in
-     * \param[in] size of shared memory to reserve for this execution
-     * \param[in] f map to apply
-     */
-    template<class Func>
-    DEVICEQUALIFIER INLINEQUALIFIER
-    status_type for_each_value(
-        key_type key_in,
-        const cg::thread_block_tile<cg_size()>& group,
-        Func f,
-        index_type probing_length = defaults::probing_length()) const noexcept
-    {
-        handle_type handle;
-
-        status_type status =
-            hash_table_.retrieve(key_in, handle, group, probing_length);
-
-        if(!status.has_any())
-        {
-            value_store_.for_each(handle, group, f);
-        }
-
-        return status - status_type::duplicate_key();
-    }
-
-    // TODO host function for_each_value
-
-    /*! \brief retrieves the set of all keys stored inside the hash table
-     * \param[out] keys_out pointer to the retrieved keys
-     * \param[out] size_out number of retrieved keys
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \note if \c keys_out==nullptr then only \c size_out will be computed
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    void retrieve_all_keys(
-        key_type * keys_out,
-        index_type& size_out,
-        cudaStream_t stream = 0) noexcept
-    {
-        if(keys_out == nullptr)
-        {
-            size_out = hash_table_.size(stream);
-        }
-        else
-        {
-            index_type * key_count = hash_table_.temp_.get();
-            cudaMemsetAsync(key_count, 0, sizeof(index_type), stream);
-
-            hash_table_.for_each(
-            [=] DEVICEQUALIFIER (key_type key, const auto&)
-            {
-                keys_out[atomicAggInc(key_count)] = key;
-            }, stream);
-
-            cudaMemcpyAsync(
-                &size_out, key_count, sizeof(index_type), D2H, stream);
-        }
-
-        if(stream == 0 || keys_out == nullptr)
-        {
-            cudaStreamSynchronize(stream);
-        }
-    }
-
-    /*! \brief get load factor of the key store
-     * \param stream CUDA stream in which this operation is executed in
      * \return load factor
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float key_load_factor(cudaStream_t stream = 0) noexcept
+    float load_factor(const cudaStream_t stream = 0) const noexcept
     {
-        return hash_table_.load_factor(stream);
-    }
-
-    /*! \brief get load factor of the value store
-     * \param stream CUDA stream in which this operation is executed in
-     * \return load factor
-     */
-     HOSTQUALIFIER INLINEQUALIFIER
-     float value_load_factor(cudaStream_t stream = 0) const noexcept
-     {
-         return value_store_.load_factor(stream);
-     }
-
-    /*! \brief get the the total number of bytes occupied by this data structure
-     * \return bytes
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type bytes_total() noexcept
-    {
-        const float bytes_hash_table =
-            hash_table_.capacity() * (sizeof(key_type) + sizeof(handle_type));
-        const float bytes_value_store =
-            value_store_.capacity() * sizeof(typename ValueStore::slab_type);
-
-        return bytes_hash_table + bytes_value_store;
-    }
-
-    /*! \brief get the the number of bytes in this data structure occupied by keys
-     * \param stream CUDA stream in which this operation is executed in
-     * \return bytes
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type bytes_keys(cudaStream_t stream = 0) noexcept
-    {
-        return size_keys(stream) * sizeof(key_type);
-    }
-
-    /*! \brief get the the number of bytes in this data structure occupied by values
-     * \param stream CUDA stream in which this operation is executed in
-     * \return bytes
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type bytes_values(cudaStream_t stream = 0) noexcept
-    {
-        return size_values(stream) * sizeof(value_type);
-    }
-
-    /*! \brief get the the number of bytes in this data structure occupied by actual information
-     * \param stream CUDA stream in which this operation is executed in
-     * \return bytes
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type bytes_payload(cudaStream_t stream = 0) noexcept
-    {
-        return bytes_keys(stream) + bytes_values(stream);
+        return float(size(stream)) / float(capacity());
     }
 
     /*! \brief current storage density of the hash table
-     * \param stream CUDA stream in which this operation is executed in
+     * \param[in] stream CUDA stream in which this operation is executed in
      * \return storage density
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float storage_density(cudaStream_t stream = 0) noexcept
+    float storage_density(const cudaStream_t stream = 0) const noexcept
     {
-        return float(bytes_payload(stream)) / float(bytes_total());
+        const index_type key_bytes = num_keys(stream) * sizeof(key_type);
+        const index_type value_bytes = num_values(stream) * sizeof(value_type);
+        const index_type table_bytes =
+            capacity() * (sizeof(key_type) + sizeof(value_type));
+        return float(key_bytes + value_bytes) / float(table_bytes);
     }
 
-    /*! \brief current relative storage density of the hash table
-     * \param stream CUDA stream in which this operation is executed in
-     * \return storage density
+    /*! \brief get the capacity of the hash table
+     * \return number of slots in the hash table
      */
-    HOSTQUALIFIER INLINEQUALIFIER
-    float relative_storage_density(cudaStream_t stream = 0) noexcept
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    index_type capacity() const noexcept
     {
-        const float bytes_hash_table =
-            hash_table_.capacity() * (sizeof(key_type) + sizeof(handle_type));
-        const float bytes_value_store =
-            value_store_.bytes_occupied(stream);
-
-        return float(bytes_payload(stream)) / (bytes_value_store + bytes_hash_table);
+        return table_.capacity();
     }
 
     /*! \brief indicates if the hash table is properly initialized
@@ -641,17 +837,31 @@ public:
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     bool is_initialized() const noexcept
     {
-        return hash_table_.is_initialized();
+        return is_initialized_;
     }
 
     /*! \brief get the status of the hash table
-     * \param stream CUDA stream in which this operation is executed in
+     * \param[in] stream CUDA stream in which this operation is executed in
      * \return the status
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    status_type peek_status(cudaStream_t stream = 0) const noexcept
+    status_type peek_status(const cudaStream_t stream = 0) const noexcept
     {
-        return hash_table_.peek_status(stream) - status_type::duplicate_key();
+        status_type status = status_type::not_initialized();
+
+        if(status_ != nullptr)
+        {
+            cudaMemcpyAsync(
+                &status,
+                status_,
+                sizeof(status_type),
+                D2H,
+                stream);
+
+            cudaStreamSynchronize(stream);
+        }
+
+        return status;
     }
 
     /*! \brief get and reset the status of the hash table
@@ -659,122 +869,50 @@ public:
      * \return the status
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    status_type pop_status(cudaStream_t stream = 0) noexcept
+    status_type pop_status(const cudaStream_t stream = 0) noexcept
     {
-        return hash_table_.pop_status(stream) - status_type::duplicate_key();
-    }
+        status_type status = status_type::not_initialized();
 
-    /*! \brief get the key capacity of the hash table
-     * \return number of key slots in the hash table
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type key_capacity() const noexcept
-    {
-        return hash_table_.capacity();
-    }
-
-    /*! \brief get the maximum value capacity of the hash table
-     * \return maximum value capacity
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type value_capacity() const noexcept
-    {
-        return value_store_.capacity();
-    }
-
-    /*! \brief number of keys stored inside the hash table
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \return number of keys inside the hash table
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type size_keys(cudaStream_t stream = 0) noexcept
-    {
-        return hash_table_.size(stream);
-    }
-
-    /*! \brief get number of values to a corresponding key inside the hash table
-     * \param[in] key_in key to probe
-     * \param[out] size_out number of values
-     * \param[in] group cooperative group this operation is executed in
-     * \param[in] probing_length maximum number of probing attempts
-     * \return status (per thread)
-     */
-    DEVICEQUALIFIER INLINEQUALIFIER
-    status_type size_values(
-        key_type key_in,
-        index_type& size_out,
-        const cg::thread_block_tile<cg_size()>& group,
-        index_type probing_length = defaults::probing_length()) const noexcept
-    {
-        handle_type handle;
-
-        status_type status =
-            hash_table_.retrieve(key_in, handle, group, probing_length);
-
-        status -= status_type::duplicate_key();
-        size_out = (!status.has_any()) ? value_store_.size(handle) : 0;
-
-        return status - status_type::duplicate_key();
-    }
-
-    /*! \brief get number of values to a corresponding set of keys inside the hash table
-     * \param[in] keys_in keys to probe
-     * \param[in] size_in input size
-     * \param[out] sizes_out number of values per key
-     * \param[in] probing_length maximum number of probing attempts
-     * \param[in] stream CUDA stream in which this operation is executed in
-     */
-    template<class StatusHandler = defaults::status_handler_t>
-    HOSTQUALIFIER INLINEQUALIFIER
-    void size_values(
-        key_type * keys_in,
-        index_type size_in,
-        index_type * sizes_out,
-        index_type probing_length = defaults::probing_length(),
-        cudaStream_t stream = 0,
-        typename StatusHandler::base_type * status_out = nullptr) const noexcept
-    {
-        static_assert(
-            checks::is_status_handler<StatusHandler>(),
-            "not a valid status handler type");
-
-        if(!hash_table_.is_initialized_) return;
-
-        kernels::size_values<MultiValueHashTable, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, sizes_out, probing_length, *this, status_out);
-
-        if(stream == 0)
+        if(status_ != nullptr)
         {
-            cudaStreamSynchronize(stream);
+            cudaMemcpyAsync(
+                &status,
+                status_,
+                sizeof(status_type),
+                D2H,
+                stream);
+
+            assign_status(table_.status(), stream);
         }
+
+        return status;
     }
 
-    /*! \brief get number of values inside the hash table
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \return total number of values
+    /*! \brief checks if \c key is equal to \c EmptyKey
+     * \return \c bool
      */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type size_values(cudaStream_t stream = 0) noexcept
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr bool is_empty_key(const key_type key) noexcept
     {
-        index_type * tmp = hash_table_.temp_.get();
+        return (key == empty_key());
+    }
 
-        cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
+    /*! \brief checks if \c key is equal to \c TombstoneKey
+     * \return \c bool
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr bool is_tombstone_key(const key_type key) noexcept
+    {
+        return (key == tombstone_key());
+    }
 
-        hash_table_.for_each(
-            [=, *this] DEVICEQUALIFIER (key_type, const handle_type& handle)
-            {
-                atomicAdd(tmp, value_store_.size(handle));
-            },
-            stream);
-
-        index_type out = 0;
-
-        cudaMemcpyAsync(&out, tmp, sizeof(index_type), D2H, stream);
-
-        cudaStreamSynchronize(stream);
-
-        return out;
+    /*! \brief checks if \c key is equal to \c (EmptyKey||TombstoneKey)
+     * \return \c bool
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr bool is_valid_key(const key_type key) noexcept
+    {
+        return (key != empty_key() && key != tombstone_key());
     }
 
     /*! \brief indicates if this object is a shallow copy
@@ -787,9 +925,94 @@ public:
     }
 
 private:
-    hash_table_type hash_table_; //< storage class for keys
-    value_store_type value_store_; //< multi-value storage class
-    bool is_copy_; //< indicates if this object is a shallow copy
+    /*! \brief assigns the hash table's status
+     * \info \c const on purpose
+     * \param[in] status new status
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void assign_status(
+        const status_type status,
+        const cudaStream_t stream = 0) const noexcept
+    {
+        if(status_ != nullptr)
+        {
+            cudaMemcpyAsync(
+                status_,
+                &status,
+                sizeof(status_type),
+                H2D,
+                stream);
+
+            cudaStreamSynchronize(stream);
+        }
+    }
+
+    /*! \brief joins additional flags to the hash table's status
+     * \info \c const on purpose
+     * \param[in] status new status
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void join_status(
+        const status_type status,
+        const cudaStream_t stream = 0) const noexcept
+    {
+        if(status_ != nullptr)
+        {
+            status_type peeked = peek_status(stream);
+            const status_type joined = peeked + status;
+
+            if(joined != peeked)
+            {
+                assign_status(joined, stream);
+            }
+        }
+    }
+
+    /*! \brief joins additional flags to the hash table's status
+     * \info \c const on purpose
+     * \param[in] status new status
+     */
+    DEVICEQUALIFIER INLINEQUALIFIER
+    void device_join_status(const status_type status) const noexcept
+    {
+        if(status_ != nullptr)
+        {
+            if(!status_->has_all(status))
+            {
+                status_->atomic_join(status);
+            }
+        }
+    }
+
+    status_type * status_; //< pointer to status
+    TableStorage table_; //< actual key/value storage
+    temp_type temp_; //< temporary memory
+    key_type seed_; //< random seed
+    index_type max_values_per_key_; //< maximum number of values to store per key
+    bool is_copy_; //< indicates if table is a shallow copy
+    bool is_initialized_; //< indicates if table is properly initialized
+
+    template<class Core>
+    GLOBALQUALIFIER
+    friend void kernels::size(index_type * const, const Core);
+
+    template<class Func, class Core>
+    GLOBALQUALIFIER
+    friend void kernels::for_each(Func, const Core);
+
+    template<class Core, class StatusHandler>
+    GLOBALQUALIFIER
+    friend void kernels::retrieve(
+        const typename Core::key_type * const,
+        const index_type,
+        const index_type * const,
+        const index_type * const,
+        typename Core::value_type * const,
+        const Core,
+        const index_type,
+        typename StatusHandler::base_type * const);
 
 }; // class MultiValueHashTable
 

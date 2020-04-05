@@ -14,7 +14,7 @@ NVCCFLAGS := -std=$(STD) $(NVCCGENCODE) --expt-extended-lambda -DNDEBUG -ccbin $
 INCS := $(foreach dir, $(INCDIRS), $(wildcard $(dir)/*.cuh $(dir)/*.h $(dir)/*.hpp))
 INCPARAMS := $(addprefix -I, $(INCDIRS))
 
-all: single_value multi_value counting bloom_filter
+all: single_value multi_value counting bloom_filter bucket_list
 
 single_value: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/single_value_benchmark.cu -o bin/single_value_benchmark.out
@@ -27,6 +27,9 @@ counting: ${INCS} | bin
 
 bloom_filter: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/bloom_filter_benchmark.cu -o bin/bloom_filter_benchmark.out
+
+bucket_list: ${INCS} | bin
+	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/bucket_list_benchmark.cu -o bin/bucket_list_benchmark.out
 
 debug: OPT := 0
 debug: CCFLAGS := -O$(OPT) -std=$(STD) -Wall -Wextra -fopenmp

@@ -39,7 +39,7 @@ namespace defaults
     using table_storage_t = storage::key_value::AoSStore<Key, Value>;
 
     template<class Value>
-    using value_storage_t = storage::multi_value::DynamicSlabListStore<Value>;
+    using value_storage_t = storage::multi_value::BucketListStore<Value>;
 
 } // namespace defaults
 

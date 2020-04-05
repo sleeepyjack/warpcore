@@ -78,11 +78,10 @@ public:
         value_type max_count = std::numeric_limits<value_type>::max(),
         bool no_init = false) noexcept :
         base_table_(min_capacity, seed, true),
-        seed_(seed),
         max_count_(max_count),
         is_copy_(false)
     {
-        if(!no_init) init();
+        if(!no_init) init(seed);
     }
 
     /*! \brief copy-constructor (shallow)
@@ -91,7 +90,6 @@ public:
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     CountingHashTable(const CountingHashTable& o) noexcept :
         base_table_(o.base_table_),
-        seed_(o.seed_),
         max_count_(o.max_count_),
         is_copy_(true)
     {}
@@ -102,25 +100,36 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     CountingHashTable(CountingHashTable&& o) noexcept :
         base_table_(std::move(o.base_table_)),
-        seed_(std::move(o.seed_)),
         max_count_(std::move(o.max_count_)),
         is_copy_(std::move(o.is_copy_))
     {
         o.is_copy_ = true;
     }
 
-    /*! \brief re-initialize the hash table
+    /*! \brief (re)initialize the hash table
+     * \param[in] seed random seed
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init(cudaStream_t stream = 0) noexcept
+    void init(
+        const key_type seed,
+        const cudaStream_t stream = 0) noexcept
     {
-        base_table_.init(stream);
+        base_table_.init(seed, stream);
 
         if(base_table_.is_initialized())
         {
             base_table_.table_.init_values(0, stream);
         }
+    }
+
+    /*! \brief (re)initialize the hash table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void init(const cudaStream_t stream = 0) noexcept
+    {
+        init(base_table_.seed(), stream);
     }
 
     /*! \brief inserts a key into the hash table
@@ -166,7 +175,7 @@ public:
     /*! \brief insert a set of keys into the hash table
      * \tparam StatusHandler handles status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to insert into the hash table
-     * \param[in] size_in number of keys to insert
+     * \param[in] num_in number of keys to insert
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
      * \param[out] status_out status information per key
@@ -175,14 +184,14 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     void insert(
         key_type * keys_in,
-        index_type size_in,
+        index_type num_in,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
         typename StatusHandler::base_type * status_out = nullptr) noexcept
     {
         kernels::insert<CountingHashTable, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, probing_length, *this, status_out);
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, *this, probing_length, status_out);
     }
 
     /*! \brief retrieves a key from the hash table
@@ -220,7 +229,7 @@ public:
     /*! \brief retrieve a set of keys from the hash table
      * \tparam StatusHandler handles status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to retrieve from the hash table
-     * \param[in] size_in number of keys to retrieve
+     * \param[in] num_in number of keys to retrieve
      * \param[out] values_out corresponding counts of keys in \c key_in
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
@@ -230,31 +239,31 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     void retrieve(
         key_type * keys_in,
-        index_type size_in,
+        index_type num_in,
         value_type * values_out,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
         typename StatusHandler::base_type * status_out = nullptr) const noexcept
     {
         kernels::retrieve<CountingHashTable, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, values_out, probing_length, *this, status_out);
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, values_out, *this, probing_length, status_out);
     }
 
     /*! \brief retrieves all elements from the hash table
      * \param[out] keys_out location to store all retrieved keys
      * \param[out] values_out location to store all retrieved counts
-     * \param[out] size_out number of of key/value pairs retrieved
+     * \param[out] num_out number of of key/value pairs retrieved
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
     void retrieve_all(
         key_type * keys_out,
         value_type * values_out,
-        index_t& size_out,
-        cudaStream_t stream = 0) noexcept
+        index_t& num_out,
+        cudaStream_t stream = 0) const noexcept
     {
-        base_table_.retrieve_all(keys_out, values_out, size_out, stream);
+        base_table_.retrieve_all(keys_out, values_out, num_out, stream);
     }
 
     /*! \brief erases a key from the hash table
@@ -269,14 +278,13 @@ public:
         const cg::thread_block_tile<cg_size()>& group,
         index_type probing_length = defaults::probing_length()) noexcept
     {
-        return base_table_.erase(key_in, group, probing_length)
-            - status_type::duplicate_key();
+        return base_table_.erase(key_in, group, probing_length);
     }
 
     /*! \brief erases a set of keys from the hash table
      * \tparam StatusHandler handles status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to erase from the hash table
-     * \param[in] size_in number of keys to erase
+     * \param[in] num_in number of keys to erase
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
      * \param[out] status_out status information (per key)
@@ -285,13 +293,13 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     void erase(
         key_type * keys_in,
-        index_type size_in,
+        index_type num_in,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
         typename StatusHandler::base_type * status_out = nullptr) noexcept
     {
         base_table_.template erase<StatusHandler>(
-            keys_in, size_in, probing_length, status_out);
+            keys_in, num_in, probing_length, status_out);
     }
 
     /*! \brief applies a funtion on all key value pairs inside the table
@@ -315,7 +323,7 @@ public:
      * \return the number of key/value pairs inside the hash table
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    index_type size(cudaStream_t stream = 0) noexcept
+    index_type size(cudaStream_t stream = 0) const noexcept
     {
         return base_table_.size(stream);
     }
@@ -325,7 +333,7 @@ public:
      * \return load factor
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float load_factor(cudaStream_t stream = 0) noexcept
+    float load_factor(cudaStream_t stream = 0) const noexcept
     {
         return base_table_.load_factor(stream);
     }
@@ -335,7 +343,7 @@ public:
      * \return storage density
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float storage_density(cudaStream_t stream = 0) noexcept
+    float storage_density(cudaStream_t stream = 0) const noexcept
     {
         return base_table_.storage_density(stream);
     }
@@ -396,6 +404,15 @@ public:
         return base_type::is_valid_key(key);
     }
 
+    /*! \brief get random seed
+     * \return seed
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    key_type seed() const noexcept
+    {
+        return base_table_.seed();
+    }
+
     /*! \brief indicates if this object is a shallow copy
      * \return \c bool
      */
@@ -407,7 +424,6 @@ public:
 
 private:
     base_type base_table_; //< base type aka SingleValueHashTable
-    key_type seed_; //< random seed
     const value_type max_count_; //< count after which new occurrences are ignored
     bool is_copy_; //< indicates if this object is a shallow copy
 

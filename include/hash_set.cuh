@@ -153,12 +153,17 @@ public:
     }
     #endif
 
-    /*! \brief re-initialize the hash set
+    /*! \brief (re)initialize the hash set
+     * \param[in] seed random seed
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    void init(cudaStream_t stream = 0) noexcept
+    void init(
+        const key_type seed,
+        const cudaStream_t stream = 0) noexcept
     {
+        seed_ = seed;
+
         if(is_initialized_)
         {
             kernels::memset<key_type, empty_key()>
@@ -167,6 +172,15 @@ public:
 
             assign_status(Status::none(), stream);
         }
+    }
+
+    /*! \brief (re)initialize the hash set
+     * \param[in] stream CUDA stream in which this operation is executed in
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    void init(const cudaStream_t stream = 0) noexcept
+    {
+        init(seed_, stream);
     }
 
     /*! \brief inserts a key into the hash set
@@ -242,7 +256,7 @@ public:
     /*! \brief insert a set of keys into the hash set
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to insert into the hash set
-     * \param[in] size_in number of keys to insert
+     * \param[in] num_in number of keys to insert
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
      * \param[out] status_out status information per key
@@ -251,7 +265,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     void insert(
         key_type * keys_in,
-        index_type size_in,
+        index_type num_in,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
         typename StatusHandler::base_type * status_out = nullptr) noexcept
@@ -263,8 +277,8 @@ public:
         if(!is_initialized_) return;
 
         kernels::insert<HashSet, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, probing_length, *this, status_out);
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, *this, probing_length, status_out);
     }
 
     /*! \brief retrieves a key from the hash set
@@ -317,7 +331,7 @@ public:
     /*! \brief retrieve a set of keys from the hash table
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to retrieve from the hash table
-     * \param[in] size_in number of keys to retrieve
+     * \param[in] num_in number of keys to retrieve
      * \param[out] flags_out flags membership of \c keys_in in the set
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
@@ -327,7 +341,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     void retrieve(
         key_type * keys_in,
-        index_type size_in,
+        index_type num_in,
         bool * flags_out,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
@@ -340,20 +354,20 @@ public:
         if(!is_initialized_) return;
 
         kernels::retrieve<HashSet, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, flags_out, probing_length, *this, status_out);
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, flags_out, *this, probing_length, status_out);
     }
 
     /*! \brief retrieves all elements from the hash set
      * \param[out] keys_out location to store all retrieved keys
-     * \param[out] size_out number of of keys retrieved
+     * \param[out] num_out number of of keys retrieved
      * \param[in] stream CUDA stream in which this operation is executed in
      */
     HOSTQUALIFIER INLINEQUALIFIER
     void retrieve_all(
         key_type * keys_out,
-        index_type& size_out,
-        cudaStream_t stream = 0) noexcept
+        index_type& num_out,
+        cudaStream_t stream = 0) const noexcept
     {
         if(!is_initialized_) return;
 
@@ -364,7 +378,7 @@ public:
         for_each([=, *this] DEVICEQUALIFIER (key_type key)
         { keys_out[atomicAggInc(tmp)] = key; }, stream);
 
-        cudaMemcpyAsync(&size_out, tmp, sizeof(index_type), D2H);
+        cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H);
 
         if(stream == 0)
         {
@@ -426,7 +440,7 @@ public:
     /*! \brief erases a set of keys from the hash table
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)
      * \param[in] keys_in pointer to keys to erase from the hash table
-     * \param[in] size_in number of keys to erase
+     * \param[in] num_in number of keys to erase
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] probing_length maximum number of probing attempts
      * \param[out] status_out status information (per key)
@@ -435,7 +449,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     void erase(
         key_type * keys_in,
-        index_type size_in,
+        index_type num_in,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
         typename StatusHandler::base_type * status_out = nullptr) noexcept
@@ -443,8 +457,8 @@ public:
         if(!is_initialized_) return;
 
         kernels::erase<HashSet, StatusHandler>
-        <<<SDIV(size_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (keys_in, size_in, probing_length, *this, status_out);
+        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (keys_in, num_in, *this, probing_length, status_out);
     }
 
     /*! \brief applies a funtion on all keys inside the table
@@ -483,7 +497,7 @@ public:
      * \return the number of key/value pairs inside the hash table
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    index_type size(cudaStream_t stream = 0) noexcept
+    index_type size(cudaStream_t stream = 0) const noexcept
     {
         if(!is_initialized_) return 0;
 
@@ -547,7 +561,7 @@ public:
      * \return load factor
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float load_factor(cudaStream_t stream = 0) noexcept
+    float load_factor(cudaStream_t stream = 0) const noexcept
     {
         return float(size(stream)) / float(capacity());
     }
@@ -557,7 +571,7 @@ public:
      * \return storage density
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float storage_density(cudaStream_t stream = 0) noexcept
+    float storage_density(cudaStream_t stream = 0) const noexcept
     {
         return load_factor(stream);
     }
@@ -569,6 +583,15 @@ public:
     index_type capacity() const noexcept
     {
         return capacity_;
+    }
+
+    /*! \brief get the total number of bytes occupied by this data structure
+     *  \return bytes
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type bytes_total() const noexcept
+    {
+        return capacity_ * sizeof(key_type) + temp_.bytes_total() + sizeof(status_type);
     }
 
     /*! \brief get the status of the hash table

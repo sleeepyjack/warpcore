@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-#include <multi_value_hash_table.cuh>
+#include <bucket_list_hash_table.cuh>
 
 int main ()
 {
@@ -10,11 +10,12 @@ int main ()
     using key_t = std::uint32_t;
     using value_t = std::uint32_t;
 
-    using hash_table_t = MultiValueHashTable<
+    using hash_table_t = BucketListHashTable<
         key_t,
         value_t,
         defaults::empty_key<key_t>(),
         defaults::tombstone_key<key_t>(),
+        storage::multi_value::BucketListStore<value_t>,
         defaults::probing_scheme_t<key_t, 8>>;
     using status_t = typename hash_table_t::status_type;
     using status_handler_t = typename status_handlers::ReturnStatus;
@@ -22,12 +23,16 @@ int main ()
     const index_t size_unique_keys = 1UL << 22;
     const index_t size_values_per_key = 8;
     const index_t size = size_unique_keys * size_values_per_key;
-    const float load_factor = 0.8;
+    const float key_load_factor = 0.8;
+    const float value_load_factor = 0.6;
+
+    const index_t key_capacity = float(size_unique_keys) / key_load_factor;
+    const index_t value_capacity = float(size) / value_load_factor;
 
     TIMERSTART(init_table)
-    hash_table_t hash_table((size_unique_keys * size_values_per_key) / load_factor);
-    TIMERSTOP(init_table);
-    cudaDeviceSynchronize(); CUERR
+    hash_table_t hash_table(key_capacity, value_capacity);
+    TIMERSTOP(init_table); CUERR
+    std::cout << hash_table.peek_status() << std::endl;
 
     TIMERSTART(init_data)
     key_t * keys_unique_h = nullptr;
@@ -45,6 +50,8 @@ int main ()
     value_t * values_in_d = nullptr;
     cudaMalloc(&values_in_d, sizeof(value_t) * size); CUERR
 
+    index_t * offsets_out_h = nullptr;
+    cudaMallocHost(&offsets_out_h, sizeof(index_t) * (size_unique_keys+1)); CUERR
     index_t * offsets_out_d = nullptr;
     cudaMalloc(&offsets_out_d, sizeof(index_t) * (size_unique_keys+1)); CUERR
 
@@ -117,13 +124,14 @@ int main ()
         std::cout << "...\n" << "total errors " << errors << std::endl;
     }
 
-    std::cout << "num pairs " << size << std::endl;
-    std::cout << "table size " << hash_table.size() << std::endl;
-    std::cout << "capacity " << hash_table.capacity() << std::endl;
-    std::cout << "load factor " << hash_table.load_factor() << std::endl;
+    std::cout << "capacity keys " << hash_table.key_capacity() << std::endl;
+    std::cout << "capacity values " << hash_table.value_capacity() << std::endl;
     std::cout << "unique keys " << size_unique_keys << std::endl;
     std::cout << "values per key " << size_values_per_key << std::endl;
     std::cout << "total values " << size << std::endl;
+    std::cout << "unique keys in table " << hash_table.num_keys() << std::endl;
+    std::cout << "total values in table " << hash_table.num_values() << std::endl;
+    std::cout << "density " << hash_table.storage_density() << std::endl;
 
     #pragma omp parallel for
     for(index_t i= 0; i < size; ++i)
@@ -194,13 +202,15 @@ int main ()
 
     cudaMemcpy(status_h, status_d, sizeof(status_t)*size, D2H); CUERR
 
-    std::cout << "table status " << hash_table.peek_status() << std::endl;
+    const auto final_status =
+        hash_table.peek_status() - hash_table_t::status_type::dry_run();
+    std::cout << "table status " << final_status << std::endl;
 
     errors = 0;
     for(index_t i = 0; i < size; ++i)
     {
 
-        if(status_h[i].has_any())
+        if(status_h[i].has_any_errors())
         {
             if(errors++ < 10)
                 std::cout << "STATUS: i " << i << " key " << keys_in_h[i] << " status " << status_h[i] << std::endl;
@@ -214,6 +224,7 @@ int main ()
     cudaFreeHost(keys_unique_h);
     cudaFreeHost(keys_in_h);
     cudaFreeHost(values_in_h);
+    cudaFreeHost(offsets_out_h);
     cudaFreeHost(values_out_h);
     cudaFreeHost(status_h);
     cudaFree(keys_unique_d);

@@ -13,7 +13,7 @@ TEMPLATE_TEST_CASE_SIG(
     using storage_t = storage::key_value::SoAStore<Key, Value>;
 
     const index_t capacity = GENERATE(as<index_t>{}, 123456, 42424242, 69696969);
-    
+
     SECTION("constructor")
     {
         storage_t st = storage_t(capacity); CUERR
@@ -30,7 +30,7 @@ TEMPLATE_TEST_CASE_SIG(
         // set pairs
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -39,7 +39,7 @@ TEMPLATE_TEST_CASE_SIG(
                 p.key = Key(tid);
                 p.value = Value(tid);
             }
-        }); 
+        });
 
         index_t * errors = nullptr;
         cudaMallocManaged(&errors, sizeof(index_t)); CUERR
@@ -48,7 +48,7 @@ TEMPLATE_TEST_CASE_SIG(
         // get pairs
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -58,7 +58,7 @@ TEMPLATE_TEST_CASE_SIG(
                     atomicAdd(errors, 1);
                 }
             }
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*errors == 0);
@@ -80,7 +80,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -90,7 +90,7 @@ TEMPLATE_TEST_CASE_SIG(
                     atomicAdd(errors, 1);
                 }
             }
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*errors == 0);
@@ -113,7 +113,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -123,7 +123,7 @@ TEMPLATE_TEST_CASE_SIG(
                     atomicAdd(errors, 1);
                 }
             }
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*errors == 0);
@@ -147,11 +147,11 @@ TEMPLATE_TEST_CASE_SIG(
 
         lambda_kernel
         <<<1, 1>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             atomicCAS(&st[0].key, init, key);
             *error = (st[0].key == key && st[0].value == value) ? false : true;
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*error == false);
@@ -172,7 +172,7 @@ TEMPLATE_TEST_CASE_SIG(
     using storage_t = storage::key_value::AoSStore<Key, Value>;
 
     const index_t capacity = GENERATE(as<index_t>{}, 123456, 42424242, 69696969);
-    
+
     SECTION("constructor")
     {
         storage_t st = storage_t(capacity); CUERR
@@ -189,7 +189,7 @@ TEMPLATE_TEST_CASE_SIG(
         // set pairs
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -198,7 +198,7 @@ TEMPLATE_TEST_CASE_SIG(
                 p.key = Key(tid);
                 p.value = Value(tid);
             }
-        }); 
+        });
 
         index_t * errors = nullptr;
         cudaMallocManaged(&errors, sizeof(index_t)); CUERR
@@ -207,7 +207,7 @@ TEMPLATE_TEST_CASE_SIG(
         // get pairs
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -217,7 +217,7 @@ TEMPLATE_TEST_CASE_SIG(
                     atomicAdd(errors, 1);
                 }
             }
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*errors == 0);
@@ -239,7 +239,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -249,7 +249,7 @@ TEMPLATE_TEST_CASE_SIG(
                     atomicAdd(errors, 1);
                 }
             }
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*errors == 0);
@@ -272,7 +272,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
             if(tid < capacity)
@@ -282,7 +282,7 @@ TEMPLATE_TEST_CASE_SIG(
                     atomicAdd(errors, 1);
                 }
             }
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*errors == 0);
@@ -306,11 +306,11 @@ TEMPLATE_TEST_CASE_SIG(
 
         lambda_kernel
         <<<1, 1>>>
-        ([=] DEVICEQUALIFIER () mutable 
+        ([=] DEVICEQUALIFIER () mutable
         {
             atomicCAS(&st[0].key, init, key);
             *error = (st[0].key == key && st[0].value == value) ? false : true;
-        }); 
+        });
         cudaDeviceSynchronize(); CUERR
 
         CHECK(*error == false);

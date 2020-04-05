@@ -11,6 +11,7 @@ This library provides the following data structures:
 - [`warpcore::CountingHashTable`](include/counting_hash_table.cuh): Keeps track of the number of occurrences of each inserted key.
 - [`warpcore::BloomFilter`](include/bloom_filter.cuh): Pattern-blocked bloom filter for approximate membership queries.
 - [`warpcore::MultiValueHashTable`](include/multi_value_hash_table.cuh): Stores a *multi-set* of key/value pairs.
+- [`warpcore::BucketListHashTable`](include/bucket_list_hash_table.cuh): Alternative variant of `warpcore::MultiValueHashTable`.
 
 warpcore supports key types `std::uint32_t` and `std::uint64_t` together with any trivially copyable value type. In order to be adaptable to a wide range of possible usecases, we provide a multitude of combinable modules such as [hash functions](include/hashers.cuh), [probing schemes](include/probing_schemes.cuh), and [data layouts](include/storage.cuh) (visit the [documentation](https://sleeepyjack.github.io/warpcore/) for further information).
 
