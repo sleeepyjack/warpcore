@@ -1,8 +1,6 @@
 #ifndef WARPCORE_CHECKS_CUH
 #define WARPCORE_CHECKS_CUH
 
-#include "config.cuh"
-
 namespace warpcore
 {
 

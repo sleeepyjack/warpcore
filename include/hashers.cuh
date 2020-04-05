@@ -1,8 +1,6 @@
 #ifndef WARPCORE_HASHERS_CUH
 #define WARPCORE_HASHERS_CUH
 
-#include "config.cuh"
-
 namespace warpcore
 {
 

@@ -1,8 +1,7 @@
 #ifndef WARPCORE_BLOOM_FILTER_CUH
 #define WARPCORE_BLOOM_FILTER_CUH
 
-#include "config.cuh"
-#include "defaults.cuh"
+#include "base.cuh"
 
 namespace warpcore
 {

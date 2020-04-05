@@ -1,9 +1,6 @@
 #ifndef WARPCORE_GPU_ENGINE_CUH
 #define WARPCORE_GPU_ENGINE_CUH
 
-#include "config.cuh"
-#include "status.cuh"
-
 namespace warpcore
 {
 

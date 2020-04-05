@@ -1,21 +1,23 @@
-#ifndef WARPCORE_CONFIG_CUH
-#define WARPCORE_CONFIG_CUH
+#ifndef WARPCORE_BASE_CUH
+#define WARPCORE_BASE_CUH
 
 #include <cstdint>
 #include <algorithm>
 #include <assert.h>
+#include <limits>
 #include <cuda_runtime.h>
 #include <cooperative_groups.h>
 #include "../ext/cudahelpers/cuda_helpers.cuh"
 #include "../ext/cub/cub/cub.cuh"
+#include "../ext/packed_types/include/packed_types.cuh"
 #include "primes.hpp"
 
 namespace warpcore
 {
 
 // compilation constraints
-#if GCC_VERSION < 50400
-    #error gcc/g++ version >= 5.4.0 required
+#if GCC_VERSION < 60300
+    #error g++ version >= 6.3.0 required
 #endif
 
 #if CUDART_VERSION < 10010
@@ -45,5 +47,11 @@ index_t get_valid_capacity(index_t min_capacity, index_t cg_size) noexcept
 
 #include "tags.cuh"
 #include "checks.cuh"
+#include "status.cuh"
+#include "hashers.cuh"
+#include "probing_schemes.cuh"
+#include "storage.cuh"
+#include "defaults.cuh"
+#include "gpu_engine.cuh"
 
-#endif /* WARPCORE_CONFIG_CUH */
+#endif /* WARPCORE_BASE_CUH */

@@ -1,8 +1,7 @@
 #ifndef WARPCORE_SINGLE_VALUE_HASH_TABLE_CUH
 #define WARPCORE_SINGLE_VALUE_HASH_TABLE_CUH
 
-#include "config.cuh"
-#include "defaults.cuh"
+#include "base.cuh"
 
 namespace warpcore
 {

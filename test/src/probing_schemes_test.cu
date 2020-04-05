@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "probing_schemes.cuh"
+#include "base.cuh"
 
 namespace wcps = warpcore::probing_schemes;
 namespace wchs = warpcore::hashers;

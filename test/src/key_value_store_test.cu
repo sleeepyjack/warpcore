@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "storage.cuh"
+#include "base.cuh"
 
 TEMPLATE_TEST_CASE_SIG(
     "SoAStore",

@@ -1,13 +1,6 @@
 #ifndef WARPCORE_DEFAULTS_CUH
 #define WARPCORE_DEFAULTS_CUH
 
-#include "config.cuh"
-#include "gpu_engine.cuh"
-#include "hashers.cuh"
-#include "probing_schemes.cuh"
-#include "status.cuh"
-#include "storage.cuh"
-
 namespace warpcore
 {
 

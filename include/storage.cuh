@@ -1,11 +1,6 @@
 #ifndef WARPCORE_STORAGE_CUH
 #define WARPCORE_STORAGE_CUH
 
-#include "config.cuh"
-#include "status.cuh"
-#include "hashers.cuh"
-#include "../ext/packed_types/include/packed_types.cuh"
-
 namespace warpcore
 {
 

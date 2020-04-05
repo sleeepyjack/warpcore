@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "status.cuh"
+#include "base.cuh"
 
 TEST_CASE("Status", "[status]")
 {

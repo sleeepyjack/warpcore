@@ -1,8 +1,7 @@
 #ifndef WARPCORE_HASH_SET_CUH
 #define WARPCORE_HASH_SET_CUH
 
-#include "config.cuh"
-#include "defaults.cuh"
+#include "base.cuh"
 
 namespace warpcore
 {

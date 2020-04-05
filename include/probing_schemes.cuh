@@ -1,9 +1,6 @@
 #ifndef WARPCORE_PROBING_SCHEMES_CUH
 #define WARPCORE_PROBING_SCHEMES_CUH
 
-#include "config.cuh"
-#include "hashers.cuh"
-
 namespace warpcore
 {
 
