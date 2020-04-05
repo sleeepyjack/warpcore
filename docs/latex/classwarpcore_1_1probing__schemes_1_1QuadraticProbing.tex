@@ -2,7 +2,7 @@
 \label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing}\index{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$@{warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$}}
 
 
-quadratic probing scheme\+: $hash(k,i) = h(k)+i^2$  
+quadratic probing scheme\+: $hash(k,i) = h(k)+\frac{1}{2}\cdot i+\frac{1}{2}\cdot i^2$  
 
 
 \subsection*{Public Types}
@@ -14,8 +14,8 @@ using {\bfseries key\+\_\+type} = typename Hasher\+::key\+\_\+type
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad8b8070e3d75f5480261d0beafbfb80d}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ad8b8070e3d75f5480261d0beafbfb80d}} 
 using {\bfseries index\+\_\+type} = index\+\_\+t
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ac2f8b26473f87a3f6a024b06f67cfe5e}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_ac2f8b26473f87a3f6a024b06f67cfe5e}} 
-using {\bfseries tag} = tags\+::probing\+\_\+scheme\+\_\+tag
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a87e96c598403d572a0858a1755dfba50}\label{classwarpcore_1_1probing__schemes_1_1QuadraticProbing_a87e96c598403d572a0858a1755dfba50}} 
+using {\bfseries tag} = tags\+::probing\+\_\+scheme
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -45,7 +45,7 @@ static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{class
 \subsubsection*{template$<$class Hasher, index\+\_\+t C\+G\+Size = 1$>$\newline
 class warpcore\+::probing\+\_\+schemes\+::\+Quadratic\+Probing$<$ Hasher, C\+G\+Size $>$}
 
-quadratic probing scheme\+: $hash(k,i) = h(k)+i^2$ 
+quadratic probing scheme\+: $hash(k,i) = h(k)+\frac{1}{2}\cdot i+\frac{1}{2}\cdot i^2$ 
 
 
 \begin{DoxyTemplParams}{Template Parameters}

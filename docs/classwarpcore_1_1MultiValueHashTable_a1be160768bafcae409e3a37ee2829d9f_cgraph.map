@@ -1,0 +1,4 @@
+<map id="warpcore::MultiValueHashTable::size" name="warpcore::MultiValueHashTable::size">
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer " alt="" coords="248,5,383,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table " alt="" coords="228,71,403,112"/>
+</map>

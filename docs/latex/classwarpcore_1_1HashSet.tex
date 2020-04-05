@@ -29,32 +29,36 @@ using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_a5419d12a6675f108bcda8a03580ee67c}\label{classwarpcore_1_1HashSet_a5419d12a6675f108bcda8a03580ee67c}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1HashSet_a5419d12a6675f108bcda8a03580ee67c}{$\sim$\+Hash\+Set} () noexcept
 \begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a3768b1e7daa39cff5bc2bcac38d51b2e}{init} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em re-\/initialize the hash set \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a6654bf5c2c17b0676d6fd4867fa991cd}{init} (const key\+\_\+type seed, const cuda\+Stream\+\_\+t stream=0) noexcept
+\begin{DoxyCompactList}\small\item\em (re)initialize the hash set \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_ae21bfb96f28d7b097841d6a6874c16d5}{init} (const cuda\+Stream\+\_\+t stream=0) noexcept
+\begin{DoxyCompactList}\small\item\em (re)initialize the hash set \end{DoxyCompactList}\item 
 \+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{Status} \hyperlink{classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54}{insert} (key\+\_\+type key\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1HashSet_a0906259ae0be4a4f6f9ba74b4874e542}{cg\+\_\+size}()$>$ \&group, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) noexcept
 \begin{DoxyCompactList}\small\item\em inserts a key into the hash set \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a126cbcc9e5354c545dcc900efa3a2949}{insert} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type size\+\_\+in, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) noexcept
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26}{insert} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type num\+\_\+in, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) noexcept
 \begin{DoxyCompactList}\small\item\em insert a set of keys into the hash set \end{DoxyCompactList}\item 
 \+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{Status} \hyperlink{classwarpcore_1_1HashSet_a3be33bdea6aabe4075b7e6f9a3741021}{retrieve} (Key key\+\_\+in, bool \&flag\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1HashSet_a0906259ae0be4a4f6f9ba74b4874e542}{cg\+\_\+size}()$>$ \&group, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieves a key from the hash set \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a717410da394a39128634784211bc644f}{retrieve} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type size\+\_\+in, bool $\ast$flags\+\_\+out, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) const noexcept
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a}{retrieve} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type num\+\_\+in, bool $\ast$flags\+\_\+out, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieve a set of keys from the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a65e1b3433df8a596bca8bbd0b084f804}{retrieve\+\_\+all} (key\+\_\+type $\ast$keys\+\_\+out, index\+\_\+type \&size\+\_\+out, cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a6a178adc0aac5636950e84134bc851cc}{retrieve\+\_\+all} (key\+\_\+type $\ast$keys\+\_\+out, index\+\_\+type \&num\+\_\+out, cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieves all elements from the hash set \end{DoxyCompactList}\item 
 \+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{Status} \hyperlink{classwarpcore_1_1HashSet_a255b77ba7f1ba8a1faabddfd92ae976c}{erase} (key\+\_\+type key\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1HashSet_a0906259ae0be4a4f6f9ba74b4874e542}{cg\+\_\+size}()$>$ \&group, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) noexcept
 \begin{DoxyCompactList}\small\item\em erases a key from the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a696bf66d7c677937294ee52254b72c95}{erase} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type size\+\_\+in, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) noexcept
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a0480bc6e9197ccc13a50155d830adfb4}{erase} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type num\+\_\+in, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) noexcept
 \begin{DoxyCompactList}\small\item\em erases a set of keys from the hash table \end{DoxyCompactList}\item 
 {\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet_a8719aee40fca90a39085ac0253bbdd01}{for\+\_\+each} (Func f, cuda\+Stream\+\_\+t stream=0, index\+\_\+type smem\+\_\+bytes=0) const noexcept
 \begin{DoxyCompactList}\small\item\em applies a funtion on all keys inside the table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet_a7b1967bd8986a3bbebdfca54c461cae6}{size} (cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet_a06649688aa7e9f6538965f1dec18c82b}{size} (cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em number of key/value pairs stored inside the hash set \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet_a986019ba68d32cd8270d34e106f12c9a}{load\+\_\+factor} (cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet_a7ad4ad097ae0e332c4f24d867e6c411f}{load\+\_\+factor} (cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em current load factor of the hash set \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet_a11adf7a98c8686f220f2f556a810a211}{storage\+\_\+density} (cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet_a178dec74a9404d6b89f37febec381dca}{storage\+\_\+density} (cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em current storage density of the hash set \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet_a6edef2d260c214f294b61bb394a11545}{capacity} () const noexcept
 \begin{DoxyCompactList}\small\item\em get the capacity of the hash table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet_a64aa9503fa5719a2d91bf9ecf2aa3cdc}{bytes\+\_\+total} () const noexcept
+\begin{DoxyCompactList}\small\item\em get the total number of bytes occupied by this data structure \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{Status} \hyperlink{classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd}{peek\+\_\+status} (cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the status of the hash table \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{Status} \hyperlink{classwarpcore_1_1HashSet_ae9a6c692c64bbc40bb6abd3372b946d1}{pop\+\_\+status} (cuda\+Stream\+\_\+t stream=0) noexcept
@@ -161,6 +165,28 @@ move-\/constructor
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a64aa9503fa5719a2d91bf9ecf2aa3cdc}\label{classwarpcore_1_1HashSet_a64aa9503fa5719a2d91bf9ecf2aa3cdc}} 
+\index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!bytes\+\_\+total@{bytes\+\_\+total}}
+\index{bytes\+\_\+total@{bytes\+\_\+total}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
+\subsubsection{\texorpdfstring{bytes\+\_\+total()}{bytes\_total()}}
+{\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get the total number of bytes occupied by this data structure 
+
+\begin{DoxyReturn}{Returns}
+bytes 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classwarpcore_1_1HashSet_a64aa9503fa5719a2d91bf9ecf2aa3cdc_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_a6edef2d260c214f294b61bb394a11545}\label{classwarpcore_1_1HashSet_a6edef2d260c214f294b61bb394a11545}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!capacity@{capacity}}
 \index{capacity@{capacity}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
@@ -258,13 +284,13 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1HashSet_a255b77ba7f1ba8a1faabddfd92ae976c_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a696bf66d7c677937294ee52254b72c95}\label{classwarpcore_1_1HashSet_a696bf66d7c677937294ee52254b72c95}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a0480bc6e9197ccc13a50155d830adfb4}\label{classwarpcore_1_1HashSet_a0480bc6e9197ccc13a50155d830adfb4}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!erase@{erase}}
 \index{erase@{erase}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::erase (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{size\+\_\+in,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::erase (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{num\+\_\+in,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -279,7 +305,7 @@ erases a set of keys from the hash table
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to erase from the hash table \\
 \hline
-\mbox{\tt in}  & {\em size\+\_\+in} & number of keys to erase \\
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to erase \\
 \hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
@@ -293,7 +319,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a696bf66d7c677937294ee52254b72c95_cgraph}
+\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a0480bc6e9197ccc13a50155d830adfb4_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_a8719aee40fca90a39085ac0253bbdd01}\label{classwarpcore_1_1HashSet_a8719aee40fca90a39085ac0253bbdd01}} 
@@ -338,19 +364,21 @@ Here is the caller graph for this function\+:
 \includegraphics[width=330pt]{classwarpcore_1_1HashSet_a8719aee40fca90a39085ac0253bbdd01_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a3768b1e7daa39cff5bc2bcac38d51b2e}\label{classwarpcore_1_1HashSet_a3768b1e7daa39cff5bc2bcac38d51b2e}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a6654bf5c2c17b0676d6fd4867fa991cd}\label{classwarpcore_1_1HashSet_a6654bf5c2c17b0676d6fd4867fa991cd}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!init@{init}}
 \index{init@{init}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
-\subsubsection{\texorpdfstring{init()}{init()}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::init (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::init (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{seed,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-re-\/initialize the hash set 
+(re)initialize the hash set 
 
 
 \begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em seed} & random seed \\
+\hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
@@ -359,7 +387,31 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=342pt]{classwarpcore_1_1HashSet_a3768b1e7daa39cff5bc2bcac38d51b2e_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a6654bf5c2c17b0676d6fd4867fa991cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_ae21bfb96f28d7b097841d6a6874c16d5}\label{classwarpcore_1_1HashSet_ae21bfb96f28d7b097841d6a6874c16d5}} 
+\index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!init@{init}}
+\index{init@{init}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
+\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+(re)initialize the hash set 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_ae21bfb96f28d7b097841d6a6874c16d5_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54}\label{classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54}} 
@@ -393,13 +445,21 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a126cbcc9e5354c545dcc900efa3a2949}\label{classwarpcore_1_1HashSet_a126cbcc9e5354c545dcc900efa3a2949}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26}\label{classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!insert@{insert}}
 \index{insert@{insert}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::insert (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{size\+\_\+in,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::insert (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{num\+\_\+in,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -414,7 +474,7 @@ insert a set of keys into the hash set
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to insert into the hash set \\
 \hline
-\mbox{\tt in}  & {\em size\+\_\+in} & number of keys to insert \\
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to insert \\
 \hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
@@ -428,7 +488,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a126cbcc9e5354c545dcc900efa3a2949_cgraph}
+\includegraphics[width=330pt]{classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_ac1b20d9d5305bbd8e7fca93aa580c984}\label{classwarpcore_1_1HashSet_ac1b20d9d5305bbd8e7fca93aa580c984}} 
@@ -480,7 +540,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classwarpcore_1_1HashSet_ade9bc606ceba67c90aac5ee3aa43ddc7_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_ade9bc606ceba67c90aac5ee3aa43ddc7_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_a74f48068d148b071761b1c214501770a}\label{classwarpcore_1_1HashSet_a74f48068d148b071761b1c214501770a}} 
@@ -535,12 +595,12 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1HashSet_a529de8c2b747588ef825661ba12b4c25_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a986019ba68d32cd8270d34e106f12c9a}\label{classwarpcore_1_1HashSet_a986019ba68d32cd8270d34e106f12c9a}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a7ad4ad097ae0e332c4f24d867e6c411f}\label{classwarpcore_1_1HashSet_a7ad4ad097ae0e332c4f24d867e6c411f}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!load\+\_\+factor@{load\+\_\+factor}}
 \index{load\+\_\+factor@{load\+\_\+factor}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{load\+\_\+factor()}{load\_factor()}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::load\+\_\+factor (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::load\+\_\+factor (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -559,7 +619,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a986019ba68d32cd8270d34e106f12c9a_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a7ad4ad097ae0e332c4f24d867e6c411f_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -567,7 +627,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a986019ba68d32cd8270d34e106f12c9a_icgraph}
+\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a7ad4ad097ae0e332c4f24d867e6c411f_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd}\label{classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd}} 
@@ -594,7 +654,7 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_ae9a6c692c64bbc40bb6abd3372b946d1}\label{classwarpcore_1_1HashSet_ae9a6c692c64bbc40bb6abd3372b946d1}} 
@@ -649,13 +709,13 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1HashSet_a3be33bdea6aabe4075b7e6f9a3741021_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a717410da394a39128634784211bc644f}\label{classwarpcore_1_1HashSet_a717410da394a39128634784211bc644f}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a}\label{classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!retrieve@{retrieve}}
 \index{retrieve@{retrieve}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::retrieve (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{size\+\_\+in,  }\item[{bool $\ast$}]{flags\+\_\+out,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::retrieve (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{num\+\_\+in,  }\item[{bool $\ast$}]{flags\+\_\+out,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -670,7 +730,7 @@ retrieve a set of keys from the hash table
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to retrieve from the hash table \\
 \hline
-\mbox{\tt in}  & {\em size\+\_\+in} & number of keys to retrieve \\
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to retrieve \\
 \hline
 \mbox{\tt out}  & {\em flags\+\_\+out} & flags membership of {\ttfamily keys\+\_\+in} in the set \\
 \hline
@@ -686,15 +746,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a717410da394a39128634784211bc644f_cgraph}
+\includegraphics[width=330pt]{classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a65e1b3433df8a596bca8bbd0b084f804}\label{classwarpcore_1_1HashSet_a65e1b3433df8a596bca8bbd0b084f804}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a6a178adc0aac5636950e84134bc851cc}\label{classwarpcore_1_1HashSet_a6a178adc0aac5636950e84134bc851cc}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!retrieve\+\_\+all@{retrieve\+\_\+all}}
 \index{retrieve\+\_\+all@{retrieve\+\_\+all}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{retrieve\+\_\+all()}{retrieve\_all()}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::retrieve\+\_\+all (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{size\+\_\+out,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::retrieve\+\_\+all (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -704,7 +764,7 @@ retrieves all elements from the hash set
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em keys\+\_\+out} & location to store all retrieved keys \\
 \hline
-\mbox{\tt out}  & {\em size\+\_\+out} & number of of keys retrieved \\
+\mbox{\tt out}  & {\em num\+\_\+out} & number of of keys retrieved \\
 \hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
@@ -714,15 +774,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a65e1b3433df8a596bca8bbd0b084f804_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a6a178adc0aac5636950e84134bc851cc_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a7b1967bd8986a3bbebdfca54c461cae6}\label{classwarpcore_1_1HashSet_a7b1967bd8986a3bbebdfca54c461cae6}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a06649688aa7e9f6538965f1dec18c82b}\label{classwarpcore_1_1HashSet_a06649688aa7e9f6538965f1dec18c82b}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!size@{size}}
 \index{size@{size}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{size()}{size()}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::size (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::size (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -736,7 +796,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a7b1967bd8986a3bbebdfca54c461cae6_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a06649688aa7e9f6538965f1dec18c82b_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -744,15 +804,15 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a7b1967bd8986a3bbebdfca54c461cae6_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a06649688aa7e9f6538965f1dec18c82b_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1HashSet_a11adf7a98c8686f220f2f556a810a211}\label{classwarpcore_1_1HashSet_a11adf7a98c8686f220f2f556a810a211}} 
+\mbox{\Hypertarget{classwarpcore_1_1HashSet_a178dec74a9404d6b89f37febec381dca}\label{classwarpcore_1_1HashSet_a178dec74a9404d6b89f37febec381dca}} 
 \index{warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}!storage\+\_\+density@{storage\+\_\+density}}
 \index{storage\+\_\+density@{storage\+\_\+density}!warpcore\+::\+Hash\+Set@{warpcore\+::\+Hash\+Set}}
 \subsubsection{\texorpdfstring{storage\+\_\+density()}{storage\_density()}}
 {\footnotesize\ttfamily template$<$class Key , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 16$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::storage\+\_\+density (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Temp\+Memory\+Bytes $>$\+::storage\+\_\+density (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -771,7 +831,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a11adf7a98c8686f220f2f556a810a211_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1HashSet_a178dec74a9404d6b89f37febec381dca_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1HashSet_af11b7b19315de5409098eaeb31702c63}\label{classwarpcore_1_1HashSet_af11b7b19315de5409098eaeb31702c63}} 

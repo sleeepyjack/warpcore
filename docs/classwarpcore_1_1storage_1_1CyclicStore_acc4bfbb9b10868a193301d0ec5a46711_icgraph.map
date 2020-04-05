@@ -1,6 +1,6 @@
 <map id="warpcore::storage::CyclicStore::capacity" name="warpcore::storage::CyclicStore::capacity">
-<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#a90547b0e8e7f2d2bf4ca54ecbebeff6c" title="constructor " alt="" coords="215,5,380,61"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#ada33178712cdc4a96ff1dee1b3a9e624" title="constructor " alt="" coords="225,85,370,141"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#af99150a303902380688e35c914f01431" title="constructor " alt="" coords="224,166,371,237"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore.html#ab9e38febbac249da5662580311a76f06" title="get load factor " alt="" coords="200,261,395,317"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#aca834b00d59e653c092db712ca7eb7a0" title="constructor " alt="" coords="212,5,377,61"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a4dc140aa67de81f7bdff2bc16f6a1b8b" title="constructor " alt="" coords="222,85,367,141"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#a4ab568a9090dfe80c989ba7d88173010" title="constructor " alt="" coords="221,166,368,237"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#a195a0df8c935bf26300d2939cbd04b0f" title="get load factor " alt="" coords="200,261,389,317"/>
 </map>

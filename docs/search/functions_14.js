@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['value_5fcapacity',['value_capacity',['../classwarpcore_1_1MultiValueHashTable.html#a5e5959606f5446959d56758b957626fa',1,'warpcore::MultiValueHashTable']]],
-  ['value_5fcounter_5fbits',['value_counter_bits',['../classwarpcore_1_1storage_1_1multi__value_1_1StaticSlabListStore.html#a2b1e5bb9b69d35c4730f720ecc4549c9',1,'warpcore::storage::multi_value::StaticSlabListStore::value_counter_bits()'],['../classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore.html#aff75cc3f371c2b31b569ff585f9ac900',1,'warpcore::storage::multi_value::DynamicSlabListStore::value_counter_bits()']]],
-  ['value_5fload_5ffactor',['value_load_factor',['../classwarpcore_1_1MultiValueHashTable.html#ad5ae5724768b34c344c95d7b4b736ab3',1,'warpcore::MultiValueHashTable']]],
-  ['value_5fto_5fheader_5fratio',['value_to_header_ratio',['../classwarpcore_1_1MultiValueHashTable.html#a431ef6fae4419af72cf565430abbf7b6',1,'warpcore::MultiValueHashTable']]]
+  ['value_5fcapacity',['value_capacity',['../classwarpcore_1_1BucketListHashTable.html#a7777451fb2e8d4016f5baf2a0d22ced0',1,'warpcore::BucketListHashTable']]],
+  ['value_5fcounter_5fbits',['value_counter_bits',['../classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#ad3b1f4fe9309268bf115ea5f86a0e8d8',1,'warpcore::storage::multi_value::BucketListStore']]],
+  ['value_5fload_5ffactor',['value_load_factor',['../classwarpcore_1_1BucketListHashTable.html#a710d3038814c3db16ac5b1fa4df84204',1,'warpcore::BucketListHashTable']]]
 ];

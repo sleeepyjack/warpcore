@@ -20,13 +20,13 @@ using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a218527a05fc4e0f11c96004726cedf7a}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a218527a05fc4e0f11c96004726cedf7a}} 
 using {\bfseries index\+\_\+type} = index\+\_\+t
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a0dd7578cfd17589dac56e17249ca0224}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a0dd7578cfd17589dac56e17249ca0224}} 
-using {\bfseries tag} = tags\+::key\+\_\+value\+\_\+storage\+\_\+tag
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a7e9e973b44e42f9e8b9bb57587b4d33a}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a7e9e973b44e42f9e8b9bb57587b4d33a}} 
+using {\bfseries tag} = tags\+::key\+\_\+value\+\_\+storage
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624}{So\+A\+Store} (index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a2ae1c90988d891741861e6e6d571ec00}{capacity}) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b}{So\+A\+Store} (const index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a2ae1c90988d891741861e6e6d571ec00}{capacity}) noexcept
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_afa42ed6e282fadc26ebbc583617978f4}{So\+A\+Store} (const \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{So\+A\+Store} \&o) noexcept
 \begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
@@ -35,20 +35,22 @@ using {\bfseries tag} = tags\+::key\+\_\+value\+\_\+storage\+\_\+tag
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ae55577a94a59de733f3d377024beeb92}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ae55577a94a59de733f3d377024beeb92}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ae55577a94a59de733f3d377024beeb92}{$\sim$\+So\+A\+Store} () noexcept
 \begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4e2cbadf289a8f38bf81aa7e01190f9f}{init\+\_\+keys} (key\+\_\+type key, cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a7de9b497084433d27ae6ac63745ba541}{init\+\_\+keys} (const key\+\_\+type key, const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em initialize keys \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_af436501d6e623ed9196e5e1f1f55f689}{init\+\_\+values} (value\+\_\+type value, cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a59dff9eee0d6a58160c4f9a4350e5f9c}{init\+\_\+values} (const value\+\_\+type value, const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em initialize values \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a1b41f73f6fb6df50a7262466f05e5c02}{init\+\_\+pairs} (key\+\_\+type key, value\+\_\+type value, cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a564d505e541f36b9b9088fc25f625c52}{init\+\_\+pairs} (const key\+\_\+type key, const value\+\_\+type value, const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em initialize key/value pairs \end{DoxyCompactList}\item 
 \+\_\+\+\_\+device\+\_\+\+\_\+ detail\+::pair\+\_\+ref\+\_\+t$<$ key\+\_\+type, value\+\_\+type $>$ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a0ffce52b3ad4d09f6709f3731c79fb3e}{operator\mbox{[}$\,$\mbox{]}} (index\+\_\+type i) noexcept
 \begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ detail\+::pair\+\_\+const\+\_\+ref\+\_\+t$<$ key\+\_\+type, value\+\_\+type $>$ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a0ffbe21819280b32a78ad98dd8a7dd43}{operator\mbox{[}$\,$\mbox{]}} (index\+\_\+type i) const noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ detail\+::pair\+\_\+const\+\_\+ref\+\_\+t$<$ key\+\_\+type, value\+\_\+type $>$ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a8167ef32ca834fb530cf787a83a493d3}{operator\mbox{[}$\,$\mbox{]}} (const index\+\_\+type i) const noexcept
 \begin{DoxyCompactList}\small\item\em const accessor \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_afe3a33107f19d895ed0aa78bfedd2de0}{status} () const noexcept
 \begin{DoxyCompactList}\small\item\em get storage status \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a2ae1c90988d891741861e6e6d571ec00}{capacity} () const noexcept
-\begin{DoxyCompactList}\small\item\em get storage capacity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get storage capacity \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ae0dcf0801cbe4d994f9bb385e51d02b7}{bytes\+\_\+total} () const noexcept
+\begin{DoxyCompactList}\small\item\em get the total number of bytes occupied by this data structure \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -67,12 +69,12 @@ key/value store with struct-\/of-\/arrays memory layout
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b}} 
 \index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!So\+A\+Store@{So\+A\+Store}}
 \index{So\+A\+Store@{So\+A\+Store}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
 \subsubsection{\texorpdfstring{So\+A\+Store()}{SoAStore()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Value $>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::\hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{So\+A\+Store} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::\hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{So\+A\+Store} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{capacity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -88,7 +90,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=335pt]{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624_cgraph}
+\includegraphics[width=335pt]{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_afa42ed6e282fadc26ebbc583617978f4}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_afa42ed6e282fadc26ebbc583617978f4}} 
@@ -126,6 +128,20 @@ move-\/constructor
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ae0dcf0801cbe4d994f9bb385e51d02b7}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ae0dcf0801cbe4d994f9bb385e51d02b7}} 
+\index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!bytes\+\_\+total@{bytes\+\_\+total}}
+\index{bytes\+\_\+total@{bytes\+\_\+total}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
+\subsubsection{\texorpdfstring{bytes\+\_\+total()}{bytes\_total()}}
+{\footnotesize\ttfamily template$<$class Key , class Value $>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get the total number of bytes occupied by this data structure 
+
+\begin{DoxyReturn}{Returns}
+bytes 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a2ae1c90988d891741861e6e6d571ec00}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a2ae1c90988d891741861e6e6d571ec00}} 
 \index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!capacity@{capacity}}
 \index{capacity@{capacity}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
@@ -140,12 +156,12 @@ get storage capacity
 \begin{DoxyReturn}{Returns}
 capacity 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4e2cbadf289a8f38bf81aa7e01190f9f}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4e2cbadf289a8f38bf81aa7e01190f9f}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a7de9b497084433d27ae6ac63745ba541}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a7de9b497084433d27ae6ac63745ba541}} 
 \index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!init\+\_\+keys@{init\+\_\+keys}}
 \index{init\+\_\+keys@{init\+\_\+keys}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
 \subsubsection{\texorpdfstring{init\+\_\+keys()}{init\_keys()}}
 {\footnotesize\ttfamily template$<$class Key , class Value $>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::init\+\_\+keys (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::init\+\_\+keys (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -158,12 +174,12 @@ initialize keys
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a1b41f73f6fb6df50a7262466f05e5c02}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a1b41f73f6fb6df50a7262466f05e5c02}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a564d505e541f36b9b9088fc25f625c52}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a564d505e541f36b9b9088fc25f625c52}} 
 \index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!init\+\_\+pairs@{init\+\_\+pairs}}
 \index{init\+\_\+pairs@{init\+\_\+pairs}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
 \subsubsection{\texorpdfstring{init\+\_\+pairs()}{init\_pairs()}}
 {\footnotesize\ttfamily template$<$class Key , class Value $>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::init\+\_\+pairs (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{value\+\_\+type}]{value,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::init\+\_\+pairs (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const value\+\_\+type}]{value,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -178,12 +194,12 @@ initialize key/value pairs
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_af436501d6e623ed9196e5e1f1f55f689}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_af436501d6e623ed9196e5e1f1f55f689}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a59dff9eee0d6a58160c4f9a4350e5f9c}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a59dff9eee0d6a58160c4f9a4350e5f9c}} 
 \index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!init\+\_\+values@{init\+\_\+values}}
 \index{init\+\_\+values@{init\+\_\+values}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
 \subsubsection{\texorpdfstring{init\+\_\+values()}{init\_values()}}
 {\footnotesize\ttfamily template$<$class Key , class Value $>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::init\+\_\+values (\begin{DoxyParamCaption}\item[{value\+\_\+type}]{value,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::init\+\_\+values (\begin{DoxyParamCaption}\item[{const value\+\_\+type}]{value,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -215,12 +231,12 @@ accessor
 \begin{DoxyReturn}{Returns}
 pair at position {\ttfamily i} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a0ffbe21819280b32a78ad98dd8a7dd43}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a0ffbe21819280b32a78ad98dd8a7dd43}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a8167ef32ca834fb530cf787a83a493d3}\label{classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a8167ef32ca834fb530cf787a83a493d3}} 
 \index{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store@{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}}
 \subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Value $>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ detail\+::pair\+\_\+const\+\_\+ref\+\_\+t$<$key\+\_\+type, value\+\_\+type$>$ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ detail\+::pair\+\_\+const\+\_\+ref\+\_\+t$<$key\+\_\+type, value\+\_\+type$>$ \hyperlink{classwarpcore_1_1storage_1_1key__value_1_1SoAStore}{warpcore\+::storage\+::key\+\_\+value\+::\+So\+A\+Store}$<$ Key, Value $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

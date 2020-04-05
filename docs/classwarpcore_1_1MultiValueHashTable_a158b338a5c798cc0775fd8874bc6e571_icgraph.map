@@ -1,5 +1,0 @@
-<map id="warpcore::MultiValueHashTable::bytes_values" name="warpcore::MultiValueHashTable::bytes_values">
-<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#a977baa47c1b37eeeb591dd13d76d184a" title="get the the number of bytes in this data structure occupied by actual information ..." alt="" coords="235,5,410,47"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#a431ef6fae4419af72cf565430abbf7b6" title="get the ratio between actual payload bytes and occupied bytes inside the value store ..." alt="" coords="228,71,417,112"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#ab8731334f269b625d8fea853f81c05b4" title="current storage density of the hash table " alt="" coords="465,5,640,47"/>
-</map>

@@ -96,9 +96,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>status_type</b> = <a
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0050427179ed9b718800a42f9eeedb36"><td class="memItemLeft" align="right" valign="top">__host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a0050427179ed9b718800a42f9eeedb36">BloomFilter</a> (index_type <a class="el" href="classwarpcore_1_1BloomFilter.html#a54a25926cf770e834c47ad5164e91443">num_bits</a>, index_type <a class="el" href="classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3">k</a>, key_type seed=defaults::seed&lt; key_type &gt;()) noexcept</td></tr>
-<tr class="memdesc:a0050427179ed9b718800a42f9eeedb36"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="#a0050427179ed9b718800a42f9eeedb36">More...</a><br /></td></tr>
-<tr class="separator:a0050427179ed9b718800a42f9eeedb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1dee90908f026b0a7c2e60794145f2d"><td class="memItemLeft" align="right" valign="top">__host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#af1dee90908f026b0a7c2e60794145f2d">BloomFilter</a> (const index_type <a class="el" href="classwarpcore_1_1BloomFilter.html#a54a25926cf770e834c47ad5164e91443">num_bits</a>, const index_type <a class="el" href="classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3">k</a>, const key_type seed=defaults::seed&lt; key_type &gt;()) noexcept</td></tr>
+<tr class="memdesc:af1dee90908f026b0a7c2e60794145f2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="#af1dee90908f026b0a7c2e60794145f2d">More...</a><br /></td></tr>
+<tr class="separator:af1dee90908f026b0a7c2e60794145f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a883979f0bdf59e494c366eef343ea7b4"><td class="memItemLeft" align="right" valign="top">__host____device__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a883979f0bdf59e494c366eef343ea7b4">BloomFilter</a> (const <a class="el" href="classwarpcore_1_1BloomFilter.html">BloomFilter</a> &amp;o) noexcept</td></tr>
 <tr class="memdesc:a883979f0bdf59e494c366eef343ea7b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy-constructor (shallow)  <a href="#a883979f0bdf59e494c366eef343ea7b4">More...</a><br /></td></tr>
 <tr class="separator:a883979f0bdf59e494c366eef343ea7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,25 +109,28 @@ Public Member Functions</h2></td></tr>
 __host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a43381c51633999d04e0002c32885e3b7">~BloomFilter</a> () noexcept</td></tr>
 <tr class="memdesc:a43381c51633999d04e0002c32885e3b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor <br /></td></tr>
 <tr class="separator:a43381c51633999d04e0002c32885e3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e663f21e94822fc214b75c623436f5"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#ac9e663f21e94822fc214b75c623436f5">init</a> (cudaStream_t stream=0) noexcept</td></tr>
-<tr class="memdesc:ac9e663f21e94822fc214b75c623436f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">re-initialize the hash table  <a href="#ac9e663f21e94822fc214b75c623436f5">More...</a><br /></td></tr>
-<tr class="separator:ac9e663f21e94822fc214b75c623436f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8567325cd30886f3daf2c615a35bb02e"><td class="memItemLeft" align="right" valign="top">__device__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e">insert</a> (key_type key, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904">cg_size</a>()&gt; &amp;group) noexcept</td></tr>
-<tr class="memdesc:a8567325cd30886f3daf2c615a35bb02e"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts a key into the bloom filter  <a href="#a8567325cd30886f3daf2c615a35bb02e">More...</a><br /></td></tr>
-<tr class="separator:a8567325cd30886f3daf2c615a35bb02e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a462859be5ed949c82d37909b139271ee"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a462859be5ed949c82d37909b139271ee">insert</a> (Key *keys_in, index_t size_in, cudaStream_t stream=0) noexcept</td></tr>
-<tr class="memdesc:a462859be5ed949c82d37909b139271ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts a set of keys into the bloom filter  <a href="#a462859be5ed949c82d37909b139271ee">More...</a><br /></td></tr>
-<tr class="separator:a462859be5ed949c82d37909b139271ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47ffce0fc70aa6bd7a0ed4b837fec1bd"><td class="memItemLeft" align="right" valign="top">__device__ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a47ffce0fc70aa6bd7a0ed4b837fec1bd">retrieve</a> (key_type key, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904">cg_size</a>()&gt; &amp;group) const noexcept</td></tr>
-<tr class="memdesc:a47ffce0fc70aa6bd7a0ed4b837fec1bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a key  <a href="#a47ffce0fc70aa6bd7a0ed4b837fec1bd">More...</a><br /></td></tr>
-<tr class="separator:a47ffce0fc70aa6bd7a0ed4b837fec1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38025d88272e7de413210efe745aa279"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a38025d88272e7de413210efe745aa279">retrieve</a> (key_type *keys_in, index_type size_in, bool *flags_out, cudaStream_t stream=0) const noexcept</td></tr>
-<tr class="memdesc:a38025d88272e7de413210efe745aa279"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a set of keys  <a href="#a38025d88272e7de413210efe745aa279">More...</a><br /></td></tr>
-<tr class="separator:a38025d88272e7de413210efe745aa279"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dc903341218173f276cc855ba683ad1"><td class="memTemplParams" colspan="2">template&lt;index_type CGSize_ = cg_size(), class  = std::enable_if_t&lt;CGSize_ == 1&gt;&gt; </td></tr>
-<tr class="memitem:a6dc903341218173f276cc855ba683ad1"><td class="memTemplItemLeft" align="right" valign="top">__device__ bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1">insert_and_query</a> (key_type key, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904">cg_size</a>()&gt; &amp;group) noexcept</td></tr>
-<tr class="memdesc:a6dc903341218173f276cc855ba683ad1"><td class="mdescLeft">&#160;</td><td class="mdescRight">queries and subsequently inserts a key into the bloom filter  <a href="#a6dc903341218173f276cc855ba683ad1">More...</a><br /></td></tr>
-<tr class="separator:a6dc903341218173f276cc855ba683ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f713802c324b840918111857976755e"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a5f713802c324b840918111857976755e">init</a> (const key_type seed, const cudaStream_t stream=0) noexcept</td></tr>
+<tr class="memdesc:a5f713802c324b840918111857976755e"><td class="mdescLeft">&#160;</td><td class="mdescRight">(re)initialize the hash table  <a href="#a5f713802c324b840918111857976755e">More...</a><br /></td></tr>
+<tr class="separator:a5f713802c324b840918111857976755e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d24a1ae65b9a798107bd936989bf40"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a33d24a1ae65b9a798107bd936989bf40">init</a> (const cudaStream_t stream=0) noexcept</td></tr>
+<tr class="memdesc:a33d24a1ae65b9a798107bd936989bf40"><td class="mdescLeft">&#160;</td><td class="mdescRight">(re)initialize the hash table  <a href="#a33d24a1ae65b9a798107bd936989bf40">More...</a><br /></td></tr>
+<tr class="separator:a33d24a1ae65b9a798107bd936989bf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3151a938a8248df22adbdefd63b8e0"><td class="memItemLeft" align="right" valign="top">__device__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0">insert</a> (const key_type key, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904">cg_size</a>()&gt; &amp;group) noexcept</td></tr>
+<tr class="memdesc:a4b3151a938a8248df22adbdefd63b8e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts a key into the bloom filter  <a href="#a4b3151a938a8248df22adbdefd63b8e0">More...</a><br /></td></tr>
+<tr class="separator:a4b3151a938a8248df22adbdefd63b8e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af00ab507c80a4cc717d5e08238f5a586"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#af00ab507c80a4cc717d5e08238f5a586">insert</a> (const Key *const keys_in, const index_t num_in, const cudaStream_t stream=0) noexcept</td></tr>
+<tr class="memdesc:af00ab507c80a4cc717d5e08238f5a586"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts a set of keys into the bloom filter  <a href="#af00ab507c80a4cc717d5e08238f5a586">More...</a><br /></td></tr>
+<tr class="separator:af00ab507c80a4cc717d5e08238f5a586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2621ee746d6a2ba6a0bed2ca3946aaa"><td class="memItemLeft" align="right" valign="top">__device__ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa">retrieve</a> (const key_type key, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904">cg_size</a>()&gt; &amp;group) const noexcept</td></tr>
+<tr class="memdesc:ad2621ee746d6a2ba6a0bed2ca3946aaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a key  <a href="#ad2621ee746d6a2ba6a0bed2ca3946aaa">More...</a><br /></td></tr>
+<tr class="separator:ad2621ee746d6a2ba6a0bed2ca3946aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d69ae905baf6e218e508e8d8225afb"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#ae5d69ae905baf6e218e508e8d8225afb">retrieve</a> (const key_type *const keys_in, const index_type num_in, bool *const flags_out, const cudaStream_t stream=0) const noexcept</td></tr>
+<tr class="memdesc:ae5d69ae905baf6e218e508e8d8225afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a set of keys  <a href="#ae5d69ae905baf6e218e508e8d8225afb">More...</a><br /></td></tr>
+<tr class="separator:ae5d69ae905baf6e218e508e8d8225afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afee625443b9351a88bc182386ca970a3"><td class="memTemplParams" colspan="2">template&lt;index_type CGSize_ = cg_size(), class  = std::enable_if_t&lt;CGSize_ == 1&gt;&gt; </td></tr>
+<tr class="memitem:afee625443b9351a88bc182386ca970a3"><td class="memTemplItemLeft" align="right" valign="top">__device__ bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3">insert_and_query</a> (const key_type key, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904">cg_size</a>()&gt; &amp;group) noexcept</td></tr>
+<tr class="memdesc:afee625443b9351a88bc182386ca970a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">queries and subsequently inserts a key into the bloom filter  <a href="#afee625443b9351a88bc182386ca970a3">More...</a><br /></td></tr>
+<tr class="separator:afee625443b9351a88bc182386ca970a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a25926cf770e834c47ad5164e91443"><td class="memItemLeft" align="right" valign="top">__host____device__ index_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a54a25926cf770e834c47ad5164e91443">num_bits</a> () const noexcept</td></tr>
 <tr class="memdesc:a54a25926cf770e834c47ad5164e91443"><td class="mdescLeft">&#160;</td><td class="mdescRight">get number of bits (m)  <a href="#a54a25926cf770e834c47ad5164e91443">More...</a><br /></td></tr>
 <tr class="separator:a54a25926cf770e834c47ad5164e91443"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,9 +143,9 @@ __host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr class="memitem:a33c972e8a462625d6253b58bbd5585f3"><td class="memItemLeft" align="right" valign="top">__host____device__ index_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3">k</a> () const noexcept</td></tr>
 <tr class="memdesc:a33c972e8a462625d6253b58bbd5585f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">get number of hash functions (k)  <a href="#a33c972e8a462625d6253b58bbd5585f3">More...</a><br /></td></tr>
 <tr class="separator:a33c972e8a462625d6253b58bbd5585f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af77c52ec3c2223cfe335a65197bed625"><td class="memItemLeft" align="right" valign="top">__host__ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#af77c52ec3c2223cfe335a65197bed625">fpr</a> (index_type n) const noexcept</td></tr>
-<tr class="memdesc:af77c52ec3c2223cfe335a65197bed625"><td class="mdescLeft">&#160;</td><td class="mdescRight">estimated false positive rate of pattern-blocked bloom filter  <a href="#af77c52ec3c2223cfe335a65197bed625">More...</a><br /></td></tr>
-<tr class="separator:af77c52ec3c2223cfe335a65197bed625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b98847aa06d277c48068ff59ca9381"><td class="memItemLeft" align="right" valign="top">__host__ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a27b98847aa06d277c48068ff59ca9381">fpr</a> (const index_type n) const noexcept</td></tr>
+<tr class="memdesc:a27b98847aa06d277c48068ff59ca9381"><td class="mdescLeft">&#160;</td><td class="mdescRight">estimated false positive rate of pattern-blocked bloom filter  <a href="#a27b98847aa06d277c48068ff59ca9381">More...</a><br /></td></tr>
+<tr class="separator:a27b98847aa06d277c48068ff59ca9381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55aaae73d8a1a8d811779fcf372f6c8c"><td class="memItemLeft" align="right" valign="top">__host____device__ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1BloomFilter.html#a55aaae73d8a1a8d811779fcf372f6c8c">is_copy</a> () const noexcept</td></tr>
 <tr class="memdesc:a55aaae73d8a1a8d811779fcf372f6c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicates if this object is a shallow copy  <a href="#a55aaae73d8a1a8d811779fcf372f6c8c">More...</a><br /></td></tr>
 <tr class="separator:a55aaae73d8a1a8d811779fcf372f6c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,8 +177,8 @@ class warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</h3>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0050427179ed9b718800a42f9eeedb36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0050427179ed9b718800a42f9eeedb36">&#9670;&nbsp;</a></span>BloomFilter() <span class="overload">[1/3]</span></h2>
+<a id="af1dee90908f026b0a7c2e60794145f2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1dee90908f026b0a7c2e60794145f2d">&#9670;&nbsp;</a></span>BloomFilter() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,19 +191,19 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__host__ <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::<a class="el" href="classwarpcore_1_1BloomFilter.html">BloomFilter</a> </td>
           <td>(</td>
-          <td class="paramtype">index_type&#160;</td>
+          <td class="paramtype">const index_type&#160;</td>
           <td class="paramname"><em>num_bits</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">index_type&#160;</td>
+          <td class="paramtype">const index_type&#160;</td>
           <td class="paramname"><em>k</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">key_type&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
           <td class="paramname"><em>seed</em> = <code>defaults::seed&lt;key_type&gt;()</code>&#160;</td>
         </tr>
         <tr>
@@ -228,9 +231,9 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_a0050427179ed9b718800a42f9eeedb36_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a0050427179ed9b718800a42f9eeedb36_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_a0050427179ed9b718800a42f9eeedb36_cgraph" id="classwarpcore_1_1BloomFilter_a0050427179ed9b718800a42f9eeedb36_cgraph">
-<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#ac9e663f21e94822fc214b75c623436f5" title="re&#45;initialize the hash table " alt="" coords="203,5,352,47"/>
+<div class="center"><img src="classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d_cgraph" id="classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d_cgraph">
+<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a5f713802c324b840918111857976755e" title="(re)initialize the hash table " alt="" coords="203,5,352,47"/>
 </map>
 </div>
 
@@ -350,10 +353,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06_icgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06_icgraph" id="classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06_icgraph">
-<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e" title="inserts a key into the bloom filter " alt="" coords="214,5,363,47"/>
-<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a47ffce0fc70aa6bd7a0ed4b837fec1bd" title="retrieve a key " alt="" coords="214,71,363,112"/>
-<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="214,136,363,177"/>
-<area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#af77c52ec3c2223cfe335a65197bed625" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="203,202,375,229"/>
+<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0" title="inserts a key into the bloom filter " alt="" coords="214,5,363,47"/>
+<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa" title="retrieve a key " alt="" coords="214,71,363,112"/>
+<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="214,136,363,177"/>
+<area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#a27b98847aa06d277c48068ff59ca9381" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="203,202,375,229"/>
 </map>
 </div>
 
@@ -392,17 +395,17 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904_icgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904_icgraph" id="classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904_icgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="203,129,352,171"/>
-<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e" title="inserts a key into the bloom filter " alt="" coords="411,5,561,47"/>
-<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#a47ffce0fc70aa6bd7a0ed4b837fec1bd" title="retrieve a key " alt="" coords="411,71,561,112"/>
-<area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="411,188,561,229"/>
-<area shape="rect" id="node6" href="classwarpcore_1_1BloomFilter.html#af77c52ec3c2223cfe335a65197bed625" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="400,137,572,163"/>
+<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0" title="inserts a key into the bloom filter " alt="" coords="411,5,561,47"/>
+<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa" title="retrieve a key " alt="" coords="411,71,561,112"/>
+<area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="411,188,561,229"/>
+<area shape="rect" id="node6" href="classwarpcore_1_1BloomFilter.html#a27b98847aa06d277c48068ff59ca9381" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="400,137,572,163"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="af77c52ec3c2223cfe335a65197bed625"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af77c52ec3c2223cfe335a65197bed625">&#9670;&nbsp;</a></span>fpr()</h2>
+<a id="a27b98847aa06d277c48068ff59ca9381"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27b98847aa06d277c48068ff59ca9381">&#9670;&nbsp;</a></span>fpr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -415,7 +418,7 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__host__ double <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::fpr </td>
           <td>(</td>
-          <td class="paramtype">index_type&#160;</td>
+          <td class="paramtype">const index_type&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -439,8 +442,8 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_af77c52ec3c2223cfe335a65197bed625_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_af77c52ec3c2223cfe335a65197bed625_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_af77c52ec3c2223cfe335a65197bed625_cgraph" id="classwarpcore_1_1BloomFilter_af77c52ec3c2223cfe335a65197bed625_cgraph">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381_cgraph" id="classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="225,39,375,80"/>
 <area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a8dca50765c601cca8d85621fa8488ecc" title="get bits per slot " alt="" coords="423,5,572,47"/>
 <area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="423,71,572,112"/>
@@ -449,8 +452,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ac9e663f21e94822fc214b75c623436f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9e663f21e94822fc214b75c623436f5">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a5f713802c324b840918111857976755e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f713802c324b840918111857976755e">&#9670;&nbsp;</a></span>init() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -463,7 +466,63 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::init </td>
           <td>(</td>
-          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
+          <td class="paramname"><em>seed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
+          <td class="paramname"><em>stream</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>(re)initialize the hash table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">seed</td><td>random seed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e_icgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e_icgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e_icgraph" id="classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e_icgraph">
+<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#af1dee90908f026b0a7c2e60794145f2d" title="constructor " alt="" coords="203,5,352,47"/>
+<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a33d24a1ae65b9a798107bd936989bf40" title="(re)initialize the hash table " alt="" coords="203,71,352,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a33d24a1ae65b9a798107bd936989bf40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d24a1ae65b9a798107bd936989bf40">&#9670;&nbsp;</a></span>init() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slot  = std::uint64_t, index_t CGSize = 1&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::init </td>
+          <td>(</td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
           <td class="paramname"><em>stream</em> = <code>0</code></td><td>)</td>
           <td></td>
         </tr>
@@ -475,7 +534,7 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 </table>
 </div><div class="memdoc">
 
-<p>re-initialize the hash table </p>
+<p>(re)initialize the hash table </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
@@ -483,18 +542,18 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
   </dd>
 </dl>
 <div class="dynheader">
-Here is the caller graph for this function:</div>
+Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_ac9e663f21e94822fc214b75c623436f5_icgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_ac9e663f21e94822fc214b75c623436f5_icgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_ac9e663f21e94822fc214b75c623436f5_icgraph" id="classwarpcore_1_1BloomFilter_ac9e663f21e94822fc214b75c623436f5_icgraph">
-<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a0050427179ed9b718800a42f9eeedb36" title="constructor " alt="" coords="203,5,352,47"/>
+<div class="center"><img src="classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40_cgraph" id="classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40_cgraph">
+<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a5f713802c324b840918111857976755e" title="(re)initialize the hash table " alt="" coords="203,5,352,47"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a8567325cd30886f3daf2c615a35bb02e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8567325cd30886f3daf2c615a35bb02e">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
+<a id="a4b3151a938a8248df22adbdefd63b8e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3151a938a8248df22adbdefd63b8e0">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -507,7 +566,7 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__device__ void <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">key_type&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
@@ -540,8 +599,8 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_a8567325cd30886f3daf2c615a35bb02e_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a8567325cd30886f3daf2c615a35bb02e_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_a8567325cd30886f3daf2c615a35bb02e_cgraph" id="classwarpcore_1_1BloomFilter_a8567325cd30886f3daf2c615a35bb02e_cgraph">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0_cgraph" id="classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="415,6,564,47"/>
 <area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3" title="get number of hash functions (k) " alt="" coords="203,27,367,53"/>
 <area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="210,78,359,119"/>
@@ -551,8 +610,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a462859be5ed949c82d37909b139271ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a462859be5ed949c82d37909b139271ee">&#9670;&nbsp;</a></span>insert() <span class="overload">[2/2]</span></h2>
+<a id="af00ab507c80a4cc717d5e08238f5a586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af00ab507c80a4cc717d5e08238f5a586">&#9670;&nbsp;</a></span>insert() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -565,19 +624,19 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">Key *&#160;</td>
+          <td class="paramtype">const Key *const&#160;</td>
           <td class="paramname"><em>keys_in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">index_t&#160;</td>
-          <td class="paramname"><em>size_in</em>, </td>
+          <td class="paramtype">const index_t&#160;</td>
+          <td class="paramname"><em>num_in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
           <td class="paramname"><em>stream</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -597,7 +656,7 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">keys_in</td><td>pointer to keys to insert into the bloom filter </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_in</td><td>number of keys to insert </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num_in</td><td>number of keys to insert </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
   </table>
   </dd>
@@ -605,16 +664,16 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_a462859be5ed949c82d37909b139271ee_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a462859be5ed949c82d37909b139271ee_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_a462859be5ed949c82d37909b139271ee_cgraph" id="classwarpcore_1_1BloomFilter_a462859be5ed949c82d37909b139271ee_cgraph">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586_cgraph" id="classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="203,5,352,47"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a6dc903341218173f276cc855ba683ad1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dc903341218173f276cc855ba683ad1">&#9670;&nbsp;</a></span>insert_and_query()</h2>
+<a id="afee625443b9351a88bc182386ca970a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afee625443b9351a88bc182386ca970a3">&#9670;&nbsp;</a></span>insert_and_query()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -629,7 +688,7 @@ template&lt;index_type CGSize_ = cg_size(), class  = std::enable_if_t&lt;CGSize_
         <tr>
           <td class="memname">__device__ bool <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::insert_and_query </td>
           <td>(</td>
-          <td class="paramtype">key_type&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
@@ -664,8 +723,8 @@ template&lt;index_type CGSize_ = cg_size(), class  = std::enable_if_t&lt;CGSize_
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_a6dc903341218173f276cc855ba683ad1_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a6dc903341218173f276cc855ba683ad1_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_a6dc903341218173f276cc855ba683ad1_cgraph" id="classwarpcore_1_1BloomFilter_a6dc903341218173f276cc855ba683ad1_cgraph">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3_cgraph" id="classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="415,6,564,47"/>
 <area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3" title="get number of hash functions (k) " alt="" coords="203,27,367,53"/>
 <area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="210,78,359,119"/>
@@ -745,9 +804,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3_icgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3_icgraph" id="classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3_icgraph">
-<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e" title="inserts a key into the bloom filter " alt="" coords="217,5,367,47"/>
-<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a47ffce0fc70aa6bd7a0ed4b837fec1bd" title="retrieve a key " alt="" coords="217,71,367,112"/>
-<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="217,136,367,177"/>
+<area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0" title="inserts a key into the bloom filter " alt="" coords="217,5,367,47"/>
+<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa" title="retrieve a key " alt="" coords="217,71,367,112"/>
+<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="217,136,367,177"/>
 <area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#a55aaae73d8a1a8d811779fcf372f6c8c" title="indicates if this object is a shallow copy " alt="" coords="217,201,367,243"/>
 </map>
 </div>
@@ -844,8 +903,8 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 
 </div>
 </div>
-<a id="a47ffce0fc70aa6bd7a0ed4b837fec1bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47ffce0fc70aa6bd7a0ed4b837fec1bd">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[1/2]</span></h2>
+<a id="ad2621ee746d6a2ba6a0bed2ca3946aaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2621ee746d6a2ba6a0bed2ca3946aaa">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -858,7 +917,7 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__device__ bool <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::retrieve </td>
           <td>(</td>
-          <td class="paramtype">key_type&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
@@ -892,8 +951,8 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_a47ffce0fc70aa6bd7a0ed4b837fec1bd_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a47ffce0fc70aa6bd7a0ed4b837fec1bd_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_a47ffce0fc70aa6bd7a0ed4b837fec1bd_cgraph" id="classwarpcore_1_1BloomFilter_a47ffce0fc70aa6bd7a0ed4b837fec1bd_cgraph">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa_cgraph" id="classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="415,6,564,47"/>
 <area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a33c972e8a462625d6253b58bbd5585f3" title="get number of hash functions (k) " alt="" coords="203,27,367,53"/>
 <area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="210,78,359,119"/>
@@ -903,8 +962,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a38025d88272e7de413210efe745aa279"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38025d88272e7de413210efe745aa279">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[2/2]</span></h2>
+<a id="ae5d69ae905baf6e218e508e8d8225afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d69ae905baf6e218e508e8d8225afb">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -917,25 +976,25 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1BloomFilter.html">warpcore::BloomFilter</a>&lt; Key, Hasher, Slot, CGSize &gt;::retrieve </td>
           <td>(</td>
-          <td class="paramtype">key_type *&#160;</td>
+          <td class="paramtype">const key_type *const&#160;</td>
           <td class="paramname"><em>keys_in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">index_type&#160;</td>
-          <td class="paramname"><em>size_in</em>, </td>
+          <td class="paramtype">const index_type&#160;</td>
+          <td class="paramname"><em>num_in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool *&#160;</td>
+          <td class="paramtype">bool *const&#160;</td>
           <td class="paramname"><em>flags_out</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
           <td class="paramname"><em>stream</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -955,7 +1014,7 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">keys_in</td><td>pointer to keys </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_in</td><td>number of keys </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num_in</td><td>number of keys </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">flags_out</td><td>result per key ' </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
   </table>
@@ -964,8 +1023,8 @@ template&lt;class Key , class Hasher  = defaults::hasher_t&lt;Key&gt;, class Slo
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1BloomFilter_a38025d88272e7de413210efe745aa279_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a38025d88272e7de413210efe745aa279_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1BloomFilter_a38025d88272e7de413210efe745aa279_cgraph" id="classwarpcore_1_1BloomFilter_a38025d88272e7de413210efe745aa279_cgraph">
+<div class="center"><img src="classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb_cgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb_cgraph" id="classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="203,5,352,47"/>
 </map>
 </div>
@@ -1005,10 +1064,10 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc_icgraph.png" border="0" usemap="#classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc_icgraph" id="classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc_icgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1BloomFilter.html#ae7d326580b41b88db73264a494db3a06" title="get bits per cooperative group block of slots " alt="" coords="203,129,352,171"/>
-<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e" title="inserts a key into the bloom filter " alt="" coords="411,5,561,47"/>
-<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#a47ffce0fc70aa6bd7a0ed4b837fec1bd" title="retrieve a key " alt="" coords="411,71,561,112"/>
-<area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="411,188,561,229"/>
-<area shape="rect" id="node6" href="classwarpcore_1_1BloomFilter.html#af77c52ec3c2223cfe335a65197bed625" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="400,137,572,163"/>
+<area shape="rect" id="node3" href="classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0" title="inserts a key into the bloom filter " alt="" coords="411,5,561,47"/>
+<area shape="rect" id="node4" href="classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa" title="retrieve a key " alt="" coords="411,71,561,112"/>
+<area shape="rect" id="node5" href="classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="411,188,561,229"/>
+<area shape="rect" id="node6" href="classwarpcore_1_1BloomFilter.html#a27b98847aa06d277c48068ff59ca9381" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="400,137,572,163"/>
 </map>
 </div>
 

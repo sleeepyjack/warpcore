@@ -84,9 +84,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>key_type</b> = typen
 <tr class="memitem:a806df26c5d213788a298771b746788a5"><td class="memItemLeft" align="right" valign="top"><a id="a806df26c5d213788a298771b746788a5"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>index_type</b> = index_t</td></tr>
 <tr class="separator:a806df26c5d213788a298771b746788a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fb4fb42e3e21599e2a1909cd0df5e37"><td class="memItemLeft" align="right" valign="top"><a id="a3fb4fb42e3e21599e2a1909cd0df5e37"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b> = tags::probing_scheme_tag</td></tr>
-<tr class="separator:a3fb4fb42e3e21599e2a1909cd0df5e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af11ec5617e5c6ec113991c90570022c8"><td class="memItemLeft" align="right" valign="top"><a id="af11ec5617e5c6ec113991c90570022c8"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b> = typename std::conditional&lt; checks::is_true_permutation_hasher&lt; Hasher1 &gt;() &amp;&amp;checks::is_true_permutation_hasher&lt; Hasher2 &gt;(), tags::cycle_free_probing_scheme, tags::probing_scheme &gt;::type</td></tr>
+<tr class="separator:af11ec5617e5c6ec113991c90570022c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>

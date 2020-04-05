@@ -1,5 +1,5 @@
-\hypertarget{classwarpcore_1_1MultiValueHashTable}{}\section{warpcore\+:\+:Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ Class Template Reference}
-\label{classwarpcore_1_1MultiValueHashTable}\index{warpcore\+::\+Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$@{warpcore\+::\+Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$}}
+\hypertarget{classwarpcore_1_1MultiValueHashTable}{}\section{warpcore\+:\+:Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$ Class Template Reference}
+\label{classwarpcore_1_1MultiValueHashTable}\index{warpcore\+::\+Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$@{warpcore\+::\+Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$}}
 
 
 multi-\/value hash table  
@@ -8,107 +8,105 @@ multi-\/value hash table
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_af46ee82600628afeb0988c1ec4d3203c}\label{classwarpcore_1_1MultiValueHashTable_af46ee82600628afeb0988c1ec4d3203c}} 
-using {\bfseries handle\+\_\+type} = typename Value\+Store\+::handle\+\_\+type
-\item 
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2da086ce905f50ba58c806812ea179fd}\label{classwarpcore_1_1MultiValueHashTable_a2da086ce905f50ba58c806812ea179fd}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_aa7aebc954f2d00ac412e64696ac5b48c}\label{classwarpcore_1_1MultiValueHashTable_aa7aebc954f2d00ac412e64696ac5b48c}} 
 using {\bfseries key\+\_\+type} = Key
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_add282b12c447be7bcaa900973d4dcc00}\label{classwarpcore_1_1MultiValueHashTable_add282b12c447be7bcaa900973d4dcc00}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a06eeeced208185ad11e626661f2b89d8}\label{classwarpcore_1_1MultiValueHashTable_a06eeeced208185ad11e626661f2b89d8}} 
 using {\bfseries value\+\_\+type} = Value
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ab36b837a73806030a953e93a7fdcfd34}\label{classwarpcore_1_1MultiValueHashTable_ab36b837a73806030a953e93a7fdcfd34}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_aa16ca6512e6de1bc13bc43ef4181ec57}\label{classwarpcore_1_1MultiValueHashTable_aa16ca6512e6de1bc13bc43ef4181ec57}} 
 using {\bfseries index\+\_\+type} = index\+\_\+t
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2f23f98c0b1ae9052c323cd02d565a83}\label{classwarpcore_1_1MultiValueHashTable_a2f23f98c0b1ae9052c323cd02d565a83}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ace3917bfbc275542adfcab08112a6e92}\label{classwarpcore_1_1MultiValueHashTable_ace3917bfbc275542adfcab08112a6e92}} 
 using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a588acfac8741ca75ddaa4771a7723416}\label{classwarpcore_1_1MultiValueHashTable_a588acfac8741ca75ddaa4771a7723416}} 
+using {\bfseries key\+\_\+set\+\_\+type} = \hyperlink{classwarpcore_1_1HashSet}{Hash\+Set}$<$ Key, Empty\+Key, Tombstone\+Key, \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{defaults\+::probing\+\_\+scheme\+\_\+t}$<$ Key, 1 $>$ $>$
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class T  = value\+\_\+store\+\_\+type, class  = std\+::enable\+\_\+if\+\_\+t$<$            std\+::is\+\_\+same$<$typename T\+::tag, tags\+::static\+\_\+value\+\_\+storage\+\_\+tag$>$\+::value$>$$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_addc8eff5737fc71abef7a193d89b4285}{Multi\+Value\+Hash\+Table} (index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_aabaa179a3e1b49f37f1a23adb0b33092}{key\+\_\+capacity}, index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a5e5959606f5446959d56758b957626fa}{value\+\_\+capacity}, key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$(), bool no\+\_\+init=false) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_acbcf649a55f735827a3729bdcd5493d1}{Multi\+Value\+Hash\+Table} (const index\+\_\+type min\+\_\+capacity, const key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$(), const index\+\_\+type max\+\_\+values\+\_\+per\+\_\+key=std\+::numeric\+\_\+limits$<$ index\+\_\+type $>$\+::max(), const bool no\+\_\+init=false) noexcept
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
-{\footnotesize template$<$class T  = value\+\_\+store\+\_\+type, class  = std\+::enable\+\_\+if\+\_\+t$<$            std\+::is\+\_\+same$<$typename T\+::tag, tags\+::dynamic\+\_\+value\+\_\+storage\+\_\+tag$>$\+::value$>$$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a6e21c9a883a3641d0dece3b9f9e9def0}{Multi\+Value\+Hash\+Table} (index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_aabaa179a3e1b49f37f1a23adb0b33092}{key\+\_\+capacity}, index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a5e5959606f5446959d56758b957626fa}{value\+\_\+capacity}, key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$(), float grow\+\_\+factor=1.\+1, index\+\_\+type min\+\_\+slab\+\_\+size=1, index\+\_\+type max\+\_\+slab\+\_\+size=handle\+\_\+type\+::max\+\_\+slab\+\_\+size(), bool no\+\_\+init=false) noexcept
-\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a0ceda8a86a7321549fffbf49d921fe79}{Multi\+Value\+Hash\+Table} (const \hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} \&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a0e399e8aff5576a3335198aca77fc9cf}{Multi\+Value\+Hash\+Table} (const \hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} \&o) noexcept
 \begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a4f6a0139f63184da8301b48a3c93b43a}{Multi\+Value\+Hash\+Table} (\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} \&\&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2e3259d6c57e29f5b78fd722f7325ba6}{Multi\+Value\+Hash\+Table} (\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} \&\&o) noexcept
 \begin{DoxyCompactList}\small\item\em move-\/constructor \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a28e32b5bb69c488a419c025d3643c584}\label{classwarpcore_1_1MultiValueHashTable_a28e32b5bb69c488a419c025d3643c584}} 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a28e32b5bb69c488a419c025d3643c584}{$\sim$\+Multi\+Value\+Hash\+Table} () noexcept
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a751346c742ae71f8ee60ee8a63ecdabb}\label{classwarpcore_1_1MultiValueHashTable_a751346c742ae71f8ee60ee8a63ecdabb}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable_a751346c742ae71f8ee60ee8a63ecdabb}{$\sim$\+Multi\+Value\+Hash\+Table} () noexcept
 \begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_a8a13707d263729d8ab1ed146ce487309}{init} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em re-\/initialize the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a7f579f9cd29c3b210bd8b6b02af8fcb9}{insert} (key\+\_\+type key\+\_\+in, const value\+\_\+type \&value\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&group, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) noexcept
-\begin{DoxyCompactList}\small\item\em inserts a key/value pair into the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_afad6f1622ae85e9a54ffae11be8a920c}{insert} (key\+\_\+type $\ast$keys\+\_\+in, value\+\_\+type $\ast$values\+\_\+in, index\+\_\+type size\+\_\+in, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_ac12fa1b729821808ce4627c49bbc4d25}{init} (const cuda\+Stream\+\_\+t stream=0) noexcept
+\begin{DoxyCompactList}\small\item\em (re)initialize the hash table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a18aa96cecfd5b5cf0d65424a92784b07}{insert} (const key\+\_\+type key\+\_\+in, const value\+\_\+type \&value\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) noexcept
+\begin{DoxyCompactList}\small\item\em inserts a key into the hash table \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_a2121e41e089fd4ec029b382f52c8b717}{insert} (const key\+\_\+type $\ast$const keys\+\_\+in, const value\+\_\+type $\ast$const values\+\_\+in, const index\+\_\+type num\+\_\+in, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) noexcept
 \begin{DoxyCompactList}\small\item\em insert a set of keys into the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a05ca99d972b19ae69bbce6a9d6990b4c}{retrieve} (key\+\_\+type key\+\_\+in, value\+\_\+type $\ast$values\+\_\+out, index\+\_\+type \&size\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&group, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
-\begin{DoxyCompactList}\small\item\em retrieves a key from the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_a4f7941cfe49e656d0f31938f8c8c88f1}{retrieve} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type size\+\_\+in, index\+\_\+type $\ast$offsets\+\_\+out, value\+\_\+type $\ast$values\+\_\+out, index\+\_\+type \&value\+\_\+size\+\_\+out, void $\ast$temp, index\+\_\+t \&temp\+\_\+bytes, cuda\+Stream\+\_\+t stream=0, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) const noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a7f64ccf2789b8eaf65251600bb36ca23}{retrieve} (const key\+\_\+type key\+\_\+in, value\+\_\+type $\ast$const values\+\_\+out, index\+\_\+type \&num\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
+\begin{DoxyCompactList}\small\item\em retrieves all values to a corresponding key \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_ac5f44931cff592aff6264d9b74231b08}{retrieve} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, index\+\_\+type $\ast$const begin\+\_\+offsets\+\_\+out, index\+\_\+type $\ast$const end\+\_\+offsets\+\_\+out, value\+\_\+type $\ast$const values\+\_\+out, index\+\_\+type \&num\+\_\+out, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieve a set of keys from the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_aae24b5424491ad31fea85d1d909af6e9}{for\+\_\+each\+\_\+value} (key\+\_\+type key\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&group, Func f, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
-\begin{DoxyCompactList}\small\item\em applies a funtion over all values of a corresponding key \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_ae12192811f1d955bb3dc8483b52ed999}{retrieve\+\_\+all\+\_\+keys} (key\+\_\+type $\ast$keys\+\_\+out, index\+\_\+type \&size\+\_\+out, cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em retrieves the set of all keys stored inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable_a3c84877469284ea0edfe5a0b62abe765}{key\+\_\+load\+\_\+factor} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em get load factor of the key store \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable_ad5ae5724768b34c344c95d7b4b736ab3}{value\+\_\+load\+\_\+factor} (cuda\+Stream\+\_\+t stream=0) const noexcept
-\begin{DoxyCompactList}\small\item\em get load factor of the value store \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a99e15b4fe9bfa63f8b1c823a3c030971}{bytes\+\_\+total} () noexcept
-\begin{DoxyCompactList}\small\item\em get the the total number of bytes occupied by this data structure \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a86f06bcb085fb809d8f40d3c044a078b}{bytes\+\_\+keys} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em get the the number of bytes in this data structure occupied by keys \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a158b338a5c798cc0775fd8874bc6e571}{bytes\+\_\+values} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em get the the number of bytes in this data structure occupied by values \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a977baa47c1b37eeeb591dd13d76d184a}{bytes\+\_\+payload} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em get the the number of bytes in this data structure occupied by actual information \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable_a431ef6fae4419af72cf565430abbf7b6}{value\+\_\+to\+\_\+header\+\_\+ratio} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em get the ratio between actual payload bytes and occupied bytes inside the value store \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable_ab8731334f269b625d8fea853f81c05b4}{storage\+\_\+density} (cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889}{retrieve\+\_\+all} (key\+\_\+type $\ast$const keys\+\_\+out, index\+\_\+type \&num\+\_\+keys\+\_\+out, index\+\_\+type $\ast$const begin\+\_\+offsets\+\_\+out, index\+\_\+type $\ast$const end\+\_\+offsets\+\_\+out, value\+\_\+type $\ast$const values\+\_\+out, value\+\_\+type \&num\+\_\+values\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em retrieves all elements from the hash table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294}{retrieve\+\_\+all\+\_\+keys} (key\+\_\+type $\ast$const keys\+\_\+out, index\+\_\+type \&num\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em retrieve all unqiue keys  this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d}{for\+\_\+each} (Func f, const key\+\_\+type key\+\_\+in, index\+\_\+type \&num\+\_\+values\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
+\begin{DoxyCompactList}\small\item\em applies a funtion over all values of a specified key \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_a7df6d6258352372a39ce16ea79c368ae}{for\+\_\+each} (Func f, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type smem\+\_\+bytes=0) const noexcept
+\begin{DoxyCompactList}\small\item\em applies a funtion over all key value pairs inside the table \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Func , class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_ab0b0fabd71a8937fca8c790b2a4864ee}{for\+\_\+each} (Func f, const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr, const index\+\_\+type smem\+\_\+bytes=0) const noexcept
+\begin{DoxyCompactList}\small\item\em applies a funtion over all key value pairs \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ const \hyperlink{classwarpcore_1_1HashSet}{key\+\_\+set\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_ab52e7809d5581849e07b914d8ce4ef9f}{get\+\_\+key\+\_\+set} (const cuda\+Stream\+\_\+t stream=0, const float size\+\_\+fraction=0.\+9) const noexcept
+\begin{DoxyCompactList}\small\item\em {\ttfamily \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}} of unique keys inside the table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa}{num\+\_\+keys} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em number of unique keys inside the table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_ada2a3052b76a7d71bab214b1f466e4da}{num\+\_\+values} (const key\+\_\+type key\+\_\+in, index\+\_\+type \&num\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
+\begin{DoxyCompactList}\small\item\em total number of values inside the table \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_a95c52ddbf4d9ae84240b3c94ef6cb833}{num\+\_\+values} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, index\+\_\+type \&num\+\_\+out, index\+\_\+type $\ast$const num\+\_\+per\+\_\+key\+\_\+out=nullptr, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) const noexcept
+\begin{DoxyCompactList}\small\item\em number of values associated to a set of keys  this function returns only {\ttfamily num\+\_\+out} if {\ttfamily num\+\_\+per\+\_\+key\+\_\+out==nullptr} \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_afba396891eeb4902e22b112bbafe7945}{num\+\_\+values} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em number of values stored inside the hash table  alias for {\ttfamily \hyperlink{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f}{size()}} \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f}{size} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em number of values stored inside the hash table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable_a8abd31b493048670295af663d50d1c9e}{load\+\_\+factor} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em current load factor of the hash table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable_a7f8d4c186530fe60ead1e52f9629622c}{storage\+\_\+density} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em current storage density of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a206e52ad175b2d6d7abbaae25fa19c7f}{is\+\_\+initialized} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff}{capacity} () const noexcept
+\begin{DoxyCompactList}\small\item\em get the capacity of the hash table \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a44f45da1cebbcc45a01072d4d22514ba}{is\+\_\+initialized} () const noexcept
 \begin{DoxyCompactList}\small\item\em indicates if the hash table is properly initialized \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a3e494c09904b4ea2c68c623641a391f3}{peek\+\_\+status} (cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a239a45feb31e995163b4e22ec9dab446}{peek\+\_\+status} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the status of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_af944a4ab507f431152657930db9cae99}{pop\+\_\+status} (cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a2b1fca3402bf4df60eebe04e33b28d02}{pop\+\_\+status} (const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em get and reset the status of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_aabaa179a3e1b49f37f1a23adb0b33092}{key\+\_\+capacity} () const noexcept
-\begin{DoxyCompactList}\small\item\em get the key capacity of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a5e5959606f5446959d56758b957626fa}{value\+\_\+capacity} () const noexcept
-\begin{DoxyCompactList}\small\item\em get the maximum value capacity of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a9ab8c6741cc029d28bb4435b54bdf3d6}{size\+\_\+keys} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em number of keys stored inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable_a8e1c0d96983af892804a6513964692c2}{size\+\_\+values} (key\+\_\+type key\+\_\+in, index\+\_\+type \&size\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&group, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
-\begin{DoxyCompactList}\small\item\em get number of values to a corresponding key inside the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable_acefa26ef6c5d07d909e6758fa9cc88c7}{size\+\_\+values} (key\+\_\+type $\ast$keys\+\_\+in, index\+\_\+type size\+\_\+in, index\+\_\+type $\ast$sizes\+\_\+out, index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), cuda\+Stream\+\_\+t stream=0, typename Status\+Handler\+::base\+\_\+type $\ast$status\+\_\+out=nullptr) const noexcept
-\begin{DoxyCompactList}\small\item\em get number of values to a corresponding set of keys inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a2f663ba48c0399e0821293c17cef1c34}{size\+\_\+values} (cuda\+Stream\+\_\+t stream=0) noexcept
-\begin{DoxyCompactList}\small\item\em get number of values inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a12d253dd2b4cbbdefe56944b16268f8d}{is\+\_\+copy} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a5ab9221422cf32364464b44be66075dd}{is\+\_\+copy} () const noexcept
 \begin{DoxyCompactList}\small\item\em indicates if this object is a shallow copy \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_aefacf0aa968291b9965e302e835ea249}{empty\+\_\+key} () noexcept
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a86fffd9e87b2880ccba285614a6238f3}{empty\+\_\+key} () noexcept
 \begin{DoxyCompactList}\small\item\em get empty key \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a6174c9b15d8772c8fa1874b6415e9937}{tombstone\+\_\+key} () noexcept
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a9eec07133f3b950b5c6465e4b8b53e78}{tombstone\+\_\+key} () noexcept
 \begin{DoxyCompactList}\small\item\em get tombstone key \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a65e099a2eea8ca9b800d02937b6c66a8}{is\+\_\+valid\+\_\+key} (key\+\_\+type key) noexcept
-\begin{DoxyCompactList}\small\item\em checks if {\ttfamily key} is equal to {\ttfamily }(Empty\+Key$\vert$$\vert$\+Tombstone\+Key) \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size} () noexcept
-\begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\end{DoxyCompactItemize}
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size} () noexcept
+\begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a23d1ba2d5e85a2465685f353ee5d0872}{is\+\_\+empty\+\_\+key} (const key\+\_\+type key) noexcept
+\begin{DoxyCompactList}\small\item\em checks if {\ttfamily key} is equal to {\ttfamily Empty\+Key} \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a76fed9a05c9111488189e1b22c435f63}{is\+\_\+tombstone\+\_\+key} (const key\+\_\+type key) noexcept
+\begin{DoxyCompactList}\small\item\em checks if {\ttfamily key} is equal to {\ttfamily Tombstone\+Key} \end{DoxyCompactList}\item 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable_a130e94f97c0002895317f086442e8470}{is\+\_\+valid\+\_\+key} (const key\+\_\+type key) noexcept
+\begin{DoxyCompactList}\small\item\em checks if {\ttfamily key} is equal to {\ttfamily }(Empty\+Key$\vert$$\vert$\+Tombstone\+Key) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\subsubsection*{template$<$class Key, class Value, Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$\newline
-class warpcore\+::\+Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$}
+\subsubsection*{template$<$class Key, class Value, Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$\newline
+class warpcore\+::\+Multi\+Value\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$}
 
 multi-\/value hash table 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Key} & key type ({\ttfamily std\+::uint32\+\_\+t} or {\ttfamily std\+::uint64\+\_\+t}) \\
+{\em Key} & key type ( {\ttfamily std\+::uint32\+\_\+t} or {\ttfamily std\+::uint64\+\_\+t} ) \\
 \hline
 {\em Value} & value type \\
 \hline
@@ -116,21 +114,22 @@ multi-\/value hash table
 \hline
 {\em Tombstone\+Key} & key which represents an erased slot \\
 \hline
-{\em Value\+Store} & storage class from {\ttfamily \hyperlink{namespacewarpcore_1_1storage_1_1multi__value}{warpcore\+::storage\+::multi\+\_\+value}} \\
-\hline
 {\em Probing\+Scheme} & probing scheme from {\ttfamily \hyperlink{namespacewarpcore_1_1probing__schemes}{warpcore\+::probing\+\_\+schemes}} \\
+\hline
+{\em Table\+Storage} & memory layout from {\ttfamily \hyperlink{namespacewarpcore_1_1storage_1_1key__value}{warpcore\+::storage\+::key\+\_\+value}} \\
+\hline
+{\em Temp\+Memory\+Bytes} & size of temporary storage (typically a few kB) \\
 \hline
 \end{DoxyTemplParams}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_addc8eff5737fc71abef7a193d89b4285}\label{classwarpcore_1_1MultiValueHashTable_addc8eff5737fc71abef7a193d89b4285}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_acbcf649a55f735827a3729bdcd5493d1}\label{classwarpcore_1_1MultiValueHashTable_acbcf649a55f735827a3729bdcd5493d1}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}}
 \index{Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-template$<$class T  = value\+\_\+store\+\_\+type, class  = std\+::enable\+\_\+if\+\_\+t$<$            std\+::is\+\_\+same$<$typename T\+::tag, tags\+::static\+\_\+value\+\_\+storage\+\_\+tag$>$\+::value$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{key\+\_\+capacity,  }\item[{index\+\_\+type}]{value\+\_\+capacity,  }\item[{key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()},  }\item[{bool}]{no\+\_\+init = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{min\+\_\+capacity,  }\item[{const key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()},  }\item[{const index\+\_\+type}]{max\+\_\+values\+\_\+per\+\_\+key = {\ttfamily std\+:\+:numeric\+\_\+limits$<$index\+\_\+type$>$\+:\+:max()},  }\item[{const bool}]{no\+\_\+init = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -138,11 +137,13 @@ constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+capacity} & guaranteed number of key slots in the hash table \\
-\hline
-\mbox{\tt in}  & {\em value\+\_\+capacity} & total number of value slots \\
+\mbox{\tt in}  & {\em min\+\_\+capacity} & minimum number of slots in the hash table \\
 \hline
 \mbox{\tt in}  & {\em seed} & random seed \\
+\hline
+\mbox{\tt in}  & {\em max\+\_\+values\+\_\+per\+\_\+key} & maximum number of values to store per key \\
+\hline
+\mbox{\tt in}  & {\em no\+\_\+init} & whether to initialize the table at construction or not \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -150,50 +151,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_addc8eff5737fc71abef7a193d89b4285_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_acbcf649a55f735827a3729bdcd5493d1_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a6e21c9a883a3641d0dece3b9f9e9def0}\label{classwarpcore_1_1MultiValueHashTable_a6e21c9a883a3641d0dece3b9f9e9def0}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a0e399e8aff5576a3335198aca77fc9cf}\label{classwarpcore_1_1MultiValueHashTable_a0e399e8aff5576a3335198aca77fc9cf}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}}
 \index{Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-template$<$class T  = value\+\_\+store\+\_\+type, class  = std\+::enable\+\_\+if\+\_\+t$<$            std\+::is\+\_\+same$<$typename T\+::tag, tags\+::dynamic\+\_\+value\+\_\+storage\+\_\+tag$>$\+::value$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{key\+\_\+capacity,  }\item[{index\+\_\+type}]{value\+\_\+capacity,  }\item[{key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()},  }\item[{float}]{grow\+\_\+factor = {\ttfamily 1.1},  }\item[{index\+\_\+type}]{min\+\_\+slab\+\_\+size = {\ttfamily 1},  }\item[{index\+\_\+type}]{max\+\_\+slab\+\_\+size = {\ttfamily handle\+\_\+type\+:\+:max\+\_\+slab\+\_\+size()},  }\item[{bool}]{no\+\_\+init = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
-
-
-
-constructor 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+capacity} & guaranteed number of key slots in the hash table \\
-\hline
-\mbox{\tt in}  & {\em value\+\_\+capacity} & total number of value slots \\
-\hline
-\mbox{\tt in}  & {\em seed} & random seed \\
-\hline
-\mbox{\tt in}  & {\em grow\+\_\+factor} & slab grow factor for {\ttfamily \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}} \\
-\hline
-\mbox{\tt in}  & {\em min\+\_\+slab\+\_\+size} & initial size of value slabs for {\ttfamily \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}} \\
-\hline
-\mbox{\tt in}  & {\em max\+\_\+slab\+\_\+size} & slab size of {\ttfamily \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Dynamic\+Slab\+List\+Store}} after which no more growth occurs \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a6e21c9a883a3641d0dece3b9f9e9def0_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a0ceda8a86a7321549fffbf49d921fe79}\label{classwarpcore_1_1MultiValueHashTable_a0ceda8a86a7321549fffbf49d921fe79}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}}
-\index{Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{const \hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{const \hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -204,12 +170,12 @@ copy-\/constructor (shallow)
 \mbox{\tt in}  & {\em object} & to be copied \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a4f6a0139f63184da8301b48a3c93b43a}\label{classwarpcore_1_1MultiValueHashTable_a4f6a0139f63184da8301b48a3c93b43a}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2e3259d6c57e29f5b78fd722f7325ba6}\label{classwarpcore_1_1MultiValueHashTable_a2e3259d6c57e29f5b78fd722f7325ba6}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}}
 \index{Multi\+Value\+Hash\+Table@{Multi\+Value\+Hash\+Table}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\subsubsection{\texorpdfstring{Multi\+Value\+Hash\+Table()}{MultiValueHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table} (\begin{DoxyParamCaption}\item[{\hyperlink{classwarpcore_1_1MultiValueHashTable}{Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -223,147 +189,34 @@ move-\/constructor
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a86f06bcb085fb809d8f40d3c044a078b}\label{classwarpcore_1_1MultiValueHashTable_a86f06bcb085fb809d8f40d3c044a078b}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!bytes\+\_\+keys@{bytes\+\_\+keys}}
-\index{bytes\+\_\+keys@{bytes\+\_\+keys}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+keys()}{bytes\_keys()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+keys (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff}\label{classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!capacity@{capacity}}
+\index{capacity@{capacity}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-get the the number of bytes in this data structure occupied by keys 
+get the capacity of the hash table 
 
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-bytes 
+number of slots in the hash table 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a86f06bcb085fb809d8f40d3c044a078b_cgraph}
-\end{center}
-\end{figure}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a86f06bcb085fb809d8f40d3c044a078b_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a977baa47c1b37eeeb591dd13d76d184a}\label{classwarpcore_1_1MultiValueHashTable_a977baa47c1b37eeeb591dd13d76d184a}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!bytes\+\_\+payload@{bytes\+\_\+payload}}
-\index{bytes\+\_\+payload@{bytes\+\_\+payload}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+payload()}{bytes\_payload()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+payload (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get the the number of bytes in this data structure occupied by actual information 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-bytes 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a977baa47c1b37eeeb591dd13d76d184a_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a977baa47c1b37eeeb591dd13d76d184a_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a99e15b4fe9bfa63f8b1c823a3c030971}\label{classwarpcore_1_1MultiValueHashTable_a99e15b4fe9bfa63f8b1c823a3c030971}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!bytes\+\_\+total@{bytes\+\_\+total}}
-\index{bytes\+\_\+total@{bytes\+\_\+total}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+total()}{bytes\_total()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get the the total number of bytes occupied by this data structure 
-
-\begin{DoxyReturn}{Returns}
-bytes 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a99e15b4fe9bfa63f8b1c823a3c030971_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a99e15b4fe9bfa63f8b1c823a3c030971_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a158b338a5c798cc0775fd8874bc6e571}\label{classwarpcore_1_1MultiValueHashTable_a158b338a5c798cc0775fd8874bc6e571}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!bytes\+\_\+values@{bytes\+\_\+values}}
-\index{bytes\+\_\+values@{bytes\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+values()}{bytes\_values()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+values (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get the the number of bytes in this data structure occupied by values 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-bytes 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a158b338a5c798cc0775fd8874bc6e571_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a158b338a5c798cc0775fd8874bc6e571_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}\label{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}\label{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!cg\+\_\+size@{cg\+\_\+size}}
 \index{cg\+\_\+size@{cg\+\_\+size}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{cg\+\_\+size()}{cg\_size()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
 
 
 
@@ -372,28 +225,20 @@ get cooperative group size
 \begin{DoxyReturn}{Returns}
 cooperative group size 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929_cgraph}
-\end{center}
-\end{figure}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_aefacf0aa968291b9965e302e835ea249}\label{classwarpcore_1_1MultiValueHashTable_aefacf0aa968291b9965e302e835ea249}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a86fffd9e87b2880ccba285614a6238f3}\label{classwarpcore_1_1MultiValueHashTable_a86fffd9e87b2880ccba285614a6238f3}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!empty\+\_\+key@{empty\+\_\+key}}
 \index{empty\+\_\+key@{empty\+\_\+key}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{empty\+\_\+key()}{empty\_key()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::empty\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::empty\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
 
 
 
@@ -407,20 +252,20 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_aefacf0aa968291b9965e302e835ea249_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a86fffd9e87b2880ccba285614a6238f3_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_aae24b5424491ad31fea85d1d909af6e9}\label{classwarpcore_1_1MultiValueHashTable_aae24b5424491ad31fea85d1d909af6e9}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!for\+\_\+each\+\_\+value@{for\+\_\+each\+\_\+value}}
-\index{for\+\_\+each\+\_\+value@{for\+\_\+each\+\_\+value}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{for\+\_\+each\+\_\+value()}{for\_each\_value()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d}\label{classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!for\+\_\+each@{for\+\_\+each}}
+\index{for\+\_\+each@{for\+\_\+each}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{for\+\_\+each()}{for\_each()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Func $>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::for\+\_\+each\+\_\+value (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{Func}]{f,  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+values\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-applies a funtion over all values of a corresponding key 
+applies a funtion over all values of a specified key 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -429,45 +274,26 @@ applies a funtion over all values of a corresponding key
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+in} & key to retrieve \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\mbox{\tt in}  & {\em size} & of shared memory to reserve for this execution \\
-\hline
 \mbox{\tt in}  & {\em f} & map to apply \\
 \hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_aae24b5424491ad31fea85d1d909af6e9_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a8a13707d263729d8ab1ed146ce487309}\label{classwarpcore_1_1MultiValueHashTable_a8a13707d263729d8ab1ed146ce487309}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!init@{init}}
-\index{init@{init}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{init()}{init()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::init (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-re-\/initialize the hash table 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed \\
+\mbox{\tt in}  & {\em key\+\_\+in} & key to consider \\
+\hline
+\mbox{\tt out}  & {\em num\+\_\+values\+\_\+out} & number of values associated to {\ttfamily key\+\_\+in} \\
+\hline
+\mbox{\tt in}  & {\em group} & cooperative group \\
+\hline
+\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status (per thread) 
+\end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a8a13707d263729d8ab1ed146ce487309_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -475,19 +301,166 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a8a13707d263729d8ab1ed146ce487309_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a7f579f9cd29c3b210bd8b6b02af8fcb9}\label{classwarpcore_1_1MultiValueHashTable_a7f579f9cd29c3b210bd8b6b02af8fcb9}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a7df6d6258352372a39ce16ea79c368ae}\label{classwarpcore_1_1MultiValueHashTable_a7df6d6258352372a39ce16ea79c368ae}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!for\+\_\+each@{for\+\_\+each}}
+\index{for\+\_\+each@{for\+\_\+each}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{for\+\_\+each()}{for\_each()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+template$<$class Func $>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{smem\+\_\+bytes = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+applies a funtion over all key value pairs inside the table 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Func} & type of map i.\+e. C\+U\+DA device lambda \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & map to apply \\
+\hline
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\mbox{\tt in}  & {\em size} & of dynamic shared memory to reserve for this execution \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a7df6d6258352372a39ce16ea79c368ae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ab0b0fabd71a8937fca8c790b2a4864ee}\label{classwarpcore_1_1MultiValueHashTable_ab0b0fabd71a8937fca8c790b2a4864ee}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!for\+\_\+each@{for\+\_\+each}}
+\index{for\+\_\+each@{for\+\_\+each}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{for\+\_\+each()}{for\_each()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+template$<$class Func , class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr},  }\item[{const index\+\_\+type}]{smem\+\_\+bytes = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+applies a funtion over all key value pairs 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Func} & type of map i.\+e. C\+U\+DA device lambda \\
+\hline
+{\em Status\+Handler} & handles returned status per key (see {\ttfamily \hyperlink{namespacewarpcore_1_1status__handlers}{status\+\_\+handlers}}) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & map to apply \\
+\hline
+\mbox{\tt in}  & {\em keys\+\_\+in} & keys to consider \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys \\
+\hline
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\hline
+\mbox{\tt out}  & {\em status\+\_\+out} & status information (per key) \\
+\hline
+\mbox{\tt in}  & {\em size} & of dynamic shared memory to reserve for this execution \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ab0b0fabd71a8937fca8c790b2a4864ee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ab52e7809d5581849e07b914d8ce4ef9f}\label{classwarpcore_1_1MultiValueHashTable_ab52e7809d5581849e07b914d8ce4ef9f}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!get\+\_\+key\+\_\+set@{get\+\_\+key\+\_\+set}}
+\index{get\+\_\+key\+\_\+set@{get\+\_\+key\+\_\+set}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{get\+\_\+key\+\_\+set()}{get\_key\_set()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ const \hyperlink{classwarpcore_1_1HashSet}{key\+\_\+set\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::get\+\_\+key\+\_\+set (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const float}]{size\+\_\+fraction = {\ttfamily 0.9} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+{\ttfamily \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}} of unique keys inside the table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\mbox{\tt in}  & {\em size\+\_\+fraction} & capacity of the hash set in relation to the size of the table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily \hyperlink{classwarpcore_1_1HashSet}{warpcore\+::\+Hash\+Set}} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ab52e7809d5581849e07b914d8ce4ef9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ab52e7809d5581849e07b914d8ce4ef9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ac12fa1b729821808ce4627c49bbc4d25}\label{classwarpcore_1_1MultiValueHashTable_ac12fa1b729821808ce4627c49bbc4d25}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!init@{init}}
+\index{init@{init}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+(re)initialize the hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ac12fa1b729821808ce4627c49bbc4d25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ac12fa1b729821808ce4627c49bbc4d25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a18aa96cecfd5b5cf0d65424a92784b07}\label{classwarpcore_1_1MultiValueHashTable_a18aa96cecfd5b5cf0d65424a92784b07}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!insert@{insert}}
 \index{insert@{insert}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::insert (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key\+\_\+in,  }\item[{const value\+\_\+type \&}]{value\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{const value\+\_\+type \&}]{value\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-inserts a key/value pair into the hash table 
+inserts a key into the hash table 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -503,13 +476,21 @@ inserts a key/value pair into the hash table
 \begin{DoxyReturn}{Returns}
 status (per thread) 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_afad6f1622ae85e9a54ffae11be8a920c}\label{classwarpcore_1_1MultiValueHashTable_afad6f1622ae85e9a54ffae11be8a920c}} 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a18aa96cecfd5b5cf0d65424a92784b07_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2121e41e089fd4ec029b382f52c8b717}\label{classwarpcore_1_1MultiValueHashTable_a2121e41e089fd4ec029b382f52c8b717}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!insert@{insert}}
 \index{insert@{insert}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::insert (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{value\+\_\+type $\ast$}]{values\+\_\+in,  }\item[{index\+\_\+type}]{size\+\_\+in,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const value\+\_\+type $\ast$const}]{values\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -526,7 +507,7 @@ insert a set of keys into the hash table
 \hline
 \mbox{\tt in}  & {\em values\+\_\+in} & corresponds values to {\ttfamily keys\+\_\+in} \\
 \hline
-\mbox{\tt in}  & {\em size\+\_\+in} & number of keys to insert \\
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to insert \\
 \hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
@@ -540,15 +521,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_afad6f1622ae85e9a54ffae11be8a920c_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a2121e41e089fd4ec029b382f52c8b717_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a12d253dd2b4cbbdefe56944b16268f8d}\label{classwarpcore_1_1MultiValueHashTable_a12d253dd2b4cbbdefe56944b16268f8d}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a5ab9221422cf32364464b44be66075dd}\label{classwarpcore_1_1MultiValueHashTable_a5ab9221422cf32364464b44be66075dd}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!is\+\_\+copy@{is\+\_\+copy}}
 \index{is\+\_\+copy@{is\+\_\+copy}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{is\+\_\+copy()}{is\_copy()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -557,12 +538,50 @@ indicates if this object is a shallow copy
 \begin{DoxyReturn}{Returns}
 {\ttfamily bool} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a206e52ad175b2d6d7abbaae25fa19c7f}\label{classwarpcore_1_1MultiValueHashTable_a206e52ad175b2d6d7abbaae25fa19c7f}} 
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a5ab9221422cf32364464b44be66075dd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a23d1ba2d5e85a2465685f353ee5d0872}\label{classwarpcore_1_1MultiValueHashTable_a23d1ba2d5e85a2465685f353ee5d0872}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!is\+\_\+empty\+\_\+key@{is\+\_\+empty\+\_\+key}}
+\index{is\+\_\+empty\+\_\+key@{is\+\_\+empty\+\_\+key}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{is\+\_\+empty\+\_\+key()}{is\_empty\_key()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::is\+\_\+empty\+\_\+key (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+checks if {\ttfamily key} is equal to {\ttfamily Empty\+Key} 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily bool} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a23d1ba2d5e85a2465685f353ee5d0872_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a23d1ba2d5e85a2465685f353ee5d0872_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a44f45da1cebbcc45a01072d4d22514ba}\label{classwarpcore_1_1MultiValueHashTable_a44f45da1cebbcc45a01072d4d22514ba}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!is\+\_\+initialized@{is\+\_\+initialized}}
 \index{is\+\_\+initialized@{is\+\_\+initialized}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{is\+\_\+initialized()}{is\_initialized()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::is\+\_\+initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -571,20 +590,34 @@ indicates if the hash table is properly initialized
 \begin{DoxyReturn}{Returns}
 {\ttfamily true} iff the hash table is properly initialized 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a76fed9a05c9111488189e1b22c435f63}\label{classwarpcore_1_1MultiValueHashTable_a76fed9a05c9111488189e1b22c435f63}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!is\+\_\+tombstone\+\_\+key@{is\+\_\+tombstone\+\_\+key}}
+\index{is\+\_\+tombstone\+\_\+key@{is\+\_\+tombstone\+\_\+key}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{is\+\_\+tombstone\+\_\+key()}{is\_tombstone\_key()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::is\+\_\+tombstone\+\_\+key (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+checks if {\ttfamily key} is equal to {\ttfamily Tombstone\+Key} 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily bool} 
+\end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a206e52ad175b2d6d7abbaae25fa19c7f_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a76fed9a05c9111488189e1b22c435f63_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a65e099a2eea8ca9b800d02937b6c66a8}\label{classwarpcore_1_1MultiValueHashTable_a65e099a2eea8ca9b800d02937b6c66a8}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a130e94f97c0002895317f086442e8470}\label{classwarpcore_1_1MultiValueHashTable_a130e94f97c0002895317f086442e8470}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!is\+\_\+valid\+\_\+key@{is\+\_\+valid\+\_\+key}}
 \index{is\+\_\+valid\+\_\+key@{is\+\_\+valid\+\_\+key}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{is\+\_\+valid\+\_\+key()}{is\_valid\_key()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+valid\+\_\+key (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::is\+\_\+valid\+\_\+key (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
 
 
 
@@ -598,45 +631,31 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a65e099a2eea8ca9b800d02937b6c66a8_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a130e94f97c0002895317f086442e8470_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_aabaa179a3e1b49f37f1a23adb0b33092}\label{classwarpcore_1_1MultiValueHashTable_aabaa179a3e1b49f37f1a23adb0b33092}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!key\+\_\+capacity@{key\+\_\+capacity}}
-\index{key\+\_\+capacity@{key\+\_\+capacity}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{key\+\_\+capacity()}{key\_capacity()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::key\+\_\+capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get the key capacity of the hash table 
-
-\begin{DoxyReturn}{Returns}
-number of key slots in the hash table 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
+Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_aabaa179a3e1b49f37f1a23adb0b33092_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a130e94f97c0002895317f086442e8470_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a3c84877469284ea0edfe5a0b62abe765}\label{classwarpcore_1_1MultiValueHashTable_a3c84877469284ea0edfe5a0b62abe765}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!key\+\_\+load\+\_\+factor@{key\+\_\+load\+\_\+factor}}
-\index{key\+\_\+load\+\_\+factor@{key\+\_\+load\+\_\+factor}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{key\+\_\+load\+\_\+factor()}{key\_load\_factor()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::key\+\_\+load\+\_\+factor (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a8abd31b493048670295af663d50d1c9e}\label{classwarpcore_1_1MultiValueHashTable_a8abd31b493048670295af663d50d1c9e}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!load\+\_\+factor@{load\+\_\+factor}}
+\index{load\+\_\+factor@{load\+\_\+factor}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{load\+\_\+factor()}{load\_factor()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-get load factor of the key store 
+current load factor of the hash table 
 
 
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -647,46 +666,19 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a3c84877469284ea0edfe5a0b62abe765_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a8abd31b493048670295af663d50d1c9e_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a3e494c09904b4ea2c68c623641a391f3}\label{classwarpcore_1_1MultiValueHashTable_a3e494c09904b4ea2c68c623641a391f3}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!peek\+\_\+status@{peek\+\_\+status}}
-\index{peek\+\_\+status@{peek\+\_\+status}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{peek\+\_\+status()}{peek\_status()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::peek\+\_\+status (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa}\label{classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!num\+\_\+keys@{num\+\_\+keys}}
+\index{num\+\_\+keys@{num\+\_\+keys}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{num\+\_\+keys()}{num\_keys()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::num\+\_\+keys (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-get the status of the hash table 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-the status 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a3e494c09904b4ea2c68c623641a391f3_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_af944a4ab507f431152657930db9cae99}\label{classwarpcore_1_1MultiValueHashTable_af944a4ab507f431152657930db9cae99}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!pop\+\_\+status@{pop\+\_\+status}}
-\index{pop\+\_\+status@{pop\+\_\+status}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{pop\+\_\+status()}{pop\_status()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::pop\+\_\+status (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get and reset the status of the hash table 
+number of unique keys inside the table 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -694,34 +686,40 @@ get and reset the status of the hash table
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-the status 
+number of unique keys 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_af944a4ab507f431152657930db9cae99_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a05ca99d972b19ae69bbce6a9d6990b4c}\label{classwarpcore_1_1MultiValueHashTable_a05ca99d972b19ae69bbce6a9d6990b4c}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve@{retrieve}}
-\index{retrieve@{retrieve}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key\+\_\+in,  }\item[{value\+\_\+type $\ast$}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{size\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ada2a3052b76a7d71bab214b1f466e4da}\label{classwarpcore_1_1MultiValueHashTable_ada2a3052b76a7d71bab214b1f466e4da}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!num\+\_\+values@{num\+\_\+values}}
+\index{num\+\_\+values@{num\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{num\+\_\+values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-retrieves a key from the hash table 
+total number of values inside the table 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+in} & key to retrieve from the hash table \\
+\mbox{\tt in}  & {\em key\+\_\+in} & key to be probed \\
 \hline
-\mbox{\tt out}  & {\em values\+\_\+out} & pointer to storage fo the retrieved values \\
-\hline
-\mbox{\tt out}  & {\em size\+\_\+out} & number of values retrieved \\
+\mbox{\tt out}  & {\em num\+\_\+out} & number of values associated to {\ttfamily key\+\_\+in$\ast$} \\
 \hline
 \mbox{\tt in}  & {\em group} & cooperative group \\
 \hline
@@ -736,20 +734,28 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a05ca99d972b19ae69bbce6a9d6990b4c_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ada2a3052b76a7d71bab214b1f466e4da_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a4f7941cfe49e656d0f31938f8c8c88f1}\label{classwarpcore_1_1MultiValueHashTable_a4f7941cfe49e656d0f31938f8c8c88f1}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve@{retrieve}}
-\index{retrieve@{retrieve}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ada2a3052b76a7d71bab214b1f466e4da_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a95c52ddbf4d9ae84240b3c94ef6cb833}\label{classwarpcore_1_1MultiValueHashTable_a95c52ddbf4d9ae84240b3c94ef6cb833}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!num\+\_\+values@{num\+\_\+values}}
+\index{num\+\_\+values@{num\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{num\+\_\+values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{size\+\_\+in,  }\item[{index\+\_\+type $\ast$}]{offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{value\+\_\+size\+\_\+out,  }\item[{void $\ast$}]{temp,  }\item[{index\+\_\+t \&}]{temp\+\_\+bytes,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{num\+\_\+per\+\_\+key\+\_\+out = {\ttfamily nullptr},  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-retrieve a set of keys from the hash table 
+number of values associated to a set of keys  this function returns only {\ttfamily num\+\_\+out} if {\ttfamily num\+\_\+per\+\_\+key\+\_\+out==nullptr} 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -758,19 +764,13 @@ retrieve a set of keys from the hash table
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to retrieve from the hash table \\
+\mbox{\tt in}  & {\em keys\+\_\+in} & keys to consider \\
 \hline
-\mbox{\tt in}  & {\em size\+\_\+in} & number of keys to retrieve \\
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys \\
 \hline
-\mbox{\tt out}  & {\em offsets\+\_\+out} & \\
+\mbox{\tt out}  & {\em num\+\_\+out} & total number of values \\
 \hline
-\mbox{\tt out}  & {\em values\+\_\+out} & retrieved values of keys in {\ttfamily key\+\_\+in} \\
-\hline
-\mbox{\tt out}  & {\em value\+\_\+size\+\_\+out} & total number of values retrieved by this operation \\
-\hline
-\mbox{\tt in}  & {\em temp} & pointer to auxillary device memory required by this operation \\
-\hline
-\mbox{\tt out}  & {\em temp\+\_\+bytes} & size of required auxillary memory in bytes \\
+\mbox{\tt out}  & {\em num\+\_\+per\+\_\+key\+\_\+out} & number of values per key \\
 \hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
@@ -779,58 +779,24 @@ retrieve a set of keys from the hash table
 \mbox{\tt out}  & {\em status\+\_\+out} & status information (per key) \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-if {\ttfamily temp==nullptr$\vert$$\vert$values\+\_\+out==nullptr} then only {\ttfamily temp\+\_\+bytes} and {\ttfamily value\+\_\+size\+\_\+out} will be computed 
-\end{DoxyNote}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a4f7941cfe49e656d0f31938f8c8c88f1_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a95c52ddbf4d9ae84240b3c94ef6cb833_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ae12192811f1d955bb3dc8483b52ed999}\label{classwarpcore_1_1MultiValueHashTable_ae12192811f1d955bb3dc8483b52ed999}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve\+\_\+all\+\_\+keys@{retrieve\+\_\+all\+\_\+keys}}
-\index{retrieve\+\_\+all\+\_\+keys@{retrieve\+\_\+all\+\_\+keys}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve\+\_\+all\+\_\+keys()}{retrieve\_all\_keys()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve\+\_\+all\+\_\+keys (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{size\+\_\+out,  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_afba396891eeb4902e22b112bbafe7945}\label{classwarpcore_1_1MultiValueHashTable_afba396891eeb4902e22b112bbafe7945}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!num\+\_\+values@{num\+\_\+values}}
+\index{num\+\_\+values@{num\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{num\+\_\+values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-retrieves the set of all keys stored inside the hash table 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt out}  & {\em keys\+\_\+out} & pointer to the retrieved keys \\
-\hline
-\mbox{\tt out}  & {\em size\+\_\+out} & number of retrieved keys \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyNote}{Note}
-if {\ttfamily keys\+\_\+out==nullptr} then only {\ttfamily size\+\_\+out} will be computed 
-\end{DoxyNote}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ae12192811f1d955bb3dc8483b52ed999_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a9ab8c6741cc029d28bb4435b54bdf3d6}\label{classwarpcore_1_1MultiValueHashTable_a9ab8c6741cc029d28bb4435b54bdf3d6}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!size\+\_\+keys@{size\+\_\+keys}}
-\index{size\+\_\+keys@{size\+\_\+keys}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{size\+\_\+keys()}{size\_keys()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::size\+\_\+keys (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-number of keys stored inside the hash table 
+number of values stored inside the hash table  alias for {\ttfamily \hyperlink{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f}{size()}} 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -838,42 +804,82 @@ number of keys stored inside the hash table
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-number of keys inside the hash table 
+the number of values 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a9ab8c6741cc029d28bb4435b54bdf3d6_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_afba396891eeb4902e22b112bbafe7945_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a239a45feb31e995163b4e22ec9dab446}\label{classwarpcore_1_1MultiValueHashTable_a239a45feb31e995163b4e22ec9dab446}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!peek\+\_\+status@{peek\+\_\+status}}
+\index{peek\+\_\+status@{peek\+\_\+status}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{peek\+\_\+status()}{peek\_status()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::peek\+\_\+status (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get the status of the hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the status 
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a9ab8c6741cc029d28bb4435b54bdf3d6_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a239a45feb31e995163b4e22ec9dab446_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a8e1c0d96983af892804a6513964692c2}\label{classwarpcore_1_1MultiValueHashTable_a8e1c0d96983af892804a6513964692c2}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!size\+\_\+values@{size\+\_\+values}}
-\index{size\+\_\+values@{size\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{size\+\_\+values()}{size\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::size\+\_\+values (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key\+\_\+in,  }\item[{index\+\_\+type \&}]{size\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_a2191f42810234e459bc4ef6e491ec929}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2b1fca3402bf4df60eebe04e33b28d02}\label{classwarpcore_1_1MultiValueHashTable_a2b1fca3402bf4df60eebe04e33b28d02}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!pop\+\_\+status@{pop\+\_\+status}}
+\index{pop\+\_\+status@{pop\+\_\+status}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{pop\+\_\+status()}{pop\_status()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::pop\+\_\+status (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-get number of values to a corresponding key inside the hash table 
+get and reset the status of the hash table 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+in} & key to probe \\
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
-\mbox{\tt out}  & {\em size\+\_\+out} & number of values \\
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a7f64ccf2789b8eaf65251600bb36ca23}\label{classwarpcore_1_1MultiValueHashTable_a7f64ccf2789b8eaf65251600bb36ca23}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1MultiValueHashTable_ad300c5a01bd933343ff08176fb4b4e29}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+retrieves all values to a corresponding key 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em key\+\_\+in} & key to retrieve from the hash table \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group this operation is executed in \\
+\mbox{\tt out}  & {\em values\+\_\+out} & values for {\ttfamily key\+\_\+in} \\
+\hline
+\mbox{\tt out}  & {\em num\+\_\+out} & number of retrieved values \\
+\hline
+\mbox{\tt in}  & {\em group} & cooperative group \\
 \hline
 \mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
 \hline
@@ -886,7 +892,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a8e1c0d96983af892804a6513964692c2_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a7f64ccf2789b8eaf65251600bb36ca23_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -894,30 +900,87 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a8e1c0d96983af892804a6513964692c2_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a7f64ccf2789b8eaf65251600bb36ca23_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_acefa26ef6c5d07d909e6758fa9cc88c7}\label{classwarpcore_1_1MultiValueHashTable_acefa26ef6c5d07d909e6758fa9cc88c7}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!size\+\_\+values@{size\+\_\+values}}
-\index{size\+\_\+values@{size\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{size\+\_\+values()}{size\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ac5f44931cff592aff6264d9b74231b08}\label{classwarpcore_1_1MultiValueHashTable_ac5f44931cff592aff6264d9b74231b08}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::size\+\_\+values (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$}]{keys\+\_\+in,  }\item[{index\+\_\+type}]{size\+\_\+in,  }\item[{index\+\_\+type $\ast$}]{sizes\+\_\+out,  }\item[{index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{index\+\_\+type $\ast$const}]{begin\+\_\+offsets\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{end\+\_\+offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-get number of values to a corresponding set of keys inside the hash table 
+retrieve a set of keys from the hash table 
 
+\begin{DoxyNote}{Note}
+this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided 
+
+{\ttfamily end\+\_\+offsets\+\_\+out} can be {\ttfamily begin\+\_\+offsets\+\_\+out+1} 
+\end{DoxyNote}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Status\+Handler} & handles returned status per key (see {\ttfamily \hyperlink{namespacewarpcore_1_1status__handlers}{status\+\_\+handlers}}) \\
+\hline
+\end{DoxyTemplParams}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & keys to probe \\
+\mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to retrieve from the hash table \\
 \hline
-\mbox{\tt in}  & {\em size\+\_\+in} & input size \\
+\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to retrieve \\
 \hline
-\mbox{\tt out}  & {\em sizes\+\_\+out} & number of values per key \\
+\mbox{\tt out}  & {\em begin\+\_\+offsets\+\_\+out} & begin of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
+\hline
+\mbox{\tt out}  & {\em end\+\_\+offsets\+\_\+out} & end of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
+\hline
+\mbox{\tt out}  & {\em num\+\_\+out} & total number of values retrieved by this operation \\
+\hline
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\hline
+\mbox{\tt out}  & {\em status\+\_\+out} & status information (per key) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ac5f44931cff592aff6264d9b74231b08_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889}\label{classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve\+\_\+all@{retrieve\+\_\+all}}
+\index{retrieve\+\_\+all@{retrieve\+\_\+all}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{retrieve\+\_\+all()}{retrieve\_all()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::retrieve\+\_\+all (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$const}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+keys\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{begin\+\_\+offsets\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{end\+\_\+offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{value\+\_\+type \&}]{num\+\_\+values\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+retrieves all elements from the hash table 
+
+\begin{DoxyNote}{Note}
+this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided 
+
+this method implements a multi-\/stage dry-\/run mode 
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em keys\+\_\+out} & pointer to the set of unique keys \\
+\hline
+\mbox{\tt out}  & {\em num\+\_\+keys\+\_\+out} & number of unique keys \\
+\hline
+\mbox{\tt out}  & {\em begin\+\_\+offsets\+\_\+out} & begin of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
+\hline
+\mbox{\tt out}  & {\em end\+\_\+offsets\+\_\+out} & end of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
+\hline
+\mbox{\tt out}  & {\em values\+\_\+out} & array which holds all retrieved values \\
+\hline
+\mbox{\tt out}  & {\em num\+\_\+values\+\_\+out} & total number of values retrieved by this operation \\
 \hline
 \mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
@@ -927,19 +990,55 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_acefa26ef6c5d07d909e6758fa9cc88c7_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a2f663ba48c0399e0821293c17cef1c34}\label{classwarpcore_1_1MultiValueHashTable_a2f663ba48c0399e0821293c17cef1c34}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!size\+\_\+values@{size\+\_\+values}}
-\index{size\+\_\+values@{size\+\_\+values}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{size\+\_\+values()}{size\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::size\+\_\+values (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294}\label{classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!retrieve\+\_\+all\+\_\+keys@{retrieve\+\_\+all\+\_\+keys}}
+\index{retrieve\+\_\+all\+\_\+keys@{retrieve\+\_\+all\+\_\+keys}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{retrieve\+\_\+all\+\_\+keys()}{retrieve\_all\_keys()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::retrieve\+\_\+all\+\_\+keys (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$const}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-get number of values inside the hash table 
+retrieve all unqiue keys  this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em keys\+\_\+out} & retrieved unqiue keys \\
+\hline
+\mbox{\tt out}  & {\em num\+\_\+out} & numof unique keys \\
+\hline
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f}\label{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f}} 
+\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!size@{size}}
+\index{size@{size}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::size (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+number of values stored inside the hash table 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -947,30 +1046,38 @@ get number of values inside the hash table
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-total number of values 
+the number of values 
 \end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a2f663ba48c0399e0821293c17cef1c34_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ab8731334f269b625d8fea853f81c05b4}\label{classwarpcore_1_1MultiValueHashTable_ab8731334f269b625d8fea853f81c05b4}} 
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a1be160768bafcae409e3a37ee2829d9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a7f8d4c186530fe60ead1e52f9629622c}\label{classwarpcore_1_1MultiValueHashTable_a7f8d4c186530fe60ead1e52f9629622c}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!storage\+\_\+density@{storage\+\_\+density}}
 \index{storage\+\_\+density@{storage\+\_\+density}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{storage\+\_\+density()}{storage\_density()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::storage\+\_\+density (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::storage\+\_\+density (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
 current storage density of the hash table 
 
 
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -981,15 +1088,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_ab8731334f269b625d8fea853f81c05b4_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a7f8d4c186530fe60ead1e52f9629622c_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a6174c9b15d8772c8fa1874b6415e9937}\label{classwarpcore_1_1MultiValueHashTable_a6174c9b15d8772c8fa1874b6415e9937}} 
+\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a9eec07133f3b950b5c6465e4b8b53e78}\label{classwarpcore_1_1MultiValueHashTable_a9eec07133f3b950b5c6465e4b8b53e78}} 
 \index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!tombstone\+\_\+key@{tombstone\+\_\+key}}
 \index{tombstone\+\_\+key@{tombstone\+\_\+key}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
 \subsubsection{\texorpdfstring{tombstone\+\_\+key()}{tombstone\_key()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::tombstone\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$, class Table\+Storage  = defaults\+::table\+\_\+storage\+\_\+t$<$\+Key, Value$>$, index\+\_\+t Temp\+Memory\+Bytes = defaults\+::temp\+\_\+memory\+\_\+bytes()$>$ \\
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Probing\+Scheme, Table\+Storage, Temp\+Memory\+Bytes $>$\+::tombstone\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
 
 
 
@@ -1003,66 +1110,6 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a6174c9b15d8772c8fa1874b6415e9937_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a5e5959606f5446959d56758b957626fa}\label{classwarpcore_1_1MultiValueHashTable_a5e5959606f5446959d56758b957626fa}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!value\+\_\+capacity@{value\+\_\+capacity}}
-\index{value\+\_\+capacity@{value\+\_\+capacity}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{value\+\_\+capacity()}{value\_capacity()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get the maximum value capacity of the hash table 
-
-\begin{DoxyReturn}{Returns}
-maximum value capacity 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_ad5ae5724768b34c344c95d7b4b736ab3}\label{classwarpcore_1_1MultiValueHashTable_ad5ae5724768b34c344c95d7b4b736ab3}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!value\+\_\+load\+\_\+factor@{value\+\_\+load\+\_\+factor}}
-\index{value\+\_\+load\+\_\+factor@{value\+\_\+load\+\_\+factor}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{value\+\_\+load\+\_\+factor()}{value\_load\_factor()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+load\+\_\+factor (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get load factor of the value store 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-load factor 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1MultiValueHashTable_a431ef6fae4419af72cf565430abbf7b6}\label{classwarpcore_1_1MultiValueHashTable_a431ef6fae4419af72cf565430abbf7b6}} 
-\index{warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}!value\+\_\+to\+\_\+header\+\_\+ratio@{value\+\_\+to\+\_\+header\+\_\+ratio}}
-\index{value\+\_\+to\+\_\+header\+\_\+ratio@{value\+\_\+to\+\_\+header\+\_\+ratio}!warpcore\+::\+Multi\+Value\+Hash\+Table@{warpcore\+::\+Multi\+Value\+Hash\+Table}}
-\subsubsection{\texorpdfstring{value\+\_\+to\+\_\+header\+\_\+ratio()}{value\_to\_header\_ratio()}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1MultiValueHashTable}{warpcore\+::\+Multi\+Value\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+to\+\_\+header\+\_\+ratio (\begin{DoxyParamCaption}\item[{cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get the ratio between actual payload bytes and occupied bytes inside the value store 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-ratio 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a431ef6fae4419af72cf565430abbf7b6_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1MultiValueHashTable_a9eec07133f3b950b5c6465e4b8b53e78_icgraph}
 \end{center}
 \end{figure}

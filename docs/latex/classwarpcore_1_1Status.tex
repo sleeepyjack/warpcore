@@ -26,8 +26,20 @@ constexpr {\bfseries Status} (\hyperlink{classwarpcore_1_1Status}{Status} \&\&s)
 \mbox{\Hypertarget{classwarpcore_1_1Status_ae52d09de9f4d0edc1a82dd9abe949c05}\label{classwarpcore_1_1Status_ae52d09de9f4d0edc1a82dd9abe949c05}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr base\+\_\+type {\bfseries base} () const noexcept
 \item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_a322505a0bfd8a482485c3637a0a67031}\label{classwarpcore_1_1Status_a322505a0bfd8a482485c3637a0a67031}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries get\+\_\+errors} () const noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_af853b0bcdde437fccac72e57e1a93779}\label{classwarpcore_1_1Status_af853b0bcdde437fccac72e57e1a93779}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries get\+\_\+warnings} () const noexcept
+\item 
 \mbox{\Hypertarget{classwarpcore_1_1Status_a7c67c7914bad36717f100ed33e25baab}\label{classwarpcore_1_1Status_a7c67c7914bad36717f100ed33e25baab}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+any} (const \hyperlink{classwarpcore_1_1Status}{Status} \&s=all()) const noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_a7e085f177677d05f544b57b5d597e653}\label{classwarpcore_1_1Status_a7e085f177677d05f544b57b5d597e653}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+any\+\_\+errors} () const noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_acd0897a896bf66101c1fffc931c31780}\label{classwarpcore_1_1Status_acd0897a896bf66101c1fffc931c31780}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+any\+\_\+warnings} () const noexcept
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1Status_a0e5badc89fc3fa0cdde54136aba62bc1}\label{classwarpcore_1_1Status_a0e5badc89fc3fa0cdde54136aba62bc1}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+all} (const \hyperlink{classwarpcore_1_1Status}{Status} \&s=all()) const noexcept
@@ -58,6 +70,15 @@ constexpr {\bfseries Status} (\hyperlink{classwarpcore_1_1Status}{Status} \&\&s)
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1Status_a3d0308deca5d97d37fadb665e9b05ad4}\label{classwarpcore_1_1Status_a3d0308deca5d97d37fadb665e9b05ad4}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+not\+\_\+initialized} () const noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_ad94de2f2a6919c84cd06e79b97c56fae}\label{classwarpcore_1_1Status_ad94de2f2a6919c84cd06e79b97c56fae}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+dry\+\_\+run} () const noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_af3bce89d282fcba29ccc82ab71340848}\label{classwarpcore_1_1Status_af3bce89d282fcba29ccc82ab71340848}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+invalid\+\_\+phase\+\_\+overlap} () const noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_aff72d8791d406411dc8131236402537a}\label{classwarpcore_1_1Status_aff72d8791d406411dc8131236402537a}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool {\bfseries has\+\_\+max\+\_\+values\+\_\+for\+\_\+key\+\_\+reached} () const noexcept
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1Status_a8edc01c22ee98087660028978ad0f1cd}\label{classwarpcore_1_1Status_a8edc01c22ee98087660028978ad0f1cd}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} \& {\bfseries operator=} (const \hyperlink{classwarpcore_1_1Status}{Status} \&a) noexcept
@@ -127,15 +148,27 @@ static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyp
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1Status_a8f8d84042630b330c067fe949bd69f56}\label{classwarpcore_1_1Status_a8f8d84042630b330c067fe949bd69f56}} 
 static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries not\+\_\+initialized} () noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_a0c313350775cb900b09ccd2c8700f0e2}\label{classwarpcore_1_1Status_a0c313350775cb900b09ccd2c8700f0e2}} 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries dry\+\_\+run} () noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_a505789f0664da76505349786a65625eb}\label{classwarpcore_1_1Status_a505789f0664da76505349786a65625eb}} 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries invalid\+\_\+phase\+\_\+overlap} () noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_a40ef052af5ae66685709db74f6b53b1d}\label{classwarpcore_1_1Status_a40ef052af5ae66685709db74f6b53b1d}} 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries max\+\_\+values\+\_\+for\+\_\+key\+\_\+reached} () noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_aa9e389f317c5265870495956e1915cf7}\label{classwarpcore_1_1Status_aa9e389f317c5265870495956e1915cf7}} 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries error\+\_\+mask} () noexcept
+\item 
+\mbox{\Hypertarget{classwarpcore_1_1Status_a05eb746778b13753e34f1f5731f544d7}\label{classwarpcore_1_1Status_a05eb746778b13753e34f1f5731f544d7}} 
+static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr \hyperlink{classwarpcore_1_1Status}{Status} {\bfseries warning\+\_\+mask} () noexcept
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1Status_aa285d3faf42287d5cf638eac96fefbb3}\label{classwarpcore_1_1Status_aa285d3faf42287d5cf638eac96fefbb3}} 
-{\footnotesize template$<$base\+\_\+type $>$ }\\class {\bfseries status\+\_\+handlers\+::\+Return\+Boolean\+Flags}
-\item 
-\mbox{\Hypertarget{classwarpcore_1_1Status_a30ea2f7ad3a7662f75bc4b901c9002bb}\label{classwarpcore_1_1Status_a30ea2f7ad3a7662f75bc4b901c9002bb}} 
-{\footnotesize template$<$class , base\+\_\+type $>$ }\\class {\bfseries status\+\_\+handlers\+::\+Return\+Bit\+Flags}
+\mbox{\Hypertarget{classwarpcore_1_1Status_a8fe69da064adda8c1335cf17db337f85}\label{classwarpcore_1_1Status_a8fe69da064adda8c1335cf17db337f85}} 
+{\footnotesize template$<$base\+\_\+type $>$ }\\class {\bfseries status\+\_\+handlers\+::\+Return\+Boolean}
 \end{DoxyCompactItemize}
 
 

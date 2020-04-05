@@ -1,4 +1,6 @@
 <map id="warpcore::storage::CyclicStore::status" name="warpcore::storage::CyclicStore::status">
-<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html#a126bd7d04488b3abeb1b230bd04963b2" title="constructor " alt="" coords="188,5,459,76"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#a6684c95a43e912c1b0e41a6e81afb641" title="(re)initialize the hash table " alt="" coords="230,100,417,171"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#acbcf649a55f735827a3729bdcd5493d1" title="constructor " alt="" coords="507,11,693,52"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#ac12fa1b729821808ce4627c49bbc4d25" title="(re)initialize the hash table " alt="" coords="236,40,411,81"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#a7cb8b01ed6c2ceee8118e398eb4dde83" title="constructor " alt="" coords="188,105,459,176"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396" title="(re)initialize the hash table " alt="" coords="230,200,417,271"/>
 </map>

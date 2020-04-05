@@ -14,8 +14,8 @@ using {\bfseries key\+\_\+type} = typename Hasher1\+::key\+\_\+type
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a806df26c5d213788a298771b746788a5}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a806df26c5d213788a298771b746788a5}} 
 using {\bfseries index\+\_\+type} = index\+\_\+t
 \item 
-\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a3fb4fb42e3e21599e2a1909cd0df5e37}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a3fb4fb42e3e21599e2a1909cd0df5e37}} 
-using {\bfseries tag} = tags\+::probing\+\_\+scheme\+\_\+tag
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_af11ec5617e5c6ec113991c90570022c8}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_af11ec5617e5c6ec113991c90570022c8}} 
+using {\bfseries tag} = typename std\+::conditional$<$ checks\+::is\+\_\+true\+\_\+permutation\+\_\+hasher$<$ Hasher1 $>$() \&\&checks\+::is\+\_\+true\+\_\+permutation\+\_\+hasher$<$ Hasher2 $>$(), tags\+::cycle\+\_\+free\+\_\+probing\+\_\+scheme, tags\+::probing\+\_\+scheme $>$\+::type
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}

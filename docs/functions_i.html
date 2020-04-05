@@ -63,64 +63,69 @@ $(function() {
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>init()
-: <a class="el" href="classwarpcore_1_1BloomFilter.html#ac9e663f21e94822fc214b75c623436f5">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
-, <a class="el" href="classwarpcore_1_1CountingHashTable.html#aad536be8a1f0c71d3d84543423723445">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1HashSet.html#a3768b1e7daa39cff5bc2bcac38d51b2e">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a8a13707d263729d8ab1ed146ce487309">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
-, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a6684c95a43e912c1b0e41a6e81afb641">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore.html#aa04bc2372b17856c61acd08d07381315">warpcore::storage::multi_value::DynamicSlabListStore&lt; Value, SlabIndexBits, ValueCounterBits, SlabSizeBits &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1StaticSlabListStore.html#a804e1993c67dc70854627e9b16a194e8">warpcore::storage::multi_value::StaticSlabListStore&lt; Value, SlabSize, SlabIndexBits, ValueCounterBits &gt;</a>
+: <a class="el" href="classwarpcore_1_1BloomFilter.html#a5f713802c324b840918111857976755e">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
+, <a class="el" href="classwarpcore_1_1BucketListHashTable.html#ad8b42b071bdf053a1ccd42b001212fc6">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
+, <a class="el" href="classwarpcore_1_1CountingHashTable.html#acb401fb2d38c59e086a1bedf68d4815f">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1HashSet.html#ae21bfb96f28d7b097841d6a6874c16d5">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#ac12fa1b729821808ce4627c49bbc4d25">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#a269ad2dfbb2f4ba86aa0746d1db6d019">warpcore::storage::multi_value::BucketListStore&lt; Value, BucketIndexBits, ValueCounterBits, BucketSizeBits &gt;</a>
 </li>
 <li>init_keys()
-: <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#ad425f8f6a239c074c240ca1228fb4e06">warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a4e2cbadf289a8f38bf81aa7e01190f9f">warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</a>
+: <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#abd88eb047b4435c11bb639df0e2fd7ee">warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;</a>
+, <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a7de9b497084433d27ae6ac63745ba541">warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</a>
 </li>
 <li>init_pairs()
-: <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#a8d25d5ca659f80f99f7d58c4315484c9">warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a1b41f73f6fb6df50a7262466f05e5c02">warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</a>
+: <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#aa4a8c988799409be60ee3368014fc13d">warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;</a>
+, <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a564d505e541f36b9b9088fc25f625c52">warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</a>
 </li>
 <li>init_values()
-: <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#a7bd77a5fa999cbb2c9e7b1c05242ffdb">warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#af436501d6e623ed9196e5e1f1f55f689">warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</a>
+: <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#ae38e88a4174cb42513ed2e0b0a521ce9">warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;</a>
+, <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a59dff9eee0d6a58160c4f9a4350e5f9c">warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</a>
 </li>
 <li>insert()
-: <a class="el" href="classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
+: <a class="el" href="classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
+, <a class="el" href="classwarpcore_1_1BucketListHashTable.html#afd7403fb1e7a22bdf59b7f6143c1f420">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
 , <a class="el" href="classwarpcore_1_1CountingHashTable.html#a2cad25fea134d836cf1b75f67d6b38ac">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a7f579f9cd29c3b210bd8b6b02af8fcb9">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
-, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#ad7a6dfc1bef70e3c7aa02de3a684599a">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#abd60992f9e6418a2ca792a6058aa2dab">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 <li>insert_and_query()
-: <a class="el" href="classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
+: <a class="el" href="classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
 </li>
 <li>is_copy()
 : <a class="el" href="classwarpcore_1_1BloomFilter.html#a55aaae73d8a1a8d811779fcf372f6c8c">warpcore::BloomFilter&lt; Key, Hasher, Slot, CGSize &gt;</a>
+, <a class="el" href="classwarpcore_1_1BucketListHashTable.html#a21b8552468f9254a2e7d5f81b0d0e29c">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
 , <a class="el" href="classwarpcore_1_1CountingHashTable.html#abd203ab693aa931917013e11c23d444c">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#ac1b20d9d5305bbd8e7fca93aa580c984">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a12d253dd2b4cbbdefe56944b16268f8d">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a5ab9221422cf32364464b44be66075dd">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#ad27e3e8fab3e2725d8437e4252566768">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1DynamicSlabListStore.html#ac26c2496f6c97b1f9ecbd64baa3b8496">warpcore::storage::multi_value::DynamicSlabListStore&lt; Value, SlabIndexBits, ValueCounterBits, SlabSizeBits &gt;</a>
-, <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1StaticSlabListStore.html#a5c11beecaea31d78396f7d5746859911">warpcore::storage::multi_value::StaticSlabListStore&lt; Value, SlabSize, SlabIndexBits, ValueCounterBits &gt;</a>
+, <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#aa4ac88f26d621b59508ec65c6f31fbec">warpcore::storage::multi_value::BucketListStore&lt; Value, BucketIndexBits, ValueCounterBits, BucketSizeBits &gt;</a>
 </li>
 <li>is_empty_key()
 : <a class="el" href="classwarpcore_1_1CountingHashTable.html#aee558df23486ead4dc8096b939b184df">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#ade9bc606ceba67c90aac5ee3aa43ddc7">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a804597a01cdfb417ca451760a9452542">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a23d1ba2d5e85a2465685f353ee5d0872">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#af74c58b98cbc197243f98940ee0b1baa">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 <li>is_initialized()
-: <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a206e52ad175b2d6d7abbaae25fa19c7f">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
+: <a class="el" href="classwarpcore_1_1BucketListHashTable.html#abcfec81d3cac942d01868bb05080beab">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a44f45da1cebbcc45a01072d4d22514ba">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#ae366b3fd0d7edbac68a939fe580df9a4">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 <li>is_tombstone_key()
 : <a class="el" href="classwarpcore_1_1CountingHashTable.html#a0476fd077b63d32e3ebb5bb022bdd789">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#a74f48068d148b071761b1c214501770a">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#ae780824551ec26fb0db7e07018061099">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a76fed9a05c9111488189e1b22c435f63">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a38a217e5b08eeab46539501b1cd2a082">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 <li>is_valid_key()
-: <a class="el" href="classwarpcore_1_1CountingHashTable.html#ab186fb0eadd3f5d1cd5bc290489ab0df">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+: <a class="el" href="classwarpcore_1_1BucketListHashTable.html#aa5a011b8623deb47def1b8e029869f06">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
+, <a class="el" href="classwarpcore_1_1CountingHashTable.html#ab186fb0eadd3f5d1cd5bc290489ab0df">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#a529de8c2b747588ef825661ba12b4c25">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
-, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a65e099a2eea8ca9b800d02937b6c66a8">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
-, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#afc6413d2fe78d491628565025790c0fe">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a130e94f97c0002895317f086442e8470">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a46cd1b240746021179983e3263f427b5">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

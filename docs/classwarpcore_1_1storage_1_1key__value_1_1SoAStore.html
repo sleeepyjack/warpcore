@@ -89,15 +89,15 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>status_type</b> = <a
 <tr class="memitem:a218527a05fc4e0f11c96004726cedf7a"><td class="memItemLeft" align="right" valign="top"><a id="a218527a05fc4e0f11c96004726cedf7a"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>index_type</b> = index_t</td></tr>
 <tr class="separator:a218527a05fc4e0f11c96004726cedf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dd7578cfd17589dac56e17249ca0224"><td class="memItemLeft" align="right" valign="top"><a id="a0dd7578cfd17589dac56e17249ca0224"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b> = tags::key_value_storage_tag</td></tr>
-<tr class="separator:a0dd7578cfd17589dac56e17249ca0224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9e973b44e42f9e8b9bb57587b4d33a"><td class="memItemLeft" align="right" valign="top"><a id="a7e9e973b44e42f9e8b9bb57587b4d33a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>tag</b> = tags::key_value_storage</td></tr>
+<tr class="separator:a7e9e973b44e42f9e8b9bb57587b4d33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ada33178712cdc4a96ff1dee1b3a9e624"><td class="memItemLeft" align="right" valign="top">__host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#ada33178712cdc4a96ff1dee1b3a9e624">SoAStore</a> (index_type <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a2ae1c90988d891741861e6e6d571ec00">capacity</a>) noexcept</td></tr>
-<tr class="memdesc:ada33178712cdc4a96ff1dee1b3a9e624"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="#ada33178712cdc4a96ff1dee1b3a9e624">More...</a><br /></td></tr>
-<tr class="separator:ada33178712cdc4a96ff1dee1b3a9e624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc140aa67de81f7bdff2bc16f6a1b8b"><td class="memItemLeft" align="right" valign="top">__host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a4dc140aa67de81f7bdff2bc16f6a1b8b">SoAStore</a> (const index_type <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a2ae1c90988d891741861e6e6d571ec00">capacity</a>) noexcept</td></tr>
+<tr class="memdesc:a4dc140aa67de81f7bdff2bc16f6a1b8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="#a4dc140aa67de81f7bdff2bc16f6a1b8b">More...</a><br /></td></tr>
+<tr class="separator:a4dc140aa67de81f7bdff2bc16f6a1b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa42ed6e282fadc26ebbc583617978f4"><td class="memItemLeft" align="right" valign="top">__host____device__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#afa42ed6e282fadc26ebbc583617978f4">SoAStore</a> (const <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">SoAStore</a> &amp;o) noexcept</td></tr>
 <tr class="memdesc:afa42ed6e282fadc26ebbc583617978f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy-constructor (shallow)  <a href="#afa42ed6e282fadc26ebbc583617978f4">More...</a><br /></td></tr>
 <tr class="separator:afa42ed6e282fadc26ebbc583617978f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,27 +108,30 @@ Public Member Functions</h2></td></tr>
 __host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#ae55577a94a59de733f3d377024beeb92">~SoAStore</a> () noexcept</td></tr>
 <tr class="memdesc:ae55577a94a59de733f3d377024beeb92"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor <br /></td></tr>
 <tr class="separator:ae55577a94a59de733f3d377024beeb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e2cbadf289a8f38bf81aa7e01190f9f"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a4e2cbadf289a8f38bf81aa7e01190f9f">init_keys</a> (key_type key, cudaStream_t stream=0) noexcept</td></tr>
-<tr class="memdesc:a4e2cbadf289a8f38bf81aa7e01190f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize keys  <a href="#a4e2cbadf289a8f38bf81aa7e01190f9f">More...</a><br /></td></tr>
-<tr class="separator:a4e2cbadf289a8f38bf81aa7e01190f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af436501d6e623ed9196e5e1f1f55f689"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#af436501d6e623ed9196e5e1f1f55f689">init_values</a> (value_type value, cudaStream_t stream=0) noexcept</td></tr>
-<tr class="memdesc:af436501d6e623ed9196e5e1f1f55f689"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize values  <a href="#af436501d6e623ed9196e5e1f1f55f689">More...</a><br /></td></tr>
-<tr class="separator:af436501d6e623ed9196e5e1f1f55f689"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b41f73f6fb6df50a7262466f05e5c02"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a1b41f73f6fb6df50a7262466f05e5c02">init_pairs</a> (key_type key, value_type value, cudaStream_t stream=0) noexcept</td></tr>
-<tr class="memdesc:a1b41f73f6fb6df50a7262466f05e5c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize key/value pairs  <a href="#a1b41f73f6fb6df50a7262466f05e5c02">More...</a><br /></td></tr>
-<tr class="separator:a1b41f73f6fb6df50a7262466f05e5c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7de9b497084433d27ae6ac63745ba541"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a7de9b497084433d27ae6ac63745ba541">init_keys</a> (const key_type key, const cudaStream_t stream=0) noexcept</td></tr>
+<tr class="memdesc:a7de9b497084433d27ae6ac63745ba541"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize keys  <a href="#a7de9b497084433d27ae6ac63745ba541">More...</a><br /></td></tr>
+<tr class="separator:a7de9b497084433d27ae6ac63745ba541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59dff9eee0d6a58160c4f9a4350e5f9c"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a59dff9eee0d6a58160c4f9a4350e5f9c">init_values</a> (const value_type value, const cudaStream_t stream=0) noexcept</td></tr>
+<tr class="memdesc:a59dff9eee0d6a58160c4f9a4350e5f9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize values  <a href="#a59dff9eee0d6a58160c4f9a4350e5f9c">More...</a><br /></td></tr>
+<tr class="separator:a59dff9eee0d6a58160c4f9a4350e5f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a564d505e541f36b9b9088fc25f625c52"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a564d505e541f36b9b9088fc25f625c52">init_pairs</a> (const key_type key, const value_type value, const cudaStream_t stream=0) noexcept</td></tr>
+<tr class="memdesc:a564d505e541f36b9b9088fc25f625c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize key/value pairs  <a href="#a564d505e541f36b9b9088fc25f625c52">More...</a><br /></td></tr>
+<tr class="separator:a564d505e541f36b9b9088fc25f625c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ffce52b3ad4d09f6709f3731c79fb3e"><td class="memItemLeft" align="right" valign="top">__device__ detail::pair_ref_t&lt; key_type, value_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a0ffce52b3ad4d09f6709f3731c79fb3e">operator[]</a> (index_type i) noexcept</td></tr>
 <tr class="memdesc:a0ffce52b3ad4d09f6709f3731c79fb3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">accessor  <a href="#a0ffce52b3ad4d09f6709f3731c79fb3e">More...</a><br /></td></tr>
 <tr class="separator:a0ffce52b3ad4d09f6709f3731c79fb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ffbe21819280b32a78ad98dd8a7dd43"><td class="memItemLeft" align="right" valign="top">__device__ detail::pair_const_ref_t&lt; key_type, value_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a0ffbe21819280b32a78ad98dd8a7dd43">operator[]</a> (index_type i) const noexcept</td></tr>
-<tr class="memdesc:a0ffbe21819280b32a78ad98dd8a7dd43"><td class="mdescLeft">&#160;</td><td class="mdescRight">const accessor  <a href="#a0ffbe21819280b32a78ad98dd8a7dd43">More...</a><br /></td></tr>
-<tr class="separator:a0ffbe21819280b32a78ad98dd8a7dd43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8167ef32ca834fb530cf787a83a493d3"><td class="memItemLeft" align="right" valign="top">__device__ detail::pair_const_ref_t&lt; key_type, value_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a8167ef32ca834fb530cf787a83a493d3">operator[]</a> (const index_type i) const noexcept</td></tr>
+<tr class="memdesc:a8167ef32ca834fb530cf787a83a493d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">const accessor  <a href="#a8167ef32ca834fb530cf787a83a493d3">More...</a><br /></td></tr>
+<tr class="separator:a8167ef32ca834fb530cf787a83a493d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe3a33107f19d895ed0aa78bfedd2de0"><td class="memItemLeft" align="right" valign="top">__host____device__ <a class="el" href="classwarpcore_1_1Status.html">status_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#afe3a33107f19d895ed0aa78bfedd2de0">status</a> () const noexcept</td></tr>
 <tr class="memdesc:afe3a33107f19d895ed0aa78bfedd2de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">get storage status  <a href="#afe3a33107f19d895ed0aa78bfedd2de0">More...</a><br /></td></tr>
 <tr class="separator:afe3a33107f19d895ed0aa78bfedd2de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ae1c90988d891741861e6e6d571ec00"><td class="memItemLeft" align="right" valign="top">__host____device__ index_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a2ae1c90988d891741861e6e6d571ec00">capacity</a> () const noexcept</td></tr>
 <tr class="memdesc:a2ae1c90988d891741861e6e6d571ec00"><td class="mdescLeft">&#160;</td><td class="mdescRight">get storage capacity  <a href="#a2ae1c90988d891741861e6e6d571ec00">More...</a><br /></td></tr>
 <tr class="separator:a2ae1c90988d891741861e6e6d571ec00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0dcf0801cbe4d994f9bb385e51d02b7"><td class="memItemLeft" align="right" valign="top">__host__ index_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#ae0dcf0801cbe4d994f9bb385e51d02b7">bytes_total</a> () const noexcept</td></tr>
+<tr class="memdesc:ae0dcf0801cbe4d994f9bb385e51d02b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the total number of bytes occupied by this data structure  <a href="#ae0dcf0801cbe4d994f9bb385e51d02b7">More...</a><br /></td></tr>
+<tr class="separator:ae0dcf0801cbe4d994f9bb385e51d02b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class Key, class Value&gt;<br />
@@ -143,8 +146,8 @@ class warpcore::storage::key_value::SoAStore&lt; Key, Value &gt;</h3>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ada33178712cdc4a96ff1dee1b3a9e624"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada33178712cdc4a96ff1dee1b3a9e624">&#9670;&nbsp;</a></span>SoAStore() <span class="overload">[1/3]</span></h2>
+<a id="a4dc140aa67de81f7bdff2bc16f6a1b8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dc140aa67de81f7bdff2bc16f6a1b8b">&#9670;&nbsp;</a></span>SoAStore() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,7 +160,7 @@ template&lt;class Key , class Value &gt; </div>
         <tr>
           <td class="memname">__host__ <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">warpcore::storage::key_value::SoAStore</a>&lt; Key, Value &gt;::<a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">SoAStore</a> </td>
           <td>(</td>
-          <td class="paramtype">index_type&#160;</td>
+          <td class="paramtype">const index_type&#160;</td>
           <td class="paramname"><em>capacity</em></td><td>)</td>
           <td></td>
         </tr>
@@ -179,8 +182,8 @@ template&lt;class Key , class Value &gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624_cgraph.png" border="0" usemap="#classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624_cgraph" id="classwarpcore_1_1storage_1_1key__value_1_1SoAStore_ada33178712cdc4a96ff1dee1b3a9e624_cgraph">
+<div class="center"><img src="classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b_cgraph.png" border="0" usemap="#classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b_cgraph" id="classwarpcore_1_1storage_1_1key__value_1_1SoAStore_a4dc140aa67de81f7bdff2bc16f6a1b8b_cgraph">
 <area shape="rect" id="node2" href="classwarpcore_1_1storage_1_1CyclicStore.html#acc4bfbb9b10868a193301d0ec5a46711" title="get buffer capacity " alt="" coords="199,13,345,54"/>
 </map>
 </div>
@@ -260,6 +263,36 @@ template&lt;class Key , class Value &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae0dcf0801cbe4d994f9bb385e51d02b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0dcf0801cbe4d994f9bb385e51d02b7">&#9670;&nbsp;</a></span>bytes_total()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key , class Value &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">__host__ index_type <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">warpcore::storage::key_value::SoAStore</a>&lt; Key, Value &gt;::bytes_total </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the total number of bytes occupied by this data structure </p>
+<dl class="section return"><dt>Returns</dt><dd>bytes </dd></dl>
+
+</div>
+</div>
 <a id="a2ae1c90988d891741861e6e6d571ec00"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ae1c90988d891741861e6e6d571ec00">&#9670;&nbsp;</a></span>capacity()</h2>
 
@@ -290,8 +323,8 @@ template&lt;class Key , class Value &gt; </div>
 
 </div>
 </div>
-<a id="a4e2cbadf289a8f38bf81aa7e01190f9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e2cbadf289a8f38bf81aa7e01190f9f">&#9670;&nbsp;</a></span>init_keys()</h2>
+<a id="a7de9b497084433d27ae6ac63745ba541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7de9b497084433d27ae6ac63745ba541">&#9670;&nbsp;</a></span>init_keys()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,13 +337,13 @@ template&lt;class Key , class Value &gt; </div>
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">warpcore::storage::key_value::SoAStore</a>&lt; Key, Value &gt;::init_keys </td>
           <td>(</td>
-          <td class="paramtype">key_type&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
           <td class="paramname"><em>stream</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -337,8 +370,8 @@ template&lt;class Key , class Value &gt; </div>
 
 </div>
 </div>
-<a id="a1b41f73f6fb6df50a7262466f05e5c02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b41f73f6fb6df50a7262466f05e5c02">&#9670;&nbsp;</a></span>init_pairs()</h2>
+<a id="a564d505e541f36b9b9088fc25f625c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a564d505e541f36b9b9088fc25f625c52">&#9670;&nbsp;</a></span>init_pairs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,19 +384,19 @@ template&lt;class Key , class Value &gt; </div>
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">warpcore::storage::key_value::SoAStore</a>&lt; Key, Value &gt;::init_pairs </td>
           <td>(</td>
-          <td class="paramtype">key_type&#160;</td>
+          <td class="paramtype">const key_type&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">value_type&#160;</td>
+          <td class="paramtype">const value_type&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
           <td class="paramname"><em>stream</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -391,8 +424,8 @@ template&lt;class Key , class Value &gt; </div>
 
 </div>
 </div>
-<a id="af436501d6e623ed9196e5e1f1f55f689"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af436501d6e623ed9196e5e1f1f55f689">&#9670;&nbsp;</a></span>init_values()</h2>
+<a id="a59dff9eee0d6a58160c4f9a4350e5f9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59dff9eee0d6a58160c4f9a4350e5f9c">&#9670;&nbsp;</a></span>init_values()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,13 +438,13 @@ template&lt;class Key , class Value &gt; </div>
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">warpcore::storage::key_value::SoAStore</a>&lt; Key, Value &gt;::init_values </td>
           <td>(</td>
-          <td class="paramtype">value_type&#160;</td>
+          <td class="paramtype">const value_type&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramtype">const cudaStream_t&#160;</td>
           <td class="paramname"><em>stream</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -475,8 +508,8 @@ template&lt;class Key , class Value &gt; </div>
 
 </div>
 </div>
-<a id="a0ffbe21819280b32a78ad98dd8a7dd43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ffbe21819280b32a78ad98dd8a7dd43">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+<a id="a8167ef32ca834fb530cf787a83a493d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8167ef32ca834fb530cf787a83a493d3">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -489,7 +522,7 @@ template&lt;class Key , class Value &gt; </div>
         <tr>
           <td class="memname">__device__ detail::pair_const_ref_t&lt;key_type, value_type&gt; <a class="el" href="classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html">warpcore::storage::key_value::SoAStore</a>&lt; Key, Value &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">index_type&#160;</td>
+          <td class="paramtype">const index_type&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
           <td> const</td>
         </tr>

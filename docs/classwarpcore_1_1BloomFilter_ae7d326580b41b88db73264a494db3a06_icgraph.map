@@ -1,6 +1,6 @@
 <map id="warpcore::BloomFilter::block_bits" name="warpcore::BloomFilter::block_bits">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#a8567325cd30886f3daf2c615a35bb02e" title="inserts a key into the bloom filter " alt="" coords="214,5,363,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1BloomFilter.html#a47ffce0fc70aa6bd7a0ed4b837fec1bd" title="retrieve a key " alt="" coords="214,71,363,112"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1BloomFilter.html#a6dc903341218173f276cc855ba683ad1" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="214,136,363,177"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1BloomFilter.html#af77c52ec3c2223cfe335a65197bed625" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="203,202,375,229"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0" title="inserts a key into the bloom filter " alt="" coords="214,5,363,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa" title="retrieve a key " alt="" coords="214,71,363,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3" title="queries and subsequently inserts a key into the bloom filter " alt="" coords="214,136,363,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1BloomFilter.html#a27b98847aa06d277c48068ff59ca9381" title="estimated false positive rate of pattern&#45;blocked bloom filter " alt="" coords="203,202,375,229"/>
 </map>

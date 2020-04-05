@@ -1,3 +1,8 @@
 <map id="warpcore::HashSet::peek_status" name="warpcore::HashSet::peek_status">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#ac1b20d9d5305bbd8e7fca93aa580c984" title="indicates if this object is a shallow copy " alt="" coords="196,5,339,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#ac1b20d9d5305bbd8e7fca93aa580c984" title="indicates if this object is a shallow copy " alt="" coords="212,5,355,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#ab52e7809d5581849e07b914d8ce4ef9f" title="warpcore::HashSet of unique keys inside the table " alt="" coords="196,71,371,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys &#160;this method has a dry&#45;run mode where it only calculates the needed array si..." alt="" coords="419,37,593,79"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table " alt="" coords="419,103,593,144"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table " alt="" coords="641,37,816,79"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table " alt="" coords="641,103,816,144"/>
 </map>

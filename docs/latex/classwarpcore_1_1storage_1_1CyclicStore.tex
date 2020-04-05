@@ -30,7 +30,7 @@ using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_a90547b0e8e7f2d2bf4ca54ecbebeff6c}{Cyclic\+Store} (index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_acc4bfbb9b10868a193301d0ec5a46711}{capacity}) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_aca834b00d59e653c092db712ca7eb7a0}{Cyclic\+Store} (const index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_acc4bfbb9b10868a193301d0ec5a46711}{capacity}) noexcept
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_a8c9f9193f3a45063b9b73fece142aa81}{Cyclic\+Store} (const \hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{Cyclic\+Store} \&o) noexcept
 \begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
@@ -39,12 +39,14 @@ using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_a4ccee1383c1d6434c49fae48a1e6c9c0}\label{classwarpcore_1_1storage_1_1CyclicStore_a4ccee1383c1d6434c49fae48a1e6c9c0}} 
 \+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_a4ccee1383c1d6434c49fae48a1e6c9c0}{$\sim$\+Cyclic\+Store} () noexcept
 \begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ T $\ast$ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_afa6513c27f8e27b256b45d992ba4c820}{get} () noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ T $\ast$ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_ab475e047f32b8a8358ea6b78dfe2536d}{get} () const noexcept
 \begin{DoxyCompactList}\small\item\em atomically fetches the next slot in the buffer \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_ab6c224b2b5a49d93dc7e052ec7b8cc32}{status} () const noexcept
 \begin{DoxyCompactList}\small\item\em get buffer status \end{DoxyCompactList}\item 
 \+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_acc4bfbb9b10868a193301d0ec5a46711}{capacity} () const noexcept
-\begin{DoxyCompactList}\small\item\em get buffer capacity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get buffer capacity \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1CyclicStore_ae65e099d0cfe170fc4cd2f02682c3bda}{bytes\+\_\+total} () const noexcept
+\begin{DoxyCompactList}\small\item\em get the total number of bytes occupied by this data structure \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -61,12 +63,12 @@ thread-\/safe device-\/sided ring buffer without any overflow checks
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_a90547b0e8e7f2d2bf4ca54ecbebeff6c}\label{classwarpcore_1_1storage_1_1CyclicStore_a90547b0e8e7f2d2bf4ca54ecbebeff6c}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_aca834b00d59e653c092db712ca7eb7a0}\label{classwarpcore_1_1storage_1_1CyclicStore_aca834b00d59e653c092db712ca7eb7a0}} 
 \index{warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}!Cyclic\+Store@{Cyclic\+Store}}
 \index{Cyclic\+Store@{Cyclic\+Store}!warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}}
 \subsubsection{\texorpdfstring{Cyclic\+Store()}{CyclicStore()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class T$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{warpcore\+::storage\+::\+Cyclic\+Store}$<$ T $>$\+::\hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{Cyclic\+Store} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{warpcore\+::storage\+::\+Cyclic\+Store}$<$ T $>$\+::\hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{Cyclic\+Store} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{capacity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -112,6 +114,28 @@ move-\/constructor
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_ae65e099d0cfe170fc4cd2f02682c3bda}\label{classwarpcore_1_1storage_1_1CyclicStore_ae65e099d0cfe170fc4cd2f02682c3bda}} 
+\index{warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}!bytes\+\_\+total@{bytes\+\_\+total}}
+\index{bytes\+\_\+total@{bytes\+\_\+total}!warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}}
+\subsubsection{\texorpdfstring{bytes\+\_\+total()}{bytes\_total()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{warpcore\+::storage\+::\+Cyclic\+Store}$<$ T $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get the total number of bytes occupied by this data structure 
+
+\begin{DoxyReturn}{Returns}
+bytes 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1CyclicStore_ae65e099d0cfe170fc4cd2f02682c3bda_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_acc4bfbb9b10868a193301d0ec5a46711}\label{classwarpcore_1_1storage_1_1CyclicStore_acc4bfbb9b10868a193301d0ec5a46711}} 
 \index{warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}!capacity@{capacity}}
 \index{capacity@{capacity}!warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}}
@@ -134,26 +158,26 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1storage_1_1CyclicStore_acc4bfbb9b10868a193301d0ec5a46711_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_afa6513c27f8e27b256b45d992ba4c820}\label{classwarpcore_1_1storage_1_1CyclicStore_afa6513c27f8e27b256b45d992ba4c820}} 
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_ab475e047f32b8a8358ea6b78dfe2536d}\label{classwarpcore_1_1storage_1_1CyclicStore_ab475e047f32b8a8358ea6b78dfe2536d}} 
 \index{warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}!get@{get}}
 \index{get@{get}!warpcore\+::storage\+::\+Cyclic\+Store@{warpcore\+::storage\+::\+Cyclic\+Store}}
 \subsubsection{\texorpdfstring{get()}{get()}}
 {\footnotesize\ttfamily template$<$class T$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ T$\ast$ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{warpcore\+::storage\+::\+Cyclic\+Store}$<$ T $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ T$\ast$ \hyperlink{classwarpcore_1_1storage_1_1CyclicStore}{warpcore\+::storage\+::\+Cyclic\+Store}$<$ T $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
 atomically fetches the next slot in the buffer 
 
 \begin{DoxyReturn}{Returns}
-pointer to the next slot in the buffer 
+pointer to the next slot in the buffer  {\ttfamily const} on purpose 
 \end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1CyclicStore_afa6513c27f8e27b256b45d992ba4c820_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1CyclicStore_ab475e047f32b8a8358ea6b78dfe2536d_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1CyclicStore_ab6c224b2b5a49d93dc7e052ec7b8cc32}\label{classwarpcore_1_1storage_1_1CyclicStore_ab6c224b2b5a49d93dc7e052ec7b8cc32}} 
