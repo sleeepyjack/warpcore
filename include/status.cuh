@@ -62,6 +62,8 @@ public:
     static constexpr Status dry_run() noexcept { return Status(one << 9); }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status invalid_phase_overlap() noexcept { return Status(one << 10); }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr Status max_values_for_key_reached() noexcept { return Status(one << 11); }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status error_mask() noexcept
@@ -117,6 +119,8 @@ public:
     constexpr bool has_dry_run() const noexcept { return status_ & dry_run().status_; }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_invalid_phase_overlap() const noexcept { return status_ & invalid_phase_overlap().status_; }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool has_max_values_for_key_reached() const noexcept { return status_ & max_values_for_key_reached().status_; }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr Status& operator=(const Status& a) noexcept
@@ -196,7 +200,7 @@ private:
     explicit constexpr Status(base_type s) noexcept : status_{s} {}
 
     static constexpr base_type one = 1;
-    static constexpr base_type mask = 0x7FF; // INFO change when adding new status
+    static constexpr base_type mask = 0xFFF; // INFO change when adding new status
 
     base_type status_;
 
@@ -230,6 +234,10 @@ OStream& operator<<(OStream& os, Status status)
         msg.push_back("not initialized");
     if(status.has_dry_run())
         msg.push_back("dry run");
+    if(status.has_invalid_phase_overlap())
+        msg.push_back("invalid phase overlap");
+    if(status.has_max_values_for_key_reached())
+        msg.push_back("max values for key reached");
     // if(!status.has_any())
     //     msg.push_back("none");
 
