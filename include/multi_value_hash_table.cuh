@@ -264,6 +264,11 @@ public:
                     }
                 }
 
+                if(group.any(success))
+                {
+                    return status_type::none();
+                }
+
                 num_values += group.any(key_collision);
 
                 if(num_values >= max_values_per_key_)
@@ -271,11 +276,6 @@ public:
                     device_join_status(
                         status_type::max_values_for_key_reached());
                     return status_type::max_values_for_key_reached();
-                }
-
-                if(group.any(success))
-                {
-                    return status_type::none();
                 }
 
                 empty_mask ^= 1UL << leader;
