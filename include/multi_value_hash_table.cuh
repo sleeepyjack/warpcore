@@ -115,10 +115,12 @@ public:
         temp_(TempMemoryBytes / sizeof(index_type)),
         seed_(seed),
         max_values_per_key_(max_values_per_key),
+        num_keys_(nullptr),
         is_copy_(false),
         is_initialized_(false)
     {
         cudaMalloc(&status_, sizeof(status_type));
+        cudaMalloc(&num_keys_, sizeof(index_type));
 
         assign_status(table_.status() + temp_.status());
 
@@ -135,6 +137,7 @@ public:
         temp_(o.temp_),
         seed_(o.seed_),
         max_values_per_key_(o.max_values_per_key_),
+        num_keys_(o.num_keys_),
         is_copy_(true),
         is_initialized_(o.is_initialized_)
     {}
@@ -149,6 +152,7 @@ public:
         temp_(std::move(o.temp_)),
         seed_(std::move(o.seed_)),
         max_values_per_key_(std::move(o.max_values_per_key_)),
+        num_keys_(std::move(o.num_keys_)),
         is_copy_(std::move(o.is_copy_)),
         is_initialized_(std::move(o.is_initialized_))
     {
@@ -164,6 +168,7 @@ public:
         if(!is_copy_)
         {
             if(status_ != nullptr) cudaFree(status_);
+            if(num_keys_ != nullptr) cudaFree(num_keys_);
         }
     }
     #endif
@@ -182,6 +187,8 @@ public:
             table_.init_keys(empty_key(), stream);
 
             assign_status(table_.status() + temp_.status(), stream);
+
+            cudaMemsetAsync(num_keys_, 0, sizeof(index_type), stream);
 
             is_initialized_ = true;
         }
@@ -221,16 +228,13 @@ public:
 
             auto empty_mask = group.ballot(is_empty_key(table_key));
 
-            if(max_values_per_key_ != ~index_type(0))
-            {
-                num_values += __popc(group.ballot((table_key == key_in)));
+            num_values += __popc(group.ballot((table_key == key_in)));
 
-                if(num_values >= max_values_per_key_)
-                {
-                    device_join_status(
-                        status_type::max_values_for_key_reached());
-                    return status_type::max_values_for_key_reached();
-                }
+            if(num_values >= max_values_per_key_)
+            {
+                device_join_status(
+                    status_type::max_values_for_key_reached());
+                return status_type::max_values_for_key_reached();
             }
 
             bool success = false; // no hash collision
@@ -251,19 +255,21 @@ public:
                     if(success)
                     {
                         table_[i].value = value_in;
+
+                        if(num_values == 0)
+                        {
+                            atomicAggInc(num_keys_);
+                        }
                     }
                 }
 
-                if(max_values_per_key_ != ~index_type(0))
-                {
-                    num_values += __popc(group.ballot(key_collision));
+                num_values += __popc(group.ballot(key_collision));
 
-                    if(num_values >= max_values_per_key_)
-                    {
-                        device_join_status(
-                            status_type::max_values_for_key_reached());
-                        return status_type::max_values_for_key_reached();
-                    }
+                if(num_values >= max_values_per_key_)
+                {
+                    device_join_status(
+                        status_type::max_values_for_key_reached());
+                    return status_type::max_values_for_key_reached();
                 }
 
                 if(group.any(success))
@@ -652,7 +658,7 @@ public:
 
     /*! \brief \c warpcore::HashSet of unique keys inside the table
      * \param[in] stream CUDA stream in which this operation is executed in
-     * \param[in] size_fraction capacity of the hash set in relation to the size of the table
+     * \param[in] size_fraction capacity of the hash set in relation to the number of unique keys inside the table
      * \return \c warpcore::HashSet
      */
     HOSTQUALIFIER INLINEQUALIFIER
@@ -660,7 +666,7 @@ public:
         const cudaStream_t stream = 0,
         const float size_fraction = 0.9) const noexcept
     {
-        const index_type set_capacity = size(stream) / size_fraction;
+        const index_type set_capacity = num_keys(stream) / size_fraction;
         key_set_type hash_set(set_capacity, seed_);
 
         for_each([=] DEVICEQUALIFIER
@@ -689,7 +695,13 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     index_type num_keys(const cudaStream_t stream = 0) const noexcept
     {
-        return get_key_set(stream).size(stream);
+        index_type num = 0;
+
+        cudaMemcpyAsync(&num, num_keys_, sizeof(index_type), D2H, stream);
+
+        cudaStreamSynchronize(stream);
+
+        return num;
     }
 
     /*! \brief total number of values inside the table
@@ -991,6 +1003,7 @@ private:
     temp_type temp_; //< temporary memory
     key_type seed_; //< random seed
     index_type max_values_per_key_; //< maximum number of values to store per key
+    index_type * num_keys_; //< pointer to the count of unique keys
     bool is_copy_; //< indicates if table is a shallow copy
     bool is_initialized_; //< indicates if table is properly initialized
 

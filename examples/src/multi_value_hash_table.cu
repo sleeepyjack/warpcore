@@ -121,7 +121,8 @@ int main ()
     std::cout << "table size " << hash_table.size() << std::endl;
     std::cout << "capacity " << hash_table.capacity() << std::endl;
     std::cout << "load factor " << hash_table.load_factor() << std::endl;
-    std::cout << "unique keys " << size_unique_keys << std::endl;
+    std::cout << "expected unique keys " << size_unique_keys << std::endl;
+    std::cout << "actual unique keys " << hash_table.num_keys() << std::endl;
     std::cout << "values per key " << size_values_per_key << std::endl;
     std::cout << "total values " << size << std::endl;
 
