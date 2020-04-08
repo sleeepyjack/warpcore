@@ -238,10 +238,11 @@ public:
             }
 
             bool success = false; // no hash collision
-            bool key_collision = false;
 
             while(empty_mask)
             {
+                bool key_collision = false;
+
                 const auto leader = ffs(empty_mask) - 1;
 
                 if(group.thread_rank() == leader)
@@ -263,7 +264,7 @@ public:
                     }
                 }
 
-                num_values += __popc(group.ballot(key_collision));
+                num_values += group.any(key_collision);
 
                 if(num_values >= max_values_per_key_)
                 {
