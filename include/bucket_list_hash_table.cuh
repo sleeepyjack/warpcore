@@ -626,13 +626,6 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     index_type bytes_total() const noexcept
     {
-        const float bytes_hash_table =
-            hash_table_.capacity() * (sizeof(key_type) + sizeof(handle_type));
-        const float bytes_value_store =
-            value_store_.capacity() * sizeof(typename ValueStore::bucket_type);
-        const float bytes_temp_store =
-            hash_table_.temp_.bytes_total();
-
         return hash_table_.bytes_total() + value_store_.bytes_total();
     }
 

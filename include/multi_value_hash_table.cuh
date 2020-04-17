@@ -830,8 +830,7 @@ public:
     {
         const index_type key_bytes = num_keys(stream) * sizeof(key_type);
         const index_type value_bytes = num_values(stream) * sizeof(value_type);
-        const index_type table_bytes =
-            capacity() * (sizeof(key_type) + sizeof(value_type));
+        const index_type table_bytes = table_.bytes_total();
         return float(key_bytes + value_bytes) / float(table_bytes);
     }
 
