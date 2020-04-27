@@ -1110,7 +1110,8 @@ public:
     DEVICEQUALIFIER INLINEQUALIFIER
     status_type append(
         handle_type& handle,
-        const value_type& value) noexcept
+        const value_type& value,
+        index_type max_values_per_key) noexcept
     {
         handle_type current_handle =cub::ThreadLoad<cub::LOAD_VOLATILE>(&handle);
 
@@ -1177,7 +1178,7 @@ public:
                 return status_type::out_of_memory();
             }
 
-            if(current_handle.value_count() == handle_type::max_value_count())
+            if(current_handle.value_count() == max_values_per_key)
             {
                 return status_type::max_values_for_key_reached();
             }

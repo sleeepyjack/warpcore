@@ -210,7 +210,7 @@ public:
 
                 if(group.thread_rank() == 0)
                 {
-                    append_status = value_store_.append(*handle_ptr, value_in);
+                    append_status = value_store_.append(*handle_ptr, value_in, max_values_per_key_);
 
                     if(append_status.has_any())
                     {
@@ -305,7 +305,8 @@ public:
                     {
                         append_status = value_store_.append(
                             *(handles[btid]),
-                            values_in[block_offset + btid]);
+                            values_in[block_offset + btid],
+                            max_values_per_key_);
                     }
 
                     if(append_status.has_any())
