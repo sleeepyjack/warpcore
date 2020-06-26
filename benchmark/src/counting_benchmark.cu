@@ -3,6 +3,7 @@
 #include <numeric>
 #include <vector>
 #include "warpcore.cuh"
+#include "../../ext/hpc_helpers/include/io_helpers.h"
 
 template<class T>
 uint64_t num_unique(const std::vector<T>& v) noexcept
@@ -81,8 +82,8 @@ void counting_benchmark(
 
     uint64_t ips = keys_h.size()/insert_time*1000;
     uint64_t qps = keys_h.size()/query_time*1000;
-    float itp = B2GB(sizeof(key_t)*keys_h.size()) / (insert_time/1000);
-    float qtp = B2GB(sizeof(key_t)*keys_h.size()) / (query_time/1000);
+    float itp = helpers::B2GB(sizeof(key_t)*keys_h.size()) / (insert_time/1000);
+    float qtp = helpers::B2GB(sizeof(key_t)*keys_h.size()) / (query_time/1000);
     float actual_load = float(hash_table.size())/float(capacity);
 
     if(print_headers)
@@ -136,7 +137,7 @@ int main(int argc, char* argv[])
 
     if(argc > 1)
     {
-        keys = load_binary<key_t>(argv[1], max_keys);
+        keys = helpers::load_binary<key_t>(argv[1], max_keys);
     }
     else
     {
@@ -145,7 +146,7 @@ int main(int argc, char* argv[])
         key_t * keys_d = nullptr;
         cudaMalloc(&keys_d, sizeof(key_t) * max_keys); CUERR
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(max_keys, 1024), 1024>>>
         ([=] DEVICEQUALIFIER
         {

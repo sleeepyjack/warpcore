@@ -256,11 +256,11 @@ public:
             std::is_same<StatusHandler, status_handlers::ReturnNothing>::value ?
             1 : groups_per_block;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(num_in * cg_size(), block_size), block_size, 0, stream>>>
         ([=, *this] DEVICEQUALIFIER () mutable
         {
-            const index_type  tid = global_thread_id();
+            const index_type  tid = helpers::global_thread_id();
             const index_type btid = threadIdx.x;
             const index_type  gid = tid / cg_size();
             const index_type bgid = gid % groups_per_block;
@@ -467,11 +467,11 @@ public:
         {
             if(status_out != nullptr)
             {
-                lambda_kernel
+                helpers::lambda_kernel
                 <<<SDIV(num_in, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
                 ([=, *this] DEVICEQUALIFIER
                 {
-                    const index_type tid = global_thread_id();
+                    const index_type tid = helpers::global_thread_id();
 
                     if(tid < num_in)
                     {
@@ -588,7 +588,7 @@ public:
             hash_table_.for_each(
             [=] DEVICEQUALIFIER (key_type key, const auto&)
             {
-                keys_out[atomicAggInc(key_count)] = key;
+                keys_out[helpers::atomicAggInc(key_count)] = key;
             }, stream);
 
             cudaMemcpyAsync(

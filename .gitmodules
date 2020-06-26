@@ -1,12 +1,9 @@
-[submodule "ext/cudahelpers"]
-	path = ext/cudahelpers
-	url = https://github.com/gravitino/cudahelpers.git
-[submodule "ext/packed_types"]
-	path = ext/packed_types
-	url = https://github.com/sleeepyjack/packed_types.git
 [submodule "ext/kiss_rng"]
 	path = ext/kiss_rng
 	url = https://github.com/sleeepyjack/kiss_rng.git
 [submodule "ext/cub"]
 	path = ext/cub
 	url = https://github.com/NVlabs/cub.git
+[submodule "ext/hpc_helpers"]
+	path = ext/hpc_helpers
+	url = https://gitlab.rlp.net/pararch/hpc_helpers

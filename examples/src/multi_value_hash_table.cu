@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <random>
 #include <multi_value_hash_table.cuh>
+#include "../../ext/hpc_helpers/include/timers.cuh"
 
 int main ()
 {
@@ -24,12 +25,12 @@ int main ()
     const index_t size = size_unique_keys * size_values_per_key;
     const float load_factor = 0.8;
 
-    TIMERSTART(init_table)
+    helpers::GpuTimer timer("init_table");
     hash_table_t hash_table((size_unique_keys * size_values_per_key) / load_factor);
-    TIMERSTOP(init_table);
+    timer.print();
     cudaDeviceSynchronize(); CUERR
 
-    TIMERSTART(init_data)
+    helpers::GpuTimer timer2("init_data");
     key_t * keys_unique_h = nullptr;
     cudaMallocHost(&keys_unique_h, sizeof(key_t) * size_unique_keys); CUERR
     key_t * keys_unique_d = nullptr;
@@ -86,9 +87,10 @@ int main ()
     cudaMemset(values_out_d, 0, sizeof(value_t)*size); CUERR
     cudaMemset(offsets_out_d, 0, sizeof(index_t)*(size_unique_keys+1)); CUERR
     cudaMemcpy(status_d, status_h, sizeof(status_t)*size, H2D); CUERR
-    TIMERSTOP(init_data); CUERR
+    timer2.print();
+    CUERR
 
-    THROUGHPUTSTART(insert)
+    helpers::GpuTimer timer3("insert");
     hash_table.insert<status_handler_t>(
         keys_in_d,
         values_in_d,
@@ -96,7 +98,7 @@ int main ()
         0,
         defaults::probing_length(),
         status_d);
-    THROUGHPUTSTOP(insert, (sizeof(key_t)+sizeof(value_t)), size); CUERR
+    timer3.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
     cudaDeviceSynchronize(); CUERR
 
     cudaMemcpy(status_h, status_d, sizeof(status_t)*size, D2H); CUERR
@@ -136,37 +138,41 @@ int main ()
 
     index_t value_size = 0;
 
-    THROUGHPUTSTART(retrieve_dummy)
-    hash_table.retrieve<status_handler_t>(
-        keys_unique_d,
-        size_unique_keys,
-        offsets_out_d,
-        offsets_out_d+1,
-        values_out_d,
-        value_size,
-        0,
-        defaults::probing_length(),
-        status_d);
-    THROUGHPUTSTOP(retrieve_dummy, (sizeof(key_t)+sizeof(value_t)), size); CUERR
+    {
+        helpers::GpuTimer timer("retrieve_dummy");
+        hash_table.retrieve<status_handler_t>(
+            keys_unique_d,
+            size_unique_keys,
+            offsets_out_d,
+            offsets_out_d+1,
+            values_out_d,
+            value_size,
+            0,
+            defaults::probing_length(),
+            status_d);
+        timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+    }
     cudaDeviceSynchronize(); CUERR
 
-    THROUGHPUTSTART(retrieve)
-    hash_table.retrieve<status_handler_t>(
-        keys_unique_d,
-        size_unique_keys,
-        offsets_out_d,
-        offsets_out_d+1,
-        values_out_d,
-        value_size,
-        0,
-        defaults::probing_length(),
-        status_d);
-    THROUGHPUTSTOP(retrieve, (sizeof(key_t)+sizeof(value_t)), size); CUERR
+    {
+        helpers::GpuTimer timer("retrieve");
+        hash_table.retrieve<status_handler_t>(
+            keys_unique_d,
+            size_unique_keys,
+            offsets_out_d,
+            offsets_out_d+1,
+            values_out_d,
+            value_size,
+            0,
+            defaults::probing_length(),
+            status_d);
+        timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+    }
     cudaDeviceSynchronize(); CUERR
 
     std::cout << "retrieved values " << value_size << std::endl;
 
-    lambda_kernel<<<SDIV(size_unique_keys, 1024), 1024>>>([=] DEVICEQUALIFIER
+    helpers::lambda_kernel<<<SDIV(size_unique_keys, 1024), 1024>>>([=] DEVICEQUALIFIER
     {
         const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
 

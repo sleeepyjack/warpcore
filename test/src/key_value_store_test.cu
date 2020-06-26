@@ -28,7 +28,7 @@ TEMPLATE_TEST_CASE_SIG(
         storage_t st = storage_t(capacity); CUERR
 
         // set pairs
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -46,7 +46,7 @@ TEMPLATE_TEST_CASE_SIG(
         *errors = 0;
 
         // get pairs
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -78,7 +78,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMallocManaged(&errors, sizeof(index_t)); CUERR
         *errors = 0;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -111,7 +111,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMallocManaged(&errors, sizeof(index_t)); CUERR
         *errors = 0;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -145,7 +145,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMallocManaged(&error, sizeof(bool)); CUERR
         *error = false;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<1, 1>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -187,7 +187,7 @@ TEMPLATE_TEST_CASE_SIG(
         storage_t st = storage_t(capacity); CUERR
 
         // set pairs
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -205,7 +205,7 @@ TEMPLATE_TEST_CASE_SIG(
         *errors = 0;
 
         // get pairs
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -237,7 +237,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMallocManaged(&errors, sizeof(index_t)); CUERR
         *errors = 0;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -270,7 +270,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMallocManaged(&errors, sizeof(index_t)); CUERR
         *errors = 0;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
@@ -304,7 +304,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMallocManaged(&error, sizeof(bool)); CUERR
         *error = false;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<1, 1>>>
         ([=] DEVICEQUALIFIER () mutable
         {

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "warpcore.cuh"
+#include "../../ext/hpc_helpers/include/timers.cuh"
 
 double binom(
     std::uint64_t n,
@@ -109,13 +110,15 @@ int main(int argc, char *argv[])
     << "\tk=" << k
     << "\tcg=" << cg_size << std::endl;
 
-    TIMERSTART(insert)
-    filter.insert(tp_data_d, n);
-    TIMERSTOP(insert)
+    {
+        helpers::GpuTimer timer("insert");
+        filter.insert(tp_data_d, n);
+    }
 
-    TIMERSTART(retrieve_tp)
-    filter.retrieve(tp_data_d, n, flags_d);
-    TIMERSTOP(retrieve_tp)
+    {
+        helpers::GpuTimer timer("retrieve_tp");
+        filter.retrieve(tp_data_d, n, flags_d);
+    }
 
     cudaMemcpy(flags_h, flags_d, sizeof(bool)*n, D2H); CUERR
 
@@ -131,9 +134,10 @@ int main(int argc, char *argv[])
 
     cudaMemset(flags_d, 0, sizeof(bool)*n); CUERR
 
-    TIMERSTART(retrieve_fp)
-    filter.retrieve(fp_data_d, n, flags_d);
-    TIMERSTOP(retrieve_fp)
+    {
+        helpers::GpuTimer timer("retrieve_fp");
+        filter.retrieve(fp_data_d, n, flags_d);
+    }
 
     cudaMemcpy(flags_h, flags_d, sizeof(bool)*n, D2H); CUERR
 

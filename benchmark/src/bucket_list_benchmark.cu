@@ -8,6 +8,7 @@
 #include <thread>
 #include <chrono>
 #include "warpcore.cuh"
+#include "../../ext/hpc_helpers/include/io_helpers.h"
 
 template<class Key, class Value>
 bool sufficient_memory(
@@ -142,7 +143,7 @@ void bucket_list_benchmark(
 
             /*
             key_size_out = size;
-            lambda_kernel<<<SDIV(size, MAXBLOCKSIZE), MAXBLOCKSIZE>>>(
+            helpers::lambda_kernel<<<SDIV(size, MAXBLOCKSIZE), MAXBLOCKSIZE>>>(
                 [=] DEVICEQUALIFIER
                 {
                     const auto tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -181,8 +182,8 @@ void bucket_list_benchmark(
             const uint64_t total_bytes = (sizeof(key_t) + sizeof(value_t))*size;
             uint64_t ips = size/(insert_time/1000);
             uint64_t qps = size/(query_time/1000);
-            float itp = B2GB(total_bytes) / (insert_time/1000);
-            float qtp = B2GB(total_bytes) / (query_time/1000);
+            float itp = helpers::B2GB(total_bytes) / (insert_time/1000);
+            float qtp = helpers::B2GB(total_bytes) / (query_time/1000);
             float key_load = hash_table.key_load_factor();
             float value_load = hash_table.value_load_factor();
             float density = hash_table.storage_density();
@@ -198,8 +199,8 @@ void bucket_list_benchmark(
                     << d << "value_capacity=" << value_store_capacity
                     << d << "bits_key=" << sizeof(key_t)*CHAR_BIT
                     << d << "bits_value=" << sizeof(value_t)*CHAR_BIT
-                    << d << "mb_keys=" << uint64_t(B2MB(sizeof(key_t)*size))
-                    << d << "mb_values=" << uint64_t(B2MB(sizeof(value_t)*size))
+                    << d << "mb_keys=" << uint64_t(helpers::B2MB(sizeof(key_t)*size))
+                    << d << "mb_values=" << uint64_t(helpers::B2MB(sizeof(value_t)*size))
                     << d << "grow_factor=" << slab_grow_factor
                     << d << "min_slab_size=" << min_slab_size
                     << d << "max_slab_size=" << max_slab_size
@@ -225,8 +226,8 @@ void bucket_list_benchmark(
                     << d << value_store_capacity
                     << d << sizeof(key_t)*CHAR_BIT
                     << d << sizeof(value_t)*CHAR_BIT
-                    << d << uint64_t(B2MB(sizeof(key_t)*size))
-                    << d << uint64_t(B2MB(sizeof(value_t)*size))
+                    << d << uint64_t(helpers::B2MB(sizeof(key_t)*size))
+                    << d << uint64_t(helpers::B2MB(sizeof(value_t)*size))
                     << d << slab_grow_factor
                     << d << min_slab_size
                     << d << max_slab_size
@@ -277,7 +278,7 @@ int main(int argc, char* argv[])
 
     if(argc > 1)
     {
-        keys = load_binary<key_t>(argv[1], max_keys);
+        keys = helpers::load_binary<key_t>(argv[1], max_keys);
     }
     else
     {
@@ -286,7 +287,7 @@ int main(int argc, char* argv[])
         key_t * keys_d = nullptr;
         cudaMalloc(&keys_d, sizeof(key_t) * max_keys); CUERR
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(max_keys, 1024), 1024>>>
         ([=] DEVICEQUALIFIER
         {

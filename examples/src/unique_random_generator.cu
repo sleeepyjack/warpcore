@@ -35,12 +35,12 @@ bool check_unique(T * in_d, std::uint64_t n) noexcept
     cudaMemset(unique_d, 1, sizeof(bool)); CUERR
 
     // check if neighbouring values are equal
-    lambda_kernel
+    helpers::lambda_kernel
     <<<SDIV(n, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
     ([=] DEVICEQUALIFIER
     {
         // determine the global thread ID
-        const std::uint64_t tid = global_thread_id();
+        const std::uint64_t tid = helpers::global_thread_id();
 
         // if neighbouring elements are equal throw error
         if(tid < n-1 && out_d[tid] == out_d[tid+1])
@@ -85,9 +85,10 @@ int main()
     THROUGHPUTSTOP(generate, sizeof(data_t), n)
 
     // check if the generated values are unique
-    TIMERSTART(test)
-    std::cout << "TEST PASSED: " << std::boolalpha << check_unique(data_d, n) << std::endl;
-    TIMERSTOP(test)
+    {
+        helpers::GpuTimer timer("test");
+        std::cout << "TEST PASSED: " << std::boolalpha << check_unique(data_d, n) << std::endl;
+    }
 
     // free any allocated memory
     cudaFree(data_d); CUERR

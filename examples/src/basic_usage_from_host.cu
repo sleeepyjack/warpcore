@@ -1,5 +1,6 @@
 #include <iostream>
 #include "single_value_hash_table.cuh"
+#include "../../ext/hpc_helpers/include/timers.cuh"
 
 // This example shows the basic usage of a single value hash table using
 // host-sided table operations provided by warpcore
@@ -56,10 +57,11 @@ int main()
 
     std::cout << "capacity " << hash_table.capacity() << std::endl;
 
-    TIMERSTART(insert)
-    // INSERT the input data into the hash_table
-    hash_table.insert(keys_d, values_d, input_size);
-    TIMERSTOP(insert); CUERR
+    {
+        helpers::GpuTimer timer("insert");
+        // INSERT the input data into the hash_table
+        hash_table.insert(keys_d, values_d, input_size);
+    } CUERR
 
     cudaDeviceSynchronize(); CUERR
     // check if any errors occured
@@ -74,11 +76,12 @@ int main()
     // first, allocate some device-sided memory to hold the result
     value_t* result_d; cudaMalloc(&result_d, sizeof(value_t)*input_size);
 
-    TIMERSTART(retrieve)
-    // RETRIEVE the corresponding values of the rear half of the input keys
-    // from the hash table
-    hash_table.retrieve(keys_d, input_size, result_d);
-    TIMERSTOP(retrieve); CUERR
+    {
+        helpers::GpuTimer timer("retrieve");
+        // RETRIEVE the corresponding values of the rear half of the input keys
+        // from the hash table
+        hash_table.retrieve(keys_d, input_size, result_d);
+    } CUERR
 
     // check again if any errors occured
     std::cout << "retrieval errors: " << hash_table.pop_status() << std::endl;

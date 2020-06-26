@@ -93,7 +93,7 @@ public:
 
         const auto total_bytes = (sizeof(key_type) * capacity()) + sizeof(Status);
 
-        if(available_gpu_memory() >= total_bytes)
+        if(helpers::available_gpu_memory() >= total_bytes)
         {
             cudaMalloc(&keys_, sizeof(key_type) * capacity_);
             cudaMalloc(&status_, sizeof(Status));
@@ -376,7 +376,7 @@ public:
         cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
 
         for_each([=, *this] DEVICEQUALIFIER (key_type key)
-        { keys_out[atomicAggInc(tmp)] = key; }, stream);
+        { keys_out[helpers::atomicAggInc(tmp)] = key; }, stream);
 
         cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H);
 
@@ -476,11 +476,11 @@ public:
      {
          if(!is_initialized_) return;
 
-         lambda_kernel
+         helpers::lambda_kernel
          <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
          ([=, *this] DEVICEQUALIFIER // TODO mutable?
          {
-             const index_type tid = global_thread_id();
+             const index_type tid = helpers::global_thread_id();
 
              if(tid < capacity())
              {
@@ -506,13 +506,13 @@ public:
 
         cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, sizeof(index_type), stream>>>
         ([=, *this] DEVICEQUALIFIER
         {
             __shared__ index_type smem;
 
-            const index_type tid = global_thread_id();
+            const index_type tid = helpers::global_thread_id();
             const auto block = cooperative_groups::this_thread_block();
 
             if(tid >= capacity()) return;

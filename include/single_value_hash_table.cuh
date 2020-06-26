@@ -403,7 +403,7 @@ public:
         for_each([=, *this] DEVICEQUALIFIER
             (key_type key, const value_type& value)
         {
-            const auto i = atomicAggInc(tmp);
+            const auto i = helpers::atomicAggInc(tmp);
             keys_out[i] = key;
             values_out[i] = value;
         }, stream);
@@ -510,11 +510,11 @@ public:
     {
         if(!is_initialized_) return;
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
         ([=, *this] DEVICEQUALIFIER
         {
-            const index_type tid = global_thread_id();
+            const index_type tid = helpers::global_thread_id();
 
             if(tid < capacity())
             {
@@ -541,13 +541,13 @@ public:
 
         cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, sizeof(index_type), stream>>>
         ([=, *this] DEVICEQUALIFIER
         {
             __shared__ index_type smem;
 
-            const index_type tid = global_thread_id();
+            const index_type tid = helpers::global_thread_id();
             const auto block = cg::this_thread_block();
 
             if(tid >= capacity()) return;

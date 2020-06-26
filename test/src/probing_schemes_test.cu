@@ -41,7 +41,7 @@ TEMPLATE_TEST_CASE(
     cudaMallocManaged(&probes, sizeof(index_t) * (valid_capacity + cg_size));
     REQUIRE(cudaPeekAtLastError() == cudaSuccess);
 
-    lambda_kernel
+    helpers::lambda_kernel
     <<<1, cg_size>>>([=] DEVICEQUALIFIER
     {
         const auto group = cg::tiled_partition<cg_size>(cg::this_thread_block());

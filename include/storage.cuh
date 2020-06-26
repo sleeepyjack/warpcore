@@ -35,7 +35,7 @@ public:
         {
             const auto total_bytes = sizeof(T) * capacity_;
 
-            if(available_gpu_memory() >= total_bytes && capacity_ > 0)
+            if(helpers::available_gpu_memory() >= total_bytes && capacity_ > 0)
             {
                 cudaMalloc(&store_, sizeof(T) * capacity_);
                 current_ = new index_type(0);
@@ -241,7 +241,7 @@ public:
             const auto total_bytes = (((sizeof(key_type) + sizeof(value_type)) *
                 capacity) + sizeof(status_type));
 
-            if(available_gpu_memory() >= total_bytes)
+            if(helpers::available_gpu_memory() >= total_bytes)
             {
                 cudaMalloc(&keys_, sizeof(key_type)*capacity);
                 cudaMalloc(&values_, sizeof(value_type)*capacity);
@@ -308,11 +308,11 @@ public:
     {
         if(!status_.has_any())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -331,11 +331,11 @@ public:
     {
         if(!status_.has_any())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -358,11 +358,11 @@ public:
     {
         if(!status_.has_any())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -461,7 +461,7 @@ public:
         {
             const auto total_bytes = sizeof(pair_t) * capacity;
 
-            if(available_gpu_memory() >= total_bytes)
+            if(helpers::available_gpu_memory() >= total_bytes)
             {
                 cudaMalloc(&pairs_, sizeof(pair_t) * capacity);
 
@@ -524,11 +524,11 @@ public:
     {
         if(!status_.has_any())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -547,11 +547,11 @@ public:
     {
         if(!status_.has_any())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -574,11 +574,11 @@ public:
     {
         if(!status_.has_any())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {
@@ -668,7 +668,7 @@ namespace detail
     private:
         using value_type = typename Store::value_type;
         using info_type =
-            PackedPair<Store::bucket_index_bits(), Store::bucket_size_bits()>;
+            packed_types::PackedPair<Store::bucket_index_bits(), Store::bucket_size_bits()>;
 
         value_type value_;
         info_type info_;
@@ -742,7 +742,7 @@ namespace detail
     template<class Store>
     class BucketListHandle
     {
-        using packed_type = PackedQuadruple<
+        using packed_type = packed_types::PackedQuadruple<
             2,
             Store::bucket_index_bits(),
             Store::value_counter_bits(),
@@ -1009,7 +1009,7 @@ public:
             const auto total_bytes =
                 sizeof(bucket_type) * capacity_ + sizeof(index_type);
 
-            if(available_gpu_memory() >= total_bytes)
+            if(helpers::available_gpu_memory() >= total_bytes)
             {
                 cudaMalloc(&buckets_, sizeof(bucket_type) * capacity_);
                 cudaMalloc(&next_free_bucket_, sizeof(index_type));
@@ -1082,11 +1082,11 @@ public:
     {
         if(!status_.has_not_initialized())
         {
-            lambda_kernel
+            helpers::lambda_kernel
             <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER () mutable
             {
-                const index_type tid = global_thread_id();
+                const index_type tid = helpers::global_thread_id();
 
                 if(tid < capacity_)
                 {

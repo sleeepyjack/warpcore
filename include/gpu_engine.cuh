@@ -17,7 +17,7 @@ void memset(
     T * const arr,
     const index_t num)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
 
     if(tid < num)
     {
@@ -33,7 +33,7 @@ void for_each(
     Func f,
     const Core core)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
 
     if(tid < core.capacity())
     {
@@ -58,7 +58,7 @@ void for_each(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -87,7 +87,7 @@ void insert(
     const index_t num_in,
     Core core)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -136,7 +136,7 @@ void insert(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -163,7 +163,7 @@ void insert(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -190,7 +190,7 @@ void retrieve(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -227,7 +227,7 @@ void retrieve(
     const Core core,
     typename StatusHandler::base_type * const status_out)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -244,7 +244,7 @@ void retrieve(
         {
             if(!status.has_any())
             {
-                const auto i = atomicAggInc(num_out);
+                const auto i = helpers::atomicAggInc(num_out);
                 keys_out[i] = key_in;
                 values_out[i] = value_out;
             }
@@ -267,7 +267,7 @@ void retrieve(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -311,7 +311,7 @@ void erase(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
@@ -336,7 +336,7 @@ void size(
 {
     __shared__ index_t smem;
 
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const auto block = cg::this_thread_block();
 
     if(tid < core.capacity())
@@ -380,7 +380,7 @@ void num_values(
     const index_t probing_length = defaults::probing_length(),
     typename StatusHandler::base_type * const status_out = nullptr)
 {
-    const index_t tid = global_thread_id();
+    const index_t tid = helpers::global_thread_id();
     const index_t gid = tid / Core::cg_size();
     const auto group =
         cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());

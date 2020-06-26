@@ -55,7 +55,7 @@ TEMPLATE_TEST_CASE_SIG(
     cudaMalloc(&values_out_d, sizeof(Value)*n);
 
     // generate pseudo-random unique keys and values
-    lambda_kernel
+    helpers::lambda_kernel
     <<<SDIV(n, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
     ([=] DEVICEQUALIFIER () mutable
     {
@@ -103,7 +103,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMalloc(&errors_d, sizeof(index_t));
         cudaMemset(errors_d, 0, sizeof(index_t));
 
-        lambda_kernel
+        helpers::lambda_kernel
         <<<SDIV(n, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {

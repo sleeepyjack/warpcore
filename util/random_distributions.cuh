@@ -53,7 +53,7 @@ void uniform_distribution(
     namespace wc = warpcore;
 
     // execute kernel
-    lambda_kernel<<<4096, 32>>>
+    helpers::lambda_kernel<<<4096, 32>>>
     ([=] DEVICEQUALIFIER
     {
         const std::uint32_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -152,7 +152,7 @@ void unique_distribution(
     filter_t bf{n/4096, 8, T(seed)}; // TODO parameter search
 
     // execute kernel
-    lambda_kernel
+    helpers::lambda_kernel
     <<<4096, 32>>>
     ([=] DEVICEQUALIFIER () mutable
     {
@@ -267,7 +267,7 @@ void zipf_distribution(
     // zipf is undefined for s = 1.0
     assert(s != 1.0);
 
-    lambda_kernel
+    helpers::lambda_kernel
     <<<4096, 32>>>
     ([=] DEVICEQUALIFIER
     {

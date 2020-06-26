@@ -259,7 +259,7 @@ public:
 
                         if(num_values == 0)
                         {
-                            atomicAggInc(num_keys_);
+                            helpers::atomicAggInc(num_keys_);
                         }
                     }
                 }
@@ -440,11 +440,11 @@ public:
         {
             if(status_out != nullptr)
             {
-                lambda_kernel
+                helpers::lambda_kernel
                 <<<SDIV(num_in, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
                 ([=, *this] DEVICEQUALIFIER
                 {
-                    const index_type tid = global_thread_id();
+                    const index_type tid = helpers::global_thread_id();
 
                     if(tid < num_in)
                     {

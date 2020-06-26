@@ -7,9 +7,10 @@
 #include <limits>
 #include <cuda_runtime.h>
 #include <cooperative_groups.h>
-#include "../ext/cudahelpers/cuda_helpers.cuh"
+#include "../ext/hpc_helpers/include/cuda_helpers.cuh"
+#include "../ext/hpc_helpers/include/packed_types.cuh"
 #include "../ext/cub/cub/cub.cuh"
-#include "../ext/packed_types/include/packed_types.cuh"
+
 #include "primes.hpp"
 
 namespace warpcore
