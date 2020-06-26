@@ -785,12 +785,14 @@ namespace detail
             return pack_.second();
         }
 
+    public:
         DEVICEQUALIFIER INLINEQUALIFIER
         constexpr index_t value_count() const noexcept
         {
             return pack_.third();
         }
 
+    private:
         DEVICEQUALIFIER INLINEQUALIFIER
         constexpr index_t num_values_tail() const noexcept
         {
