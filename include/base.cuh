@@ -9,7 +9,7 @@
 #include <cooperative_groups.h>
 #include "../ext/hpc_helpers/include/cuda_helpers.cuh"
 #include "../ext/hpc_helpers/include/packed_types.cuh"
-#include "../ext/cub/cub/cub.cuh"
+#include <cub/cub.cuh>
 
 #include "primes.hpp"
 
