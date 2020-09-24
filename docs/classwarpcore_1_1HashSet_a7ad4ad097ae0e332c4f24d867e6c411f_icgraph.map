@@ -1,3 +1,4 @@
 <map id="warpcore::HashSet::load_factor" name="warpcore::HashSet::load_factor">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set " alt="" coords="196,5,339,47"/>
+<area shape="rect" id="node1" title="current load factor of the hash set" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="5,5,157,47"/>
 </map>

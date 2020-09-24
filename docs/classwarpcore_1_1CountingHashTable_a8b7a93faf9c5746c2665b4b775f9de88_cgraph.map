@@ -1,6 +1,10 @@
 <map id="warpcore::CountingHashTable::init" name="warpcore::CountingHashTable::init">
-<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#acb401fb2d38c59e086a1bedf68d4815f" title="(re)initialize the hash table " alt="" coords="252,37,451,79"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1SingleValueHashTable.html#a28ba5f6952bad405f7d005cd5867e973" title="get random seed " alt="" coords="260,103,443,144"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396" title="(re)initialize the hash table " alt="" coords="499,5,681,47"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#ae366b3fd0d7edbac68a939fe580df9a4" title="indicates if the hash table is properly initialized " alt="" coords="499,71,681,112"/>
+<area shape="rect" id="node1" title="(re)initialize the hash table" alt="" coords="5,197,220,239"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#acb401fb2d38c59e086a1bedf68d4815f" title="(re)initialize the hash table" alt="" coords="268,136,483,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1SingleValueHashTable.html#a28ba5f6952bad405f7d005cd5867e973" title="get random seed" alt="" coords="793,168,992,209"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396" title="(re)initialize the hash table" alt="" coords="539,37,737,79"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1SingleValueHashTable.html#ae366b3fd0d7edbac68a939fe580df9a4" title="indicates if the hash table is properly initialized" alt="" coords="539,103,737,144"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1CountingHashTable.html#a404f39442f096f294cd879b0710e5416" title="get random seed" alt="" coords="531,168,745,209"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#a5ceb04781c8ef57cc9355c4d13fbeb7c" title="get empty key" alt="" coords="793,5,992,47"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab6c224b2b5a49d93dc7e052ec7b8cc32" title="get buffer status" alt="" coords="819,71,966,112"/>
 </map>

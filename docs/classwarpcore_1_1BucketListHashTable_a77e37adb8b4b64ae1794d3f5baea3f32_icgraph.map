@@ -1,0 +1,4 @@
+<map id="warpcore::BucketListHashTable::tombstone_key" name="warpcore::BucketListHashTable::tombstone_key">
+<area shape="rect" id="node1" title="get tombstone key" alt="" coords="244,5,435,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a65ff00b50f0f0b5d31454d4b0bed36c7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="5,5,196,47"/>
+</map>

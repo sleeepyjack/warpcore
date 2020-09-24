@@ -1,3 +1,4 @@
 <map id="warpcore::BloomFilter::retrieve" name="warpcore::BloomFilter::retrieve">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#a6ad2335811852ad62fc65e85416d3904" title="get cooperative group size " alt="" coords="203,5,352,47"/>
+<area shape="rect" id="node1" title="retrieve a set of keys" alt="" coords="5,5,171,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#ac52d89860617bb396b2e628268d029ed" title="get cooperative group size" alt="" coords="219,5,384,47"/>
 </map>

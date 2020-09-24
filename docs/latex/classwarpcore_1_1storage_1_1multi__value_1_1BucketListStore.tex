@@ -1,83 +1,93 @@
-\hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{}\section{warpcore\+:\+:storage\+:\+:multi\+\_\+value\+:\+:Bucket\+List\+Store$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$ Class Template Reference}
-\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$}}
+\hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{}\doxysection{warpcore\+::storage\+::multi\+\_\+value\+::Bucket\+List\+Store$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$ Class Template Reference}
+\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
 
 
 value store consisting of growing linked buckets of values  
 
 
-\subsection*{Public Types}
+
+
+Inheritance diagram for warpcore\+::storage\+::multi\+\_\+value\+::Bucket\+List\+Store$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a2512098bcea6ee1152181d1ae8de51ec}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a2512098bcea6ee1152181d1ae8de51ec}} 
 using {\bfseries value\+\_\+type} = Value
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae98832f52fcf3a9041da4c4c58fe241c}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae98832f52fcf3a9041da4c4c58fe241c}} 
-using {\bfseries handle\+\_\+type} = detail\+::\+Bucket\+List\+Handle$<$ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{type} $>$
+using {\bfseries handle\+\_\+type} = detail\+::\+Bucket\+List\+Handle$<$ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{type}} $>$
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ddae8bb11348d8482f293ad86f0d398}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ddae8bb11348d8482f293ad86f0d398}} 
 using {\bfseries index\+\_\+type} = index\+\_\+t
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a3d7e43d2e90f568d595f8fcc87bef0c6}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a3d7e43d2e90f568d595f8fcc87bef0c6}} 
-using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
+using {\bfseries status\+\_\+type} = \mbox{\hyperlink{classwarpcore_1_1Status}{Status}}
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a0679b15a6c3bed32ac3445296a05e8dd}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a0679b15a6c3bed32ac3445296a05e8dd}} 
-using {\bfseries bucket\+\_\+type} = detail\+::\+Bucket$<$ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{type} $>$
+using {\bfseries bucket\+\_\+type} = detail\+::\+Bucket$<$ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{type}} $>$
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae74350cef2adb6ddc7a21dbdf93e075e}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae74350cef2adb6ddc7a21dbdf93e075e}} 
 using {\bfseries tag} = tags\+::dynamic\+\_\+value\+\_\+storage
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9dd3b0501fb07b36747b6a68b7ce49ba}{Bucket\+List\+Store} (const index\+\_\+type max\+\_\+capacity, const float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aec5200166b68b8b852ad51f908904f2c}{bucket\+\_\+grow\+\_\+factor}=1.\+1, const index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4dd16de3f389257c0e7a75b807c2c52}{min\+\_\+bucket\+\_\+size}=1, const index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa3160abbdf2196314e3cd0e2e2d5a47a}{max\+\_\+bucket\+\_\+size}=handle\+\_\+type\+::max\+\_\+bucket\+\_\+size()) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9dd3b0501fb07b36747b6a68b7ce49ba}{Bucket\+List\+Store}} (const index\+\_\+type max\+\_\+capacity, const float \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aec5200166b68b8b852ad51f908904f2c}{bucket\+\_\+grow\+\_\+factor}}=1.\+1, const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4dd16de3f389257c0e7a75b807c2c52}{min\+\_\+bucket\+\_\+size}}=1, const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa3160abbdf2196314e3cd0e2e2d5a47a}{max\+\_\+bucket\+\_\+size}}=handle\+\_\+type\+::max\+\_\+bucket\+\_\+size()) noexcept
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5ae79afa0a3138946bd2115e77220683}{Bucket\+List\+Store} (const \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store} \&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5ae79afa0a3138946bd2115e77220683}{Bucket\+List\+Store}} (const \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}} \&o) noexcept
 \begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a748b69237fae7c882ceec0091d330f91}{Bucket\+List\+Store} (\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store} \&\&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a748b69237fae7c882ceec0091d330f91}{Bucket\+List\+Store}} (\mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}} \&\&o) noexcept
 \begin{DoxyCompactList}\small\item\em move-\/constructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae9da5dc958378c8dd5aea4095a4df736}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae9da5dc958378c8dd5aea4095a4df736}} 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae9da5dc958378c8dd5aea4095a4df736}{$\sim$\+Bucket\+List\+Store} () noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ae9da5dc958378c8dd5aea4095a4df736}{$\sim$\+Bucket\+List\+Store}} () noexcept
 \begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a269ad2dfbb2f4ba86aa0746d1db6d019}{init} (const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a269ad2dfbb2f4ba86aa0746d1db6d019}{init}} (const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em (re)initialize storage \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa5125c08967a202f1616c75bc93956d3}{append} (handle\+\_\+type \&handle, const value\+\_\+type \&value) noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a4d1dd4a72edcfcbb7c804eaed44d7704}{append}} (handle\+\_\+type \&handle, const value\+\_\+type \&value, index\+\_\+type max\+\_\+values\+\_\+per\+\_\+key) noexcept
 \begin{DoxyCompactList}\small\item\em append a value to a bucket list \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aed554156f072838045ee27ef654bd5cd}{for\+\_\+each} (Func f, const handle\+\_\+type \&handle, const cg\+::thread\+\_\+group \&group=cg\+::this\+\_\+thread()) const noexcept
+{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aed554156f072838045ee27ef654bd5cd}{for\+\_\+each}} (Func f, const handle\+\_\+type \&handle, const cg\+::thread\+\_\+group \&group=cg\+::this\+\_\+thread()) const noexcept
 \begin{DoxyCompactList}\small\item\em apply a (lambda-\/)function on each value inside a bucket list \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a89173b5956d3bf4c8f2ed4bb9a7d50a7}{status} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a89173b5956d3bf4c8f2ed4bb9a7d50a7}{status}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get status \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ac7aed144f65fb6e6bae1b56d076fab}{capacity} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ac7aed144f65fb6e6bae1b56d076fab}{capacity}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get maximum value capacity \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a42c56265d7617fd305690e14bda34bad}{bytes\+\_\+total} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a42c56265d7617fd305690e14bda34bad}{bytes\+\_\+total}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get the total number of bytes occupied by this data structure \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a195a0df8c935bf26300d2939cbd04b0f}{load\+\_\+factor} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a195a0df8c935bf26300d2939cbd04b0f}{load\+\_\+factor}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get load factor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a73b327d7b9ba9460e90791a8cb15a357}{bytes\+\_\+occupied} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a73b327d7b9ba9460e90791a8cb15a357}{bytes\+\_\+occupied}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the number of occupied bytes \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aec5200166b68b8b852ad51f908904f2c}{bucket\+\_\+grow\+\_\+factor} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aec5200166b68b8b852ad51f908904f2c}{bucket\+\_\+grow\+\_\+factor}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get bucket growth factor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4dd16de3f389257c0e7a75b807c2c52}{min\+\_\+bucket\+\_\+size} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4dd16de3f389257c0e7a75b807c2c52}{min\+\_\+bucket\+\_\+size}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get minimum bucket capacity \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa3160abbdf2196314e3cd0e2e2d5a47a}{max\+\_\+bucket\+\_\+size} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa3160abbdf2196314e3cd0e2e2d5a47a}{max\+\_\+bucket\+\_\+size}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get maximum bucket capacity \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4ac88f26d621b59508ec65c6f31fbec}{is\+\_\+copy} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4ac88f26d621b59508ec65c6f31fbec}{is\+\_\+copy}} () const noexcept
 \begin{DoxyCompactList}\small\item\em indicates if this object is a shallow copy \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a0c06c0510ccdf194bda9ddffcf7fcd76}{bucket\+\_\+index\+\_\+bits} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a344a7c970c175570341c7b20b4138cb1}{bucket\+\_\+index\+\_\+bits}} () noexcept
 \begin{DoxyCompactList}\small\item\em get number of bits used to enumerate buckets \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ad3b1f4fe9309268bf115ea5f86a0e8d8}{value\+\_\+counter\+\_\+bits} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a14a58c4d8f342dd7082e27995dd2013a}{value\+\_\+counter\+\_\+bits}} () noexcept
 \begin{DoxyCompactList}\small\item\em get number of bits used to count values in a bucket list \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a959c5f2ba54bb17301bdba11c21b5c44}{bucket\+\_\+size\+\_\+bits} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9b9262675bc945ec4e997ea09b7c8969}{bucket\+\_\+size\+\_\+bits}} () noexcept
 \begin{DoxyCompactList}\small\item\em get number of bits used to hold the value capacity of a bucket \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr handle\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5c4db432625508fb99f55cd68e69f066}{uninitialized\+\_\+handle} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ handle\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ef2dc2b9ae65c9837e32bc6d03e80b0}{uninitialized\+\_\+handle}} () noexcept
 \begin{DoxyCompactList}\small\item\em get uninitialized handle \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a304222076c88aa24e0c7dcd4b32265fa}{size} (const handle\+\_\+type \&handle) noexcept
+static constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a1176fe4cebc631ed55e366b21c0ffa30}{size}} (const handle\+\_\+type \&handle) noexcept
 \begin{DoxyCompactList}\small\item\em get number of values in bucket list \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 \subsubsection*{template$<$class Value, index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$\newline
 class warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$}
 
@@ -96,13 +106,13 @@ value store consisting of growing linked buckets of values
 \end{DoxyTemplParams}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9dd3b0501fb07b36747b6a68b7ce49ba}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9dd3b0501fb07b36747b6a68b7ce49ba}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!Bucket\+List\+Store@{Bucket\+List\+Store}}
-\index{Bucket\+List\+Store@{Bucket\+List\+Store}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{Bucket\+List\+Store()}{BucketListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!BucketListStore@{BucketListStore}}
+\index{BucketListStore@{BucketListStore}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{BucketListStore()}{BucketListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{max\+\_\+capacity,  }\item[{const float}]{bucket\+\_\+grow\+\_\+factor = {\ttfamily 1.1},  }\item[{const index\+\_\+type}]{min\+\_\+bucket\+\_\+size = {\ttfamily 1},  }\item[{const index\+\_\+type}]{max\+\_\+bucket\+\_\+size = {\ttfamily handle\+\_\+type\+:\+:max\+\_\+bucket\+\_\+size()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::\mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{max\+\_\+capacity,  }\item[{const float}]{bucket\+\_\+grow\+\_\+factor = {\ttfamily 1.1},  }\item[{const index\+\_\+type}]{min\+\_\+bucket\+\_\+size = {\ttfamily 1},  }\item[{const index\+\_\+type}]{max\+\_\+bucket\+\_\+size = {\ttfamily handle\+\_\+type\+:\+:max\+\_\+bucket\+\_\+size()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -110,21 +120,21 @@ constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em max\+\_\+capacity} & maximum number of value slots \\
+\mbox{\texttt{ in}}  & {\em max\+\_\+capacity} & maximum number of value slots \\
 \hline
-\mbox{\tt in}  & {\em bucket\+\_\+grow\+\_\+factor} & factor which determines the growth of each newly allocated bucket \\
+\mbox{\texttt{ in}}  & {\em bucket\+\_\+grow\+\_\+factor} & factor which determines the growth of each newly allocated bucket \\
 \hline
-\mbox{\tt in}  & {\em min\+\_\+bucket\+\_\+size} & value capacity of the first bucket of a bucket list \\
+\mbox{\texttt{ in}}  & {\em min\+\_\+bucket\+\_\+size} & value capacity of the first bucket of a bucket list \\
 \hline
-\mbox{\tt in}  & {\em max\+\_\+bucket\+\_\+size} & value capacity after which no more growth is allowed for newly allocated buckets \\
+\mbox{\texttt{ in}}  & {\em max\+\_\+bucket\+\_\+size} & value capacity after which no more growth is allowed for newly allocated buckets \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5ae79afa0a3138946bd2115e77220683}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5ae79afa0a3138946bd2115e77220683}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!Bucket\+List\+Store@{Bucket\+List\+Store}}
-\index{Bucket\+List\+Store@{Bucket\+List\+Store}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{Bucket\+List\+Store()}{BucketListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!BucketListStore@{BucketListStore}}
+\index{BucketListStore@{BucketListStore}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{BucketListStore()}{BucketListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store} (\begin{DoxyParamCaption}\item[{const \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::\mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -132,15 +142,15 @@ copy-\/constructor (shallow)
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em object} & to be copied \\
+\mbox{\texttt{ in}}  & {\em object} & to be copied \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a748b69237fae7c882ceec0091d330f91}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a748b69237fae7c882ceec0091d330f91}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!Bucket\+List\+Store@{Bucket\+List\+Store}}
-\index{Bucket\+List\+Store@{Bucket\+List\+Store}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{Bucket\+List\+Store()}{BucketListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!BucketListStore@{BucketListStore}}
+\index{BucketListStore@{BucketListStore}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{BucketListStore()}{BucketListStore()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store} (\begin{DoxyParamCaption}\item[{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::\mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -148,18 +158,18 @@ move-\/constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em object} & to be moved \\
+\mbox{\texttt{ in}}  & {\em object} & to be moved \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa5125c08967a202f1616c75bc93956d3}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa5125c08967a202f1616c75bc93956d3}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!append@{append}}
-\index{append@{append}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{append()}{append()}}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a4d1dd4a72edcfcbb7c804eaed44d7704}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a4d1dd4a72edcfcbb7c804eaed44d7704}} 
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!append@{append}}
+\index{append@{append}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::append (\begin{DoxyParamCaption}\item[{handle\+\_\+type \&}]{handle,  }\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::append (\begin{DoxyParamCaption}\item[{handle\+\_\+type \&}]{handle,  }\item[{const value\+\_\+type \&}]{value,  }\item[{index\+\_\+type}]{max\+\_\+values\+\_\+per\+\_\+key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -167,20 +177,20 @@ append a value to a bucket list
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em handle} & handle to the bucket list \\
+\mbox{\texttt{ in}}  & {\em handle} & handle to the bucket list \\
 \hline
-\mbox{\tt in}  & {\em value} & value to be inserted \\
+\mbox{\texttt{ in}}  & {\em value} & value to be inserted \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 status 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aec5200166b68b8b852ad51f908904f2c}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aec5200166b68b8b852ad51f908904f2c}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!bucket\+\_\+grow\+\_\+factor@{bucket\+\_\+grow\+\_\+factor}}
-\index{bucket\+\_\+grow\+\_\+factor@{bucket\+\_\+grow\+\_\+factor}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{bucket\+\_\+grow\+\_\+factor()}{bucket\_grow\_factor()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!bucket\_grow\_factor@{bucket\_grow\_factor}}
+\index{bucket\_grow\_factor@{bucket\_grow\_factor}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{bucket\_grow\_factor()}{bucket\_grow\_factor()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bucket\+\_\+grow\+\_\+factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bucket\+\_\+grow\+\_\+factor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -189,12 +199,12 @@ get bucket growth factor
 \begin{DoxyReturn}{Returns}
 factor 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a0c06c0510ccdf194bda9ddffcf7fcd76}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a0c06c0510ccdf194bda9ddffcf7fcd76}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!bucket\+\_\+index\+\_\+bits@{bucket\+\_\+index\+\_\+bits}}
-\index{bucket\+\_\+index\+\_\+bits@{bucket\+\_\+index\+\_\+bits}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{bucket\+\_\+index\+\_\+bits()}{bucket\_index\_bits()}}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a344a7c970c175570341c7b20b4138cb1}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a344a7c970c175570341c7b20b4138cb1}} 
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!bucket\_index\_bits@{bucket\_index\_bits}}
+\index{bucket\_index\_bits@{bucket\_index\_bits}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{bucket\_index\_bits()}{bucket\_index\_bits()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bucket\+\_\+index\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bucket\+\_\+index\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -203,12 +213,12 @@ get number of bits used to enumerate buckets
 \begin{DoxyReturn}{Returns}
 number of bits 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a959c5f2ba54bb17301bdba11c21b5c44}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a959c5f2ba54bb17301bdba11c21b5c44}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!bucket\+\_\+size\+\_\+bits@{bucket\+\_\+size\+\_\+bits}}
-\index{bucket\+\_\+size\+\_\+bits@{bucket\+\_\+size\+\_\+bits}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{bucket\+\_\+size\+\_\+bits()}{bucket\_size\_bits()}}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9b9262675bc945ec4e997ea09b7c8969}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a9b9262675bc945ec4e997ea09b7c8969}} 
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!bucket\_size\_bits@{bucket\_size\_bits}}
+\index{bucket\_size\_bits@{bucket\_size\_bits}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{bucket\_size\_bits()}{bucket\_size\_bits()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bucket\+\_\+size\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bucket\+\_\+size\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -218,11 +228,11 @@ get number of bits used to hold the value capacity of a bucket
 number of bits 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a73b327d7b9ba9460e90791a8cb15a357}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a73b327d7b9ba9460e90791a8cb15a357}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!bytes\+\_\+occupied@{bytes\+\_\+occupied}}
-\index{bytes\+\_\+occupied@{bytes\+\_\+occupied}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{bytes\+\_\+occupied()}{bytes\_occupied()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!bytes\_occupied@{bytes\_occupied}}
+\index{bytes\_occupied@{bytes\_occupied}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{bytes\_occupied()}{bytes\_occupied()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bytes\+\_\+occupied (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bytes\+\_\+occupied (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -230,18 +240,18 @@ get the number of occupied bytes
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 bytes 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a42c56265d7617fd305690e14bda34bad}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a42c56265d7617fd305690e14bda34bad}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!bytes\+\_\+total@{bytes\+\_\+total}}
-\index{bytes\+\_\+total@{bytes\+\_\+total}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{bytes\+\_\+total()}{bytes\_total()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!bytes\_total@{bytes\_total}}
+\index{bytes\_total@{bytes\_total}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{bytes\_total()}{bytes\_total()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -251,11 +261,11 @@ get the total number of bytes occupied by this data structure
 bytes 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ac7aed144f65fb6e6bae1b56d076fab}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ac7aed144f65fb6e6bae1b56d076fab}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!capacity@{capacity}}
-\index{capacity@{capacity}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!capacity@{capacity}}
+\index{capacity@{capacity}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{capacity()}{capacity()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -264,13 +274,21 @@ get maximum value capacity
 \begin{DoxyReturn}{Returns}
 capacity 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ac7aed144f65fb6e6bae1b56d076fab_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aed554156f072838045ee27ef654bd5cd}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aed554156f072838045ee27ef654bd5cd}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!for\+\_\+each@{for\+\_\+each}}
-\index{for\+\_\+each@{for\+\_\+each}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{for\+\_\+each()}{for\_each()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!for\_each@{for\_each}}
+\index{for\_each@{for\_each}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{for\_each()}{for\_each()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
 template$<$class Func $>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const handle\+\_\+type \&}]{handle,  }\item[{const cg\+::thread\+\_\+group \&}]{group = {\ttfamily cg\+:\+:this\+\_\+thread()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const handle\+\_\+type \&}]{handle,  }\item[{const cg\+::thread\+\_\+group \&}]{group = {\ttfamily cg\+:\+:this\+\_\+thread()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -283,19 +301,19 @@ apply a (lambda-\/)function on each value inside a bucket list
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em handle} & handle to the bucket list \\
+\mbox{\texttt{ in}}  & {\em handle} & handle to the bucket list \\
 \hline
-\mbox{\tt in}  & {\em f} & function which takes the value together whith the index of the value inside the list as parameters \\
+\mbox{\texttt{ in}}  & {\em f} & function which takes the value together whith the index of the value inside the list as parameters \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group used for hash table probing \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group used for hash table probing \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a269ad2dfbb2f4ba86aa0746d1db6d019}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a269ad2dfbb2f4ba86aa0746d1db6d019}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!init@{init}}
-\index{init@{init}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{init()}{init()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!init@{init}}
+\index{init@{init}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -303,15 +321,23 @@ apply a (lambda-\/)function on each value inside a bucket list
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a269ad2dfbb2f4ba86aa0746d1db6d019_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4ac88f26d621b59508ec65c6f31fbec}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4ac88f26d621b59508ec65c6f31fbec}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!is\+\_\+copy@{is\+\_\+copy}}
-\index{is\+\_\+copy@{is\+\_\+copy}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{is\+\_\+copy()}{is\_copy()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!is\_copy@{is\_copy}}
+\index{is\_copy@{is\_copy}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{is\_copy()}{is\_copy()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -321,11 +347,11 @@ indicates if this object is a shallow copy
 {\ttfamily bool} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a195a0df8c935bf26300d2939cbd04b0f}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a195a0df8c935bf26300d2939cbd04b0f}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!load\+\_\+factor@{load\+\_\+factor}}
-\index{load\+\_\+factor@{load\+\_\+factor}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{load\+\_\+factor()}{load\_factor()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!load\_factor@{load\_factor}}
+\index{load\_factor@{load\_factor}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{load\_factor()}{load\_factor()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -333,26 +359,18 @@ get load factor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 load factor 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a195a0df8c935bf26300d2939cbd04b0f_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa3160abbdf2196314e3cd0e2e2d5a47a}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa3160abbdf2196314e3cd0e2e2d5a47a}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!max\+\_\+bucket\+\_\+size@{max\+\_\+bucket\+\_\+size}}
-\index{max\+\_\+bucket\+\_\+size@{max\+\_\+bucket\+\_\+size}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{max\+\_\+bucket\+\_\+size()}{max\_bucket\_size()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!max\_bucket\_size@{max\_bucket\_size}}
+\index{max\_bucket\_size@{max\_bucket\_size}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{max\_bucket\_size()}{max\_bucket\_size()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::max\+\_\+bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::max\+\_\+bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -362,11 +380,11 @@ get maximum bucket capacity
 capacity 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4dd16de3f389257c0e7a75b807c2c52}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_aa4dd16de3f389257c0e7a75b807c2c52}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!min\+\_\+bucket\+\_\+size@{min\+\_\+bucket\+\_\+size}}
-\index{min\+\_\+bucket\+\_\+size@{min\+\_\+bucket\+\_\+size}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{min\+\_\+bucket\+\_\+size()}{min\_bucket\_size()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!min\_bucket\_size@{min\_bucket\_size}}
+\index{min\_bucket\_size@{min\_bucket\_size}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{min\_bucket\_size()}{min\_bucket\_size()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::min\+\_\+bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::min\+\_\+bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -375,12 +393,12 @@ get minimum bucket capacity
 \begin{DoxyReturn}{Returns}
 capacity 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a304222076c88aa24e0c7dcd4b32265fa}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a304222076c88aa24e0c7dcd4b32265fa}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!size@{size}}
-\index{size@{size}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{size()}{size()}}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a1176fe4cebc631ed55e366b21c0ffa30}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a1176fe4cebc631ed55e366b21c0ffa30}} 
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!size@{size}}
+\index{size@{size}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::size (\begin{DoxyParamCaption}\item[{const handle\+\_\+type \&}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::size (\begin{DoxyParamCaption}\item[{const handle\+\_\+type \&}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -390,11 +408,11 @@ get number of values in bucket list
 value count 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a89173b5956d3bf4c8f2ed4bb9a7d50a7}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a89173b5956d3bf4c8f2ed4bb9a7d50a7}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!status@{status}}
-\index{status@{status}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{status()}{status()}}
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!status@{status}}
+\index{status@{status}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{status()}{status()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -403,12 +421,12 @@ get status
 \begin{DoxyReturn}{Returns}
 status 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5c4db432625508fb99f55cd68e69f066}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a5c4db432625508fb99f55cd68e69f066}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!uninitialized\+\_\+handle@{uninitialized\+\_\+handle}}
-\index{uninitialized\+\_\+handle@{uninitialized\+\_\+handle}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{uninitialized\+\_\+handle()}{uninitialized\_handle()}}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ef2dc2b9ae65c9837e32bc6d03e80b0}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a8ef2dc2b9ae65c9837e32bc6d03e80b0}} 
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!uninitialized\_handle@{uninitialized\_handle}}
+\index{uninitialized\_handle@{uninitialized\_handle}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{uninitialized\_handle()}{uninitialized\_handle()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr handle\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::uninitialized\+\_\+handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ handle\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::uninitialized\+\_\+handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -417,12 +435,12 @@ get uninitialized handle
 \begin{DoxyReturn}{Returns}
 handle 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ad3b1f4fe9309268bf115ea5f86a0e8d8}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_ad3b1f4fe9309268bf115ea5f86a0e8d8}} 
-\index{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}!value\+\_\+counter\+\_\+bits@{value\+\_\+counter\+\_\+bits}}
-\index{value\+\_\+counter\+\_\+bits@{value\+\_\+counter\+\_\+bits}!warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store@{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}
-\subsubsection{\texorpdfstring{value\+\_\+counter\+\_\+bits()}{value\_counter\_bits()}}
+\mbox{\Hypertarget{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a14a58c4d8f342dd7082e27995dd2013a}\label{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore_a14a58c4d8f342dd7082e27995dd2013a}} 
+\index{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}!value\_counter\_bits@{value\_counter\_bits}}
+\index{value\_counter\_bits@{value\_counter\_bits}!warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$@{warpcore::storage::multi\_value::BucketListStore$<$ Value, BucketIndexBits, ValueCounterBits, BucketSizeBits $>$}}
+\doxysubsubsection{\texorpdfstring{value\_counter\_bits()}{value\_counter\_bits()}}
 {\footnotesize\ttfamily template$<$class Value , index\+\_\+t Bucket\+Index\+Bits = 32, index\+\_\+t Value\+Counter\+Bits = 20, index\+\_\+t Bucket\+Size\+Bits = 10$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::value\+\_\+counter\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}$<$ Value, Bucket\+Index\+Bits, Value\+Counter\+Bits, Bucket\+Size\+Bits $>$\+::value\+\_\+counter\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 

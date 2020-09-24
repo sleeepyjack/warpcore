@@ -1,7 +1,6 @@
 <map id="warpcore::HashSet::insert" name="warpcore::HashSet::insert">
-<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#ab52e7809d5581849e07b914d8ce4ef9f" title="warpcore::HashSet of unique keys inside the table " alt="" coords="196,39,371,80"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys &#160;this method has a dry&#45;run mode where it only calculates the needed array si..." alt="" coords="419,5,593,47"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table " alt="" coords="419,71,593,112"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table " alt="" coords="641,5,816,47"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table " alt="" coords="641,71,816,112"/>
+<area shape="rect" id="node1" title="inserts a key into the hash set" alt="" coords="725,5,877,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,5,677,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
 </map>

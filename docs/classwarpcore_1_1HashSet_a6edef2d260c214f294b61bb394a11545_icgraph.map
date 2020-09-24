@@ -1,10 +1,9 @@
 <map id="warpcore::HashSet::capacity" name="warpcore::HashSet::capacity">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#aff2bcd0720090d1dcfc03d0e7d9a1eab" title="constructor " alt="" coords="208,5,351,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table " alt="" coords="208,71,351,112"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set " alt="" coords="196,187,363,214"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set " alt="" coords="427,132,569,173"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set " alt="" coords="427,67,569,108"/>
-<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table " alt="" coords="411,197,585,239"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set " alt="" coords="649,132,792,173"/>
-<area shape="rect" id="node9" href="$classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table " alt="" coords="633,197,808,239"/>
+<area shape="rect" id="node1" title="get the capacity of the hash table" alt="" coords="632,100,784,141"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="419,5,571,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#aff2bcd0720090d1dcfc03d0e7d9a1eab" title="constructor" alt="" coords="419,71,571,112"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="205,155,357,196"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="405,187,584,214"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="5,155,157,196"/>
 </map>

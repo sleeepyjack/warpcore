@@ -1,3 +1,4 @@
 <map id="warpcore::probing_schemes::QuadraticProbing::next" name="warpcore::probing_schemes::QuadraticProbing::next">
-<area shape="rect" id="node2" href="$classwarpcore_1_1probing__schemes_1_1DoubleHashing.html#ac9ee12c8aa2a976f3fd2cdee3bac4957" title="end specifier of probing sequence " alt="" coords="239,5,424,47"/>
+<area shape="rect" id="node1" title="next probing index for key" alt="" coords="5,5,209,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1probing__schemes_1_1QuadraticProbing.html#a34a9243f0609ec8337f3545c53ecf485" title="end specifier of probing sequence" alt="" coords="257,5,461,47"/>
 </map>

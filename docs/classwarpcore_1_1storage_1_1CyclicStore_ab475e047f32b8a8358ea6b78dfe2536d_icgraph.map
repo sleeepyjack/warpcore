@@ -1,21 +1,29 @@
 <map id="warpcore::storage::CyclicStore::get" name="warpcore::storage::CyclicStore::get">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a7a18e1ca36d20f6ce9f466ac7d58ef0b" title="retrieves the set of all keys stored inside the hash table " alt="" coords="201,5,377,47"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1BucketListHashTable.html#aecd4801b9f1e6915f74c106a9d71e0f4" title="get number of values to a corresponding set of keys inside the hash table " alt="" coords="201,71,377,112"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set " alt="" coords="217,136,360,177"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set " alt="" coords="205,202,372,229"/>
-<area shape="rect" id="node11" href="$classwarpcore_1_1MultiValueHashTable.html#a95c52ddbf4d9ae84240b3c94ef6cb833" title="number of values associated to a set of keys &#160;this function returns only num_out if num_per_key_out==..." alt="" coords="201,253,376,295"/>
-<area shape="rect" id="node12" href="$classwarpcore_1_1MultiValueHashTable.html#a1be160768bafcae409e3a37ee2829d9f" title="number of values stored inside the hash table " alt="" coords="201,319,376,360"/>
-<area shape="rect" id="node18" href="$classwarpcore_1_1SingleValueHashTable.html#af2cd9fb1f308a2fc945cb15b3729e30e" title="retrieve a set of keys from the hash table " alt="" coords="195,384,382,455"/>
-<area shape="rect" id="node19" href="$classwarpcore_1_1SingleValueHashTable.html#a8e6f7cce67f11b707a2a51dd3aa3efef" title="retrieves all elements from the hash table " alt="" coords="188,479,389,549"/>
-<area shape="rect" id="node20" href="$classwarpcore_1_1SingleValueHashTable.html#a6c0e8d90665fe1eb9accf10256b57f28" title="number of key/value pairs stored inside the hash table " alt="" coords="195,573,382,644"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1BucketListHashTable.html#a16b5c045fb0e1e6c2a03114edf111c83" title="retrieves all elements from the hash table &#160;this method has a dry&#45;run mode where it only calculates t..." alt="" coords="437,5,613,47"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set " alt="" coords="454,133,597,175"/>
-<area shape="rect" id="node9" href="$classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table " alt="" coords="661,197,836,239"/>
-<area shape="rect" id="node8" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set " alt="" coords="677,132,820,173"/>
-<area shape="rect" id="node10" href="$classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table " alt="" coords="884,197,1059,239"/>
-<area shape="rect" id="node13" href="$classwarpcore_1_1MultiValueHashTable.html#ab52e7809d5581849e07b914d8ce4ef9f" title="warpcore::HashSet of unique keys inside the table " alt="" coords="438,253,613,295"/>
-<area shape="rect" id="node16" href="$classwarpcore_1_1MultiValueHashTable.html#afba396891eeb4902e22b112bbafe7945" title="number of values stored inside the hash table &#160;alias for size() " alt="" coords="438,319,613,360"/>
-<area shape="rect" id="node17" href="$classwarpcore_1_1MultiValueHashTable.html#a8abd31b493048670295af663d50d1c9e" title="current load factor of the hash table " alt="" coords="438,384,613,425"/>
-<area shape="rect" id="node14" href="$classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys &#160;this method has a dry&#45;run mode where it only calculates the needed array si..." alt="" coords="661,263,836,304"/>
-<area shape="rect" id="node15" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table " alt="" coords="884,263,1059,304"/>
+<area shape="rect" id="node1" title="atomically fetches the next slot in the buffer" alt="" coords="1279,267,1425,308"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#a95c52ddbf4d9ae84240b3c94ef6cb833" title="number of values associated to a set of keys \info this function returns only num_out if num_per_key_..." alt="" coords="1035,5,1227,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BucketListHashTable.html#aecd4801b9f1e6915f74c106a9d71e0f4" title="get number of values to a corresponding set of keys inside the hash table" alt="" coords="1036,71,1227,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#af2cd9fb1f308a2fc945cb15b3729e30e" title="retrieve a set of keys from the hash table" alt="" coords="1032,136,1231,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="1055,201,1207,243"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1SingleValueHashTable.html#a8e6f7cce67f11b707a2a51dd3aa3efef" title="retrieves all elements from the hash table" alt="" coords="1032,267,1231,308"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1BucketListHashTable.html#a7a18e1ca36d20f6ce9f466ac7d58ef0b" title="retrieves the set of all keys stored inside the hash table" alt="" coords="781,285,972,327"/>
+<area shape="rect" id="node10" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="1042,518,1221,545"/>
+<area shape="rect" id="node13" href="$classwarpcore_1_1SingleValueHashTable.html#a6c0e8d90665fe1eb9accf10256b57f28" title="number of key/value pairs stored inside the hash table" alt="" coords="1032,384,1231,425"/>
+<area shape="rect" id="node25" href="$classwarpcore_1_1MultiValueHashTable.html#a1be160768bafcae409e3a37ee2829d9f" title="number of values stored inside the hash table" alt="" coords="1035,612,1227,653"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1CountingHashTable.html#aade49f5de5f2144d57cdcfe8b7ad6663" title="retrieves all elements from the hash table" alt="" coords="769,220,984,261"/>
+<area shape="rect" id="node9" href="$classwarpcore_1_1BucketListHashTable.html#a16b5c045fb0e1e6c2a03114edf111c83" title="retrieves all elements from the hash table \info this method has a dry&#45;run mode where it only calcula..." alt="" coords="519,220,709,261"/>
+<area shape="rect" id="node11" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="801,547,953,588"/>
+<area shape="rect" id="node12" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="538,547,690,588"/>
+<area shape="rect" id="node14" href="$classwarpcore_1_1SingleValueHashTable.html#ad16e25026a5ac0b064249d520299c086" title="current load factor of the hash table" alt="" coords="777,351,976,392"/>
+<area shape="rect" id="node19" href="$classwarpcore_1_1BucketListHashTable.html#a6667de3a96ab1e7a1b26461eea6d4144" title="number of keys stored inside the hash table" alt="" coords="781,416,972,457"/>
+<area shape="rect" id="node24" href="$classwarpcore_1_1CountingHashTable.html#aa331f755c38f5b073ed7e58e3ad59777" title="number of key/value pairs stored inside the hash table" alt="" coords="769,481,984,523"/>
+<area shape="rect" id="node15" href="$classwarpcore_1_1BucketListHashTable.html#ac0a51f17e2c2deaee7ad80e491b96259" title="get load factor of the key store" alt="" coords="519,285,709,327"/>
+<area shape="rect" id="node16" href="$classwarpcore_1_1CountingHashTable.html#ad4a829b15a3add41133437c17ab6bf67" title="current load factor of the hash table" alt="" coords="507,351,721,392"/>
+<area shape="rect" id="node17" href="$classwarpcore_1_1SingleValueHashTable.html#ac593bc68b452128ae4c6ce9217c5d333" title="current storage density of the hash table" alt="" coords="515,416,713,457"/>
+<area shape="rect" id="node18" href="$classwarpcore_1_1CountingHashTable.html#aa7b5b49d50edc280ce007cf92abdc4ae" title="current storage density of the hash table" alt="" coords="244,416,459,457"/>
+<area shape="rect" id="node20" href="$classwarpcore_1_1BucketListHashTable.html#a6f8e4a83670a301f53e923d2fe9a3507" title="get the the number of bytes in this data structure occupied by keys" alt="" coords="519,481,709,523"/>
+<area shape="rect" id="node21" href="$classwarpcore_1_1BucketListHashTable.html#a3ac40e9655bfc27d3f21e0ea38b3d29d" title="get the the number of bytes in this data structure occupied by actual information" alt="" coords="256,481,447,523"/>
+<area shape="rect" id="node22" href="$classwarpcore_1_1BucketListHashTable.html#a7c5ccd6a8c7976db19951ea0ecd3aafc" title="current relative storage density of the hash table" alt="" coords="5,437,196,493"/>
+<area shape="rect" id="node23" href="$classwarpcore_1_1BucketListHashTable.html#a7c08b3793ff8eaac76009fdf8299f6b6" title="current storage density of the hash table" alt="" coords="5,517,196,559"/>
+<area shape="rect" id="node26" href="$classwarpcore_1_1MultiValueHashTable.html#a8abd31b493048670295af663d50d1c9e" title="current load factor of the hash table" alt="" coords="781,612,973,653"/>
+<area shape="rect" id="node27" href="$classwarpcore_1_1MultiValueHashTable.html#afba396891eeb4902e22b112bbafe7945" title="number of values stored inside the hash table \info alias for size()" alt="" coords="781,677,973,719"/>
 </map>

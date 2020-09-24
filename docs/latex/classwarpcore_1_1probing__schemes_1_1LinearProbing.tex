@@ -1,11 +1,11 @@
-\hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing}{}\section{warpcore\+:\+:probing\+\_\+schemes\+:\+:Linear\+Probing$<$ Hasher, C\+G\+Size $>$ Class Template Reference}
-\label{classwarpcore_1_1probing__schemes_1_1LinearProbing}\index{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing$<$ Hasher, C\+G\+Size $>$@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing$<$ Hasher, C\+G\+Size $>$}}
+\hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing}{}\doxysection{warpcore\+::probing\+\_\+schemes\+::Linear\+Probing$<$ Hasher, C\+G\+Size $>$ Class Template Reference}
+\label{classwarpcore_1_1probing__schemes_1_1LinearProbing}\index{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}}
 
 
 linear probing scheme\+: $hash(k,i) = h(k)+i$  
 
 
-\subsection*{Public Types}
+\doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_a1397e29f9b9d241e1c9deb6ff412b447}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_a1397e29f9b9d241e1c9deb6ff412b447}} 
@@ -17,10 +17,10 @@ using {\bfseries index\+\_\+type} = index\+\_\+t
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_afb6146a3a2e0d49a59465f3cdf444fc0}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_afb6146a3a2e0d49a59465f3cdf444fc0}} 
 using {\bfseries tag} = tags\+::cycle\+\_\+free\+\_\+probing\+\_\+scheme
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_affe37a488156f6a5f971e898034fa99d}{Linear\+Probing} (index\+\_\+type capacity, index\+\_\+type probing\+\_\+length, const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&group)
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_affe37a488156f6a5f971e898034fa99d}{Linear\+Probing}} (index\+\_\+type capacity, index\+\_\+type probing\+\_\+length, const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&group)
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_af0d6aefabf0469b1b8040733c3897b1f}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_af0d6aefabf0469b1b8040733c3897b1f}} 
 {\footnotesize template$<$class T $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type {\bfseries begin} (T, T)=delete
@@ -28,20 +28,20 @@ using {\bfseries tag} = tags\+::cycle\+\_\+free\+\_\+probing\+\_\+scheme
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_a658f40cbe87eebcc7f8a9cfc907d689c}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_a658f40cbe87eebcc7f8a9cfc907d689c}} 
 {\footnotesize template$<$class T $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type {\bfseries begin} (T)=delete
 \item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_a9ab68e3bcbbdd3ea030e2204f9b96b41}{begin} (key\+\_\+type key, key\+\_\+type seed=0) noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_a9ab68e3bcbbdd3ea030e2204f9b96b41}{begin}} (key\+\_\+type key, key\+\_\+type seed=0) noexcept
 \begin{DoxyCompactList}\small\item\em begin probing sequence \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_ad984d7ad47f44ada91df47f135473176}{next} () noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_ad984d7ad47f44ada91df47f135473176}{next}} () noexcept
 \begin{DoxyCompactList}\small\item\em next probing index for {\ttfamily key} \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+t \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_a8490ec06de511d325df3858c5f3eb20c}{cg\+\_\+size} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+t \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_abc7233c6b11e7dceffb1dbe04e749603}{cg\+\_\+size}} () noexcept
 \begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_a3976a90f43e45fcc3438a15417803d88}{end} () noexcept
+static constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing_a1b0310c0b2a031bd50fa767f567dfa39}{end}} () noexcept
 \begin{DoxyCompactList}\small\item\em end specifier of probing sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 \subsubsection*{template$<$class Hasher, index\+\_\+t C\+G\+Size = 1$>$\newline
 class warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing$<$ Hasher, C\+G\+Size $>$}
 
@@ -56,13 +56,13 @@ linear probing scheme\+: $hash(k,i) = h(k)+i$
 \end{DoxyTemplParams}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_affe37a488156f6a5f971e898034fa99d}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_affe37a488156f6a5f971e898034fa99d}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}!Linear\+Probing@{Linear\+Probing}}
-\index{Linear\+Probing@{Linear\+Probing}!warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}
-\subsubsection{\texorpdfstring{Linear\+Probing()}{LinearProbing()}}
+\index{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}!LinearProbing@{LinearProbing}}
+\index{LinearProbing@{LinearProbing}!warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{LinearProbing()}{LinearProbing()}}
 {\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}$<$ Hasher, C\+G\+Size $>$\+::\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{Linear\+Probing} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity,  }\item[{index\+\_\+type}]{probing\+\_\+length,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}$<$ Hasher, C\+G\+Size $>$\+::\mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{Linear\+Probing}} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity,  }\item[{index\+\_\+type}]{probing\+\_\+length,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 
 
@@ -70,22 +70,22 @@ constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em capacity} & capacity of the underlying hash table \\
+\mbox{\texttt{ in}}  & {\em capacity} & capacity of the underlying hash table \\
 \hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & number of probing attempts \\
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & number of probing attempts \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_a9ab68e3bcbbdd3ea030e2204f9b96b41}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_a9ab68e3bcbbdd3ea030e2204f9b96b41}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}!begin@{begin}}
-\index{begin@{begin}!warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}
-\subsubsection{\texorpdfstring{begin()}{begin()}}
+\index{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}!begin@{begin}}
+\index{begin@{begin}!warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
 {\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}$<$ Hasher, C\+G\+Size $>$\+::begin (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{key\+\_\+type}]{seed = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}$<$ Hasher, C\+G\+Size $>$\+::begin (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{key\+\_\+type}]{seed = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -93,20 +93,20 @@ begin probing sequence
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key} & key to be probed \\
+\mbox{\texttt{ in}}  & {\em key} & key to be probed \\
 \hline
-\mbox{\tt in}  & {\em seed} & random seed \\
+\mbox{\texttt{ in}}  & {\em seed} & random seed \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 initial probing index for {\ttfamily key} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_a8490ec06de511d325df3858c5f3eb20c}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_a8490ec06de511d325df3858c5f3eb20c}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}!cg\+\_\+size@{cg\+\_\+size}}
-\index{cg\+\_\+size@{cg\+\_\+size}!warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}
-\subsubsection{\texorpdfstring{cg\+\_\+size()}{cg\_size()}}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_abc7233c6b11e7dceffb1dbe04e749603}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_abc7233c6b11e7dceffb1dbe04e749603}} 
+\index{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}!cg\_size@{cg\_size}}
+\index{cg\_size@{cg\_size}!warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{cg\_size()}{cg\_size()}}
 {\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+t \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}$<$ Hasher, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+t \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}$<$ Hasher, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -115,12 +115,12 @@ get cooperative group size
 \begin{DoxyReturn}{Returns}
 cooperative group size 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_a3976a90f43e45fcc3438a15417803d88}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_a3976a90f43e45fcc3438a15417803d88}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}!end@{end}}
-\index{end@{end}!warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}
-\subsubsection{\texorpdfstring{end()}{end()}}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_a1b0310c0b2a031bd50fa767f567dfa39}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_a1b0310c0b2a031bd50fa767f567dfa39}} 
+\index{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}!end@{end}}
+\index{end@{end}!warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
 {\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}$<$ Hasher, C\+G\+Size $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}$<$ Hasher, C\+G\+Size $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -129,12 +129,20 @@ end specifier of probing sequence
 \begin{DoxyReturn}{Returns}
 end specifier 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1probing__schemes_1_1LinearProbing_a1b0310c0b2a031bd50fa767f567dfa39_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1LinearProbing_ad984d7ad47f44ada91df47f135473176}\label{classwarpcore_1_1probing__schemes_1_1LinearProbing_ad984d7ad47f44ada91df47f135473176}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}!next@{next}}
-\index{next@{next}!warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing@{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}
-\subsubsection{\texorpdfstring{next()}{next()}}
+\index{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}!next@{next}}
+\index{next@{next}!warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$@{warpcore::probing\_schemes::LinearProbing$<$ Hasher, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
 {\footnotesize\ttfamily template$<$class Hasher , index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}$<$ Hasher, C\+G\+Size $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1LinearProbing}{warpcore\+::probing\+\_\+schemes\+::\+Linear\+Probing}}$<$ Hasher, C\+G\+Size $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

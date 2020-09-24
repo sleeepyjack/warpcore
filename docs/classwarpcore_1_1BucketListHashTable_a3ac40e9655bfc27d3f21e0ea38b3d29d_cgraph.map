@@ -1,8 +1,15 @@
 <map id="warpcore::BucketListHashTable::bytes_payload" name="warpcore::BucketListHashTable::bytes_payload">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a6f8e4a83670a301f53e923d2fe9a3507" title="get the the number of bytes in this data structure occupied by keys " alt="" coords="229,5,405,47"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1BucketListHashTable.html#afbd37a57c5137cc44881470c80a60bc3" title="get the the number of bytes in this data structure occupied by values " alt="" coords="229,71,405,112"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1BucketListHashTable.html#a6667de3a96ab1e7a1b26461eea6d4144" title="number of keys stored inside the hash table " alt="" coords="453,5,629,47"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#a6c0e8d90665fe1eb9accf10256b57f28" title="number of key/value pairs stored inside the hash table " alt="" coords="677,5,860,47"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1BucketListHashTable.html#a3c56e0b0e4c7954e65db41e752cd1218" title="get number of values to a corresponding key inside the hash table " alt="" coords="453,71,629,112"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1SingleValueHashTable.html#afce6914392f7c69c7ca5501b123cf167" title="retrieves a key from the hash table " alt="" coords="677,71,860,112"/>
+<area shape="rect" id="node1" title="get the the number of bytes in this data structure occupied by actual information" alt="" coords="5,104,196,145"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a6f8e4a83670a301f53e923d2fe9a3507" title="get the the number of bytes in this data structure occupied by keys" alt="" coords="244,71,435,112"/>
+<area shape="rect" id="node10" href="$classwarpcore_1_1BucketListHashTable.html#afbd37a57c5137cc44881470c80a60bc3" title="get the the number of bytes in this data structure occupied by values" alt="" coords="244,136,435,177"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BucketListHashTable.html#a6667de3a96ab1e7a1b26461eea6d4144" title="number of keys stored inside the hash table" alt="" coords="483,71,673,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#a6c0e8d90665fe1eb9accf10256b57f28" title="number of key/value pairs stored inside the hash table" alt="" coords="721,71,920,112"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1SingleValueHashTable.html#a9804486b8ec4f3c72293e19c722e4df2" title="get the capacity of the hash table" alt="" coords="968,71,1167,112"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer" alt="" coords="994,5,1141,47"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1SingleValueHashTable.html#a4af1dc4ff96f4289f3b1010df216627f" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="968,136,1167,177"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1SingleValueHashTable.html#a5ceb04781c8ef57cc9355c4d13fbeb7c" title="get empty key" alt="" coords="1215,201,1413,243"/>
+<area shape="rect" id="node9" href="$classwarpcore_1_1SingleValueHashTable.html#a67e2733b5d09802640805e344c9cf9e7" title="get tombstone key" alt="" coords="1215,136,1413,177"/>
+<area shape="rect" id="node11" href="$classwarpcore_1_1BucketListHashTable.html#a3c56e0b0e4c7954e65db41e752cd1218" title="get number of values to a corresponding key inside the hash table" alt="" coords="483,136,673,177"/>
+<area shape="rect" id="node12" href="$classwarpcore_1_1SingleValueHashTable.html#afce6914392f7c69c7ca5501b123cf167" title="retrieves a key from the hash table" alt="" coords="721,136,920,177"/>
+<area shape="rect" id="node13" href="$classwarpcore_1_1SingleValueHashTable.html#a5c600de998d35683755bf372283cb6f9" title="checks if key is equal to EmptyKey" alt="" coords="968,201,1167,243"/>
 </map>

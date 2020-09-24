@@ -1,3 +1,4 @@
 <map id="warpcore::BucketListHashTable::key_capacity" name="warpcore::BucketListHashTable::key_capacity">
-<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html#a9804486b8ec4f3c72293e19c722e4df2" title="get the capacity of the hash table " alt="" coords="229,5,412,47"/>
+<area shape="rect" id="node1" title="get the key capacity of the hash table" alt="" coords="5,5,196,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html#a9804486b8ec4f3c72293e19c722e4df2" title="get the capacity of the hash table" alt="" coords="244,5,443,47"/>
 </map>

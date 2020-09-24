@@ -1,3 +1,5 @@
 <map id="warpcore::HashSet::init" name="warpcore::HashSet::init">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a6654bf5c2c17b0676d6fd4867fa991cd" title="(re)initialize the hash set " alt="" coords="212,5,371,32"/>
+<area shape="rect" id="node1" title="(re)initialize the hash set" alt="" coords="5,13,179,39"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a6654bf5c2c17b0676d6fd4867fa991cd" title="(re)initialize the hash set" alt="" coords="227,13,400,39"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="448,5,600,47"/>
 </map>

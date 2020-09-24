@@ -1,6 +1,7 @@
 <map id="warpcore::HashSet::retrieve" name="warpcore::HashSet::retrieve">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a529de8c2b747588ef825661ba12b4c25" title="checks if key is equal to (EmptyKey||TombstoneKey) " alt="" coords="196,71,339,112"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#ade9bc606ceba67c90aac5ee3aa43ddc7" title="checks if key is equal to EmptyKey " alt="" coords="196,5,339,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a6800547cc8ee14db6d97728af29b53fb" title="get empty key " alt="" coords="387,5,529,47"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#af11b7b19315de5409098eaeb31702c63" title="get tombstone key " alt="" coords="387,71,529,112"/>
+<area shape="rect" id="node1" title="retrieves a key from the hash set" alt="" coords="5,39,157,80"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2" title="checks if key is equal to EmptyKey" alt="" coords="205,5,357,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="405,5,557,47"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="405,71,557,112"/>
 </map>

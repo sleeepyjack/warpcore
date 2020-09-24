@@ -1,0 +1,4 @@
+<map id="warpcore::SingleValueHashTable::is_tombstone_key" name="warpcore::SingleValueHashTable::is_tombstone_key">
+<area shape="rect" id="node1" title="checks if key is equal to TombstoneKey" alt="" coords="268,5,467,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#ad4faa63cd0e6613135c12733c2d9fb6f" title="checks if key is equal to TombstoneKey" alt="" coords="5,5,220,47"/>
+</map>

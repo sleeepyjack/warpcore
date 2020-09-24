@@ -1,5 +1,7 @@
 <map id="warpcore::SingleValueHashTable::load_factor" name="warpcore::SingleValueHashTable::load_factor">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#ac0a51f17e2c2deaee7ad80e491b96259" title="get load factor of the key store " alt="" coords="247,5,423,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1CountingHashTable.html#ad4a829b15a3add41133437c17ab6bf67" title="current load factor of the hash table " alt="" coords="236,71,435,112"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#ac593bc68b452128ae4c6ce9217c5d333" title="current storage density of the hash table " alt="" coords="242,137,429,222"/>
+<area shape="rect" id="node1" title="current load factor of the hash table" alt="" coords="531,71,729,112"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#ac0a51f17e2c2deaee7ad80e491b96259" title="get load factor of the key store" alt="" coords="280,5,471,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1CountingHashTable.html#ad4a829b15a3add41133437c17ab6bf67" title="current load factor of the hash table" alt="" coords="268,71,483,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#ac593bc68b452128ae4c6ce9217c5d333" title="current storage density of the hash table" alt="" coords="276,136,475,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1CountingHashTable.html#aa7b5b49d50edc280ce007cf92abdc4ae" title="current storage density of the hash table" alt="" coords="5,136,220,177"/>
 </map>

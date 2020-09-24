@@ -1,4 +1,6 @@
 <map id="warpcore::HashSet::HashSet" name="warpcore::HashSet::HashSet">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a6edef2d260c214f294b61bb394a11545" title="get the capacity of the hash table " alt="" coords="204,5,347,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a6654bf5c2c17b0676d6fd4867fa991cd" title="(re)initialize the hash set " alt="" coords="196,71,355,98"/>
+<area shape="rect" id="node1" title="constructor" alt="" coords="5,35,157,76"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a6edef2d260c214f294b61bb394a11545" title="get the capacity of the hash table" alt="" coords="216,5,368,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a6654bf5c2c17b0676d6fd4867fa991cd" title="(re)initialize the hash set" alt="" coords="205,71,379,98"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="427,64,579,105"/>
 </map>

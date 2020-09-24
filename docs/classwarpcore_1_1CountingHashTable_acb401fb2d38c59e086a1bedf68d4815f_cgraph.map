@@ -1,4 +1,9 @@
 <map id="warpcore::CountingHashTable::init" name="warpcore::CountingHashTable::init">
-<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396" title="(re)initialize the hash table " alt="" coords="252,5,435,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#ae366b3fd0d7edbac68a939fe580df9a4" title="indicates if the hash table is properly initialized " alt="" coords="252,71,435,112"/>
+<area shape="rect" id="node1" title="(re)initialize the hash table" alt="" coords="5,103,220,144"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396" title="(re)initialize the hash table" alt="" coords="276,37,475,79"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1SingleValueHashTable.html#ae366b3fd0d7edbac68a939fe580df9a4" title="indicates if the hash table is properly initialized" alt="" coords="276,103,475,144"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1CountingHashTable.html#a404f39442f096f294cd879b0710e5416" title="get random seed" alt="" coords="268,168,483,209"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#a5ceb04781c8ef57cc9355c4d13fbeb7c" title="get empty key" alt="" coords="531,5,729,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1SingleValueHashTable.html#a28ba5f6952bad405f7d005cd5867e973" title="get random seed" alt="" coords="531,152,729,193"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab6c224b2b5a49d93dc7e052ec7b8cc32" title="get buffer status" alt="" coords="557,71,703,112"/>
 </map>

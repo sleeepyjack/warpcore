@@ -1,0 +1,4 @@
+<map id="warpcore::storage::multi_value::BucketListStore&lt; Value, BucketIndexBits, ValueCounterBits, BucketSizeBits &gt;" name="warpcore::storage::multi_value::BucketListStore&lt; Value, BucketIndexBits, ValueCounterBits, BucketSizeBits &gt;">
+<area shape="rect" id="node1" title="value store consisting of growing linked buckets of values" alt="" coords="5,5,263,76"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html" title=" " alt="" coords="30,139,238,195"/>
+</map>

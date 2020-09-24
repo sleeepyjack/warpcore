@@ -1,4 +1,5 @@
 <map id="warpcore::CountingHashTable::init" name="warpcore::CountingHashTable::init">
-<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#a68946e67712e7b2afb95ddb7169a26fd" title="constructor " alt="" coords="252,5,451,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1CountingHashTable.html#a8b7a93faf9c5746c2665b4b775f9de88" title="(re)initialize the hash table " alt="" coords="252,71,451,112"/>
+<area shape="rect" id="node1" title="(re)initialize the hash table" alt="" coords="268,39,483,80"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#a68946e67712e7b2afb95ddb7169a26fd" title="constructor" alt="" coords="5,5,220,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1CountingHashTable.html#a8b7a93faf9c5746c2665b4b775f9de88" title="(re)initialize the hash table" alt="" coords="5,71,220,112"/>
 </map>

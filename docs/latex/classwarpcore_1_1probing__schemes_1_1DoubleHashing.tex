@@ -1,11 +1,11 @@
-\hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{}\section{warpcore\+:\+:probing\+\_\+schemes\+:\+:Double\+Hashing$<$ Hasher1, Hasher2, C\+G\+Size $>$ Class Template Reference}
-\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing}\index{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing$<$ Hasher1, Hasher2, C\+G\+Size $>$@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing$<$ Hasher1, Hasher2, C\+G\+Size $>$}}
+\hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{}\doxysection{warpcore\+::probing\+\_\+schemes\+::Double\+Hashing$<$ Hasher1, Hasher2, C\+G\+Size $>$ Class Template Reference}
+\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing}\index{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}}
 
 
 double hashing scheme\+: $hash(k,i) = h_1(k)+i\cdot h_2(k)$  
 
 
-\subsection*{Public Types}
+\doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a7717ccd60167090680b7049a3ea59645}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a7717ccd60167090680b7049a3ea59645}} 
@@ -17,10 +17,10 @@ using {\bfseries index\+\_\+type} = index\+\_\+t
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_af11ec5617e5c6ec113991c90570022c8}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_af11ec5617e5c6ec113991c90570022c8}} 
 using {\bfseries tag} = typename std\+::conditional$<$ checks\+::is\+\_\+true\+\_\+permutation\+\_\+hasher$<$ Hasher1 $>$() \&\&checks\+::is\+\_\+true\+\_\+permutation\+\_\+hasher$<$ Hasher2 $>$(), tags\+::cycle\+\_\+free\+\_\+probing\+\_\+scheme, tags\+::probing\+\_\+scheme $>$\+::type
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_aa74ed01c96665a5651ad4dc1395da1d2}{Double\+Hashing} (index\+\_\+type capacity, index\+\_\+type probing\+\_\+length, const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&group)
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_aa74ed01c96665a5651ad4dc1395da1d2}{Double\+Hashing}} (index\+\_\+type capacity, index\+\_\+type probing\+\_\+length, const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&group)
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ab99320ff4f7ca5b001b38c657eee8f45}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ab99320ff4f7ca5b001b38c657eee8f45}} 
 {\footnotesize template$<$class T $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type {\bfseries begin} (T, T)=delete
@@ -28,20 +28,20 @@ using {\bfseries tag} = typename std\+::conditional$<$ checks\+::is\+\_\+true\+\
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_aa7def8460dd3b81b53577401ef79dcaf}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_aa7def8460dd3b81b53577401ef79dcaf}} 
 {\footnotesize template$<$class T $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type {\bfseries begin} (T)=delete
 \item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_abd3749c428220cad1193fc9b2994d545}{begin} (key\+\_\+type key, key\+\_\+type seed=0) noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_abd3749c428220cad1193fc9b2994d545}{begin}} (key\+\_\+type key, key\+\_\+type seed=0) noexcept
 \begin{DoxyCompactList}\small\item\em begin probing sequence \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a49bf8de6c8af2e84d335e62a864a1a75}{next} () noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a49bf8de6c8af2e84d335e62a864a1a75}{next}} () noexcept
 \begin{DoxyCompactList}\small\item\em next probing index for {\ttfamily key} \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ae94c09166e06d7d1d147959ca174e1b1}{cg\+\_\+size} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a1d33b3ef369680fbcc1f044f83e18f82}{cg\+\_\+size}} () noexcept
 \begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ac9ee12c8aa2a976f3fd2cdee3bac4957}{end} () noexcept
+static constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ab547b77663b6b3fda776a81d166d3bd2}{end}} () noexcept
 \begin{DoxyCompactList}\small\item\em end specifier of probing sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 \subsubsection*{template$<$class Hasher1, class Hasher2, index\+\_\+t C\+G\+Size = 1$>$\newline
 class warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing$<$ Hasher1, Hasher2, C\+G\+Size $>$}
 
@@ -58,13 +58,13 @@ double hashing scheme\+: $hash(k,i) = h_1(k)+i\cdot h_2(k)$
 \end{DoxyTemplParams}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_aa74ed01c96665a5651ad4dc1395da1d2}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_aa74ed01c96665a5651ad4dc1395da1d2}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}!Double\+Hashing@{Double\+Hashing}}
-\index{Double\+Hashing@{Double\+Hashing}!warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}
-\subsubsection{\texorpdfstring{Double\+Hashing()}{DoubleHashing()}}
+\index{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}!DoubleHashing@{DoubleHashing}}
+\index{DoubleHashing@{DoubleHashing}!warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{DoubleHashing()}{DoubleHashing()}}
 {\footnotesize\ttfamily template$<$class Hasher1 , class Hasher2 , index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{Double\+Hashing} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity,  }\item[{index\+\_\+type}]{probing\+\_\+length,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::\mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{Double\+Hashing}} (\begin{DoxyParamCaption}\item[{index\+\_\+type}]{capacity,  }\item[{index\+\_\+type}]{probing\+\_\+length,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ C\+G\+Size $>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
 
 
 
@@ -72,22 +72,22 @@ constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em capacity} & capacity of the underlying hash table \\
+\mbox{\texttt{ in}}  & {\em capacity} & capacity of the underlying hash table \\
 \hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & number of probing attempts \\
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & number of probing attempts \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_abd3749c428220cad1193fc9b2994d545}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_abd3749c428220cad1193fc9b2994d545}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}!begin@{begin}}
-\index{begin@{begin}!warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}
-\subsubsection{\texorpdfstring{begin()}{begin()}}
+\index{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}!begin@{begin}}
+\index{begin@{begin}!warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
 {\footnotesize\ttfamily template$<$class Hasher1 , class Hasher2 , index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::begin (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{key\+\_\+type}]{seed = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::begin (\begin{DoxyParamCaption}\item[{key\+\_\+type}]{key,  }\item[{key\+\_\+type}]{seed = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -95,20 +95,20 @@ begin probing sequence
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key} & key to be probed \\
+\mbox{\texttt{ in}}  & {\em key} & key to be probed \\
 \hline
-\mbox{\tt in}  & {\em seed} & random seed \\
+\mbox{\texttt{ in}}  & {\em seed} & random seed \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 initial probing index for {\ttfamily key} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ae94c09166e06d7d1d147959ca174e1b1}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ae94c09166e06d7d1d147959ca174e1b1}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}!cg\+\_\+size@{cg\+\_\+size}}
-\index{cg\+\_\+size@{cg\+\_\+size}!warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}
-\subsubsection{\texorpdfstring{cg\+\_\+size()}{cg\_size()}}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a1d33b3ef369680fbcc1f044f83e18f82}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a1d33b3ef369680fbcc1f044f83e18f82}} 
+\index{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}!cg\_size@{cg\_size}}
+\index{cg\_size@{cg\_size}!warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{cg\_size()}{cg\_size()}}
 {\footnotesize\ttfamily template$<$class Hasher1 , class Hasher2 , index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -117,12 +117,12 @@ get cooperative group size
 \begin{DoxyReturn}{Returns}
 cooperative group size 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ac9ee12c8aa2a976f3fd2cdee3bac4957}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ac9ee12c8aa2a976f3fd2cdee3bac4957}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}!end@{end}}
-\index{end@{end}!warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}
-\subsubsection{\texorpdfstring{end()}{end()}}
+\mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ab547b77663b6b3fda776a81d166d3bd2}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ab547b77663b6b3fda776a81d166d3bd2}} 
+\index{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}!end@{end}}
+\index{end@{end}!warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
 {\footnotesize\ttfamily template$<$class Hasher1 , class Hasher2 , index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -136,15 +136,15 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ac9ee12c8aa2a976f3fd2cdee3bac4957_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1probing__schemes_1_1DoubleHashing_ab547b77663b6b3fda776a81d166d3bd2_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a49bf8de6c8af2e84d335e62a864a1a75}\label{classwarpcore_1_1probing__schemes_1_1DoubleHashing_a49bf8de6c8af2e84d335e62a864a1a75}} 
-\index{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}!next@{next}}
-\index{next@{next}!warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing@{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}
-\subsubsection{\texorpdfstring{next()}{next()}}
+\index{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}!next@{next}}
+\index{next@{next}!warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$@{warpcore::probing\_schemes::DoubleHashing$<$ Hasher1, Hasher2, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
 {\footnotesize\ttfamily template$<$class Hasher1 , class Hasher2 , index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1probing__schemes_1_1DoubleHashing}{warpcore\+::probing\+\_\+schemes\+::\+Double\+Hashing}}$<$ Hasher1, Hasher2, C\+G\+Size $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

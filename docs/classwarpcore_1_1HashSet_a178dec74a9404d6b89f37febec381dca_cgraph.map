@@ -1,9 +1,10 @@
 <map id="warpcore::HashSet::storage_density" name="warpcore::HashSet::storage_density">
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set " alt="" coords="196,104,339,145"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set " alt="" coords="387,82,553,109"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a6edef2d260c214f294b61bb394a11545" title="get the capacity of the hash table " alt="" coords="601,136,744,177"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer " alt="" coords="605,5,740,47"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#a529de8c2b747588ef825661ba12b4c25" title="checks if key is equal to (EmptyKey||TombstoneKey) " alt="" coords="601,71,744,112"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#a6800547cc8ee14db6d97728af29b53fb" title="get empty key " alt="" coords="792,39,935,80"/>
-<area shape="rect" id="node8" href="$classwarpcore_1_1HashSet.html#af11b7b19315de5409098eaeb31702c63" title="get tombstone key " alt="" coords="792,104,935,145"/>
+<area shape="rect" id="node1" title="current storage density of the hash set" alt="" coords="5,39,157,80"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="205,39,357,80"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a6edef2d260c214f294b61bb394a11545" title="get the capacity of the hash table" alt="" coords="632,5,784,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="405,71,584,98"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer" alt="" coords="635,71,781,112"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="632,136,784,177"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="832,103,984,144"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="832,168,984,209"/>
 </map>

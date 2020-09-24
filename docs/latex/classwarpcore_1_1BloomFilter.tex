@@ -1,11 +1,11 @@
-\hypertarget{classwarpcore_1_1BloomFilter}{}\section{warpcore\+:\+:Bloom\+Filter$<$ Key, Hasher, Slot, C\+G\+Size $>$ Class Template Reference}
-\label{classwarpcore_1_1BloomFilter}\index{warpcore\+::\+Bloom\+Filter$<$ Key, Hasher, Slot, C\+G\+Size $>$@{warpcore\+::\+Bloom\+Filter$<$ Key, Hasher, Slot, C\+G\+Size $>$}}
+\hypertarget{classwarpcore_1_1BloomFilter}{}\doxysection{warpcore\+::Bloom\+Filter$<$ Key, Hasher, Slot, C\+G\+Size $>$ Class Template Reference}
+\label{classwarpcore_1_1BloomFilter}\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
 
 
 bloom filter  
 
 
-\subsection*{Public Types}
+\doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ae33a034a8dfe87aba6e92af1a210d943}\label{classwarpcore_1_1BloomFilter_ae33a034a8dfe87aba6e92af1a210d943}} 
@@ -21,58 +21,58 @@ using {\bfseries index\+\_\+type} = index\+\_\+t
 using {\bfseries slot\+\_\+type} = Slot
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a6341f8816b7384983431a2229f28385f}\label{classwarpcore_1_1BloomFilter_a6341f8816b7384983431a2229f28385f}} 
-using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
+using {\bfseries status\+\_\+type} = \mbox{\hyperlink{classwarpcore_1_1Status}{Status}}
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d}{Bloom\+Filter} (const index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a54a25926cf770e834c47ad5164e91443}{num\+\_\+bits}, const index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3}{k}, const key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$()) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d}{Bloom\+Filter}} (const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a54a25926cf770e834c47ad5164e91443}{num\+\_\+bits}}, const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3}{k}}, const key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$()) noexcept
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter_a883979f0bdf59e494c366eef343ea7b4}{Bloom\+Filter} (const \hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter} \&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a883979f0bdf59e494c366eef343ea7b4}{Bloom\+Filter}} (const \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}} \&o) noexcept
 \begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter_aa0a03f44ed1c877335537a1e3fcb9208}{Bloom\+Filter} (\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter} \&\&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_aa0a03f44ed1c877335537a1e3fcb9208}{Bloom\+Filter}} (\mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}} \&\&o) noexcept
 \begin{DoxyCompactList}\small\item\em move-\/constructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a43381c51633999d04e0002c32885e3b7}\label{classwarpcore_1_1BloomFilter_a43381c51633999d04e0002c32885e3b7}} 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter_a43381c51633999d04e0002c32885e3b7}{$\sim$\+Bloom\+Filter} () noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a43381c51633999d04e0002c32885e3b7}{$\sim$\+Bloom\+Filter}} () noexcept
 \begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e}{init} (const key\+\_\+type seed, const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e}{init}} (const key\+\_\+type seed, const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em (re)initialize the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40}{init} (const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40}{init}} (const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em (re)initialize the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0}{insert} (const key\+\_\+type key, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size}()$>$ \&group) noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0}{insert}} (const key\+\_\+type key, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}}()$>$ \&group) noexcept
 \begin{DoxyCompactList}\small\item\em inserts a key into the bloom filter \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586}{insert} (const Key $\ast$const keys\+\_\+in, const index\+\_\+t num\+\_\+in, const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586}{insert}} (const Key $\ast$const keys\+\_\+in, const index\+\_\+t num\+\_\+in, const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em inserts a set of keys into the bloom filter \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa}{retrieve} (const key\+\_\+type key, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size}()$>$ \&group) const noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa}{retrieve}} (const key\+\_\+type key, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}}()$>$ \&group) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieve a key \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb}{retrieve} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, bool $\ast$const flags\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb}{retrieve}} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, bool $\ast$const flags\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieve a set of keys \end{DoxyCompactList}\item 
-{\footnotesize template$<$index\+\_\+type C\+G\+Size\+\_\+ = cg\+\_\+size(), class  = std\+::enable\+\_\+if\+\_\+t$<$\+C\+G\+Size\+\_\+ == 1$>$$>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3}{insert\+\_\+and\+\_\+query} (const key\+\_\+type key, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size}()$>$ \&group) noexcept
+{\footnotesize template$<$index\+\_\+type C\+G\+Size\+\_\+ = cg\+\_\+size(), class  = std\+::enable\+\_\+if\+\_\+t$<$\+C\+G\+Size\+\_\+ == 1$>$$>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3}{insert\+\_\+and\+\_\+query}} (const key\+\_\+type key, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}}()$>$ \&group) noexcept
 \begin{DoxyCompactList}\small\item\em queries and subsequently inserts a key into the bloom filter \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a54a25926cf770e834c47ad5164e91443}{num\+\_\+bits} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a54a25926cf770e834c47ad5164e91443}{num\+\_\+bits}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get number of bits (m) \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a1ab7ecd7bcc3f6321a252f94d63965eb}{num\+\_\+slots} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a1ab7ecd7bcc3f6321a252f94d63965eb}{num\+\_\+slots}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get number of slots \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a10fcbb540441eff40a1d0fccd1b992bd}{num\+\_\+blocks} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a10fcbb540441eff40a1d0fccd1b992bd}{num\+\_\+blocks}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get number of blocks \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3}{k} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3}{k}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get number of hash functions (k) \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ double \hyperlink{classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381}{fpr} (const index\+\_\+type n) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ double \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381}{fpr}} (const index\+\_\+type n) const noexcept
 \begin{DoxyCompactList}\small\item\em estimated false positive rate of pattern-\/blocked bloom filter \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BloomFilter_a55aaae73d8a1a8d811779fcf372f6c8c}{is\+\_\+copy} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a55aaae73d8a1a8d811779fcf372f6c8c}{is\+\_\+copy}} () const noexcept
 \begin{DoxyCompactList}\small\item\em indicates if this object is a shallow copy \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}} () noexcept
 \begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc}{slot\+\_\+bits} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_a77e5ec4079ef86ec3d21729ab076f048}{slot\+\_\+bits}} () noexcept
 \begin{DoxyCompactList}\small\item\em get bits per slot \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06}{block\+\_\+bits} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ace437c9c0e7ac13f4cf3416eb30a9428}{block\+\_\+bits}} () noexcept
 \begin{DoxyCompactList}\small\item\em get bits per cooperative group block of slots \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 \subsubsection*{template$<$class Key, class Hasher = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$\newline
 class warpcore\+::\+Bloom\+Filter$<$ Key, Hasher, Slot, C\+G\+Size $>$}
 
@@ -82,7 +82,7 @@ bloom filter
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Key} & key type ({\ttfamily std\+::uint32\+\_\+t} or {\ttfamily std\+::uint64\+\_\+t}) \\
 \hline
-{\em Hasher} & hasher from {\ttfamily \hyperlink{namespacewarpcore_1_1hashers}{warpcore\+::hashers}} \\
+{\em Hasher} & hasher from {\ttfamily \mbox{\hyperlink{namespacewarpcore_1_1hashers}{warpcore\+::hashers}}} \\
 \hline
 {\em Slot} & slot type ({\ttfamily std\+::uint32\+\_\+t} or {\ttfamily std\+::uint64\+\_\+t}) \\
 \hline
@@ -91,13 +91,13 @@ bloom filter
 \end{DoxyTemplParams}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d}\label{classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!Bloom\+Filter@{Bloom\+Filter}}
-\index{Bloom\+Filter@{Bloom\+Filter}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{Bloom\+Filter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{num\+\_\+bits,  }\item[{const index\+\_\+type}]{k,  }\item[{const key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::\mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{num\+\_\+bits,  }\item[{const index\+\_\+type}]{k,  }\item[{const key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -105,11 +105,11 @@ constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em num\+\_\+bits} & total number of bits (m) of the bloom filter \\
+\mbox{\texttt{ in}}  & {\em num\+\_\+bits} & total number of bits (m) of the bloom filter \\
 \hline
-\mbox{\tt in}  & {\em k} & number of hash functions to apply \\
+\mbox{\texttt{ in}}  & {\em k} & number of hash functions to apply \\
 \hline
-\mbox{\tt in}  & {\em seed} & random seed \\
+\mbox{\texttt{ in}}  & {\em seed} & random seed \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -117,15 +117,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=340pt]{classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_af1dee90908f026b0a7c2e60794145f2d_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a883979f0bdf59e494c366eef343ea7b4}\label{classwarpcore_1_1BloomFilter_a883979f0bdf59e494c366eef343ea7b4}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!Bloom\+Filter@{Bloom\+Filter}}
-\index{Bloom\+Filter@{Bloom\+Filter}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{Bloom\+Filter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter} (\begin{DoxyParamCaption}\item[{const \hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::\mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -133,15 +133,15 @@ copy-\/constructor (shallow)
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em object} & to be copied \\
+\mbox{\texttt{ in}}  & {\em object} & to be copied \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_aa0a03f44ed1c877335537a1e3fcb9208}\label{classwarpcore_1_1BloomFilter_aa0a03f44ed1c877335537a1e3fcb9208}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!Bloom\+Filter@{Bloom\+Filter}}
-\index{Bloom\+Filter@{Bloom\+Filter}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{Bloom\+Filter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter} (\begin{DoxyParamCaption}\item[{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::\mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classwarpcore_1_1BloomFilter}{Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -149,18 +149,18 @@ move-\/constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em object} & to be moved \\
+\mbox{\texttt{ in}}  & {\em object} & to be moved \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06}\label{classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!block\+\_\+bits@{block\+\_\+bits}}
-\index{block\+\_\+bits@{block\+\_\+bits}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{block\+\_\+bits()}{block\_bits()}}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ace437c9c0e7ac13f4cf3416eb30a9428}\label{classwarpcore_1_1BloomFilter_ace437c9c0e7ac13f4cf3416eb30a9428}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!block\_bits@{block\_bits}}
+\index{block\_bits@{block\_bits}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{block\_bits()}{block\_bits()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::block\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::block\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -174,7 +174,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=340pt]{classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_ace437c9c0e7ac13f4cf3416eb30a9428_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -182,15 +182,15 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_ae7d326580b41b88db73264a494db3a06_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_ace437c9c0e7ac13f4cf3416eb30a9428_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}\label{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!cg\+\_\+size@{cg\+\_\+size}}
-\index{cg\+\_\+size@{cg\+\_\+size}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{cg\+\_\+size()}{cg\_size()}}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}\label{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!cg\_size@{cg\_size}}
+\index{cg\_size@{cg\_size}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{cg\_size()}{cg\_size()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -204,15 +204,15 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381}\label{classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!fpr@{fpr}}
-\index{fpr@{fpr}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{fpr()}{fpr()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!fpr@{fpr}}
+\index{fpr@{fpr}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{fpr()}{fpr()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ double \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::fpr (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ double \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::fpr (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -220,7 +220,7 @@ estimated false positive rate of pattern-\/blocked bloom filter
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em n} & number of inserted elements \\
+\mbox{\texttt{ in}}  & {\em n} & number of inserted elements \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -237,38 +237,12 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a27b98847aa06d277c48068ff59ca9381_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e}\label{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!init@{init}}
-\index{init@{init}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::init (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{seed,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-(re)initialize the hash table 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em seed} & random seed \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=340pt]{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40}\label{classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!init@{init}}
-\index{init@{init}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!init@{init}}
+\index{init@{init}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -276,7 +250,7 @@ Here is the caller graph for this function\+:
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -284,15 +258,69 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=340pt]{classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a33d24a1ae65b9a798107bd936989bf40_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e}\label{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!init@{init}}
+\index{init@{init}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::init (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{seed,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+(re)initialize the hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em seed} & random seed \\
+\hline
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a5f713802c324b840918111857976755e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586}\label{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!insert@{insert}}
+\index{insert@{insert}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::insert (\begin{DoxyParamCaption}\item[{const Key $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+t}]{num\+\_\+in,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+inserts a set of keys into the bloom filter 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em keys\+\_\+in} & pointer to keys to insert into the bloom filter \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+in} & number of keys to insert \\
+\hline
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0}\label{classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!insert@{insert}}
-\index{insert@{insert}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!insert@{insert}}
+\index{insert@{insert}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size}()$>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}}()$>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -300,9 +328,9 @@ inserts a key into the bloom filter
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key} & key to insert into the bloom filter \\
+\mbox{\texttt{ in}}  & {\em key} & key to insert into the bloom filter \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -313,41 +341,13 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a4b3151a938a8248df22adbdefd63b8e0_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586}\label{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!insert@{insert}}
-\index{insert@{insert}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::insert (\begin{DoxyParamCaption}\item[{const Key $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+t}]{num\+\_\+in,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-inserts a set of keys into the bloom filter 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to insert into the bloom filter \\
-\hline
-\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to insert \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=340pt]{classwarpcore_1_1BloomFilter_af00ab507c80a4cc717d5e08238f5a586_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3}\label{classwarpcore_1_1BloomFilter_afee625443b9351a88bc182386ca970a3}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!insert\+\_\+and\+\_\+query@{insert\+\_\+and\+\_\+query}}
-\index{insert\+\_\+and\+\_\+query@{insert\+\_\+and\+\_\+query}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{insert\+\_\+and\+\_\+query()}{insert\_and\_query()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!insert\_and\_query@{insert\_and\_query}}
+\index{insert\_and\_query@{insert\_and\_query}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{insert\_and\_query()}{insert\_and\_query()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
 template$<$index\+\_\+type C\+G\+Size\+\_\+ = cg\+\_\+size(), class  = std\+::enable\+\_\+if\+\_\+t$<$\+C\+G\+Size\+\_\+ == 1$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::insert\+\_\+and\+\_\+query (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size}()$>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::insert\+\_\+and\+\_\+query (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}}()$>$ \&}]{group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -358,11 +358,11 @@ can only be used when {\ttfamily C\+G\+Size==1} to prevent from race conditions
 \end{DoxyNote}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key} & key to query \\
+\mbox{\texttt{ in}}  & {\em key} & key to query \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group this operation is executed in \\
 \hline
-\mbox{\tt out}  & {\em flag} & whether the key was already inside the filter before insertion \\
+\mbox{\texttt{ out}}  & {\em flag} & whether the key was already inside the filter before insertion \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -374,11 +374,11 @@ Here is the call graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a55aaae73d8a1a8d811779fcf372f6c8c}\label{classwarpcore_1_1BloomFilter_a55aaae73d8a1a8d811779fcf372f6c8c}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!is\+\_\+copy@{is\+\_\+copy}}
-\index{is\+\_\+copy@{is\+\_\+copy}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{is\+\_\+copy()}{is\_copy()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!is\_copy@{is\_copy}}
+\index{is\_copy@{is\_copy}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{is\_copy()}{is\_copy()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -387,20 +387,12 @@ indicates if this object is a shallow copy
 \begin{DoxyReturn}{Returns}
 {\ttfamily bool} 
 \end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a55aaae73d8a1a8d811779fcf372f6c8c_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3}\label{classwarpcore_1_1BloomFilter_a33c972e8a462625d6253b58bbd5585f3}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!k@{k}}
-\index{k@{k}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{k()}{k()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!k@{k}}
+\index{k@{k}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{k()}{k()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::k (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::k (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -418,11 +410,11 @@ Here is the caller graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a54a25926cf770e834c47ad5164e91443}\label{classwarpcore_1_1BloomFilter_a54a25926cf770e834c47ad5164e91443}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!num\+\_\+bits@{num\+\_\+bits}}
-\index{num\+\_\+bits@{num\+\_\+bits}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{num\+\_\+bits()}{num\_bits()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!num\_bits@{num\_bits}}
+\index{num\_bits@{num\_bits}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{num\_bits()}{num\_bits()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::num\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::num\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -432,11 +424,11 @@ get number of bits (m)
 number of bits (m) 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a10fcbb540441eff40a1d0fccd1b992bd}\label{classwarpcore_1_1BloomFilter_a10fcbb540441eff40a1d0fccd1b992bd}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!num\+\_\+blocks@{num\+\_\+blocks}}
-\index{num\+\_\+blocks@{num\+\_\+blocks}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{num\+\_\+blocks()}{num\_blocks()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!num\_blocks@{num\_blocks}}
+\index{num\_blocks@{num\_blocks}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{num\_blocks()}{num\_blocks()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::num\+\_\+blocks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::num\+\_\+blocks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -446,11 +438,11 @@ get number of blocks
 number of blocks 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a1ab7ecd7bcc3f6321a252f94d63965eb}\label{classwarpcore_1_1BloomFilter_a1ab7ecd7bcc3f6321a252f94d63965eb}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!num\+\_\+slots@{num\+\_\+slots}}
-\index{num\+\_\+slots@{num\+\_\+slots}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{num\+\_\+slots()}{num\_slots()}}
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!num\_slots@{num\_slots}}
+\index{num\_slots@{num\_slots}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{num\_slots()}{num\_slots()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::num\+\_\+slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::num\+\_\+slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -459,12 +451,42 @@ get number of slots
 \begin{DoxyReturn}{Returns}
 number of slots 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa}\label{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!retrieve@{retrieve}}
-\index{retrieve@{retrieve}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb}\label{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BloomFilter_a6ad2335811852ad62fc65e85416d3904}{cg\+\_\+size}()$>$ \&}]{group }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{bool $\ast$const}]{flags\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+retrieve a set of keys 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em keys\+\_\+in} & pointer to keys \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+in} & number of keys \\
+\hline
+\mbox{\texttt{ out}}  & {\em flags\+\_\+out} & result per key \textquotesingle{}\\
+\hline
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa}\label{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BloomFilter_ac52d89860617bb396b2e628268d029ed}{cg\+\_\+size}}()$>$ \&}]{group }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -472,9 +494,9 @@ retrieve a key
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key} & key to query \\
+\mbox{\texttt{ in}}  & {\em key} & key to query \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -488,42 +510,12 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_ad2621ee746d6a2ba6a0bed2ca3946aaa_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb}\label{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!retrieve@{retrieve}}
-\index{retrieve@{retrieve}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a77e5ec4079ef86ec3d21729ab076f048}\label{classwarpcore_1_1BloomFilter_a77e5ec4079ef86ec3d21729ab076f048}} 
+\index{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}!slot\_bits@{slot\_bits}}
+\index{slot\_bits@{slot\_bits}!warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$@{warpcore::BloomFilter$<$ Key, Hasher, Slot, CGSize $>$}}
+\doxysubsubsection{\texorpdfstring{slot\_bits()}{slot\_bits()}}
 {\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{bool $\ast$const}]{flags\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-retrieve a set of keys 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys \\
-\hline
-\mbox{\tt in}  & {\em num\+\_\+in} & number of keys \\
-\hline
-\mbox{\tt out}  & {\em flags\+\_\+out} & result per key \textquotesingle{} \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=340pt]{classwarpcore_1_1BloomFilter_ae5d69ae905baf6e218e508e8d8225afb_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc}\label{classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc}} 
-\index{warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}!slot\+\_\+bits@{slot\+\_\+bits}}
-\index{slot\+\_\+bits@{slot\+\_\+bits}!warpcore\+::\+Bloom\+Filter@{warpcore\+::\+Bloom\+Filter}}
-\subsubsection{\texorpdfstring{slot\+\_\+bits()}{slot\_bits()}}
-{\footnotesize\ttfamily template$<$class Key , class Hasher  = defaults\+::hasher\+\_\+t$<$\+Key$>$, class Slot  = std\+::uint64\+\_\+t, index\+\_\+t C\+G\+Size = 1$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::slot\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BloomFilter}{warpcore\+::\+Bloom\+Filter}}$<$ Key, Hasher, Slot, C\+G\+Size $>$\+::slot\+\_\+bits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -537,6 +529,6 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a8dca50765c601cca8d85621fa8488ecc_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BloomFilter_a77e5ec4079ef86ec3d21729ab076f048_icgraph}
 \end{center}
 \end{figure}

@@ -1,4 +1,5 @@
 <map id="warpcore::BucketListHashTable::insert" name="warpcore::BucketListHashTable::insert">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a3807ac1b39b47617d862c5dd17f21330" title="get cooperative group size " alt="" coords="229,20,405,61"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#aaa4cf7e3252a0b177101fca437e5309e" title="get cooperative group size " alt="" coords="453,5,640,76"/>
+<area shape="rect" id="node1" title="insert a set of keys into the hash table" alt="" coords="5,5,196,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a4b8c6e617eedde6770bbb6cd2d609f82" title="get cooperative group size" alt="" coords="244,5,435,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#a9e333c031a91f261db157871eab074c0" title="get cooperative group size" alt="" coords="483,5,681,47"/>
 </map>

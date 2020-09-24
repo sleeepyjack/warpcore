@@ -1,3 +1,4 @@
 <map id="warpcore::storage::key_value::SoAStore::SoAStore" name="warpcore::storage::key_value::SoAStore::SoAStore">
-<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#acc4bfbb9b10868a193301d0ec5a46711" title="get buffer capacity " alt="" coords="199,13,345,54"/>
+<area shape="rect" id="node1" title="constructor" alt="" coords="5,5,160,61"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a2ae1c90988d891741861e6e6d571ec00" title="get storage capacity" alt="" coords="208,5,363,61"/>
 </map>

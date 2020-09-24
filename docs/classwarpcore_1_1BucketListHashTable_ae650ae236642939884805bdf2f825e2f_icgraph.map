@@ -1,3 +1,4 @@
 <map id="warpcore::BucketListHashTable::bytes_total" name="warpcore::BucketListHashTable::bytes_total">
-<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a7c08b3793ff8eaac76009fdf8299f6b6" title="current storage density of the hash table " alt="" coords="229,5,405,47"/>
+<area shape="rect" id="node1" title="get the the total number of bytes occupied by this data structure" alt="" coords="244,5,435,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BucketListHashTable.html#a7c08b3793ff8eaac76009fdf8299f6b6" title="current storage density of the hash table" alt="" coords="5,5,196,47"/>
 </map>

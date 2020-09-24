@@ -1,11 +1,11 @@
-\hypertarget{classwarpcore_1_1BucketListHashTable}{}\section{warpcore\+:\+:Bucket\+List\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ Class Template Reference}
-\label{classwarpcore_1_1BucketListHashTable}\index{warpcore\+::\+Bucket\+List\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$@{warpcore\+::\+Bucket\+List\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$}}
+\hypertarget{classwarpcore_1_1BucketListHashTable}{}\doxysection{warpcore\+::Bucket\+List\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ Class Template Reference}
+\label{classwarpcore_1_1BucketListHashTable}\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
 
 
 bucket list hash table  
 
 
-\subsection*{Public Types}
+\doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a3b5a31bb17842cc625c9fd05eaa09b7e}\label{classwarpcore_1_1BucketListHashTable_a3b5a31bb17842cc625c9fd05eaa09b7e}} 
@@ -21,87 +21,87 @@ using {\bfseries value\+\_\+type} = Value
 using {\bfseries index\+\_\+type} = index\+\_\+t
 \item 
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a1128331e42565aa68b8fe424b4b83187}\label{classwarpcore_1_1BucketListHashTable_a1128331e42565aa68b8fe424b4b83187}} 
-using {\bfseries status\+\_\+type} = \hyperlink{classwarpcore_1_1Status}{Status}
+using {\bfseries status\+\_\+type} = \mbox{\hyperlink{classwarpcore_1_1Status}{Status}}
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BucketListHashTable_afc66a5887318d7daba8c901126324732}{Bucket\+List\+Hash\+Table} (const index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a7902d5c984290d262f5964f55a666765}{key\+\_\+capacity}, const index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a7777451fb2e8d4016f5baf2a0d22ced0}{value\+\_\+capacity}, const key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$(), const float grow\+\_\+factor=1.\+1, const index\+\_\+type min\+\_\+bucket\+\_\+size=1, const index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a3b9c182c25464b5d6fa87d32f80fe281}{max\+\_\+bucket\+\_\+size}=\hyperlink{classwarpcore_1_1BucketListHashTable_a3b9c182c25464b5d6fa87d32f80fe281}{max\+\_\+bucket\+\_\+size}(), const index\+\_\+type max\+\_\+values\+\_\+per\+\_\+key=handle\+\_\+type\+::max\+\_\+value\+\_\+count(), const bool no\+\_\+init=false) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_afc66a5887318d7daba8c901126324732}{Bucket\+List\+Hash\+Table}} (const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7902d5c984290d262f5964f55a666765}{key\+\_\+capacity}}, const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7777451fb2e8d4016f5baf2a0d22ced0}{value\+\_\+capacity}}, const key\+\_\+type seed=defaults\+::seed$<$ key\+\_\+type $>$(), const float grow\+\_\+factor=1.\+1, const index\+\_\+type min\+\_\+bucket\+\_\+size=1, const index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ab6be1dc58d2fcba1234fb41362ce102c}{max\+\_\+bucket\+\_\+size}}=\mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ab6be1dc58d2fcba1234fb41362ce102c}{max\+\_\+bucket\+\_\+size}}(), const index\+\_\+type max\+\_\+values\+\_\+per\+\_\+key=handle\+\_\+type\+::max\+\_\+value\+\_\+count(), const bool no\+\_\+init=false) noexcept
 \begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BucketListHashTable_aeb008a6264eb3ccf5ba4418f26a24f44}{Bucket\+List\+Hash\+Table} (const \hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table} \&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_aeb008a6264eb3ccf5ba4418f26a24f44}{Bucket\+List\+Hash\+Table}} (const \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}} \&o) noexcept
 \begin{DoxyCompactList}\small\item\em copy-\/constructor (shallow) \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BucketListHashTable_a6eda53374bf552d12001a8b251262766}{Bucket\+List\+Hash\+Table} (\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table} \&\&o) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a6eda53374bf552d12001a8b251262766}{Bucket\+List\+Hash\+Table}} (\mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}} \&\&o) noexcept
 \begin{DoxyCompactList}\small\item\em move-\/constructor \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3}{init} (const key\+\_\+type seed, const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3}{init}} (const key\+\_\+type seed, const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em (re)initialize the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6}{init} (const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6}{init}} (const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em (re)initialize the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable_afd7403fb1e7a22bdf59b7f6143c1f420}{insert} (const key\+\_\+type key\+\_\+in, const value\+\_\+type \&value\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_afd7403fb1e7a22bdf59b7f6143c1f420}{insert}} (const key\+\_\+type key\+\_\+in, const value\+\_\+type \&value\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) noexcept
 \begin{DoxyCompactList}\small\item\em inserts a key/value pair into the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_a5fa1b9eaaa90ae795c81e81f07da7f73}{insert} (const key\+\_\+type $\ast$const keys\+\_\+in, const value\+\_\+type $\ast$const values\+\_\+in, const index\+\_\+type num\+\_\+in, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) noexcept
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a5fa1b9eaaa90ae795c81e81f07da7f73}{insert}} (const key\+\_\+type $\ast$const keys\+\_\+in, const value\+\_\+type $\ast$const values\+\_\+in, const index\+\_\+type num\+\_\+in, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) noexcept
 \begin{DoxyCompactList}\small\item\em insert a set of keys into the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054}{retrieve} (const key\+\_\+type key\+\_\+in, value\+\_\+type $\ast$const values\+\_\+out, index\+\_\+type \&num\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054}{retrieve}} (const key\+\_\+type key\+\_\+in, value\+\_\+type $\ast$const values\+\_\+out, index\+\_\+type \&num\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieves a key from the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185}{retrieve} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, index\+\_\+type $\ast$const begin\+\_\+offsets\+\_\+out, index\+\_\+type $\ast$const end\+\_\+offsets\+\_\+out, value\+\_\+type $\ast$const values\+\_\+out, index\+\_\+type \&num\+\_\+out, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) const noexcept
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185}{retrieve}} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, index\+\_\+type $\ast$const begin\+\_\+offsets\+\_\+out, index\+\_\+type $\ast$const end\+\_\+offsets\+\_\+out, value\+\_\+type $\ast$const values\+\_\+out, index\+\_\+type \&num\+\_\+out, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieve a set of keys from the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable_a6d28e8d717936264eb4c2c1a0999c962}{for\+\_\+each} (Func f, const key\+\_\+type key\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
+{\footnotesize template$<$class Func $>$ }\\\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a6d28e8d717936264eb4c2c1a0999c962}{for\+\_\+each}} (Func f, const key\+\_\+type key\+\_\+in, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
 \begin{DoxyCompactList}\small\item\em applies a funtion over all values of a corresponding key \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_a16b5c045fb0e1e6c2a03114edf111c83}{retrieve\+\_\+all} (key\+\_\+type $\ast$const keys\+\_\+out, index\+\_\+type \&num\+\_\+keys\+\_\+out, index\+\_\+type $\ast$const begin\+\_\+offsets\+\_\+out, index\+\_\+type $\ast$const end\+\_\+offsets\+\_\+out, value\+\_\+type $\ast$const values\+\_\+out, value\+\_\+type \&num\+\_\+values\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
-\begin{DoxyCompactList}\small\item\em retrieves all elements from the hash table  this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided  this method implements a multi-\/stage dry-\/run mode \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_a7a18e1ca36d20f6ce9f466ac7d58ef0b}{retrieve\+\_\+all\+\_\+keys} (key\+\_\+type $\ast$const keys\+\_\+out, index\+\_\+type \&num\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a16b5c045fb0e1e6c2a03114edf111c83}{retrieve\+\_\+all}} (key\+\_\+type $\ast$const keys\+\_\+out, index\+\_\+type \&num\+\_\+keys\+\_\+out, index\+\_\+type $\ast$const begin\+\_\+offsets\+\_\+out, index\+\_\+type $\ast$const end\+\_\+offsets\+\_\+out, value\+\_\+type $\ast$const values\+\_\+out, value\+\_\+type \&num\+\_\+values\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
+\begin{DoxyCompactList}\small\item\em retrieves all elements from the hash table \textbackslash{}info this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided \textbackslash{}info this method implements a multi-\/stage dry-\/run mode \end{DoxyCompactList}\item 
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7a18e1ca36d20f6ce9f466ac7d58ef0b}{retrieve\+\_\+all\+\_\+keys}} (key\+\_\+type $\ast$const keys\+\_\+out, index\+\_\+type \&num\+\_\+out, const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em retrieves the set of all keys stored inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable_ac0a51f17e2c2deaee7ad80e491b96259}{key\+\_\+load\+\_\+factor} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ac0a51f17e2c2deaee7ad80e491b96259}{key\+\_\+load\+\_\+factor}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get load factor of the key store \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable_a710d3038814c3db16ac5b1fa4df84204}{value\+\_\+load\+\_\+factor} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a710d3038814c3db16ac5b1fa4df84204}{value\+\_\+load\+\_\+factor}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get load factor of the value store \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_ae650ae236642939884805bdf2f825e2f}{bytes\+\_\+total} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ae650ae236642939884805bdf2f825e2f}{bytes\+\_\+total}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get the the total number of bytes occupied by this data structure \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a6f8e4a83670a301f53e923d2fe9a3507}{bytes\+\_\+keys} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a6f8e4a83670a301f53e923d2fe9a3507}{bytes\+\_\+keys}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the the number of bytes in this data structure occupied by keys \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_afbd37a57c5137cc44881470c80a60bc3}{bytes\+\_\+values} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_afbd37a57c5137cc44881470c80a60bc3}{bytes\+\_\+values}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the the number of bytes in this data structure occupied by values \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a3ac40e9655bfc27d3f21e0ea38b3d29d}{bytes\+\_\+payload} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a3ac40e9655bfc27d3f21e0ea38b3d29d}{bytes\+\_\+payload}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the the number of bytes in this data structure occupied by actual information \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable_a7c08b3793ff8eaac76009fdf8299f6b6}{storage\+\_\+density} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7c08b3793ff8eaac76009fdf8299f6b6}{storage\+\_\+density}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em current storage density of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable_a7c5ccd6a8c7976db19951ea0ecd3aafc}{relative\+\_\+storage\+\_\+density} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7c5ccd6a8c7976db19951ea0ecd3aafc}{relative\+\_\+storage\+\_\+density}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em current relative storage density of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BucketListHashTable_abcfec81d3cac942d01868bb05080beab}{is\+\_\+initialized} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_abcfec81d3cac942d01868bb05080beab}{is\+\_\+initialized}} () const noexcept
 \begin{DoxyCompactList}\small\item\em indicates if the hash table is properly initialized \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable_a25416b0266a4e91d8d85e1ee6571508c}{peek\+\_\+status} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a25416b0266a4e91d8d85e1ee6571508c}{peek\+\_\+status}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get the status of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable_a4ffc8f2f167156c082efbd434be1d314}{pop\+\_\+status} (const cuda\+Stream\+\_\+t stream=0) noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4ffc8f2f167156c082efbd434be1d314}{pop\+\_\+status}} (const cuda\+Stream\+\_\+t stream=0) noexcept
 \begin{DoxyCompactList}\small\item\em get and reset the status of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a7902d5c984290d262f5964f55a666765}{key\+\_\+capacity} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7902d5c984290d262f5964f55a666765}{key\+\_\+capacity}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get the key capacity of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a7777451fb2e8d4016f5baf2a0d22ced0}{value\+\_\+capacity} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a7777451fb2e8d4016f5baf2a0d22ced0}{value\+\_\+capacity}} () const noexcept
 \begin{DoxyCompactList}\small\item\em get the maximum value capacity of the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a6667de3a96ab1e7a1b26461eea6d4144}{num\+\_\+keys} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a6667de3a96ab1e7a1b26461eea6d4144}{num\+\_\+keys}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em number of keys stored inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218}{num\+\_\+values} (const key\+\_\+type key\+\_\+in, index\+\_\+type \&num\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218}{num\+\_\+values}} (const key\+\_\+type key\+\_\+in, index\+\_\+type \&num\+\_\+out, const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&group, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length()) const noexcept
 \begin{DoxyCompactList}\small\item\em get number of values to a corresponding key inside the hash table \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4}{num\+\_\+values} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, index\+\_\+type \&num\+\_\+out, index\+\_\+type $\ast$const num\+\_\+per\+\_\+key\+\_\+out=nullptr, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) const noexcept
+{\footnotesize template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ }\\\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4}{num\+\_\+values}} (const key\+\_\+type $\ast$const keys\+\_\+in, const index\+\_\+type num\+\_\+in, index\+\_\+type \&num\+\_\+out, index\+\_\+type $\ast$const num\+\_\+per\+\_\+key\+\_\+out=nullptr, const cuda\+Stream\+\_\+t stream=0, const index\+\_\+type probing\+\_\+length=defaults\+::probing\+\_\+length(), typename Status\+Handler\+::base\+\_\+type $\ast$const status\+\_\+out=nullptr) const noexcept
 \begin{DoxyCompactList}\small\item\em get number of values to a corresponding set of keys inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18}{num\+\_\+values} (const cuda\+Stream\+\_\+t stream=0) const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18}{num\+\_\+values}} (const cuda\+Stream\+\_\+t stream=0) const noexcept
 \begin{DoxyCompactList}\small\item\em get number of values inside the hash table \end{DoxyCompactList}\item 
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BucketListHashTable_a21b8552468f9254a2e7d5f81b0d0e29c}{is\+\_\+copy} () const noexcept
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a21b8552468f9254a2e7d5f81b0d0e29c}{is\+\_\+copy}} () const noexcept
 \begin{DoxyCompactList}\small\item\em indicates if this object is a shallow copy \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_ad2c7ebaba6144a640fe66bf09a184c21}{empty\+\_\+key} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ key\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a58073263bfd3ff66305c3f9ba2730384}{empty\+\_\+key}} () noexcept
 \begin{DoxyCompactList}\small\item\em get empty key \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a985f5a5fc540a0a157a7508f8b326a50}{tombstone\+\_\+key} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ key\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a77e37adb8b4b64ae1794d3f5baea3f32}{tombstone\+\_\+key}} () noexcept
 \begin{DoxyCompactList}\small\item\em get tombstone key \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1BucketListHashTable_aa5a011b8623deb47def1b8e029869f06}{is\+\_\+valid\+\_\+key} (const key\+\_\+type key) noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a65ff00b50f0f0b5d31454d4b0bed36c7}{is\+\_\+valid\+\_\+key}} (const key\+\_\+type key) noexcept
 \begin{DoxyCompactList}\small\item\em checks if {\ttfamily key} is equal to {\ttfamily }(Empty\+Key$\vert$$\vert$\+Tombstone\+Key) \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}} () noexcept
 \begin{DoxyCompactList}\small\item\em get cooperative group size \end{DoxyCompactList}\item 
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable_a3b9c182c25464b5d6fa87d32f80fe281}{max\+\_\+bucket\+\_\+size} () noexcept
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ab6be1dc58d2fcba1234fb41362ce102c}{max\+\_\+bucket\+\_\+size}} () noexcept
 \begin{DoxyCompactList}\small\item\em maximum bucket size \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 \subsubsection*{template$<$class Key, class Value, Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$\newline
 class warpcore\+::\+Bucket\+List\+Hash\+Table$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$}
 
@@ -117,20 +117,20 @@ bucket list hash table
 \hline
 {\em Tombstone\+Key} & key which represents an erased slot \\
 \hline
-{\em Value\+Store} & storage class from {\ttfamily \hyperlink{namespacewarpcore_1_1storage_1_1multi__value}{warpcore\+::storage\+::multi\+\_\+value}} \\
+{\em Value\+Store} & storage class from {\ttfamily \mbox{\hyperlink{namespacewarpcore_1_1storage_1_1multi__value}{warpcore\+::storage\+::multi\+\_\+value}}} \\
 \hline
-{\em Probing\+Scheme} & probing scheme from {\ttfamily \hyperlink{namespacewarpcore_1_1probing__schemes}{warpcore\+::probing\+\_\+schemes}} \\
+{\em Probing\+Scheme} & probing scheme from {\ttfamily \mbox{\hyperlink{namespacewarpcore_1_1probing__schemes}{warpcore\+::probing\+\_\+schemes}}} \\
 \hline
 \end{DoxyTemplParams}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_afc66a5887318d7daba8c901126324732}\label{classwarpcore_1_1BucketListHashTable_afc66a5887318d7daba8c901126324732}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!Bucket\+List\+Hash\+Table@{Bucket\+List\+Hash\+Table}}
-\index{Bucket\+List\+Hash\+Table@{Bucket\+List\+Hash\+Table}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Bucket\+List\+Hash\+Table()}{BucketListHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!BucketListHashTable@{BucketListHashTable}}
+\index{BucketListHashTable@{BucketListHashTable}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{BucketListHashTable()}{BucketListHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{key\+\_\+capacity,  }\item[{const index\+\_\+type}]{value\+\_\+capacity,  }\item[{const key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()},  }\item[{const float}]{grow\+\_\+factor = {\ttfamily 1.1},  }\item[{const index\+\_\+type}]{min\+\_\+bucket\+\_\+size = {\ttfamily 1},  }\item[{const index\+\_\+type}]{max\+\_\+bucket\+\_\+size = {\ttfamily \hyperlink{classwarpcore_1_1BucketListHashTable_a3b9c182c25464b5d6fa87d32f80fe281}{max\+\_\+bucket\+\_\+size}()},  }\item[{const index\+\_\+type}]{max\+\_\+values\+\_\+per\+\_\+key = {\ttfamily handle\+\_\+type\+:\+:max\+\_\+value\+\_\+count()},  }\item[{const bool}]{no\+\_\+init = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{key\+\_\+capacity,  }\item[{const index\+\_\+type}]{value\+\_\+capacity,  }\item[{const key\+\_\+type}]{seed = {\ttfamily defaults\+:\+:seed$<$key\+\_\+type$>$()},  }\item[{const float}]{grow\+\_\+factor = {\ttfamily 1.1},  }\item[{const index\+\_\+type}]{min\+\_\+bucket\+\_\+size = {\ttfamily 1},  }\item[{const index\+\_\+type}]{max\+\_\+bucket\+\_\+size = {\ttfamily \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_ab6be1dc58d2fcba1234fb41362ce102c}{max\+\_\+bucket\+\_\+size}}()},  }\item[{const index\+\_\+type}]{max\+\_\+values\+\_\+per\+\_\+key = {\ttfamily handle\+\_\+type\+:\+:max\+\_\+value\+\_\+count()},  }\item[{const bool}]{no\+\_\+init = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -138,19 +138,19 @@ constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+capacity} & guaranteed number of key slots in the hash table \\
+\mbox{\texttt{ in}}  & {\em key\+\_\+capacity} & guaranteed number of key slots in the hash table \\
 \hline
-\mbox{\tt in}  & {\em value\+\_\+capacity} & total number of value slots \\
+\mbox{\texttt{ in}}  & {\em value\+\_\+capacity} & total number of value slots \\
 \hline
-\mbox{\tt in}  & {\em seed} & random seed \\
+\mbox{\texttt{ in}}  & {\em seed} & random seed \\
 \hline
-\mbox{\tt in}  & {\em grow\+\_\+factor} & bucket grow factor for {\ttfamily \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}} \\
+\mbox{\texttt{ in}}  & {\em grow\+\_\+factor} & bucket grow factor for {\ttfamily \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}} \\
 \hline
-\mbox{\tt in}  & {\em min\+\_\+bucket\+\_\+size} & initial size of value buckets for {\ttfamily \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}} \\
+\mbox{\texttt{ in}}  & {\em min\+\_\+bucket\+\_\+size} & initial size of value buckets for {\ttfamily \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}} \\
 \hline
-\mbox{\tt in}  & {\em max\+\_\+bucket\+\_\+size} & bucket size of {\ttfamily \hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}} after which no more growth occurs \\
+\mbox{\texttt{ in}}  & {\em max\+\_\+bucket\+\_\+size} & bucket size of {\ttfamily \mbox{\hyperlink{classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore}{warpcore\+::storage\+::multi\+\_\+value\+::\+Bucket\+List\+Store}}} after which no more growth occurs \\
 \hline
-\mbox{\tt in}  & {\em max\+\_\+values\+\_\+per\+\_\+key} & maximum number of values to store per key \\
+\mbox{\texttt{ in}}  & {\em max\+\_\+values\+\_\+per\+\_\+key} & maximum number of values to store per key \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -162,11 +162,11 @@ Here is the call graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_aeb008a6264eb3ccf5ba4418f26a24f44}\label{classwarpcore_1_1BucketListHashTable_aeb008a6264eb3ccf5ba4418f26a24f44}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!Bucket\+List\+Hash\+Table@{Bucket\+List\+Hash\+Table}}
-\index{Bucket\+List\+Hash\+Table@{Bucket\+List\+Hash\+Table}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Bucket\+List\+Hash\+Table()}{BucketListHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!BucketListHashTable@{BucketListHashTable}}
+\index{BucketListHashTable@{BucketListHashTable}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{BucketListHashTable()}{BucketListHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table} (\begin{DoxyParamCaption}\item[{const \hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ \&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -174,15 +174,15 @@ copy-\/constructor (shallow)
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em object} & to be copied \\
+\mbox{\texttt{ in}}  & {\em object} & to be copied \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a6eda53374bf552d12001a8b251262766}\label{classwarpcore_1_1BucketListHashTable_a6eda53374bf552d12001a8b251262766}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!Bucket\+List\+Hash\+Table@{Bucket\+List\+Hash\+Table}}
-\index{Bucket\+List\+Hash\+Table@{Bucket\+List\+Hash\+Table}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{Bucket\+List\+Hash\+Table()}{BucketListHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!BucketListHashTable@{BucketListHashTable}}
+\index{BucketListHashTable@{BucketListHashTable}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{BucketListHashTable()}{BucketListHashTable()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table} (\begin{DoxyParamCaption}\item[{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::\mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$ \&\&}]{o }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -190,18 +190,18 @@ move-\/constructor
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em object} & to be moved \\
+\mbox{\texttt{ in}}  & {\em object} & to be moved \\
 \hline
 \end{DoxyParams}
 
 
-\subsection{Member Function Documentation}
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a6f8e4a83670a301f53e923d2fe9a3507}\label{classwarpcore_1_1BucketListHashTable_a6f8e4a83670a301f53e923d2fe9a3507}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!bytes\+\_\+keys@{bytes\+\_\+keys}}
-\index{bytes\+\_\+keys@{bytes\+\_\+keys}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+keys()}{bytes\_keys()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!bytes\_keys@{bytes\_keys}}
+\index{bytes\_keys@{bytes\_keys}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{bytes\_keys()}{bytes\_keys()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+keys (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+keys (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -232,11 +232,11 @@ Here is the caller graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a3ac40e9655bfc27d3f21e0ea38b3d29d}\label{classwarpcore_1_1BucketListHashTable_a3ac40e9655bfc27d3f21e0ea38b3d29d}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!bytes\+\_\+payload@{bytes\+\_\+payload}}
-\index{bytes\+\_\+payload@{bytes\+\_\+payload}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+payload()}{bytes\_payload()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!bytes\_payload@{bytes\_payload}}
+\index{bytes\_payload@{bytes\_payload}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{bytes\_payload()}{bytes\_payload()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+payload (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+payload (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -267,11 +267,11 @@ Here is the caller graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ae650ae236642939884805bdf2f825e2f}\label{classwarpcore_1_1BucketListHashTable_ae650ae236642939884805bdf2f825e2f}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!bytes\+\_\+total@{bytes\+\_\+total}}
-\index{bytes\+\_\+total@{bytes\+\_\+total}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+total()}{bytes\_total()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!bytes\_total@{bytes\_total}}
+\index{bytes\_total@{bytes\_total}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{bytes\_total()}{bytes\_total()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+total (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -297,11 +297,11 @@ Here is the caller graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_afbd37a57c5137cc44881470c80a60bc3}\label{classwarpcore_1_1BucketListHashTable_afbd37a57c5137cc44881470c80a60bc3}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!bytes\+\_\+values@{bytes\+\_\+values}}
-\index{bytes\+\_\+values@{bytes\+\_\+values}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{bytes\+\_\+values()}{bytes\_values()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!bytes\_values@{bytes\_values}}
+\index{bytes\_values@{bytes\_values}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{bytes\_values()}{bytes\_values()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+values (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::bytes\+\_\+values (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -331,12 +331,12 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_afbd37a57c5137cc44881470c80a60bc3_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}\label{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!cg\+\_\+size@{cg\+\_\+size}}
-\index{cg\+\_\+size@{cg\+\_\+size}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{cg\+\_\+size()}{cg\_size()}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}\label{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!cg\_size@{cg\_size}}
+\index{cg\_size@{cg\_size}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{cg\_size()}{cg\_size()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::cg\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -350,7 +350,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -358,15 +358,15 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ad2c7ebaba6144a640fe66bf09a184c21}\label{classwarpcore_1_1BucketListHashTable_ad2c7ebaba6144a640fe66bf09a184c21}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!empty\+\_\+key@{empty\+\_\+key}}
-\index{empty\+\_\+key@{empty\+\_\+key}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{empty\+\_\+key()}{empty\_key()}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a58073263bfd3ff66305c3f9ba2730384}\label{classwarpcore_1_1BucketListHashTable_a58073263bfd3ff66305c3f9ba2730384}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!empty\_key@{empty\_key}}
+\index{empty\_key@{empty\_key}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{empty\_key()}{empty\_key()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::empty\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ key\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::empty\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -380,16 +380,16 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_ad2c7ebaba6144a640fe66bf09a184c21_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a58073263bfd3ff66305c3f9ba2730384_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a6d28e8d717936264eb4c2c1a0999c962}\label{classwarpcore_1_1BucketListHashTable_a6d28e8d717936264eb4c2c1a0999c962}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!for\+\_\+each@{for\+\_\+each}}
-\index{for\+\_\+each@{for\+\_\+each}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{for\+\_\+each()}{for\_each()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!for\_each@{for\_each}}
+\index{for\_each@{for\_each}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{for\_each()}{for\_each()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
 template$<$class Func $>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::for\+\_\+each (\begin{DoxyParamCaption}\item[{Func}]{f,  }\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -402,11 +402,11 @@ applies a funtion over all values of a corresponding key
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em f} & map to apply \\
+\mbox{\texttt{ in}}  & {\em f} & map to apply \\
 \hline
-\mbox{\tt in}  & {\em key\+\_\+in} & key to retrieve \\
+\mbox{\texttt{ in}}  & {\em key\+\_\+in} & key to retrieve \\
 \hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -417,12 +417,36 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a6d28e8d717936264eb4c2c1a0999c962_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3}\label{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!init@{init}}
-\index{init@{init}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6}\label{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!init@{init}}
+\index{init@{init}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::init (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{seed,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+(re)initialize the hash table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & C\+U\+DA stream in which this operation is executed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3}\label{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!init@{init}}
+\index{init@{init}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::init (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{seed,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -451,62 +475,13 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_ad819d76bcb890e6ebec9dd9cfa218be3_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6}\label{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!init@{init}}
-\index{init@{init}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::init (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-(re)initialize the hash table 
-
-
-\begin{DoxyParams}{Parameters}
-{\em stream} & C\+U\+DA stream in which this operation is executed \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_ad8b42b071bdf053a1ccd42b001212fc6_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_afd7403fb1e7a22bdf59b7f6143c1f420}\label{classwarpcore_1_1BucketListHashTable_afd7403fb1e7a22bdf59b7f6143c1f420}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!insert@{insert}}
-\index{insert@{insert}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{const value\+\_\+type \&}]{value\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-inserts a key/value pair into the hash table 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+in} & key to insert into the hash table \\
-\hline
-\mbox{\tt in}  & {\em value\+\_\+in} & value that corresponds to {\ttfamily key\+\_\+in} \\
-\hline
-\mbox{\tt in}  & {\em group} & cooperative group \\
-\hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-status (per thread) 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a5fa1b9eaaa90ae795c81e81f07da7f73}\label{classwarpcore_1_1BucketListHashTable_a5fa1b9eaaa90ae795c81e81f07da7f73}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!insert@{insert}}
-\index{insert@{insert}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!insert@{insert}}
+\index{insert@{insert}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
 template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const value\+\_\+type $\ast$const}]{values\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const value\+\_\+type $\ast$const}]{values\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -514,22 +489,22 @@ insert a set of keys into the hash table
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Status\+Handler} & handles returned status per key (see {\ttfamily \hyperlink{namespacewarpcore_1_1status__handlers}{status\+\_\+handlers}}) \\
+{\em Status\+Handler} & handles returned status per key (see {\ttfamily \mbox{\hyperlink{namespacewarpcore_1_1status__handlers}{status\+\_\+handlers}}}) \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to insert into the hash table \\
+\mbox{\texttt{ in}}  & {\em keys\+\_\+in} & pointer to keys to insert into the hash table \\
 \hline
-\mbox{\tt in}  & {\em values\+\_\+in} & corresponds values to {\ttfamily keys\+\_\+in} \\
+\mbox{\texttt{ in}}  & {\em values\+\_\+in} & corresponds values to {\ttfamily keys\+\_\+in} \\
 \hline
-\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to insert \\
+\mbox{\texttt{ in}}  & {\em num\+\_\+in} & number of keys to insert \\
 \hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
 \hline
-\mbox{\tt out}  & {\em status\+\_\+out} & status information per key \\
+\mbox{\texttt{ out}}  & {\em status\+\_\+out} & status information per key \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -540,12 +515,37 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a5fa1b9eaaa90ae795c81e81f07da7f73_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a21b8552468f9254a2e7d5f81b0d0e29c}\label{classwarpcore_1_1BucketListHashTable_a21b8552468f9254a2e7d5f81b0d0e29c}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!is\+\_\+copy@{is\+\_\+copy}}
-\index{is\+\_\+copy@{is\+\_\+copy}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{is\+\_\+copy()}{is\_copy()}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_afd7403fb1e7a22bdf59b7f6143c1f420}\label{classwarpcore_1_1BucketListHashTable_afd7403fb1e7a22bdf59b7f6143c1f420}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!insert@{insert}}
+\index{insert@{insert}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::insert (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{const value\+\_\+type \&}]{value\+\_\+in,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+inserts a key/value pair into the hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em key\+\_\+in} & key to insert into the hash table \\
+\hline
+\mbox{\texttt{ in}}  & {\em value\+\_\+in} & value that corresponds to {\ttfamily key\+\_\+in} \\
+\hline
+\mbox{\texttt{ in}}  & {\em group} & cooperative group \\
+\hline
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status (per thread) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a21b8552468f9254a2e7d5f81b0d0e29c}\label{classwarpcore_1_1BucketListHashTable_a21b8552468f9254a2e7d5f81b0d0e29c}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!is\_copy@{is\_copy}}
+\index{is\_copy@{is\_copy}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{is\_copy()}{is\_copy()}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+copy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -555,11 +555,11 @@ indicates if this object is a shallow copy
 {\ttfamily bool} 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_abcfec81d3cac942d01868bb05080beab}\label{classwarpcore_1_1BucketListHashTable_abcfec81d3cac942d01868bb05080beab}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!is\+\_\+initialized@{is\+\_\+initialized}}
-\index{is\+\_\+initialized@{is\+\_\+initialized}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{is\+\_\+initialized()}{is\_initialized()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!is\_initialized@{is\_initialized}}
+\index{is\_initialized@{is\_initialized}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{is\_initialized()}{is\_initialized()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -576,12 +576,12 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_abcfec81d3cac942d01868bb05080beab_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_aa5a011b8623deb47def1b8e029869f06}\label{classwarpcore_1_1BucketListHashTable_aa5a011b8623deb47def1b8e029869f06}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!is\+\_\+valid\+\_\+key@{is\+\_\+valid\+\_\+key}}
-\index{is\+\_\+valid\+\_\+key@{is\+\_\+valid\+\_\+key}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{is\+\_\+valid\+\_\+key()}{is\_valid\_key()}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a65ff00b50f0f0b5d31454d4b0bed36c7}\label{classwarpcore_1_1BucketListHashTable_a65ff00b50f0f0b5d31454d4b0bed36c7}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!is\_valid\_key@{is\_valid\_key}}
+\index{is\_valid\_key@{is\_valid\_key}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{is\_valid\_key()}{is\_valid\_key()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr bool \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+valid\+\_\+key (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ bool \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::is\+\_\+valid\+\_\+key (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -595,15 +595,15 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_aa5a011b8623deb47def1b8e029869f06_cgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a65ff00b50f0f0b5d31454d4b0bed36c7_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a7902d5c984290d262f5964f55a666765}\label{classwarpcore_1_1BucketListHashTable_a7902d5c984290d262f5964f55a666765}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!key\+\_\+capacity@{key\+\_\+capacity}}
-\index{key\+\_\+capacity@{key\+\_\+capacity}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{key\+\_\+capacity()}{key\_capacity()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!key\_capacity@{key\_capacity}}
+\index{key\_capacity@{key\_capacity}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{key\_capacity()}{key\_capacity()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::key\+\_\+capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::key\+\_\+capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -621,11 +621,11 @@ Here is the call graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ac0a51f17e2c2deaee7ad80e491b96259}\label{classwarpcore_1_1BucketListHashTable_ac0a51f17e2c2deaee7ad80e491b96259}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!key\+\_\+load\+\_\+factor@{key\+\_\+load\+\_\+factor}}
-\index{key\+\_\+load\+\_\+factor@{key\+\_\+load\+\_\+factor}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{key\+\_\+load\+\_\+factor()}{key\_load\_factor()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!key\_load\_factor@{key\_load\_factor}}
+\index{key\_load\_factor@{key\_load\_factor}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{key\_load\_factor()}{key\_load\_factor()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::key\+\_\+load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::key\+\_\+load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -647,12 +647,12 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_ac0a51f17e2c2deaee7ad80e491b96259_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a3b9c182c25464b5d6fa87d32f80fe281}\label{classwarpcore_1_1BucketListHashTable_a3b9c182c25464b5d6fa87d32f80fe281}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!max\+\_\+bucket\+\_\+size@{max\+\_\+bucket\+\_\+size}}
-\index{max\+\_\+bucket\+\_\+size@{max\+\_\+bucket\+\_\+size}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{max\+\_\+bucket\+\_\+size()}{max\_bucket\_size()}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_ab6be1dc58d2fcba1234fb41362ce102c}\label{classwarpcore_1_1BucketListHashTable_ab6be1dc58d2fcba1234fb41362ce102c}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!max\_bucket\_size@{max\_bucket\_size}}
+\index{max\_bucket\_size@{max\_bucket\_size}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{max\_bucket\_size()}{max\_bucket\_size()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::max\+\_\+bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::max\+\_\+bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -662,11 +662,11 @@ maximum bucket size
 size 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a6667de3a96ab1e7a1b26461eea6d4144}\label{classwarpcore_1_1BucketListHashTable_a6667de3a96ab1e7a1b26461eea6d4144}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!num\+\_\+keys@{num\+\_\+keys}}
-\index{num\+\_\+keys@{num\+\_\+keys}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{num\+\_\+keys()}{num\_keys()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!num\_keys@{num\_keys}}
+\index{num\_keys@{num\_keys}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{num\_keys()}{num\_keys()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+keys (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+keys (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -674,7 +674,7 @@ number of keys stored inside the hash table
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -696,12 +696,76 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a6667de3a96ab1e7a1b26461eea6d4144_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218}\label{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!num\+\_\+values@{num\+\_\+values}}
-\index{num\+\_\+values@{num\+\_\+values}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{num\+\_\+values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18}\label{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!num\_values@{num\_values}}
+\index{num\_values@{num\_values}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{num\_values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get number of values inside the hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+total number of values 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4}\label{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!num\_values@{num\_values}}
+\index{num\_values@{num\_values}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{num\_values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{num\+\_\+per\+\_\+key\+\_\+out = {\ttfamily nullptr},  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+get number of values to a corresponding set of keys inside the hash table 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em keys\+\_\+in} & keys to probe \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+in} & input size \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+\_\+out} & total number of values in this query \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+\_\+per\+\_\+key\+\_\+out} & number of values per key \\
+\hline
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\hline
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\mbox{\texttt{ out}}  & {\em status\+\_\+out} & status information (per key) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218}\label{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!num\_values@{num\_values}}
+\index{num\_values@{num\_values}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{num\_values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -709,13 +773,13 @@ get number of values to a corresponding key inside the hash table
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+in} & key to probe \\
+\mbox{\texttt{ in}}  & {\em key\+\_\+in} & key to probe \\
 \hline
-\mbox{\tt out}  & {\em num\+\_\+out} & number of values \\
+\mbox{\texttt{ out}}  & {\em num\+\_\+out} & number of values \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group this operation is executed in \\
 \hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -737,76 +801,12 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a3c56e0b0e4c7954e65db41e752cd1218_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4}\label{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!num\+\_\+values@{num\+\_\+values}}
-\index{num\+\_\+values@{num\+\_\+values}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{num\+\_\+values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{num\+\_\+per\+\_\+key\+\_\+out = {\ttfamily nullptr},  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get number of values to a corresponding set of keys inside the hash table 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & keys to probe \\
-\hline
-\mbox{\tt in}  & {\em num\+\_\+in} & input size \\
-\hline
-\mbox{\tt out}  & {\em num\+\_\+out} & total number of values in this query \\
-\hline
-\mbox{\tt out}  & {\em num\+\_\+per\+\_\+key\+\_\+out} & number of values per key \\
-\hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\mbox{\tt out}  & {\em status\+\_\+out} & status information (per key) \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_aecd4801b9f1e6915f74c106a9d71e0f4_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18}\label{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!num\+\_\+values@{num\+\_\+values}}
-\index{num\+\_\+values@{num\+\_\+values}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{num\+\_\+values()}{num\_values()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::num\+\_\+values (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-get number of values inside the hash table 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-total number of values 
-\end{DoxyReturn}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a872b991005419699dfb39d873b950f18_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a25416b0266a4e91d8d85e1ee6571508c}\label{classwarpcore_1_1BucketListHashTable_a25416b0266a4e91d8d85e1ee6571508c}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!peek\+\_\+status@{peek\+\_\+status}}
-\index{peek\+\_\+status@{peek\+\_\+status}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{peek\+\_\+status()}{peek\_status()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!peek\_status@{peek\_status}}
+\index{peek\_status@{peek\_status}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{peek\_status()}{peek\_status()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::peek\+\_\+status (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::peek\+\_\+status (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -829,11 +829,11 @@ Here is the call graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a4ffc8f2f167156c082efbd434be1d314}\label{classwarpcore_1_1BucketListHashTable_a4ffc8f2f167156c082efbd434be1d314}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!pop\+\_\+status@{pop\+\_\+status}}
-\index{pop\+\_\+status@{pop\+\_\+status}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{pop\+\_\+status()}{pop\_status()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!pop\_status@{pop\_status}}
+\index{pop\_status@{pop\_status}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_status()}{pop\_status()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::pop\+\_\+status (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::pop\+\_\+status (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -841,7 +841,7 @@ get and reset the status of the hash table
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -856,11 +856,11 @@ Here is the call graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a7c5ccd6a8c7976db19951ea0ecd3aafc}\label{classwarpcore_1_1BucketListHashTable_a7c5ccd6a8c7976db19951ea0ecd3aafc}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!relative\+\_\+storage\+\_\+density@{relative\+\_\+storage\+\_\+density}}
-\index{relative\+\_\+storage\+\_\+density@{relative\+\_\+storage\+\_\+density}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{relative\+\_\+storage\+\_\+density()}{relative\_storage\_density()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!relative\_storage\_density@{relative\_storage\_density}}
+\index{relative\_storage\_density@{relative\_storage\_density}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{relative\_storage\_density()}{relative\_storage\_density()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::relative\+\_\+storage\+\_\+density (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::relative\+\_\+storage\+\_\+density (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -882,12 +882,63 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a7c5ccd6a8c7976db19951ea0ecd3aafc_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054}\label{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!retrieve@{retrieve}}
-\index{retrieve@{retrieve}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185}\label{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+device\+\_\+\+\_\+ \hyperlink{classwarpcore_1_1Status}{status\+\_\+type} \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \hyperlink{classwarpcore_1_1BucketListHashTable_a3807ac1b39b47617d862c5dd17f21330}{cg\+\_\+size}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{index\+\_\+type $\ast$const}]{begin\+\_\+offsets\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{end\+\_\+offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+retrieve a set of keys from the hash table 
+
+\begin{DoxyNote}{Note}
+this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided 
+
+{\ttfamily end\+\_\+offsets\+\_\+out} can be {\ttfamily begin\+\_\+offsets\+\_\+out+1} 
+\end{DoxyNote}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Status\+Handler} & handles returned status per key (see {\ttfamily \mbox{\hyperlink{namespacewarpcore_1_1status__handlers}{status\+\_\+handlers}}}) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em keys\+\_\+in} & pointer to keys to retrieve from the hash table \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+in} & number of keys to retrieve \\
+\hline
+\mbox{\texttt{ out}}  & {\em begin\+\_\+offsets\+\_\+out} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em end\+\_\+offsets\+\_\+out} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em values\+\_\+out} & retrieved values of keys in {\ttfamily key\+\_\+in} \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+\_\+out} & total number of values retrieved by this operation \\
+\hline
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\hline
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\hline
+\mbox{\texttt{ out}}  & {\em status\+\_\+out} & status information (per key) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054}\label{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{classwarpcore_1_1Status}{status\+\_\+type}} \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type}]{key\+\_\+in,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cg\+::thread\+\_\+block\+\_\+tile$<$ \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable_a4b8c6e617eedde6770bbb6cd2d609f82}{cg\+\_\+size}}()$>$ \&}]{group,  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -895,15 +946,15 @@ retrieves a key from the hash table
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em key\+\_\+in} & key to retrieve from the hash table \\
+\mbox{\texttt{ in}}  & {\em key\+\_\+in} & key to retrieve from the hash table \\
 \hline
-\mbox{\tt out}  & {\em values\+\_\+out} & pointer to storage fo the retrieved values \\
+\mbox{\texttt{ out}}  & {\em values\+\_\+out} & pointer to storage fo the retrieved values \\
 \hline
-\mbox{\tt out}  & {\em num\+\_\+out} & number of values retrieved \\
+\mbox{\texttt{ out}}  & {\em num\+\_\+out} & number of values retrieved \\
 \hline
-\mbox{\tt in}  & {\em group} & cooperative group \\
+\mbox{\texttt{ in}}  & {\em group} & cooperative group \\
 \hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
+\mbox{\texttt{ in}}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -925,83 +976,32 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_aaec71d3af4c78150ca47a50adf0dd054_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185}\label{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!retrieve@{retrieve}}
-\index{retrieve@{retrieve}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve()}{retrieve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-template$<$class Status\+Handler  = defaults\+::status\+\_\+handler\+\_\+t$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve (\begin{DoxyParamCaption}\item[{const key\+\_\+type $\ast$const}]{keys\+\_\+in,  }\item[{const index\+\_\+type}]{num\+\_\+in,  }\item[{index\+\_\+type $\ast$const}]{begin\+\_\+offsets\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{end\+\_\+offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0},  }\item[{const index\+\_\+type}]{probing\+\_\+length = {\ttfamily defaults\+:\+:probing\+\_\+length()},  }\item[{typename Status\+Handler\+::base\+\_\+type $\ast$const}]{status\+\_\+out = {\ttfamily nullptr} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-
-
-retrieve a set of keys from the hash table 
-
-\begin{DoxyNote}{Note}
-this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided 
-
-{\ttfamily end\+\_\+offsets\+\_\+out} can be {\ttfamily begin\+\_\+offsets\+\_\+out+1} 
-\end{DoxyNote}
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Status\+Handler} & handles returned status per key (see {\ttfamily \hyperlink{namespacewarpcore_1_1status__handlers}{status\+\_\+handlers}}) \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em keys\+\_\+in} & pointer to keys to retrieve from the hash table \\
-\hline
-\mbox{\tt in}  & {\em num\+\_\+in} & number of keys to retrieve \\
-\hline
-\mbox{\tt out}  & {\em begin\+\_\+offsets\+\_\+out} & \\
-\hline
-\mbox{\tt out}  & {\em end\+\_\+offsets\+\_\+out} & \\
-\hline
-\mbox{\tt out}  & {\em values\+\_\+out} & retrieved values of keys in {\ttfamily key\+\_\+in} \\
-\hline
-\mbox{\tt out}  & {\em num\+\_\+out} & total number of values retrieved by this operation \\
-\hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
-\hline
-\mbox{\tt in}  & {\em probing\+\_\+length} & maximum number of probing attempts \\
-\hline
-\mbox{\tt out}  & {\em status\+\_\+out} & status information (per key) \\
-\hline
-\end{DoxyParams}
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a2fd57d5d8e96cd2dd56f331217f3f185_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a16b5c045fb0e1e6c2a03114edf111c83}\label{classwarpcore_1_1BucketListHashTable_a16b5c045fb0e1e6c2a03114edf111c83}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!retrieve\+\_\+all@{retrieve\+\_\+all}}
-\index{retrieve\+\_\+all@{retrieve\+\_\+all}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve\+\_\+all()}{retrieve\_all()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!retrieve\_all@{retrieve\_all}}
+\index{retrieve\_all@{retrieve\_all}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{retrieve\_all()}{retrieve\_all()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve\+\_\+all (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$const}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+keys\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{begin\+\_\+offsets\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{end\+\_\+offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{value\+\_\+type \&}]{num\+\_\+values\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve\+\_\+all (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$const}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+keys\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{begin\+\_\+offsets\+\_\+out,  }\item[{index\+\_\+type $\ast$const}]{end\+\_\+offsets\+\_\+out,  }\item[{value\+\_\+type $\ast$const}]{values\+\_\+out,  }\item[{value\+\_\+type \&}]{num\+\_\+values\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
-retrieves all elements from the hash table  this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided  this method implements a multi-\/stage dry-\/run mode 
+retrieves all elements from the hash table \textbackslash{}info this method has a dry-\/run mode where it only calculates the needed array sizes in case no memory (aka {\ttfamily nullptr} ) is provided \textbackslash{}info this method implements a multi-\/stage dry-\/run mode 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt out}  & {\em keys\+\_\+out} & pointer to the set of unique keys \\
+\mbox{\texttt{ out}}  & {\em keys\+\_\+out} & pointer to the set of unique keys \\
 \hline
-\mbox{\tt out}  & {\em num\+\_\+keys\+\_\+out} & number of unique keys \\
+\mbox{\texttt{ out}}  & {\em num\+\_\+keys\+\_\+out} & number of unique keys \\
 \hline
-\mbox{\tt out}  & {\em begin\+\_\+offsets\+\_\+out} & begin of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
+\mbox{\texttt{ out}}  & {\em begin\+\_\+offsets\+\_\+out} & begin of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
 \hline
-\mbox{\tt out}  & {\em end\+\_\+offsets\+\_\+out} & end of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
+\mbox{\texttt{ out}}  & {\em end\+\_\+offsets\+\_\+out} & end of value range for a corresponding key in {\ttfamily values\+\_\+out} \\
 \hline
-\mbox{\tt out}  & {\em values\+\_\+out} & array which holds all retrieved values \\
+\mbox{\texttt{ out}}  & {\em values\+\_\+out} & array which holds all retrieved values \\
 \hline
-\mbox{\tt out}  & {\em num\+\_\+values\+\_\+out} & total number of values retrieved by this operation \\
+\mbox{\texttt{ out}}  & {\em num\+\_\+values\+\_\+out} & total number of values retrieved by this operation \\
 \hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 Here is the call graph for this function\+:
@@ -1013,11 +1013,11 @@ Here is the call graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a7a18e1ca36d20f6ce9f466ac7d58ef0b}\label{classwarpcore_1_1BucketListHashTable_a7a18e1ca36d20f6ce9f466ac7d58ef0b}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!retrieve\+\_\+all\+\_\+keys@{retrieve\+\_\+all\+\_\+keys}}
-\index{retrieve\+\_\+all\+\_\+keys@{retrieve\+\_\+all\+\_\+keys}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{retrieve\+\_\+all\+\_\+keys()}{retrieve\_all\_keys()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!retrieve\_all\_keys@{retrieve\_all\_keys}}
+\index{retrieve\_all\_keys@{retrieve\_all\_keys}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{retrieve\_all\_keys()}{retrieve\_all\_keys()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ void \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve\+\_\+all\+\_\+keys (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$const}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ void \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::retrieve\+\_\+all\+\_\+keys (\begin{DoxyParamCaption}\item[{key\+\_\+type $\ast$const}]{keys\+\_\+out,  }\item[{index\+\_\+type \&}]{num\+\_\+out,  }\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -1025,11 +1025,11 @@ retrieves the set of all keys stored inside the hash table
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt out}  & {\em keys\+\_\+out} & pointer to the retrieved keys \\
+\mbox{\texttt{ out}}  & {\em keys\+\_\+out} & pointer to the retrieved keys \\
 \hline
-\mbox{\tt out}  & {\em num\+\_\+out} & number of retrieved keys \\
+\mbox{\texttt{ out}}  & {\em num\+\_\+out} & number of retrieved keys \\
 \hline
-\mbox{\tt in}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
+\mbox{\texttt{ in}}  & {\em stream} & C\+U\+DA stream in which this operation is executed in \\
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}
@@ -1052,11 +1052,11 @@ Here is the caller graph for this function\+:
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a7c08b3793ff8eaac76009fdf8299f6b6}\label{classwarpcore_1_1BucketListHashTable_a7c08b3793ff8eaac76009fdf8299f6b6}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!storage\+\_\+density@{storage\+\_\+density}}
-\index{storage\+\_\+density@{storage\+\_\+density}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{storage\+\_\+density()}{storage\_density()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!storage\_density@{storage\_density}}
+\index{storage\_density@{storage\_density}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{storage\_density()}{storage\_density()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::storage\+\_\+density (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::storage\+\_\+density (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -1078,12 +1078,12 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a7c08b3793ff8eaac76009fdf8299f6b6_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a985f5a5fc540a0a157a7508f8b326a50}\label{classwarpcore_1_1BucketListHashTable_a985f5a5fc540a0a157a7508f8b326a50}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!tombstone\+\_\+key@{tombstone\+\_\+key}}
-\index{tombstone\+\_\+key@{tombstone\+\_\+key}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{tombstone\+\_\+key()}{tombstone\_key()}}
+\mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a77e37adb8b4b64ae1794d3f5baea3f32}\label{classwarpcore_1_1BucketListHashTable_a77e37adb8b4b64ae1794d3f5baea3f32}} 
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!tombstone\_key@{tombstone\_key}}
+\index{tombstone\_key@{tombstone\_key}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{tombstone\_key()}{tombstone\_key()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-static \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ constexpr key\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::tombstone\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ key\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::tombstone\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
@@ -1097,15 +1097,15 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a985f5a5fc540a0a157a7508f8b326a50_icgraph}
+\includegraphics[width=350pt]{classwarpcore_1_1BucketListHashTable_a77e37adb8b4b64ae1794d3f5baea3f32_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a7777451fb2e8d4016f5baf2a0d22ced0}\label{classwarpcore_1_1BucketListHashTable_a7777451fb2e8d4016f5baf2a0d22ced0}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!value\+\_\+capacity@{value\+\_\+capacity}}
-\index{value\+\_\+capacity@{value\+\_\+capacity}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{value\+\_\+capacity()}{value\_capacity()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!value\_capacity@{value\_capacity}}
+\index{value\_capacity@{value\_capacity}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{value\_capacity()}{value\_capacity()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 
@@ -1115,11 +1115,11 @@ get the maximum value capacity of the hash table
 maximum value capacity 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classwarpcore_1_1BucketListHashTable_a710d3038814c3db16ac5b1fa4df84204}\label{classwarpcore_1_1BucketListHashTable_a710d3038814c3db16ac5b1fa4df84204}} 
-\index{warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}!value\+\_\+load\+\_\+factor@{value\+\_\+load\+\_\+factor}}
-\index{value\+\_\+load\+\_\+factor@{value\+\_\+load\+\_\+factor}!warpcore\+::\+Bucket\+List\+Hash\+Table@{warpcore\+::\+Bucket\+List\+Hash\+Table}}
-\subsubsection{\texorpdfstring{value\+\_\+load\+\_\+factor()}{value\_load\_factor()}}
+\index{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}!value\_load\_factor@{value\_load\_factor}}
+\index{value\_load\_factor@{value\_load\_factor}!warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$@{warpcore::BucketListHashTable$<$ Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme $>$}}
+\doxysubsubsection{\texorpdfstring{value\_load\_factor()}{value\_load\_factor()}}
 {\footnotesize\ttfamily template$<$class Key , class Value , Key Empty\+Key = defaults\+::empty\+\_\+key$<$\+Key$>$(), Key Tombstone\+Key = defaults\+::tombstone\+\_\+key$<$\+Key$>$(), class Value\+Store  = defaults\+::value\+\_\+storage\+\_\+t$<$\+Value$>$, class Probing\+Scheme  = defaults\+::probing\+\_\+scheme\+\_\+t$<$\+Key, 8$>$$>$ \\
-\+\_\+\+\_\+host\+\_\+\+\_\+ float \hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\+\_\+\+\_\+host\+\_\+\+\_\+ float \mbox{\hyperlink{classwarpcore_1_1BucketListHashTable}{warpcore\+::\+Bucket\+List\+Hash\+Table}}$<$ Key, Value, Empty\+Key, Tombstone\+Key, Value\+Store, Probing\+Scheme $>$\+::value\+\_\+load\+\_\+factor (\begin{DoxyParamCaption}\item[{const cuda\+Stream\+\_\+t}]{stream = {\ttfamily 0} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 
 

@@ -1,3 +1,5 @@
 <map id="warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;" name="warpcore::storage::key_value::AoSStore&lt; Key, Value &gt;">
-<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html" title="warpcore::storage::\lkey_value::AoSStore\l\&lt; Key, handle_type \&gt;" alt="" coords="5,124,152,180"/>
+<area shape="rect" id="node1" title="key/value store with array&#45;of&#45;structs memory layout" alt="" coords="5,45,160,101"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html" title=" " alt="" coords="359,5,514,61"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html" title=" " alt="" coords="355,85,519,141"/>
 </map>

@@ -1,0 +1,8 @@
+<map id="warpcore::BloomFilter::cg_size" name="warpcore::BloomFilter::cg_size">
+<area shape="rect" id="node1" title="get cooperative group size" alt="" coords="457,93,623,135"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1BloomFilter.html#ace437c9c0e7ac13f4cf3416eb30a9428" title="get bits per cooperative group block of slots" alt="" coords="244,64,409,105"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1BloomFilter.html#a4b3151a938a8248df22adbdefd63b8e0" title="inserts a key into the bloom filter" alt="" coords="18,5,183,47"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1BloomFilter.html#afee625443b9351a88bc182386ca970a3" title="queries and subsequently inserts a key into the bloom filter" alt="" coords="18,123,183,164"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1BloomFilter.html#ad2621ee746d6a2ba6a0bed2ca3946aaa" title="retrieve a key" alt="" coords="18,188,183,229"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1BloomFilter.html#a27b98847aa06d277c48068ff59ca9381" title="estimated false positive rate of pattern&#45;blocked bloom filter" alt="" coords="5,71,196,98"/>
+</map>

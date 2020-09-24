@@ -1,9 +1,10 @@
 <map id="warpcore::MultiValueHashTable::retrieve" name="warpcore::MultiValueHashTable::retrieve">
-<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table " alt="" coords="228,41,403,83"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key " alt="" coords="451,71,625,112"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#a130e94f97c0002895317f086442e8470" title="checks if key is equal to (EmptyKey||TombstoneKey) " alt="" coords="673,5,848,47"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table " alt="" coords="673,71,848,112"/>
-<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#a23d1ba2d5e85a2465685f353ee5d0872" title="checks if key is equal to EmptyKey " alt="" coords="673,136,848,177"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1MultiValueHashTable.html#a86fffd9e87b2880ccba285614a6238f3" title="get empty key " alt="" coords="896,103,1071,144"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#a9eec07133f3b950b5c6465e4b8b53e78" title="get tombstone key " alt="" coords="896,5,1071,47"/>
+<area shape="rect" id="node1" title="retrieves all values to a corresponding key" alt="" coords="5,71,197,112"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="485,71,677,112"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="245,100,437,141"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table" alt="" coords="725,5,917,47"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a" title="checks if key is equal to EmptyKey" alt="" coords="725,71,917,112"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="725,136,917,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1MultiValueHashTable.html#afe401d003c9b03d05270adaf932a541a" title="get empty key" alt="" coords="965,71,1157,112"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1MultiValueHashTable.html#a4eeec7f55e0f48b901507a5b63a7981e" title="get tombstone key" alt="" coords="965,136,1157,177"/>
 </map>

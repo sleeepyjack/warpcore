@@ -1,4 +1,5 @@
 <map id="warpcore::CountingHashTable::retrieve" name="warpcore::CountingHashTable::retrieve">
-<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#aeaf1b333eb176da987dee4d003e5dddc" title="get cooperative group size " alt="" coords="252,20,451,61"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#aaa4cf7e3252a0b177101fca437e5309e" title="get cooperative group size " alt="" coords="499,5,717,76"/>
+<area shape="rect" id="node1" title="retrieve a set of keys from the hash table" alt="" coords="5,5,220,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1CountingHashTable.html#a5efe6f4060321596322a99a28fcaef93" title="get cooperative group size" alt="" coords="268,5,483,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1SingleValueHashTable.html#a9e333c031a91f261db157871eab074c0" title="get cooperative group size" alt="" coords="531,5,729,47"/>
 </map>

@@ -1,6 +1,4 @@
 <map id="warpcore::storage::CyclicStore::capacity" name="warpcore::storage::CyclicStore::capacity">
-<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#aca834b00d59e653c092db712ca7eb7a0" title="constructor " alt="" coords="212,5,377,61"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1storage_1_1key__value_1_1SoAStore.html#a4dc140aa67de81f7bdff2bc16f6a1b8b" title="constructor " alt="" coords="222,85,367,141"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1storage_1_1key__value_1_1AoSStore.html#a4ab568a9090dfe80c989ba7d88173010" title="constructor " alt="" coords="221,166,368,237"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#a195a0df8c935bf26300d2939cbd04b0f" title="get load factor " alt="" coords="200,261,389,317"/>
+<area shape="rect" id="node1" title="get buffer capacity" alt="" coords="236,13,395,54"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1storage_1_1CyclicStore.html#aca834b00d59e653c092db712ca7eb7a0" title="constructor" alt="" coords="5,5,188,61"/>
 </map>
