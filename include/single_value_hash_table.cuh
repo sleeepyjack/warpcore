@@ -877,10 +877,7 @@ private:
     {
         if(status_ != nullptr)
         {
-            if(!status_->has_all(status))
-            {
-                status_->atomic_join(status);
-            }
+            status_->atomic_join(status);
         }
     }
 

@@ -168,7 +168,6 @@ public:
             }
         }
 
-        status -= status_type::duplicate_key();
         return status;
     }
 
@@ -211,10 +210,9 @@ public:
         value_type out;
 
         const status_type status =
-            base_table_.retrieve(key_in, out, group, probing_length)
-            - status_type::duplicate_key();
+            base_table_.retrieve(key_in, out, group, probing_length);
 
-        if(status.has_any(~status_type::duplicate_key()))
+        if(status.has_any())
         {
             value_out = 0;
         }
@@ -364,7 +362,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     status_type peek_status(cudaStream_t stream = 0) const noexcept
     {
-        return base_table_.peek_status(stream) - status_type::duplicate_key();
+        return base_table_.peek_status(stream);
     }
 
     /*! \brief get and reset the status of the hash table
@@ -374,7 +372,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     status_type pop_status(cudaStream_t stream = 0) noexcept
     {
-        return base_table_.pop_status(stream) - status_type::duplicate_key();
+        return base_table_.pop_status(stream);
     }
 
     /*! \brief checks if \c key is equal to \c EmptyKey

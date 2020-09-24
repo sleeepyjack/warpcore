@@ -199,10 +199,7 @@ public:
             {
                 device_join_status(status_type::max_values_for_key_reached());
 
-                return
-                    status -
-                    status_type::duplicate_key() +
-                    status_type::max_values_for_key_reached();
+                return status + status_type::max_values_for_key_reached();
             }
             else
             {
@@ -222,7 +219,7 @@ public:
             }
         }
 
-        return status - status_type::duplicate_key();
+        return status;
     }
 
     /*! \brief insert a set of keys into the hash table
@@ -320,7 +317,7 @@ public:
                         status_handlers::ReturnNothing>::value)
                     {
                         StatusHandler::handle(
-                            status[btid]+append_status-status_type::duplicate_key(),
+                            status[btid]+append_status,
                             status_out,
                             block_offset + btid);
                     }
@@ -375,7 +372,7 @@ public:
             num_out = 0;
         }
 
-        return status - status_type::duplicate_key();
+        return status;
     }
 
      /*! \brief retrieve a set of keys from the hash table
@@ -515,7 +512,7 @@ public:
             value_store_.for_each(f, handle, group);
         }
 
-        return status - status_type::duplicate_key();
+        return status;
     }
 
     // TODO host functions for_each
@@ -701,7 +698,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     status_type peek_status(const cudaStream_t stream = 0) const noexcept
     {
-        return hash_table_.peek_status(stream) - status_type::duplicate_key();
+        return hash_table_.peek_status(stream);
     }
 
     /*! \brief get and reset the status of the hash table
@@ -711,7 +708,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     status_type pop_status(const cudaStream_t stream = 0) noexcept
     {
-        return hash_table_.pop_status(stream) - status_type::duplicate_key();
+        return hash_table_.pop_status(stream);
     }
 
     /*! \brief get the key capacity of the hash table
@@ -761,10 +758,9 @@ public:
         status_type status =
             hash_table_.retrieve(key_in, handle, group, probing_length);
 
-        status -= status_type::duplicate_key();
         num_out = (!status.has_any()) ? value_store_.size(handle) : 0;
 
-        return status - status_type::duplicate_key();
+        return status;
     }
 
     /*! \brief get number of values to a corresponding set of keys inside the hash table

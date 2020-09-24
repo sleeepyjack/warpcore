@@ -234,7 +234,8 @@ public:
             {
                 device_join_status(
                     status_type::max_values_for_key_reached());
-                return status_type::max_values_for_key_reached();
+                return status_type::duplicate_key() +
+                       status_type::max_values_for_key_reached();
             }
 
             bool success = false; // no hash collision
@@ -266,7 +267,8 @@ public:
 
                 if(group.any(success))
                 {
-                    return status_type::none();
+                    return (num_values > 0) ?
+                        status_type::duplicate_key() : status_type::none();
                 }
 
                 num_values += group.any(key_collision);
@@ -275,15 +277,18 @@ public:
                 {
                     device_join_status(
                         status_type::max_values_for_key_reached());
-                    return status_type::max_values_for_key_reached();
+                    return status_type::duplicate_key() +
+                           status_type::max_values_for_key_reached();
                 }
 
                 empty_mask ^= 1UL << leader;
             }
         }
 
-        device_join_status(status_type::probing_length_exceeded());
-        return status_type::probing_length_exceeded();
+        status_type status = status_type::probing_length_exceeded();
+        device_join_status(status);
+        return (num_values > 0) ?
+            status + status_type::duplicate_key() : status;
      }
 
     /*! \brief insert a set of keys into the hash table
@@ -991,10 +996,7 @@ private:
     {
         if(status_ != nullptr)
         {
-            if(!status_->has_all(status))
-            {
-                status_->atomic_join(status);
-            }
+            status_->atomic_join(status);
         }
     }
 
