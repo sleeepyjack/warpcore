@@ -19,8 +19,8 @@ This will also be the core library for future releases of our multi-GPU hashing 
 
 ## System Requirements
 - [CUDA-capable device](https://developer.nvidia.com/cuda-gpus) with architecture >= 6.0 (Pascal or higher)
-- [NVIDIA CUDA toolkit/compiler](https://developer.nvidia.com/cuda-toolkit) version >= 10.1
-- [GNU g++](https://gcc.gnu.org/) version >=5.4 and compatible with your CUDA version
+- [NVIDIA CUDA toolkit/compiler](https://developer.nvidia.com/cuda-toolkit) version >= 10.2
+- [GNU g++](https://gcc.gnu.org/) version >= 7.3 and compatible with your CUDA version
 - ISO-C++14 standard
 
 **Note:** Suppport for host compilers other than GNU g++ are planned for future releases.
