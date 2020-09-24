@@ -232,10 +232,10 @@ public:
 
             if(num_values >= max_values_per_key_)
             {
-                device_join_status(
-                    status_type::max_values_for_key_reached());
-                return status_type::duplicate_key() +
-                       status_type::max_values_for_key_reached();
+                status_type status = status_type::duplicate_key() +
+                                     status_type::max_values_for_key_reached();
+                device_join_status(status);
+                return status;
             }
 
             bool success = false; // no hash collision
@@ -275,20 +275,21 @@ public:
 
                 if(num_values >= max_values_per_key_)
                 {
-                    device_join_status(
-                        status_type::max_values_for_key_reached());
-                    return status_type::duplicate_key() +
-                           status_type::max_values_for_key_reached();
+                    status_type status = status_type::duplicate_key() +
+                                         status_type::max_values_for_key_reached();
+                    device_join_status(status);
+                    return status;
                 }
 
                 empty_mask ^= 1UL << leader;
             }
         }
 
-        status_type status = status_type::probing_length_exceeded();
+        status_type status = (num_values > 0) ?
+            status_type::probing_length_exceeded() + status_type::duplicate_key() :
+            status_type::probing_length_exceeded();
         device_join_status(status);
-        return (num_values > 0) ?
-            status + status_type::duplicate_key() : status;
+        return status;
      }
 
     /*! \brief insert a set of keys into the hash table
@@ -680,14 +681,6 @@ public:
         {
             hash_set.insert(key, cg::tiled_partition<1>(cg::this_thread_block()));
         }, stream);
-
-        const status_type hash_set_status =
-            hash_set.peek_status(stream) - status_type::duplicate_key();
-
-        if(hash_set_status.has_any())
-        {
-            join_status(hash_set_status, stream);
-        }
 
         cudaStreamSynchronize(stream);
 
