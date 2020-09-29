@@ -380,7 +380,7 @@ public:
             return status_type::invalid_key();
         }
 
-        ProbingScheme iter(key_capacity(), probing_length, group);
+        ProbingScheme iter(capacity(), probing_length, group);
         index_type num_values_plus_bucket_size = 0; // count one bucket less
 
         index_type last_key_pos = std::numeric_limits<index_type>::max();
@@ -744,7 +744,7 @@ public:
             return status_type::invalid_key();
         }
 
-        ProbingScheme iter(key_capacity(), min(probing_length, key_capacity()), group);
+        ProbingScheme iter(capacity(), min(probing_length, capacity()), group);
 
         index_type num = 0;
         for(index_type i = iter.begin(key_in, seed_); i != iter.end(); i = iter.next())
@@ -810,9 +810,20 @@ public:
     {
         if(!is_initialized_) return;
 
-        kernels::for_each<Func, MultiBucketHashTable>
-        <<<SDIV(key_capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
-        (f, *this);
+        auto bucket_f = [=] DEVICEQUALIFIER
+        (const key_type key, const bucket_type& bucket) mutable
+        {
+            #pragma unroll
+            for(int b = 0; b < MultiBucketHashTable::bucket_size(); ++b) {
+                auto& value = bucket[b];
+                if(value != MultiBucketHashTable::empty_value())
+                    f(key, value);
+            }
+        };
+
+        kernels::for_each
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        (bucket_f, *this);
     }
 
     /*! \brief applies a funtion over all key value pairs
@@ -844,7 +855,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::for_each<Func, MultiBucketHashTable>
-        <<<SDIV(key_capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
         (f, keys_in, num_in, *this, status_out);
     }
 
@@ -978,10 +989,48 @@ public:
 
         cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
 
-        // TODO count values for each bucket
-        // kernels::size
-        // <<<SDIV(key_capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        // (tmp, *this);
+        helpers::lambda_kernel
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        ([=, *this] DEVICEQUALIFIER
+        {
+            __shared__ index_t smem;
+
+            const index_t tid = helpers::global_thread_id();
+            const auto block = cg::this_thread_block();
+
+            if(tid < capacity())
+            {
+                const bool empty = !is_valid_key(table_[tid].key);
+
+                if(block.thread_rank() == 0)
+                {
+                    smem = 0;
+                }
+
+                block.sync();
+
+                index_t value_count = 0;
+                if(!empty)
+                {
+                    #pragma unroll
+                    for(int b = 0; b < MultiBucketHashTable::bucket_size(); ++b) {
+                        auto& value = table_[tid].value[b];
+                        if(value != MultiBucketHashTable::empty_value())
+                            ++value_count;
+                    }
+
+                    // TODO warp reduce
+                    atomicAdd(&smem, value_count);
+                }
+
+                block.sync();
+
+                if(block.thread_rank() == 0 && smem != 0)
+                {
+                    atomicAdd(tmp, smem);
+                }
+            }
+        });
 
         cudaMemcpyAsync(
             &out,
@@ -1002,7 +1051,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     float load_factor(const cudaStream_t stream = 0) const noexcept
     {
-        return float(size(stream)) / float(key_capacity());
+        return float(size(stream)) / float(capacity());
     }
 
     /*! \brief current storage density of the hash table
@@ -1022,7 +1071,7 @@ public:
      * \return number of key slots in the hash table
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    index_type key_capacity() const noexcept
+    index_type capacity() const noexcept
     {
         return table_.capacity();
     }
