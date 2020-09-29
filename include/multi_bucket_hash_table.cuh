@@ -211,7 +211,7 @@ private:
     bool check_last_bucket(
         const value_type& value_in,
         const cg::thread_block_tile<cg_size()>& group,
-        index_type& num_values,
+        index_type num_values,
         index_type& last_key_pos,
         status_type& status) noexcept
     {
@@ -257,6 +257,14 @@ private:
                 }
 
                 ++num_values;
+                if(num_values >= max_values_per_key_)
+                {
+                    status = status_type::duplicate_key() +
+                             status_type::max_values_for_key_reached();
+                    device_join_status(status);
+                    return true;
+                }
+
                 empty_value_mask ^= 1UL << leader;
             }
 
@@ -298,7 +306,7 @@ public:
         }
 
         ProbingScheme iter(capacity(), probing_length, group);
-        index_type num_values = index_type{-BucketSize}; // count one bucket less
+        index_type num_values_plus_bucket_size = 0; // count one bucket less
 
         index_type last_key_pos = std::numeric_limits<index_type>::max();
         for(index_type i = iter.begin(key_in, seed_); i != iter.end(); i = iter.next())
@@ -313,20 +321,20 @@ public:
 
             last_key_pos = key_found_mask ? new_last_key_pos : last_key_pos;
 
-            num_values += key_found_mask ? (BucketSize * __popc(key_found_mask)) : 0;
+            num_values_plus_bucket_size += key_found_mask ? (BucketSize * __popc(key_found_mask)) : 0;
 
             // TODO is this early exit needed?
-            if(num_values + BucketSize >= max_values_per_key_)
+            if(num_values_plus_bucket_size >= max_values_per_key_)
             {
                 status_type status;
-                if(check_last_bucket(value_in, group, num_values, last_key_pos, status))
+                if(check_last_bucket(value_in, group, num_values_plus_bucket_size - BucketSize, last_key_pos, status))
                     return status;
             }
 
             while(empty_mask)
             {
                 status_type status;
-                if(check_last_bucket(value_in, group, num_values, last_key_pos, status))
+                if(check_last_bucket(value_in, group, num_values_plus_bucket_size - BucketSize, last_key_pos, status))
                     return status;
 
                 // insert key
@@ -348,7 +356,7 @@ public:
                         // relaxed write to first slot in value array
                         table_[i].value[0] = value_in;
 
-                        if(num_values == 0)
+                        if(num_values_plus_bucket_size == 0)
                         {
                             helpers::atomicAggInc(num_keys_);
                         }
@@ -363,7 +371,7 @@ public:
 
                 if(group.any(success))
                 {
-                    return (num_values > 0) ?
+                    return (num_values_plus_bucket_size > 0) ?
                         status_type::duplicate_key() : status_type::none();
                 }
 
@@ -372,10 +380,10 @@ public:
         }
 
         status_type status;
-        if(check_last_bucket(value_in, group, num_values, last_key_pos, status))
+        if(check_last_bucket(value_in, group, num_values_plus_bucket_size - BucketSize, last_key_pos, status))
             return status;
 
-        status = (num_values > 0) ?
+        status = (num_values_plus_bucket_size > 0) ?
             status_type::probing_length_exceeded() + status_type::duplicate_key() :
             status_type::probing_length_exceeded();
         device_join_status(status);
