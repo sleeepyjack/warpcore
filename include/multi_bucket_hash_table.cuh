@@ -21,6 +21,23 @@ struct ArrayBucket {
             values_[i] = value;
     }
 
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    ArrayBucket(const ArrayBucket& other) noexcept
+    {
+        #pragma unroll
+        for(index_type i = 0; i < bucket_size(); ++i)
+            values_[i] = other.values_[i];
+    }
+
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    ArrayBucket& operator =(const ArrayBucket& other) noexcept
+    {
+        #pragma unroll
+        for(index_type i = 0; i < bucket_size(); ++i)
+            values_[i] = other.values_[i];
+        return *this;
+    }
+
     /*! \brief get bucket size
      * \return bucket size
      */
@@ -35,7 +52,7 @@ struct ArrayBucket {
      * \return value at position \c i
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    value_type& operator[](const index_type i) noexcept
+    constexpr value_type& operator[](const index_type i) noexcept
     {
         return values_[i];
     }
@@ -45,7 +62,7 @@ struct ArrayBucket {
      * \return value at position \c i
      */
     DEVICEQUALIFIER INLINEQUALIFIER
-    const value_type& operator[](const index_type i) const noexcept
+    constexpr const value_type& operator[](const index_type i) const noexcept
     {
         return values_[i];
     }
@@ -255,21 +272,6 @@ public:
         {
             table_.init_keys(empty_key(), stream);
             table_.init_values(bucket_type(empty_value()), stream);
-
-            // helpers::lambda_kernel
-            // <<<SDIV(table_.capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-            // ([=, *this] DEVICEQUALIFIER
-            // {
-            //     const index_type tid = helpers::global_thread_id();
-
-            //     if(tid < table_.capacity())
-            //     {
-            //         #pragma unroll
-            //         for(int b = 0; b < bucket_size(); ++b) {
-            //             table_[tid].value[b] = empty_value();
-            //         }
-            //     }
-            // });
 
             assign_status(table_.status() + temp_.status(), stream);
 
