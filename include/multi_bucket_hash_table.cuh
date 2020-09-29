@@ -380,7 +380,7 @@ public:
             return status_type::invalid_key();
         }
 
-        ProbingScheme iter(capacity(), probing_length, group);
+        ProbingScheme iter(key_capacity(), probing_length, group);
         index_type num_values_plus_bucket_size = 0; // count one bucket less
 
         index_type last_key_pos = std::numeric_limits<index_type>::max();
@@ -441,6 +441,7 @@ public:
                 if(group.any(key_collision))
                 {
                     last_key_pos = group.shfl(i, leader);
+                    num_values_plus_bucket_size += bucket_size();
                     // check collision in next iteration
                 }
 
@@ -743,7 +744,7 @@ public:
             return status_type::invalid_key();
         }
 
-        ProbingScheme iter(capacity(), min(probing_length, capacity()), group);
+        ProbingScheme iter(key_capacity(), min(probing_length, key_capacity()), group);
 
         index_type num = 0;
         for(index_type i = iter.begin(key_in, seed_); i != iter.end(); i = iter.next())
@@ -762,7 +763,7 @@ public:
                 for(int b = 0; b < bucket_size(); ++b) {
                     auto  value = table_[i].value[b];
                     if(value != empty_value())
-                        f(key_in, value, j);
+                        f(key_in, value, j+b);
                     else
                         ++num_empty;
                 }
@@ -810,7 +811,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::for_each<Func, MultiBucketHashTable>
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        <<<SDIV(key_capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
         (f, *this);
     }
 
@@ -843,7 +844,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::for_each<Func, MultiBucketHashTable>
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        <<<SDIV(key_capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
         (f, keys_in, num_in, *this, status_out);
     }
 
@@ -977,9 +978,10 @@ public:
 
         cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
 
-        kernels::size
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (tmp, *this);
+        // TODO count values for each bucket
+        // kernels::size
+        // <<<SDIV(key_capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        // (tmp, *this);
 
         cudaMemcpyAsync(
             &out,
@@ -1000,7 +1002,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     float load_factor(const cudaStream_t stream = 0) const noexcept
     {
-        return float(size(stream)) / float(capacity());
+        return float(size(stream)) / float(key_capacity());
     }
 
     /*! \brief current storage density of the hash table
@@ -1016,13 +1018,22 @@ public:
         return float(key_bytes + value_bytes) / float(table_bytes);
     }
 
-    /*! \brief get the capacity of the hash table
-     * \return number of slots in the hash table
+    /*! \brief get the key capacity of the hash table
+     * \return number of key slots in the hash table
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    index_type capacity() const noexcept
+    index_type key_capacity() const noexcept
     {
         return table_.capacity();
+    }
+
+    /*! \brief get the maximum value capacity of the hash table
+     * \return maximum value capacity
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    index_type value_capacity() const noexcept
+    {
+        return table_.capacity() * bucket_size();
     }
 
     /*! \brief indicates if the hash table is properly initialized
