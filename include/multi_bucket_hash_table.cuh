@@ -6,6 +6,54 @@
 namespace warpcore
 {
 
+template<
+    class Value,
+    unsigned BucketSize = 1>
+struct ArrayBucket {
+    using value_type = Value;
+    using index_type = unsigned;
+
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    explicit ArrayBucket(value_type value) noexcept
+    {
+        #pragma unroll
+        for(index_type i = 0; i < bucket_size(); ++i)
+            values_[i] = value;
+    }
+
+    /*! \brief get bucket size
+     * \return bucket size
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr unsigned bucket_size() noexcept
+    {
+        return BucketSize;
+    }
+
+    /*! \brief accessor
+     * \param[in] i index to access
+     * \return value at position \c i
+     */
+    DEVICEQUALIFIER INLINEQUALIFIER
+    value_type& operator[](const index_type i) noexcept
+    {
+        return values_[i];
+    }
+
+    /*! \brief const accessor
+     * \param[in] i index to access
+     * \return value at position \c i
+     */
+    DEVICEQUALIFIER INLINEQUALIFIER
+    const value_type& operator[](const index_type i) const noexcept
+    {
+        return values_[i];
+    }
+
+    value_type values_[BucketSize];
+};
+
+
 /*! \brief multi-value hash table
  * \tparam Key key type ( \c std::uint32_t or \c std::uint64_t )
  * \tparam Value value type
@@ -18,12 +66,11 @@ namespace warpcore
 template<
     class Key,
     class Value,
-    int BucketSize = 2,
     Key EmptyKey = defaults::empty_key<Key>(),
     Key TombstoneKey = defaults::tombstone_key<Key>(),
     Value EmptyValue = defaults::empty_key<Value>(),
     class ProbingScheme = defaults::probing_scheme_t<Key, 8>,
-    class TableStorage = defaults::table_storage_t<Key, Value[BucketSize]>,
+    class TableStorage = defaults::table_storage_t<Key, ArrayBucket<Value,2>>,
     index_t TempMemoryBytes = defaults::temp_memory_bytes()>
 class MultiBucketHashTable
 {
@@ -52,7 +99,7 @@ class MultiBucketHashTable
         "storage's key type differs from table's key type");
 
     static_assert(
-        std::is_same<typename TableStorage::value_type, Value[BucketSize]>::value,
+        std::is_same<typename TableStorage::value_type::value_type, Value>::value,
         "storage's value type differs from table's value type");
 
     static_assert(
@@ -64,6 +111,7 @@ class MultiBucketHashTable
 public:
     using key_type = Key;
     using value_type = Value;
+    using bucket_type = typename TableStorage::value_type;
     using index_type = index_t;
     using status_type = Status;
     using key_set_type = HashSet<
@@ -107,6 +155,15 @@ public:
     static constexpr index_type cg_size() noexcept
     {
         return ProbingScheme::cg_size();
+    }
+
+    /*! \brief get bucket size
+     * \return bucket size
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr int bucket_size() noexcept
+    {
+        return TableStorage::value_type::bucket_size();
     }
 
     /*! \brief constructor
@@ -197,6 +254,22 @@ public:
             !temp_.status().has_not_initialized())
         {
             table_.init_keys(empty_key(), stream);
+            table_.init_values(bucket_type(empty_value()), stream);
+
+            // helpers::lambda_kernel
+            // <<<SDIV(table_.capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            // ([=, *this] DEVICEQUALIFIER
+            // {
+            //     const index_type tid = helpers::global_thread_id();
+
+            //     if(tid < table_.capacity())
+            //     {
+            //         #pragma unroll
+            //         for(int b = 0; b < bucket_size(); ++b) {
+            //             table_[tid].value[b] = empty_value();
+            //         }
+            //     }
+            // });
 
             assign_status(table_.status() + temp_.status(), stream);
 
@@ -218,13 +291,13 @@ private:
         if(last_key_pos < std::numeric_limits<index_type>::max())
         {
             // first bucket value always written after key insert
-            const key_type table_value = (0 < group.thread_rank() && group.thread_rank() < BucketSize) ?
+            const key_type table_value = (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
                                         table_[last_key_pos].value[group.thread_rank()] :
                                         ~empty_value();
 
             auto empty_value_mask = group.ballot(is_empty_value(table_value));
 
-            num_values += BucketSize - __popc(empty_value_mask);
+            num_values += bucket_size() - __popc(empty_value_mask);
 
             if(num_values >= max_values_per_key_)
             {
@@ -321,20 +394,20 @@ public:
 
             last_key_pos = key_found_mask ? new_last_key_pos : last_key_pos;
 
-            num_values_plus_bucket_size += key_found_mask ? (BucketSize * __popc(key_found_mask)) : 0;
+            num_values_plus_bucket_size += bucket_size() * __popc(key_found_mask);
 
             // TODO is this early exit needed?
-            if(num_values_plus_bucket_size >= max_values_per_key_)
-            {
-                status_type status;
-                if(check_last_bucket(value_in, group, num_values_plus_bucket_size - BucketSize, last_key_pos, status))
-                    return status;
-            }
+            // if(num_values_plus_bucket_size >= max_values_per_key_)
+            // {
+            //     status_type status;
+            //     if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
+            //         return status;
+            // }
 
             while(empty_mask)
             {
                 status_type status;
-                if(check_last_bucket(value_in, group, num_values_plus_bucket_size - BucketSize, last_key_pos, status))
+                if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
                     return status;
 
                 // insert key
@@ -380,7 +453,7 @@ public:
         }
 
         status_type status;
-        if(check_last_bucket(value_in, group, num_values_plus_bucket_size - BucketSize, last_key_pos, status))
+        if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
             return status;
 
         status = (num_values_plus_bucket_size > 0) ?
@@ -681,10 +754,10 @@ public:
             if(hit)
             {
                 const auto j =
-                    num + BucketSize * __popc(hit_mask & ~((2UL << group.thread_rank()) - 1));
+                    num + bucket_size() * __popc(hit_mask & ~((2UL << group.thread_rank()) - 1));
 
                 #pragma unroll
-                for(int b = 0; b < BucketSize; ++b) {
+                for(int b = 0; b < bucket_size(); ++b) {
                     auto  value = table_[i].value[b];
                     if(value != empty_value())
                         f(key_in, value, j);
@@ -696,7 +769,7 @@ public:
             // get num_empty from last bucket in group
             num_empty = group.shfl(num_empty, 31 - __clz(hit_mask));
 
-            num += BucketSize * __popc(hit_mask) - num_empty;
+            num += bucket_size() * __popc(hit_mask) - num_empty;
 
             if(group.any(is_empty_key(table_key) || num >= max_values_per_key_))
             {
