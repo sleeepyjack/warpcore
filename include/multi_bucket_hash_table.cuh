@@ -42,7 +42,7 @@ struct ArrayBucket {
      * \return bucket size
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr unsigned bucket_size() noexcept
+    static constexpr index_type bucket_size() noexcept
     {
         return BucketSize;
     }
@@ -292,62 +292,59 @@ private:
     {
         if(last_key_pos < std::numeric_limits<index_type>::max())
         {
-            // first bucket value always written after key insert
-            const key_type table_value = (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
-                                        table_[last_key_pos].value[group.thread_rank()] :
-                                        ~empty_value();
-
-            auto empty_value_mask = group.ballot(is_empty_value(table_value));
-
-            num_values += bucket_size() - __popc(empty_value_mask);
-
-            if(num_values >= max_values_per_key_)
+            for(index_type i = group.thread_rank();
+                           i < SDIV(bucket_size(),cg_size())*cg_size();
+                           i += cg_size())
             {
-                status = status_type::duplicate_key() +
-                         status_type::max_values_for_key_reached();
-                device_join_status(status);
-                return true;
-            }
+                // first bucket value always written after key insert
+                const key_type table_value = (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
+                                            table_[last_key_pos].value[group.thread_rank()] :
+                                            ~empty_value();
 
-            bool success = false;
+                auto empty_value_mask = group.ballot(is_empty_value(table_value));
 
-            while(empty_value_mask)
-            {
-                const auto leader = ffs(empty_value_mask) - 1;
+                num_values += bucket_size() - __popc(empty_value_mask);
 
-                if(group.thread_rank() == leader)
-                {
-                    const auto old =
-                        atomicCAS(&(table_[last_key_pos].value[group.thread_rank()]), table_value, value_in);
-
-                    success = (old == table_value);
-
-                    if(success)
-                    {
-                        if(num_values == 0)
-                        {
-                            helpers::atomicAggInc(num_keys_);
-                        }
-                    }
-                }
-
-                ++num_values;
                 if(num_values >= max_values_per_key_)
                 {
                     status = status_type::duplicate_key() +
-                             status_type::max_values_for_key_reached();
+                            status_type::max_values_for_key_reached();
                     device_join_status(status);
                     return true;
                 }
 
-                empty_value_mask ^= 1UL << leader;
-            }
+                bool success = false;
 
-            if(group.any(success))
-            {
-                status = (num_values > 0) ?
-                    status_type::duplicate_key() : status_type::none();
-                return true;
+                while(empty_value_mask)
+                {
+                    const auto leader = ffs(empty_value_mask) - 1;
+
+                    if(group.thread_rank() == leader)
+                    {
+                        const auto old =
+                            atomicCAS(&(table_[last_key_pos].value[i]), table_value, value_in);
+
+                        success = (old == table_value);
+                    }
+
+                    if(group.any(success))
+                    {
+                        status = (num_values > 0) ?
+                            status_type::duplicate_key() : status_type::none();
+                        return true;
+                    }
+
+                    ++num_values;
+                    if(num_values >= max_values_per_key_)
+                    {
+                        status = status_type::duplicate_key() +
+                                 status_type::max_values_for_key_reached();
+                        device_join_status(status);
+                        return true;
+                    }
+
+                    empty_value_mask ^= 1UL << leader;
+                }
             }
         }
 
@@ -362,13 +359,13 @@ public:
      * \param[in] probing_length maximum number of probing attempts
      * \return status (per thread)
      */
-     DEVICEQUALIFIER INLINEQUALIFIER
-     status_type insert(
-         const key_type key_in,
-         const value_type& value_in,
-         const cg::thread_block_tile<cg_size()>& group,
-         const index_type probing_length = defaults::probing_length()) noexcept
-     {
+    DEVICEQUALIFIER INLINEQUALIFIER
+    status_type insert(
+        const key_type key_in,
+        const value_type& value_in,
+        const cg::thread_block_tile<cg_size()>& group,
+        const index_type probing_length = defaults::probing_length()) noexcept
+    {
         if(!is_initialized_)
         {
             return status_type::not_initialized();
@@ -388,7 +385,7 @@ public:
         {
             const key_type table_key = table_[i].key;
 
-            auto empty_mask = group.ballot(is_empty_key(table_key));
+            auto empty_key_mask = group.ballot(is_empty_key(table_key));
 
             auto key_found_mask = group.ballot((table_key == key_in));
 
@@ -406,7 +403,7 @@ public:
             //         return status;
             // }
 
-            while(empty_mask)
+            while(empty_key_mask)
             {
                 status_type status;
                 if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
@@ -416,7 +413,7 @@ public:
                 bool success = false;
                 bool key_collision = false;
 
-                const auto leader = ffs(empty_mask) - 1;
+                const auto leader = ffs(empty_key_mask) - 1;
 
                 if(group.thread_rank() == leader)
                 {
@@ -451,7 +448,7 @@ public:
                         status_type::duplicate_key() : status_type::none();
                 }
 
-                empty_mask ^= 1UL << leader;
+                empty_key_mask ^= 1UL << leader;
             }
         }
 
@@ -1034,9 +1031,9 @@ public:
                 if(!empty)
                 {
                     #pragma unroll
-                    for(int b = 0; b < MultiBucketHashTable::bucket_size(); ++b) {
+                    for(int b = 0; b < bucket_size(); ++b) {
                         auto& value = table_[tid].value[b];
-                        if(value != MultiBucketHashTable::empty_value())
+                        if(value != empty_value())
                             ++value_count;
                     }
 
@@ -1070,9 +1067,19 @@ public:
      * \return load factor
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    float load_factor(const cudaStream_t stream = 0) const noexcept
+    float key_load_factor(const cudaStream_t stream = 0) const noexcept
     {
-        return float(size(stream)) / float(capacity());
+        return float(num_keys(stream)) / float(capacity());
+    }
+
+    /*! \brief current load factor of the hash table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \return load factor
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    float value_load_factor(const cudaStream_t stream = 0) const noexcept
+    {
+        return float(num_values(stream)) / float(capacity()*bucket_size());
     }
 
     /*! \brief current storage density of the hash table
@@ -1085,7 +1092,23 @@ public:
         const index_type key_bytes = num_keys(stream) * sizeof(key_type);
         const index_type value_bytes = num_values(stream) * sizeof(value_type);
         const index_type table_bytes = table_.bytes_total();
+
         return float(key_bytes + value_bytes) / float(table_bytes);
+    }
+
+    /*! \brief current relative storage density of the hash table
+     * \param stream CUDA stream in which this operation is executed in
+     * \return storage density
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    float relative_storage_density(const cudaStream_t stream = 0) const noexcept
+    {
+        const index_type key_bytes = num_keys(stream) * sizeof(key_type);
+        const index_type value_bytes = num_values(stream) * sizeof(value_type);
+        const index_type table_bytes =
+            table_.capacity() * (sizeof(key_type) + sizeof(bucket_type));
+
+        return float(key_bytes + value_bytes) / (table_bytes);
     }
 
     /*! \brief get the key capacity of the hash table
