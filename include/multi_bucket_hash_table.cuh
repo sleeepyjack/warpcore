@@ -284,10 +284,10 @@ public:
 private:
     DEVICEQUALIFIER INLINEQUALIFIER
     bool check_last_bucket(
-        const value_type& value_in,
+        const value_type value_in,
         const cg::thread_block_tile<cg_size()>& group,
         index_type num_values,
-        index_type& last_key_pos,
+        const index_type last_key_pos,
         status_type& status) noexcept
     {
         if(last_key_pos < std::numeric_limits<index_type>::max())
@@ -362,7 +362,7 @@ public:
     DEVICEQUALIFIER INLINEQUALIFIER
     status_type insert(
         const key_type key_in,
-        const value_type& value_in,
+        const value_type value_in,
         const cg::thread_block_tile<cg_size()>& group,
         const index_type probing_length = defaults::probing_length()) noexcept
     {
@@ -375,6 +375,12 @@ public:
         {
             device_join_status(status_type::invalid_key());
             return status_type::invalid_key();
+        }
+
+        if(!is_valid_value(value_in))
+        {
+            device_join_status(status_type::invalid_value());
+            return status_type::invalid_value();
         }
 
         ProbingScheme iter(capacity(), probing_length, group);
@@ -406,7 +412,7 @@ public:
             while(empty_key_mask)
             {
                 status_type status;
-                if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
+                if(bucket_size() > 1 && check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
                     return status;
 
                 // insert key
@@ -453,7 +459,7 @@ public:
         }
 
         status_type status;
-        if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
+        if(bucket_size() > 1 && check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
             return status;
 
         status = (num_values_plus_bucket_size > 0) ?
@@ -1204,7 +1210,7 @@ public:
         return (key == tombstone_key());
     }
 
-    /*! \brief checks if \c key is equal to \c (EmptyKey||TombstoneKey)
+    /*! \brief checks if \c key is not equal to \c (EmptyKey||TombstoneKey)
      * \return \c bool
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
@@ -1220,6 +1226,15 @@ public:
     static constexpr bool is_empty_value(const value_type value) noexcept
     {
         return (value == empty_value());
+    }
+
+    /*! \brief checks if \c value is equal not to \c EmptyValue
+     * \return \c bool
+     */
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr bool is_valid_value(const value_type value) noexcept
+    {
+        return (value != empty_value());
     }
 
     /*! \brief indicates if this object is a shallow copy
