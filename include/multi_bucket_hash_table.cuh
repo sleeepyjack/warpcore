@@ -283,11 +283,11 @@ public:
 
 private:
     DEVICEQUALIFIER INLINEQUALIFIER
-    bool check_last_bucket(
+    bool insert_into_bucket(
+        const index_type last_key_pos,
         const value_type value_in,
         const cg::thread_block_tile<cg_size()>& group,
         index_type num_values,
-        const index_type last_key_pos,
         status_type& status) noexcept
     {
         if(last_key_pos < std::numeric_limits<index_type>::max())
@@ -297,9 +297,10 @@ private:
                            i += cg_size())
             {
                 // first bucket value always written after key insert
-                const key_type table_value = (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
-                                            table_[last_key_pos].value[group.thread_rank()] :
-                                            ~empty_value();
+                const key_type table_value =
+                    (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
+                    table_[last_key_pos].value[group.thread_rank()] :
+                    ~empty_value();
 
                 auto empty_value_mask = group.ballot(is_empty_value(table_value));
 
@@ -405,14 +406,18 @@ public:
             // if(num_values_plus_bucket_size >= max_values_per_key_)
             // {
             //     status_type status;
-            //     if(check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
+            //     if(bucket_size() > 1 &&
+            //        insert_into_bucket(last_key_pos, value_in, group,
+            //              num_values_plus_bucket_size - bucket_size(), status))
             //         return status;
             // }
 
             while(empty_key_mask)
             {
                 status_type status;
-                if(bucket_size() > 1 && check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
+                if(bucket_size() > 1 &&
+                   insert_into_bucket(last_key_pos, value_in, group,
+                        num_values_plus_bucket_size - bucket_size(), status))
                     return status;
 
                 // insert key
@@ -459,7 +464,9 @@ public:
         }
 
         status_type status;
-        if(bucket_size() > 1 && check_last_bucket(value_in, group, num_values_plus_bucket_size - bucket_size(), last_key_pos, status))
+        if(bucket_size() > 1 &&
+           insert_into_bucket(last_key_pos, value_in, group,
+                num_values_plus_bucket_size - bucket_size(), status))
             return status;
 
         status = (num_values_plus_bucket_size > 0) ?
@@ -762,9 +769,10 @@ public:
                 const auto j =
                     num + bucket_size() * __popc(hit_mask & ~((2UL << group.thread_rank()) - 1));
 
+                const auto bucket = table_[i].value;
                 #pragma unroll
                 for(int b = 0; b < bucket_size(); ++b) {
-                    auto  value = table_[i].value[b];
+                    const auto& value = bucket[b];
                     if(value != empty_value())
                         f(key_in, value, j+b);
                     else
@@ -835,7 +843,7 @@ public:
         if(!is_initialized_) return;
 
         auto bucket_f = [=, f=std::move(f)] DEVICEQUALIFIER
-        (const key_type key, const bucket_type& bucket) mutable
+        (const key_type key, const bucket_type bucket) mutable
         {
             #pragma unroll
             for(int b = 0; b < bucket_size(); ++b) {
@@ -1036,9 +1044,10 @@ public:
                 index_t value_count = 0;
                 if(!empty)
                 {
+                    const auto bucket = table_[tid].value;
                     #pragma unroll
                     for(int b = 0; b < bucket_size(); ++b) {
-                        auto& value = table_[tid].value[b];
+                        const auto& value = bucket[b];
                         if(value != empty_value())
                             ++value_count;
                     }
