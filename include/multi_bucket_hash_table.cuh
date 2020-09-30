@@ -770,6 +770,7 @@ public:
             }
 
             // get num_empty from last bucket in group
+            // if not hit this return 0 from last thread
             num_empty = group.shfl(num_empty, 31 - __clz(hit_mask));
 
             num += bucket_size() * __popc(hit_mask) - num_empty;
@@ -795,6 +796,26 @@ public:
         return status_type::probing_length_exceeded();
     }
 
+    /*! \brief applies a funtion over all key bucket pairs inside the table
+     * \tparam Func type of map i.e. CUDA device lambda
+     * \param[in] f map to apply
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \param[in] size of dynamic shared memory to reserve for this execution
+     */
+    template<class Func>
+    HOSTQUALIFIER INLINEQUALIFIER
+    void for_each_bucket(
+        Func f, // TODO const?
+        const cudaStream_t stream = 0,
+        const index_type smem_bytes = 0) const noexcept
+    {
+        if(!is_initialized_) return;
+
+        kernels::for_each
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        (f, *this);
+    }
+
     /*! \brief applies a funtion over all key value pairs inside the table
      * \tparam Func type of map i.e. CUDA device lambda
      * \param[in] f map to apply
@@ -803,20 +824,20 @@ public:
      */
     template<class Func>
     HOSTQUALIFIER INLINEQUALIFIER
-    void for_each(
+    void for_each_value(
         Func f, // TODO const?
         const cudaStream_t stream = 0,
         const index_type smem_bytes = 0) const noexcept
     {
         if(!is_initialized_) return;
 
-        auto bucket_f = [=] DEVICEQUALIFIER
+        auto bucket_f = [=, f=std::move(f)] DEVICEQUALIFIER
         (const key_type key, const bucket_type& bucket) mutable
         {
             #pragma unroll
-            for(int b = 0; b < MultiBucketHashTable::bucket_size(); ++b) {
-                auto& value = bucket[b];
-                if(value != MultiBucketHashTable::empty_value())
+            for(int b = 0; b < bucket_size(); ++b) {
+                const auto& value = bucket[b];
+                if(value != empty_value())
                     f(key, value);
             }
         };
@@ -872,8 +893,8 @@ public:
         const index_type set_capacity = num_keys(stream) / size_fraction;
         key_set_type hash_set(set_capacity, seed_);
 
-        for_each([=] DEVICEQUALIFIER
-        (const key_type key, const value_type& /* value */) mutable
+        for_each_bucket([=] DEVICEQUALIFIER
+        (const key_type key, const bucket_type& /* bucket */) mutable
         {
             hash_set.insert(key, cg::tiled_partition<1>(cg::this_thread_block()));
         }, stream);
