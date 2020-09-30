@@ -9,18 +9,21 @@ STD := c++14
 NVCC := nvcc
 CCFLAGS := -O3 -Wall  -Wextra -fopenmp -DNDEBUG
 NVCCGENCODE = -gencode arch=compute_70,code=sm_70
-NVCCFLAGS := -std=$(STD) $(NVCCGENCODE) --expt-extended-lambda -DNDEBUG -ccbin $(CC) $(addprefix -Xcompiler ,$(CCFLAGS))
+NVCCFLAGS := -std=$(STD) $(NVCCGENCODE) --expt-extended-lambda --expt-relaxed-constexpr -DNDEBUG -ccbin $(CC) $(addprefix -Xcompiler ,$(CCFLAGS))
 
 INCS := $(foreach dir, $(INCDIRS), $(wildcard $(dir)/*.cuh $(dir)/*.h $(dir)/*.hpp))
 INCPARAMS := $(addprefix -I, $(INCDIRS))
 
-all: single_value multi_value counting bloom_filter bucket_list
+all: single_value multi_value multi_bucket counting bloom_filter bucket_list
 
 single_value: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/single_value_benchmark.cu -o bin/single_value_benchmark.out
 
 multi_value: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/multi_value_benchmark.cu -o bin/multi_value_benchmark.out
+
+multi_bucket: ${INCS} | bin
+	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/multi_bucket_benchmark.cu -o bin/multi_bucket_benchmark.out
 
 counting: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/counting_benchmark.cu -o bin/counting_benchmark.out
