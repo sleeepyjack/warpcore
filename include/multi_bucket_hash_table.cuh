@@ -158,8 +158,8 @@ public:
     /*! \brief get empty value
      * \return empty value
      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     static constexpr value_type empty_value() noexcept
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr value_type empty_value() noexcept
     {
         return EmptyValue;
     }
@@ -767,7 +767,7 @@ public:
             if(hit)
             {
                 const auto j =
-                    num + bucket_size() * __popc(hit_mask & ~((2UL << group.thread_rank()) - 1));
+                    num + bucket_size() * __popc(hit_mask & ((1U << group.thread_rank()) - 1));
 
                 const auto bucket = table_[i].value;
                 #pragma unroll
