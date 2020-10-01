@@ -8,10 +8,10 @@ namespace warpcore
 
 template<
     class Value,
-    unsigned BucketSize = 1>
+    std::uint32_t BucketSize = 1>
 struct ArrayBucket {
     using value_type = Value;
-    using index_type = unsigned;
+    using index_type = std::uint32_t;
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     explicit ArrayBucket(value_type value) noexcept
@@ -1106,7 +1106,7 @@ public:
     {
         const index_type key_bytes = num_keys(stream) * sizeof(key_type);
         const index_type value_bytes = num_values(stream) * sizeof(value_type);
-        const index_type table_bytes = table_.bytes_total();
+        const index_type table_bytes = bytes_total();
 
         return float(key_bytes + value_bytes) / float(table_bytes);
     }
@@ -1142,6 +1142,15 @@ public:
     index_type value_capacity() const noexcept
     {
         return table_.capacity() * bucket_size();
+    }
+
+    /*! \brief get the total number of bytes occupied by this data structure
+     *  \return bytes
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type bytes_total() const noexcept
+    {
+        return table_.bytes_total() + sizeof(index_type);
     }
 
     /*! \brief indicates if the hash table is properly initialized
