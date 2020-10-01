@@ -912,7 +912,7 @@ public:
 
         cudaStreamSynchronize(stream);
 
-        return std::move(hash_set);
+        return hash_set;
     }
 
     /*! \brief number of unique keys inside the table
