@@ -582,7 +582,7 @@ public:
             if(hit)
             {
                 const auto j =
-                    num + __popc(hit_mask & ~((2UL << group.thread_rank()) - 1));
+                    num + __popc(hit_mask & ((1UL << group.thread_rank()) - 1));
 
                 f(key_in, table_[i].value, j);
             }
