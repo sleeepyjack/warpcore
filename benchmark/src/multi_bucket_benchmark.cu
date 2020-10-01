@@ -97,7 +97,12 @@ void multi_value_benchmark(
         for(auto load : load_factors)
         {
             // const std::uint64_t capacity = float(size) / load;
-            const std::uint64_t capacity = float(size) / HashTable::bucket_size() / load;
+            // const std::uint64_t capacity = float(size) / HashTable::bucket_size() / load;
+            const float factor =
+                float(sizeof(key_t) + sizeof(value_t)) /
+                     (sizeof(key_t) + sizeof(value_t)*HashTable::bucket_size());
+
+            const std::uint64_t capacity = size * factor / load;
 
             HashTable hash_table(capacity);
 
@@ -156,17 +161,18 @@ void multi_value_benchmark(
             const float query_time =
                 *std::min_element(query_times.begin(), query_times.end());
 
-            const uint64_t total_bytes = (sizeof(key_t) + sizeof(value_t))*size;
+            const uint64_t total_input_bytes = (sizeof(key_t) + sizeof(value_t))*size;
             uint64_t ips = size/(insert_time/1000);
             uint64_t qps = size/(query_time/1000);
-            float itp = helpers::B2GB(total_bytes) / (insert_time/1000);
-            float qtp = helpers::B2GB(total_bytes) / (query_time/1000);
+            float itp = helpers::B2GB(total_input_bytes) / (insert_time/1000);
+            float qtp = helpers::B2GB(total_input_bytes) / (query_time/1000);
             uint64_t key_capacity = hash_table.capacity();
             uint64_t value_capacity = hash_table.value_capacity();
             float key_load = hash_table.key_load_factor();
             float value_load = hash_table.value_load_factor();
             float density = hash_table.storage_density();
             float relative_density = hash_table.relative_storage_density();
+            uint64_t table_bytes = hash_table.bytes_total();
             warpcore::Status status = hash_table.pop_status();
 
             if(print_headers)
@@ -184,6 +190,7 @@ void multi_value_benchmark(
                     << d << "value_load=" << value_load
                     << d << "density=" << density
                     << d << "relative_density=" << relative_density
+                    << d << "table_bytes=" << table_bytes
                     << d << "insert_ms=" << insert_time
                     << d << "query_ms=" << query_time
                     << d << "IPS=" << ips
@@ -207,6 +214,7 @@ void multi_value_benchmark(
                     << d << value_load
                     << d << density
                     << d << relative_density
+                    << d << table_bytes
                     << d << insert_time
                     << d << query_time
                     << d << ips
