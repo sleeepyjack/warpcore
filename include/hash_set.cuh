@@ -467,31 +467,31 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      * \param[in] size of shared memory to reserve for this execution
      */
-     template<class Func>
-     HOSTQUALIFIER INLINEQUALIFIER
-     void for_each(
-         Func f,
-         cudaStream_t stream = 0,
-         index_type smem_bytes = 0) const noexcept
-     {
-         if(!is_initialized_) return;
+    template<class Func>
+    HOSTQUALIFIER INLINEQUALIFIER
+    void for_each(
+        Func f,
+        cudaStream_t stream = 0,
+        index_type smem_bytes = 0) const noexcept
+    {
+        if(!is_initialized_) return;
 
-         helpers::lambda_kernel
-         <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
-         ([=, *this] DEVICEQUALIFIER // TODO mutable?
-         {
-             const index_type tid = helpers::global_thread_id();
+        helpers::lambda_kernel
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        ([=, *this] DEVICEQUALIFIER // TODO mutable?
+        {
+            const index_type tid = helpers::global_thread_id();
 
-             if(tid < capacity())
-             {
-                 const key_type key = keys_[tid];
-                 if(is_valid_key(key))
-                 {
-                     f(key);
-                 }
-             }
-         });
-     }
+            if(tid < capacity())
+            {
+                const key_type key = keys_[tid];
+                if(is_valid_key(key))
+                {
+                    f(key);
+                }
+            }
+        });
+    }
 
     /*! \brief number of key/value pairs stored inside the hash set
      * \return the number of key/value pairs inside the hash table

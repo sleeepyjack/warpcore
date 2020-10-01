@@ -201,13 +201,13 @@ public:
      * \param[in] probing_length maximum number of probing attempts
      * \return status (per thread)
      */
-     DEVICEQUALIFIER INLINEQUALIFIER
-     status_type insert(
-         const key_type key_in,
-         const value_type& value_in,
-         const cg::thread_block_tile<cg_size()>& group,
-         const index_type probing_length = defaults::probing_length()) noexcept
-     {
+    DEVICEQUALIFIER INLINEQUALIFIER
+    status_type insert(
+        const key_type key_in,
+        const value_type& value_in,
+        const cg::thread_block_tile<cg_size()>& group,
+        const index_type probing_length = defaults::probing_length()) noexcept
+    {
         if(!is_initialized_)
         {
             return status_type::not_initialized();
@@ -290,7 +290,7 @@ public:
             status_type::probing_length_exceeded();
         device_join_status(status);
         return status;
-     }
+    }
 
     /*! \brief insert a set of keys into the hash table
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)
@@ -669,7 +669,7 @@ public:
      * \return \c warpcore::HashSet
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    const key_set_type get_key_set(
+    key_set_type get_key_set(
         const cudaStream_t stream = 0,
         const float size_fraction = 0.9) const noexcept
     {

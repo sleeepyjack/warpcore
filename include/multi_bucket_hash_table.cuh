@@ -897,7 +897,7 @@ public:
      * \return \c warpcore::HashSet
      */
     HOSTQUALIFIER INLINEQUALIFIER
-    const key_set_type get_key_set(
+    key_set_type get_key_set(
         const cudaStream_t stream = 0,
         const float size_fraction = 0.9) const noexcept
     {

@@ -260,14 +260,14 @@ public:
      * \param[in] group cooperative group this operation is executed in
      * \param[out] flag whether the key was already inside the filter before insertion
      */
-     template<
+    template<
         index_type CGSize_ = cg_size(),
         class = std::enable_if_t<CGSize_ == 1>>
-     DEVICEQUALIFIER INLINEQUALIFIER
-     bool insert_and_query(
+    DEVICEQUALIFIER INLINEQUALIFIER
+    bool insert_and_query(
          const key_type key,
          const cg::thread_block_tile<cg_size()>& group) noexcept
-     {
+    {
         const index_type slot_index =
             ((Hasher::hash(key+seed_) % num_blocks_) *
             cg_size() + group.thread_rank()) % num_slots_;
@@ -294,7 +294,7 @@ public:
         {
             return true;
         }
-     }
+    }
 
     /*! \brief get number of bits (m)
      * \return number of bits (m)
@@ -317,11 +317,11 @@ public:
     /*! \brief get number of blocks
      * \return number of blocks
      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     index_type num_blocks() const noexcept
-     {
-         return num_blocks_;
-     }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    index_type num_blocks() const noexcept
+    {
+        return num_blocks_;
+    }
 
     /*! \brief get number of hash functions (k)
      * \return number of hash functions (k)
