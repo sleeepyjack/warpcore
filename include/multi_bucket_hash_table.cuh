@@ -996,6 +996,36 @@ public:
         }
     }
 
+    /*! \brief number of occupied slots in the hash table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \return the number of occupied slots
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type num_occupied(const cudaStream_t stream = 0) const noexcept
+    {
+        if(!is_initialized_) return 0;
+
+        index_type out;
+        index_type * tmp = temp_.get();
+
+        cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
+
+        kernels::size
+        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        (tmp, *this);
+
+        cudaMemcpyAsync(
+            &out,
+            tmp,
+            sizeof(index_type),
+            D2H,
+            stream);
+
+        cudaStreamSynchronize(stream);
+
+        return out;
+    }
+
     /*! \brief number of values stored inside the hash table
      * \info alias for \c size()
      * \param[in] stream CUDA stream in which this operation is executed in
@@ -1021,49 +1051,9 @@ public:
 
         cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
 
-        helpers::lambda_kernel
+        kernels::num_values
         <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        ([=, *this] DEVICEQUALIFIER
-        {
-            __shared__ index_t smem;
-
-            const index_t tid = helpers::global_thread_id();
-            const auto block = cg::this_thread_block();
-
-            if(tid < capacity())
-            {
-                const bool empty = !is_valid_key(table_[tid].key);
-
-                if(block.thread_rank() == 0)
-                {
-                    smem = 0;
-                }
-
-                block.sync();
-
-                index_t value_count = 0;
-                if(!empty)
-                {
-                    const auto bucket = table_[tid].value;
-                    #pragma unroll
-                    for(int b = 0; b < bucket_size(); ++b) {
-                        const auto& value = bucket[b];
-                        if(value != empty_value())
-                            ++value_count;
-                    }
-
-                    // TODO warp reduce
-                    atomicAdd(&smem, value_count);
-                }
-
-                block.sync();
-
-                if(block.thread_rank() == 0 && smem != 0)
-                {
-                    atomicAdd(tmp, smem);
-                }
-            }
-        });
+        (tmp, *this);
 
         cudaMemcpyAsync(
             &out,
@@ -1084,7 +1074,7 @@ public:
     HOSTQUALIFIER INLINEQUALIFIER
     float key_load_factor(const cudaStream_t stream = 0) const noexcept
     {
-        return float(num_keys(stream)) / float(capacity());
+        return float(num_occupied(stream)) / float(capacity());
     }
 
     /*! \brief current load factor of the hash table
@@ -1335,6 +1325,10 @@ private:
     template<class Core>
     GLOBALQUALIFIER
     friend void kernels::size(index_type * const, const Core);
+
+    template<class Core>
+    GLOBALQUALIFIER
+    friend void kernels::num_values(index_type * const, const Core);
 
     template<class Func, class Core>
     GLOBALQUALIFIER

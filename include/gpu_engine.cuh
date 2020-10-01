@@ -369,6 +369,53 @@ void size(
     }
 }
 
+// for Core = MultiBucketHashTable
+template<class Core>
+GLOBALQUALIFIER
+void num_values(
+    index_t * const num_out,
+    const Core core)
+{
+    __shared__ index_t smem;
+
+    const index_t tid = helpers::global_thread_id();
+    const auto block = cg::this_thread_block();
+
+    if(tid < core.capacity())
+    {
+        const bool empty = !core.is_valid_key(core.table_[tid].key);
+
+        if(block.thread_rank() == 0)
+        {
+            smem = 0;
+        }
+
+        block.sync();
+
+        index_t value_count = 0;
+        if(!empty)
+        {
+            const auto bucket = core.table_[tid].value;
+            #pragma unroll
+            for(int b = 0; b < core.bucket_size(); ++b) {
+                const auto& value = bucket[b];
+                if(value != core.empty_value())
+                    ++value_count;
+            }
+
+            // TODO warp reduce
+            atomicAdd(&smem, value_count);
+        }
+
+        block.sync();
+
+        if(block.thread_rank() == 0 && smem != 0)
+        {
+            atomicAdd(num_out, smem);
+        }
+    }
+}
+
 template<class Core, class StatusHandler = defaults::status_handler_t>
 GLOBALQUALIFIER
 void num_values(
