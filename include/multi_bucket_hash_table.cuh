@@ -1110,10 +1110,10 @@ public:
     {
         const index_type key_bytes = num_keys(stream) * sizeof(key_type);
         const index_type value_bytes = num_values(stream) * sizeof(value_type);
-        const index_type table_bytes =
-            table_.capacity() * (sizeof(key_type) + sizeof(bucket_type));
+        const index_type occupied_bytes =
+            num_occupied(stream) * sizeof(key_type) + value_bytes;
 
-        return float(key_bytes + value_bytes) / (table_bytes);
+        return float(key_bytes + value_bytes) / (occupied_bytes);
     }
 
     /*! \brief get the key capacity of the hash table
