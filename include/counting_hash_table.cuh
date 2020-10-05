@@ -182,7 +182,7 @@ public:
     template<class StatusHandler = defaults::status_handler_t>
     HOSTQUALIFIER INLINEQUALIFIER
     void insert(
-        key_type * keys_in,
+        const key_type * keys_in,
         index_type num_in,
         cudaStream_t stream = 0,
         index_type probing_length = defaults::probing_length(),
@@ -236,7 +236,7 @@ public:
     template<class StatusHandler = defaults::status_handler_t>
     HOSTQUALIFIER INLINEQUALIFIER
     void retrieve(
-        key_type * keys_in,
+        const key_type * keys_in,
         index_type num_in,
         value_type * values_out,
         cudaStream_t stream = 0,
