@@ -176,6 +176,58 @@ float benchmark_query(
 template<class HashTable>
 float benchmark_query_multi(
     HashTable& hash_table,
+    typename HashTable::key_type * keys_d,
+    const uint64_t size,
+    typename HashTable::index_type * offsets_d,
+    typename HashTable::value_type * values_d,
+    const uint8_t iters,
+    const std::chrono::milliseconds thermal_backoff)
+{
+    using index_t = typename HashTable::index_type;
+
+    helpers::lambda_kernel
+    <<<SDIV(size, 1024), 1024>>>
+    ([=] DEVICEQUALIFIER
+    {
+        const uint64_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+
+        if(tid < size)
+        {
+            keys_d[tid] = tid + 1;
+        }
+    });
+    cudaDeviceSynchronize(); CUERR
+
+    index_t value_size_out = 0;
+
+    std::vector<float> query_times(iters);
+    for(uint64_t i = 0; i < iters; i++)
+    {
+        cudaEvent_t query_start, query_stop;
+        float t;
+        cudaEventCreate(&query_start);
+        cudaEventCreate(&query_stop);
+        cudaEventRecord(query_start, 0);
+        hash_table.retrieve(
+            keys_d,
+            size,
+            offsets_d,
+            offsets_d+1,
+            values_d,
+            value_size_out);
+        cudaEventRecord(query_stop, 0);
+        cudaEventSynchronize(query_stop);
+        cudaEventElapsedTime(&t, query_start, query_stop);
+        cudaDeviceSynchronize(); CUERR
+        query_times[i] = t;
+        std::this_thread::sleep_for(thermal_backoff);
+    }
+    return *std::min_element(query_times.begin(), query_times.end());
+}
+
+template<class HashTable>
+float benchmark_query_unique(
+    HashTable& hash_table,
     typename HashTable::key_type * unique_keys_d,
     typename HashTable::index_type * offsets_d,
     typename HashTable::value_type * values_d,

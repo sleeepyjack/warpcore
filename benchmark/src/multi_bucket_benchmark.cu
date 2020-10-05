@@ -22,8 +22,8 @@ void multi_value_benchmark(
 
     const uint64_t max_unique_size = num_unique(keys_d, max_keys);
 
-    key_t* unique_keys_d = nullptr;
-    cudaMalloc(&unique_keys_d, sizeof(key_t)*max_unique_size); CUERR
+    key_t* query_keys_d = nullptr;
+    cudaMalloc(&query_keys_d, sizeof(key_t)*max_keys); CUERR
     value_t* values_d = nullptr;
     cudaMalloc(&values_d, sizeof(value_t)*max_keys); CUERR
     index_t * offsets_d = nullptr;
@@ -75,8 +75,13 @@ void multi_value_benchmark(
             // std::cerr << "keys in set: " << key_set.size() << '\n';
 
             output.query_ms = benchmark_query_multi(
-                hash_table, unique_keys_d, offsets_d, values_d,
+                hash_table, query_keys_d, size,
+                offsets_d, values_d,
                 iters, thermal_backoff);
+
+            // output.query_ms = benchmark_query_unique(
+            //     hash_table, query_keys_d, offsets_d, values_d,
+            //     iters, thermal_backoff);
 
             output.key_load_factor = hash_table.key_load_factor();
             output.value_load_factor = hash_table.value_load_factor();
@@ -91,7 +96,7 @@ void multi_value_benchmark(
         }
     }
 
-    cudaFree(unique_keys_d); CUERR
+    cudaFree(query_keys_d); CUERR
     cudaFree(values_d); CUERR
     cudaFree(offsets_d); CUERR
 }
@@ -104,6 +109,8 @@ int main(int argc, char* argv[])
     using value_t = std::uint32_t;
 
     const uint64_t max_keys = 1UL << 27;
+
+    const bool print_headers = true;
 
     uint64_t dev_id = 0;
     if(argc > 2) dev_id = std::atoi(argv[2]);
@@ -154,22 +161,26 @@ int main(int argc, char* argv[])
     multi_value_benchmark<mb1_hash_table_t>(
         keys_d, max_keys,
         {max_keys},
-        {0.8});
+        {0.8},
+        print_headers);
 
     multi_value_benchmark<mb2_hash_table_t>(
         keys_d, max_keys,
         {max_keys},
-        {0.8});
+        {0.8},
+        print_headers);
 
     multi_value_benchmark<mb4_hash_table_t>(
         keys_d, max_keys,
         {max_keys},
-        {0.8});
+        {0.8},
+        print_headers);
 
     multi_value_benchmark<mb8_hash_table_t>(
         keys_d, max_keys,
         {max_keys},
-        {0.8});
+        {0.8},
+        print_headers);
 
     cudaFree(keys_d); CUERR
 }

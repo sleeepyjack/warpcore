@@ -51,8 +51,8 @@ void bucket_list_benchmark(
     const uint64_t key_store_capacity = max_unique_size / key_load_factor;
     const uint64_t value_store_capacity = max_keys / value_load_factor;
 
-    key_t* unique_keys_d = nullptr;
-    cudaMalloc(&unique_keys_d, sizeof(key_t)*max_unique_size); CUERR
+    key_t* query_keys_d = nullptr;
+    cudaMalloc(&query_keys_d, sizeof(key_t)*max_keys); CUERR
     value_t* values_d = nullptr;
     cudaMalloc(&values_d, sizeof(value_t)*max_keys); CUERR
     index_t * offsets_d = nullptr;
@@ -98,8 +98,13 @@ void bucket_list_benchmark(
                 iters, thermal_backoff);
 
             output.query_ms = benchmark_query_multi(
-                hash_table, unique_keys_d, offsets_d, values_d,
+                hash_table, query_keys_d, size,
+                offsets_d, values_d,
                 iters, thermal_backoff);
+
+            // output.query_ms = benchmark_query_unique(
+            //     hash_table, query_keys_d, offsets_d, values_d,
+            //     iters, thermal_backoff);
 
             output.key_load_factor = hash_table.key_load_factor();
             output.value_load_factor = hash_table.value_load_factor();
@@ -120,7 +125,7 @@ void bucket_list_benchmark(
         }
     }
 
-    cudaFree(unique_keys_d); CUERR
+    cudaFree(query_keys_d); CUERR
     cudaFree(values_d); CUERR
     cudaFree(offsets_d); CUERR
 }
@@ -133,6 +138,8 @@ int main(int argc, char* argv[])
     using value_t = std::uint32_t;
 
     const uint64_t max_keys = 1UL << 27;
+
+    const bool print_headers = true;
 
     uint64_t dev_id = 0;
     if(argc > 2) dev_id = std::atoi(argv[2]);
@@ -158,7 +165,8 @@ int main(int argc, char* argv[])
         0.50,
         {max_keys},
         {{1.1, 1, 0}},
-        0x5ad0ded);
+        0x5ad0ded,
+        print_headers);
 
     cudaFree(keys_d); CUERR
 }

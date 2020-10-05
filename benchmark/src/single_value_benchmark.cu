@@ -82,6 +82,8 @@ int main(int argc, char* argv[])
 
     const uint64_t max_keys = 1UL << 27;
 
+    const bool print_headers = true;
+
     uint64_t dev_id = 0;
     if(argc > 2) dev_id = std::atoi(argv[2]);
     cudaSetDevice(dev_id); CUERR
@@ -101,7 +103,7 @@ int main(int argc, char* argv[])
         storage::key_value::AoSStore<key_t, value_t>>;
 
     single_value_benchmark<hash_table_t>(
-        keys_d, max_keys, {max_keys}, {0.8}, true);
+        keys_d, max_keys, {max_keys}, {0.8}, print_headers);
 
     cudaFree(keys_d); CUERR
 }

@@ -84,6 +84,8 @@ int main(int argc, char* argv[])
 
     const uint64_t max_keys = 1UL << 28;
 
+    const bool print_headers = true;
+
     uint64_t dev_id = 0;
     if(argc > 2) dev_id = std::atoi(argv[2]);
     cudaSetDevice(dev_id); CUERR
@@ -97,7 +99,7 @@ int main(int argc, char* argv[])
     using hash_table_t = warpcore::CountingHashTable<key_t, count_t>;
 
     counting_benchmark<hash_table_t>(
-        keys_d, max_keys, {max_keys}, {0.9}, true);
+        keys_d, max_keys, {max_keys}, {0.9}, print_headers);
 
     cudaFree(keys_d); CUERR
 }

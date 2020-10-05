@@ -10,36 +10,29 @@ NVCCFLAGS := -std=$(STD) $(NVCCGENCODE) --expt-extended-lambda --expt-relaxed-co
 INCS := $(foreach dir, $(INCDIRS), $(wildcard $(dir)/*.cuh $(dir)/*.h $(dir)/*.hpp))
 INCPARAMS := $(addprefix -I, $(INCDIRS))
 
-all: single_value multi_value multi_bucket counting bloom_filter bucket_list
+all: bin/single_value_benchmark.out \
+     bin/multi_value_benchmark.out \
+     bin/multi_bucket_benchmark.out \
+     bin/counting_benchmark.out \
+     bin/bloom_filter_benchmark.out \
+     bin/bucket_list_benchmark.out
 
-single_value: bin/single_value_benchmark.out
-
-bin/single_value_benchmark.out: ${INCS} | bin
+bin/single_value_benchmark.out: src/single_value_benchmark.cu src/common.cuh ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/single_value_benchmark.cu -o bin/single_value_benchmark.out
 
-multi_value: bin/multi_value_benchmark.out
-
-bin/multi_value_benchmark.out: ${INCS} | bin
+bin/multi_value_benchmark.out: src/multi_value_benchmark.cu src/common.cuh ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/multi_value_benchmark.cu -o bin/multi_value_benchmark.out
 
-multi_bucket: bin/multi_bucket_benchmark.out
-
-bin/multi_bucket_benchmark.out: ${INCS} | bin
+bin/multi_bucket_benchmark.out: src/multi_bucket_benchmark.cu src/common.cuh ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/multi_bucket_benchmark.cu -o bin/multi_bucket_benchmark.out
 
-counting: bin/counting_benchmark.out
-
-bin/counting_benchmark.out: ${INCS} | bin
+bin/counting_benchmark.out: src/counting_benchmark.cu src/common.cuh ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/counting_benchmark.cu -o bin/counting_benchmark.out
 
-bloom_filter: bin/bloom_filter_benchmark.out
-
-bin/bloom_filter_benchmark.out: ${INCS} | bin
+bin/bloom_filter_benchmark.out: src/bloom_filter_benchmark.cu src/common.cuh ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/bloom_filter_benchmark.cu -o bin/bloom_filter_benchmark.out
 
-bucket_list: bin/bucket_list_benchmark.out
-
-bin/bucket_list_benchmark.out: ${INCS} | bin
+bin/bucket_list_benchmark.out: src/bucket_list_benchmark.cu src/common.cuh ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/bucket_list_benchmark.cu -o bin/bucket_list_benchmark.out
 
 debug: OPT := 0
@@ -57,4 +50,4 @@ clean:
 bin:
 	mkdir -p $@
 
-.PHONY: clean all bin multi_value multi_bucket counting bloom_filter bucket_list
+.PHONY: clean all debug profile
