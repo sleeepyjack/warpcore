@@ -206,11 +206,13 @@ public:
         seed_(seed),
         max_values_per_key_(max_values_per_key),
         num_keys_(nullptr),
+        num_occupied_(nullptr),
         is_copy_(false),
         is_initialized_(false)
     {
         cudaMalloc(&status_, sizeof(status_type));
         cudaMalloc(&num_keys_, sizeof(index_type));
+        cudaMalloc(&num_occupied_, sizeof(index_type));
 
         assign_status(table_.status() + temp_.status());
 
@@ -228,6 +230,7 @@ public:
         seed_(o.seed_),
         max_values_per_key_(o.max_values_per_key_),
         num_keys_(o.num_keys_),
+        num_occupied_(o.num_occupied_),
         is_copy_(true),
         is_initialized_(o.is_initialized_)
     {}
@@ -243,6 +246,7 @@ public:
         seed_(std::move(o.seed_)),
         max_values_per_key_(std::move(o.max_values_per_key_)),
         num_keys_(std::move(o.num_keys_)),
+        num_occupied_(std::move(o.num_occupied_)),
         is_copy_(std::move(o.is_copy_)),
         is_initialized_(std::move(o.is_initialized_))
     {
@@ -259,6 +263,7 @@ public:
         {
             if(status_ != nullptr) cudaFree(status_);
             if(num_keys_ != nullptr) cudaFree(num_keys_);
+            if(num_occupied_ != nullptr) cudaFree(num_occupied_);
         }
     }
     #endif
@@ -280,6 +285,7 @@ public:
             assign_status(table_.status() + temp_.status(), stream);
 
             cudaMemsetAsync(num_keys_, 0, sizeof(index_type), stream);
+            cudaMemsetAsync(num_occupied_, 0, sizeof(index_type), stream);
 
             is_initialized_ = true;
         }
@@ -296,7 +302,8 @@ private:
     {
         if(last_key_pos < std::numeric_limits<index_type>::max())
         {
-            for(index_type i = group.thread_rank();
+            #pragma unroll
+            for(index_type i = 0;
                            i < SDIV(bucket_size(),cg_size())*cg_size();
                            i += cg_size())
             {
@@ -327,7 +334,7 @@ private:
                     if(group.thread_rank() == leader)
                     {
                         const auto old =
-                            atomicCAS(&(table_[last_key_pos].value[i]), table_value, value_in);
+                            atomicCAS(&(table_[last_key_pos].value[i+group.thread_rank()]), table_value, value_in);
 
                         success = (old == table_value);
                     }
@@ -442,6 +449,8 @@ public:
                     {
                         // relaxed write to first slot in value array
                         table_[i].value[0] = value_in;
+
+                        helpers::atomicAggInc(num_occupied_);
 
                         if(num_values_plus_bucket_size == 0)
                         {
@@ -935,6 +944,22 @@ public:
         return num;
     }
 
+    /*! \brief number of occupied slots in the hash table
+     * \param[in] stream CUDA stream in which this operation is executed in
+     * \return the number of occupied slots
+     */
+    HOSTQUALIFIER INLINEQUALIFIER
+    index_type num_occupied(const cudaStream_t stream = 0) const noexcept
+    {
+        index_type num = 0;
+
+        cudaMemcpyAsync(&num, num_occupied_, sizeof(index_type), D2H, stream);
+
+        cudaStreamSynchronize(stream);
+
+        return num;
+    }
+
     /*! \brief total number of values inside the table
      * \param[in] key_in key to be probed
      * \param[out] num_out number of values associated to \c key_in*
@@ -998,36 +1023,6 @@ public:
         {
             cudaStreamSynchronize(stream);
         }
-    }
-
-    /*! \brief number of occupied slots in the hash table
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \return the number of occupied slots
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    index_type num_occupied(const cudaStream_t stream = 0) const noexcept
-    {
-        if(!is_initialized_) return 0;
-
-        index_type out;
-        index_type * tmp = temp_.get();
-
-        cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
-
-        kernels::size
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
-        (tmp, *this);
-
-        cudaMemcpyAsync(
-            &out,
-            tmp,
-            sizeof(index_type),
-            D2H,
-            stream);
-
-        cudaStreamSynchronize(stream);
-
-        return out;
     }
 
     /*! \brief number of values stored inside the hash table
@@ -1323,6 +1318,7 @@ private:
     key_type seed_; //< random seed
     index_type max_values_per_key_; //< maximum number of values to store per key
     index_type * num_keys_; //< pointer to the count of unique keys
+    index_type * num_occupied_; //< pointer to the count of occupied key slots
     bool is_copy_; //< indicates if table is a shallow copy
     bool is_initialized_; //< indicates if table is properly initialized
 
