@@ -96,6 +96,10 @@ class MultiBucketHashTable
         "invalid key type");
 
     static_assert(
+        checks::is_valid_slot_type<Value>(),
+        "invalid value type");
+
+    static_assert(
         EmptyKey != TombstoneKey,
         "empty key and tombstone key must not be identical");
 
