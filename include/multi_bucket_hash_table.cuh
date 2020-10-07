@@ -308,7 +308,7 @@ private:
                            i += cg_size())
             {
                 // first bucket value always written after key insert
-                const key_type table_value =
+                const value_type table_value =
                     (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
                     table_[last_key_pos].value[group.thread_rank()] :
                     ~empty_value();
