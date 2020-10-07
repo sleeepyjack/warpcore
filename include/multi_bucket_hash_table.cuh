@@ -139,11 +139,6 @@ public:
     using bucket_type = typename TableStorage::value_type;
     using index_type = index_t;
     using status_type = Status;
-    using key_set_type = HashSet<
-            Key,
-            EmptyKey,
-            TombstoneKey,
-            defaults::probing_scheme_t<Key, 1>>;
 
     /*! \brief get empty key
      * \return empty key
@@ -749,21 +744,63 @@ public:
     {
         if(!is_initialized_) return;
 
-        const auto key_set = get_key_set(stream);
-
         if(keys_out != nullptr)
         {
-            key_set.retrieve_all(keys_out, num_out, stream);
+            index_type * const tmp = temp_.get();
+            cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
+
+            // for each valid entry in table check if this entry is the first of this key
+            helpers::lambda_kernel
+            <<<SDIV(capacity()*cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            ([=, *this] DEVICEQUALIFIER
+            {
+                const index_t tid = helpers::global_thread_id();
+                const index_t gid = tid / cg_size();
+                const auto group =
+                    cg::tiled_partition<cg_size()>(cg::this_thread_block());
+
+                if(gid < capacity())
+                {
+                    key_type search_key = table_[gid].key;
+                    if(is_valid_key(search_key))
+                    {
+                        ProbingScheme iter(capacity(), capacity(), group);
+
+                        for(index_type i = iter.begin(search_key, seed_); i != iter.end(); i = iter.next())
+                        {
+                            const auto table_key = table_[i].key;
+                            const auto hit = (table_key == search_key);
+                            const auto hit_mask = group.ballot(hit);
+
+                            const auto leader = ffs(hit_mask) - 1;
+
+                            // check if search_key is the first entry for this key
+                            if(group.thread_rank() == leader && i == gid)
+                            {
+                                index_type out = helpers::atomicAggInc(tmp);
+                                keys_out[out] = table_key;
+                            }
+
+                            if(group.any(hit))
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+            });
+
+            cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H, stream);
+
+            if(stream == 0)
+            {
+                cudaStreamSynchronize(stream);
+            }
         }
         else
         {
-            num_out = key_set.size(stream);
+            num_out = num_keys(stream);
             join_status(status_type::dry_run(), stream);
-        }
-
-        if(stream == 0)
-        {
-            cudaStreamSynchronize(stream);
         }
     }
 
