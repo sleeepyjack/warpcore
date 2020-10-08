@@ -300,63 +300,60 @@ private:
         index_type num_values,
         status_type& status) noexcept
     {
-        if(last_key_pos < std::numeric_limits<index_type>::max())
+        #pragma unroll
+        for(index_type i = 0;
+                        i < SDIV(bucket_size(),cg_size())*cg_size();
+                        i += cg_size())
         {
-            #pragma unroll
-            for(index_type i = 0;
-                           i < SDIV(bucket_size(),cg_size())*cg_size();
-                           i += cg_size())
+            // first bucket value always written after key insert
+            const value_type table_value =
+                (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
+                table_[last_key_pos].value[group.thread_rank()] :
+                ~empty_value();
+
+            auto empty_value_mask = group.ballot(is_empty_value(table_value));
+
+            num_values += bucket_size() - __popc(empty_value_mask);
+
+            if(num_values >= max_values_per_key_)
             {
-                // first bucket value always written after key insert
-                const value_type table_value =
-                    (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
-                    table_[last_key_pos].value[group.thread_rank()] :
-                    ~empty_value();
+                status = status_type::duplicate_key() +
+                        status_type::max_values_for_key_reached();
+                device_join_status(status);
+                return true;
+            }
 
-                auto empty_value_mask = group.ballot(is_empty_value(table_value));
+            bool success = false;
 
-                num_values += bucket_size() - __popc(empty_value_mask);
+            while(empty_value_mask)
+            {
+                const auto leader = ffs(empty_value_mask) - 1;
 
+                if(group.thread_rank() == leader)
+                {
+                    const auto old =
+                        atomicCAS(&(table_[last_key_pos].value[i+group.thread_rank()]), table_value, value_in);
+
+                    success = (old == table_value);
+                }
+
+                if(group.any(success))
+                {
+                    status = (num_values > 0) ?
+                        status_type::duplicate_key() : status_type::none();
+                    return true;
+                }
+
+                ++num_values;
                 if(num_values >= max_values_per_key_)
                 {
                     status = status_type::duplicate_key() +
-                            status_type::max_values_for_key_reached();
+                                status_type::max_values_for_key_reached();
                     device_join_status(status);
                     return true;
                 }
 
-                bool success = false;
-
-                while(empty_value_mask)
-                {
-                    const auto leader = ffs(empty_value_mask) - 1;
-
-                    if(group.thread_rank() == leader)
-                    {
-                        const auto old =
-                            atomicCAS(&(table_[last_key_pos].value[i+group.thread_rank()]), table_value, value_in);
-
-                        success = (old == table_value);
-                    }
-
-                    if(group.any(success))
-                    {
-                        status = (num_values > 0) ?
-                            status_type::duplicate_key() : status_type::none();
-                        return true;
-                    }
-
-                    ++num_values;
-                    if(num_values >= max_values_per_key_)
-                    {
-                        status = status_type::duplicate_key() +
-                                 status_type::max_values_for_key_reached();
-                        device_join_status(status);
-                        return true;
-                    }
-
-                    empty_value_mask ^= 1UL << leader;
-                }
+                empty_value_mask ^= 1UL << leader;
             }
         }
 
@@ -413,20 +410,21 @@ public:
 
             num_values_plus_bucket_size += bucket_size() * __popc(key_found_mask);
 
-            // TODO is this early exit needed?
-            // if(num_values_plus_bucket_size >= max_values_per_key_)
-            // {
-            //     status_type status;
-            //     if(bucket_size() > 1 &&
-            //        insert_into_bucket(last_key_pos, value_in, group,
-            //              num_values_plus_bucket_size - bucket_size(), status))
-            //         return status;
-            // }
+            // early exit
+            if(num_values_plus_bucket_size >= max_values_per_key_)
+            {
+                status_type status;
+                if((bucket_size() > 1) &&
+                   insert_into_bucket(last_key_pos, value_in, group,
+                         num_values_plus_bucket_size - bucket_size(), status))
+                    return status;
+            }
 
             while(empty_key_mask)
             {
                 status_type status;
-                if(bucket_size() > 1 &&
+                if((bucket_size() > 1) &&
+                   (last_key_pos < std::numeric_limits<index_type>::max()) &&
                    insert_into_bucket(last_key_pos, value_in, group,
                         num_values_plus_bucket_size - bucket_size(), status))
                     return status;
@@ -477,7 +475,8 @@ public:
         }
 
         status_type status;
-        if(bucket_size() > 1 &&
+        if((bucket_size() > 1) &&
+           (last_key_pos < std::numeric_limits<index_type>::max()) &&
            insert_into_bucket(last_key_pos, value_in, group,
                 num_values_plus_bucket_size - bucket_size(), status))
             return status;
