@@ -969,30 +969,6 @@ public:
         (f, keys_in, num_in, *this, status_out);
     }
 
-    /*! \brief \c warpcore::HashSet of unique keys inside the table
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \param[in] size_fraction capacity of the hash set in relation to the number of unique keys inside the table
-     * \return \c warpcore::HashSet
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    key_set_type get_key_set(
-        const cudaStream_t stream = 0,
-        const float size_fraction = 0.9) const noexcept
-    {
-        const index_type set_capacity = num_keys(stream) / size_fraction;
-        key_set_type hash_set(set_capacity, seed_);
-
-        for_each_bucket([=] DEVICEQUALIFIER
-        (const key_type key, const bucket_type& /* bucket */) mutable
-        {
-            hash_set.insert(key, cg::tiled_partition<1>(cg::this_thread_block()));
-        }, stream);
-
-        cudaStreamSynchronize(stream);
-
-        return hash_set;
-    }
-
     /*! \brief number of unique keys inside the table
      * \param[in] stream CUDA stream in which this operation is executed in
      * \return number of unique keys

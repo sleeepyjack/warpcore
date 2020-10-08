@@ -64,11 +64,6 @@ public:
     using value_type = Value;
     using index_type = index_t;
     using status_type = Status;
-    using key_set_type = HashSet<
-            Key,
-            EmptyKey,
-            TombstoneKey,
-            defaults::probing_scheme_t<Key, 1>>;
 
     /*! \brief get empty key
      * \return empty key
@@ -703,30 +698,6 @@ public:
         kernels::for_each<Func, MultiValueHashTable>
         <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
         (f, keys_in, num_in, *this, status_out);
-    }
-
-    /*! \brief \c warpcore::HashSet of unique keys inside the table
-     * \param[in] stream CUDA stream in which this operation is executed in
-     * \param[in] size_fraction capacity of the hash set in relation to the number of unique keys inside the table
-     * \return \c warpcore::HashSet
-     */
-    HOSTQUALIFIER INLINEQUALIFIER
-    key_set_type get_key_set(
-        const cudaStream_t stream = 0,
-        const float size_fraction = 0.9) const noexcept
-    {
-        const index_type set_capacity = num_keys(stream) / size_fraction;
-        key_set_type hash_set(set_capacity, seed_);
-
-        for_each([=] DEVICEQUALIFIER
-        (const key_type key, const value_type& /* value */) mutable
-        {
-            hash_set.insert(key, cg::tiled_partition<1>(cg::this_thread_block()));
-        }, stream);
-
-        cudaStreamSynchronize(stream);
-
-        return hash_set;
     }
 
     /*! \brief number of unique keys inside the table
