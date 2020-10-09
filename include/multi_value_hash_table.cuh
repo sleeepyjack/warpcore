@@ -228,7 +228,7 @@ public:
 
             auto empty_mask = group.ballot(is_empty_key(table_key));
 
-            num_values += __popc(group.ballot((table_key == key_in)));
+            num_values += __popc(group.ballot(table_key == key_in));
 
             if(num_values >= max_values_per_key_)
             {

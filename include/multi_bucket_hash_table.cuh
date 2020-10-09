@@ -13,6 +13,10 @@ struct ArrayBucket {
     using value_type = Value;
     using index_type = std::uint32_t;
 
+    static_assert(
+        BucketSize > 0,
+        "invalid bucket size of 0");
+
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     explicit ArrayBucket(value_type value) noexcept
     {
@@ -182,7 +186,7 @@ public:
      * \return bucket size
      */
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-    static constexpr int bucket_size() noexcept
+    static constexpr index_type bucket_size() noexcept
     {
         return TableStorage::value_type::bucket_size();
     }
@@ -302,23 +306,23 @@ private:
     {
         #pragma unroll
         for(index_type i = 0;
-                        i < SDIV(bucket_size(),cg_size())*cg_size();
-                        i += cg_size())
+                       i < SDIV(bucket_size(),cg_size())*cg_size();
+                       i += cg_size())
         {
             // first bucket value always written after key insert
             const value_type table_value =
-                (0 < group.thread_rank() && group.thread_rank() < bucket_size()) ?
+                ((0 < group.thread_rank()) && (i + group.thread_rank() < bucket_size())) ?
                 table_[last_key_pos].value[group.thread_rank()] :
                 ~empty_value();
 
             auto empty_value_mask = group.ballot(is_empty_value(table_value));
 
-            num_values += bucket_size() - __popc(empty_value_mask);
+            num_values += min(bucket_size(),cg_size()) - __popc(empty_value_mask);
 
             if(num_values >= max_values_per_key_)
             {
                 status = status_type::duplicate_key() +
-                        status_type::max_values_for_key_reached();
+                         status_type::max_values_for_key_reached();
                 device_join_status(status);
                 return true;
             }
@@ -348,7 +352,7 @@ private:
                 if(num_values >= max_values_per_key_)
                 {
                     status = status_type::duplicate_key() +
-                                status_type::max_values_for_key_reached();
+                             status_type::max_values_for_key_reached();
                     device_join_status(status);
                     return true;
                 }
@@ -402,9 +406,9 @@ public:
 
             auto empty_key_mask = group.ballot(is_empty_key(table_key));
 
-            auto key_found_mask = group.ballot((table_key == key_in));
+            const auto key_found_mask = group.ballot(table_key == key_in);
 
-            auto new_last_key_pos = group.shfl(i, 31 - __clz(key_found_mask));
+            const auto new_last_key_pos = group.shfl(i, 31 - __clz(key_found_mask));
 
             last_key_pos = key_found_mask ? new_last_key_pos : last_key_pos;
 
@@ -413,11 +417,22 @@ public:
             // early exit
             if(num_values_plus_bucket_size >= max_values_per_key_)
             {
-                status_type status;
-                if((bucket_size() > 1) &&
-                   insert_into_bucket(last_key_pos, value_in, group,
-                         num_values_plus_bucket_size - bucket_size(), status))
+                if(bucket_size() == 1)
+                {
+                    // num values = num buckets, so no space left
+                    status_type status = status_type::duplicate_key() +
+                                         status_type::max_values_for_key_reached();
+                    device_join_status(status);
                     return status;
+                }
+                else
+                {
+                    status_type status = status_type::unknown_error();
+                    // check if space left in last bucket
+                    insert_into_bucket(last_key_pos, value_in, group,
+                        num_values_plus_bucket_size - bucket_size(), status);
+                    return status;
+                }
             }
 
             while(empty_key_mask)
@@ -457,17 +472,30 @@ public:
                     }
                 }
 
-                if(group.any(key_collision))
-                {
-                    last_key_pos = group.shfl(i, leader);
-                    num_values_plus_bucket_size += bucket_size();
-                    // check collision in next iteration
-                }
-
                 if(group.any(success))
                 {
                     return (num_values_plus_bucket_size > 0) ?
                         status_type::duplicate_key() : status_type::none();
+                }
+
+                key_collision = group.any(key_collision);
+                num_values_plus_bucket_size += key_collision*bucket_size();
+
+                if(bucket_size() == 1)
+                {
+                    if(num_values_plus_bucket_size >= max_values_per_key_)
+                    {
+                        status_type status = status_type::duplicate_key() +
+                                             status_type::max_values_for_key_reached();
+                        device_join_status(status);
+                        return status;
+                    }
+                }
+                else
+                {
+                    // check position in next iteration
+                    const auto new_last_key_pos = group.shfl(i, leader);
+                    last_key_pos =  key_collision ? new_last_key_pos : last_key_pos;
                 }
 
                 empty_key_mask ^= 1UL << leader;
@@ -775,7 +803,7 @@ public:
             const auto hit = (table_key == key_in);
             const auto hit_mask = group.ballot(hit);
 
-            int num_empty = 0;
+            index_type num_empty = 0;
             if(hit)
             {
                 const auto j =
@@ -783,8 +811,9 @@ public:
 
                 const auto bucket = table_[i].value;
                 #pragma unroll
-                for(int b = 0; b < bucket_size(); ++b) {
+                for(index_type b = 0; b < bucket_size(); ++b) {
                     const auto& value = bucket[b];
+                    // if(value != empty_value() && j+b < max_values_per_key_)
                     if(value != empty_value())
                         f(key_in, value, j+b);
                     else
@@ -858,7 +887,7 @@ public:
         (const key_type key, const bucket_type bucket) mutable
         {
             #pragma unroll
-            for(int b = 0; b < bucket_size(); ++b) {
+            for(index_type b = 0; b < bucket_size(); ++b) {
                 const auto& value = bucket[b];
                 if(value != empty_value())
                     f(key, value);
