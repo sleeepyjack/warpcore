@@ -299,7 +299,9 @@ public:
         base_type * out,
         index_t index) noexcept
     {
-        out[index] = status;
+        if(out != nullptr{
+            out[index] = status;
+        }
     }
 }; // class ReturnStatus
 
@@ -318,7 +320,9 @@ public:
         base_type * out,
         index_t index) noexcept
     {
-        out[index] = status.has_any(~Status(Ignore));
+        if(out != nullptr{
+            out[index] = status.has_any(~Status(Ignore));
+        }
     }
 }; // class ReturnBoolean
 
