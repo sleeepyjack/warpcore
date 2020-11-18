@@ -299,7 +299,7 @@ public:
         base_type * out,
         index_t index) noexcept
     {
-        if(out != nullptr{
+        if(out != nullptr){
             out[index] = status;
         }
     }
@@ -320,7 +320,7 @@ public:
         base_type * out,
         index_t index) noexcept
     {
-        if(out != nullptr{
+        if(out != nullptr){
             out[index] = status.has_any(~Status(Ignore));
         }
     }
