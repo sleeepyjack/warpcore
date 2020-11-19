@@ -408,7 +408,7 @@ public:
 
         if(values_out != nullptr)
         {
-            index_type required_temp_bytes = 0;
+            std::size_t required_temp_bytes = 0;
             
             cub::DeviceScan::InclusiveSum(
                 nullptr,
@@ -418,7 +418,8 @@ public:
                 num_in,
                 stream);
 
-            index_type available_temp_bytes_from_outputbuffer = num_out * sizeof(value_type);
+            cudaStreamSynchronize(stream);
+            std::size_t available_temp_bytes_from_outputbuffer = num_out * sizeof(value_type);
             
             if(available_temp_bytes_from_outputbuffer >= required_temp_bytes)
             {
