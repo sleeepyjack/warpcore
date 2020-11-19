@@ -408,15 +408,59 @@ public:
 
         if(values_out != nullptr)
         {
-            index_type temp_bytes = num_out * sizeof(value_type);
-
+            index_type required_temp_bytes = 0;
+            
             cub::DeviceScan::InclusiveSum(
-                values_out,
-                temp_bytes,
+                nullptr,
+                required_temp_bytes,
                 end_offsets_out,
                 end_offsets_out,
                 num_in,
                 stream);
+
+            index_type available_temp_bytes_from_outputbuffer = num_out * sizeof(value_type);
+            
+            if(available_temp_bytes_from_outputbuffer >= required_temp_bytes)
+            {
+
+                cub::DeviceScan::InclusiveSum(
+                    values_out,
+                    available_temp_bytes_from_outputbuffer,
+                    end_offsets_out,
+                    end_offsets_out,
+                    num_in,
+                    stream);
+            }
+            else
+            {
+                //slow path, need extra memory. cub caching allocator???
+                void* cubtemp = nullptr;
+                cudaError_t err = cudaMalloc(&cubtemp, required_temp_bytes);
+
+                if(err == cudaSuccess)
+                {
+                    cub::DeviceScan::InclusiveSum(
+                        cubtemp,
+                        required_temp_bytes,
+                        end_offsets_out,
+                        end_offsets_out,
+                        num_in,
+                        stream);
+
+                    cudaFree(cubtemp);
+                }
+                else
+                {
+                    join_status(status_type::out_of_memory(), stream);
+                    num_out = 0;
+
+                    cudaFree(cubtemp);
+
+                    return;
+                }
+
+                
+            }
 
             cudaMemsetAsync(begin_offsets_out, 0, sizeof(index_type), stream);
 
