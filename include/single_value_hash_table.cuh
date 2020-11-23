@@ -3,6 +3,8 @@
 
 #include "base.cuh"
 
+
+
 namespace warpcore
 {
 
@@ -253,7 +255,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::insert<SingleValueHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, values_in, num_in, *this, probing_length, status_out);
     }
 
@@ -332,7 +334,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::retrieve<SingleValueHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, values_out, *this, probing_length, status_out);
     }
 
@@ -370,7 +372,7 @@ public:
         cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
 
         kernels::retrieve<SingleValueHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, keys_out, values_out, tmp, *this, probing_length, status_out);
 
         cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H);
@@ -491,7 +493,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::erase<SingleValueHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, *this, probing_length, status_out);
     }
 
@@ -511,7 +513,7 @@ public:
         if(!is_initialized_) return;
 
         helpers::lambda_kernel
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        <<<SDIV(capacity(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, smem_bytes, stream>>>
         ([=, *this] DEVICEQUALIFIER
         {
             const index_type tid = helpers::global_thread_id();
@@ -542,7 +544,7 @@ public:
         cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
 
         helpers::lambda_kernel
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, sizeof(index_type), stream>>>
+        <<<SDIV(capacity(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, sizeof(index_type), stream>>>
         ([=, *this] DEVICEQUALIFIER
         {
             __shared__ index_type smem;

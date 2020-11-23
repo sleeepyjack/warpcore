@@ -147,7 +147,7 @@ public:
         seed_ = seed;
 
         kernels::memset
-        <<<SDIV(num_slots_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_slots_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (bloom_filter_, num_slots_);
     }
 
@@ -203,7 +203,7 @@ public:
         const cudaStream_t stream = 0) noexcept
     {
         kernels::bloom_filter::insert
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, *this);
     }
 
@@ -250,7 +250,7 @@ public:
         const cudaStream_t stream = 0) const noexcept
     {
         kernels::bloom_filter::retrieve
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, flags_out, *this);
     }
 

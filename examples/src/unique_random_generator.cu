@@ -36,7 +36,7 @@ bool check_unique(T * in_d, std::uint64_t n) noexcept
 
     // check if neighbouring values are equal
     helpers::lambda_kernel
-    <<<SDIV(n, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+    <<<SDIV(n, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
     ([=] DEVICEQUALIFIER
     {
         // determine the global thread ID

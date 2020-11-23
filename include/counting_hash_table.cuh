@@ -189,7 +189,7 @@ public:
         typename StatusHandler::base_type * status_out = nullptr) noexcept
     {
         kernels::insert<CountingHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, *this, probing_length, status_out);
     }
 
@@ -244,7 +244,7 @@ public:
         typename StatusHandler::base_type * status_out = nullptr) const noexcept
     {
         kernels::retrieve<CountingHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, values_out, *this, probing_length, status_out);
     }
 

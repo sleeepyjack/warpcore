@@ -3,6 +3,8 @@
 
 #include "hash_set.cuh"
 
+
+
 namespace warpcore
 {
 
@@ -318,7 +320,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::insert<MultiValueHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, values_in, num_in, *this, probing_length, status_out);
     }
 
@@ -476,7 +478,7 @@ public:
             }
 
             kernels::retrieve<MultiValueHashTable, StatusHandler>
-            <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             (
                 keys_in,
                 num_in,
@@ -492,7 +494,7 @@ public:
             if(status_out != nullptr)
             {
                 helpers::lambda_kernel
-                <<<SDIV(num_in, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+                <<<SDIV(num_in, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
                 ([=, *this] DEVICEQUALIFIER
                 {
                     const index_type tid = helpers::global_thread_id();
@@ -671,7 +673,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::for_each<Func, MultiValueHashTable>
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        <<<SDIV(capacity(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, smem_bytes, stream>>>
         (f, *this);
     }
 
@@ -704,7 +706,7 @@ public:
         if(!is_initialized_) return;
 
         kernels::for_each<Func, MultiValueHashTable>
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, smem_bytes, stream>>>
+        <<<SDIV(capacity(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, smem_bytes, stream>>>
         (f, keys_in, num_in, *this, status_out);
     }
 
@@ -802,7 +804,7 @@ public:
         cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
 
         kernels::num_values<MultiValueHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, tmp, num_per_key_out, *this, probing_length, status_out);
 
         cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H, stream);
@@ -839,7 +841,7 @@ public:
         cudaMemsetAsync(tmp, 0, sizeof(index_t), stream);
 
         kernels::size
-        <<<SDIV(capacity(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(capacity(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (tmp, *this);
 
         cudaMemcpyAsync(

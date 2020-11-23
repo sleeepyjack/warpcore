@@ -56,7 +56,7 @@ TEMPLATE_TEST_CASE_SIG(
 
     // generate pseudo-random unique keys and values
     helpers::lambda_kernel
-    <<<SDIV(n, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+    <<<SDIV(n, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
     ([=] DEVICEQUALIFIER () mutable
     {
         const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -104,7 +104,7 @@ TEMPLATE_TEST_CASE_SIG(
         cudaMemset(errors_d, 0, sizeof(index_t));
 
         helpers::lambda_kernel
-        <<<SDIV(n, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(n, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;

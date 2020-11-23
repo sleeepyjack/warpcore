@@ -309,7 +309,7 @@ public:
         if(!status_.has_any())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
                 const index_type tid = helpers::global_thread_id();
@@ -332,7 +332,7 @@ public:
         if(!status_.has_any())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
                 const index_type tid = helpers::global_thread_id();
@@ -359,7 +359,7 @@ public:
         if(!status_.has_any())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
                 const index_type tid = helpers::global_thread_id();
@@ -525,7 +525,7 @@ public:
         if(!status_.has_any())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
                 const index_type tid = helpers::global_thread_id();
@@ -548,7 +548,7 @@ public:
         if(!status_.has_any())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
                 const index_type tid = helpers::global_thread_id();
@@ -575,7 +575,7 @@ public:
         if(!status_.has_any())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER
             {
                 const index_type tid = helpers::global_thread_id();
@@ -1083,7 +1083,7 @@ public:
         if(!status_.has_not_initialized())
         {
             helpers::lambda_kernel
-            <<<SDIV(capacity_, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(capacity_, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             ([=, *this] DEVICEQUALIFIER () mutable
             {
                 const index_type tid = helpers::global_thread_id();

@@ -143,7 +143,7 @@ void bucket_list_benchmark(
 
             /*
             key_size_out = size;
-            helpers::lambda_kernel<<<SDIV(size, MAXBLOCKSIZE), MAXBLOCKSIZE>>>(
+            helpers::lambda_kernel<<<SDIV(size, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>(
                 [=] DEVICEQUALIFIER
                 {
                     const auto tid = blockDim.x * blockIdx.x + threadIdx.x;

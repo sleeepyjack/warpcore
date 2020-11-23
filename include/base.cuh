@@ -46,6 +46,18 @@ index_t get_valid_capacity(index_t min_capacity, index_t cg_size) noexcept
 
 } // namespace warpcore
 
+
+#ifdef __CUDACC_DEBUG__
+    #ifndef WARPCORE_BLOCKSIZE
+    #define WARPCORE_BLOCKSIZE 128
+    #endif
+#else 
+    #ifndef WARPCORE_BLOCKSIZE
+    #define WARPCORE_BLOCKSIZE MAXBLOCKSIZE // MAXBLOCKSIZE defined in cuda_helpers
+    #endif
+#endif
+
+
 #include "tags.cuh"
 #include "checks.cuh"
 #include "status.cuh"

@@ -29,7 +29,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         // set pairs
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -47,7 +47,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         // get pairs
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -79,7 +79,7 @@ TEMPLATE_TEST_CASE_SIG(
         *errors = 0;
 
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -112,7 +112,7 @@ TEMPLATE_TEST_CASE_SIG(
         *errors = 0;
 
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -188,7 +188,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         // set pairs
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -206,7 +206,7 @@ TEMPLATE_TEST_CASE_SIG(
 
         // get pairs
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -238,7 +238,7 @@ TEMPLATE_TEST_CASE_SIG(
         *errors = 0;
 
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
@@ -271,7 +271,7 @@ TEMPLATE_TEST_CASE_SIG(
         *errors = 0;
 
         helpers::lambda_kernel
-        <<<SDIV(capacity, MAXBLOCKSIZE), MAXBLOCKSIZE>>>
+        <<<SDIV(capacity, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE>>>
         ([=] DEVICEQUALIFIER () mutable
         {
             const index_t tid = blockDim.x * blockIdx.x + threadIdx.x;
