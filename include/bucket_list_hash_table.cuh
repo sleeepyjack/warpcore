@@ -300,10 +300,12 @@ public:
                     }
                     else
                     {
-                        append_status = value_store_.append(
-                            *(handles[btid]),
-                            values_in[block_offset + btid],
-                            max_values_per_key_);
+                        if(block_offset + btid < num_in){
+                            append_status = value_store_.append(
+                                *(handles[btid]),
+                                values_in[block_offset + btid],
+                                max_values_per_key_);
+                        }
                     }
 
                     if(append_status.has_any())
@@ -311,15 +313,19 @@ public:
                         device_join_status(append_status);
                     }
 
-                    // TODO not zero-cost
-                    if(!std::is_same<
-                        StatusHandler,
-                        status_handlers::ReturnNothing>::value)
-                    {
-                        StatusHandler::handle(
-                            status[btid]+append_status,
-                            status_out,
-                            block_offset + btid);
+                    if(block_offset + btid < num_in){
+
+                        // TODO not zero-cost
+                        if(!std::is_same<
+                            StatusHandler,
+                            status_handlers::ReturnNothing>::value)
+                        {
+                            StatusHandler::handle(
+                                status[btid]+append_status,
+                                status_out,
+                                block_offset + btid);
+                        }
+
                     }
                 }
             }
@@ -449,7 +455,7 @@ public:
             }
 
             kernels::retrieve<BucketListHashTable, StatusHandler>
-            <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+            <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
             (
                 keys_in,
                 num_in,
@@ -465,7 +471,7 @@ public:
             if(status_out != nullptr)
             {
                 helpers::lambda_kernel
-                <<<SDIV(num_in, MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+                <<<SDIV(num_in, WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
                 ([=, *this] DEVICEQUALIFIER
                 {
                     const index_type tid = helpers::global_thread_id();
@@ -793,7 +799,7 @@ public:
         cudaMemsetAsync(tmp, 0, sizeof(index_type), stream);
 
         kernels::num_values<BucketListHashTable, StatusHandler>
-        <<<SDIV(num_in * cg_size(), MAXBLOCKSIZE), MAXBLOCKSIZE, 0, stream>>>
+        <<<SDIV(num_in * cg_size(), WARPCORE_BLOCKSIZE), WARPCORE_BLOCKSIZE, 0, stream>>>
         (keys_in, num_in, tmp, num_per_key_out, *this, probing_length, status_out);
 
         cudaMemcpyAsync(&num_out, tmp, sizeof(index_type), D2H, stream);
