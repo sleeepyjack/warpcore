@@ -393,7 +393,7 @@ public:
         if(!is_initialized_) return;
 
         // cub::DeviceScan::InclusiveSum takes input sizes of type int
-        if(num_in > std::numeric_limits<int>::max())
+        if(num_in > index_type(std::numeric_limits<int>::max()))
         {
             join_status(status_type::index_overflow(), stream);
 
