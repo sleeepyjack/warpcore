@@ -398,7 +398,7 @@ public:
         index_type last_key_pos = std::numeric_limits<index_type>::max();
         for(index_type i = iter.begin(key_in, seed_); i != iter.end(); i = iter.next())
         {
-            const key_type table_key = table_[i].key;
+            const key_type table_key = cub::ThreadLoad<cub::LOAD_VOLATILE>(&table_[i].key);
 
             auto empty_key_mask = group.ballot(is_empty_key(table_key));
 
