@@ -7,7 +7,9 @@ OPT := 3
 CCFLAGS := -O$(OPT) -std=$(STD) -Wall -Wextra -fopenmp -DNDEBUG
 XCCFLAGS := $(addprefix -Xcompiler ,$(CCFLAGS))
 NVCCGENCODE = -gencode arch=compute_70,code=sm_70
-NVCCFLAGS := -O$(OPT) -std=$(STD) -ccbin $(CC) $(XCCFLAGS) $(NVCCGENCODE) --expt-extended-lambda
+NVCCFLAGS := -O$(OPT) -std=$(STD) -ccbin $(CC) $(XCCFLAGS) $(NVCCGENCODE) --expt-extended-lambda --expt-relaxed-constexpr
+
+NVCCFLAGS += -lineinfo -g -DNDEBUG #profile
 
 INCS := $(foreach dir, $(INCDIRS), $(wildcard $(dir)/*.cuh $(dir)/*.h $(dir)/*.hpp))
 INCPARAMS := $(addprefix -I, $(INCDIRS))
@@ -22,6 +24,9 @@ advanced_usage_from_device: ${INCS} | bin
 
 multi_value_hash_table: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/multi_value_hash_table.cu -o bin/multi_value_hash_table.out
+
+multi_bucket_hash_table: ${INCS} | bin
+	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/multi_bucket_hash_table.cu -o bin/multi_bucket_hash_table.out
 
 bucket_list_hash_table: ${INCS} | bin
 	$(NVCC) $(NVCCFLAGS) $(INCPARAMS) src/bucket_list_hash_table.cu -o bin/bucket_list_hash_table.out
