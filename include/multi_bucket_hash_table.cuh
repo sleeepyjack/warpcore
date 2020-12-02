@@ -20,7 +20,9 @@ struct ArrayBucket {
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     explicit ArrayBucket(value_type value) noexcept
     {
+        #ifdef __CUDA_ARCH__
         #pragma unroll
+        #endif
         for(index_type i = 0; i < bucket_size(); ++i)
             values_[i] = value;
     }
@@ -28,7 +30,9 @@ struct ArrayBucket {
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     ArrayBucket(const ArrayBucket& other) noexcept
     {
+        #ifdef __CUDA_ARCH__
         #pragma unroll
+        #endif
         for(index_type i = 0; i < bucket_size(); ++i)
             values_[i] = other.values_[i];
     }
@@ -36,7 +40,9 @@ struct ArrayBucket {
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     ArrayBucket& operator =(const ArrayBucket& other) noexcept
     {
+        #ifdef __CUDA_ARCH__
         #pragma unroll
+        #endif
         for(index_type i = 0; i < bucket_size(); ++i)
             values_[i] = other.values_[i];
         return *this;
