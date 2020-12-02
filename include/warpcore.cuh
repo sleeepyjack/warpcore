@@ -7,6 +7,7 @@
 #include "hash_set.cuh"
 #include "bloom_filter.cuh"
 #include "multi_value_hash_table.cuh"
+#include "multi_bucket_hash_table.cuh"
 #include "bucket_list_hash_table.cuh"
 
 #endif /* WARPCORE_CUH */

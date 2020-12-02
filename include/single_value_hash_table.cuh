@@ -209,13 +209,13 @@ public:
      * \param[in] probing_length maximum number of probing attempts
      * \return status (per thread)
      */
-     DEVICEQUALIFIER INLINEQUALIFIER
-     status_type insert(
-         const key_type key_in,
-         const value_type& value_in,
-         const cg::thread_block_tile<cg_size()>& group,
-         const index_type probing_length = defaults::probing_length()) noexcept
-     {
+    DEVICEQUALIFIER INLINEQUALIFIER
+    status_type insert(
+        const key_type key_in,
+        const value_type& value_in,
+        const cg::thread_block_tile<cg_size()>& group,
+        const index_type probing_length = defaults::probing_length()) noexcept
+    {
         status_type status = status_type::unknown_error();
 
         value_type * value_ptr =
@@ -227,7 +227,7 @@ public:
         }
 
         return status;
-     }
+    }
 
     /*! \brief insert a set of keys into the hash table
      * \tparam StatusHandler handles returned status per key (see \c status_handlers)

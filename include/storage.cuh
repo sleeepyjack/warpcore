@@ -1375,26 +1375,26 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      * \return load factor
      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     float load_factor(const cudaStream_t stream = 0) const noexcept
-     {
-         index_type load = 0;
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    float load_factor(const cudaStream_t stream = 0) const noexcept
+    {
+        index_type load = 0;
 
-         cudaMemcpyAsync(
-             &load, next_free_bucket_, sizeof(index_type), D2H, stream);
+        cudaMemcpyAsync(
+            &load, next_free_bucket_, sizeof(index_type), D2H, stream);
 
-         cudaStreamSynchronize(stream);
+        cudaStreamSynchronize(stream);
 
-         return float(load) / float(capacity());
-     }
+        return float(load) / float(capacity());
+    }
 
      /*! \brief get the number of occupied bytes
      * \param[in] stream CUDA stream in which this operation is executed in
      * \return bytes
      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     index_type bytes_occupied(const cudaStream_t stream = 0) const noexcept
-     {
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    index_type bytes_occupied(const cudaStream_t stream = 0) const noexcept
+    {
          index_type occupied = 0;
 
          cudaMemcpyAsync(
@@ -1403,7 +1403,7 @@ public:
          cudaStreamSynchronize(stream);
 
          return occupied * sizeof(bucket_type);
-     }
+    }
 
     /*! \brief get bucket growth factor
      * \return factor

@@ -50,20 +50,20 @@ public:
     /*! \brief get empty key
      * \return empty key
      */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     static constexpr key_type empty_key() noexcept
-     {
-         return EmptyKey;
-     }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr key_type empty_key() noexcept
+    {
+        return EmptyKey;
+    }
 
      /*! \brief get tombstone key
       * \return tombstone key
       */
-     HOSTDEVICEQUALIFIER INLINEQUALIFIER
-     static constexpr key_type tombstone_key() noexcept
-     {
-         return TombstoneKey;
-     }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr key_type tombstone_key() noexcept
+    {
+        return TombstoneKey;
+    }
 
     /*! \brief checks if \c key is equal to \c (EmptyKey||TombstoneKey)
      * \return \c bool
@@ -618,11 +618,11 @@ public:
      * \param stream CUDA stream in which this operation is executed in
      * \return load factor
      */
-     HOSTQUALIFIER INLINEQUALIFIER
-     float value_load_factor(const cudaStream_t stream = 0) const noexcept
-     {
-         return value_store_.load_factor(stream);
-     }
+    HOSTQUALIFIER INLINEQUALIFIER
+    float value_load_factor(const cudaStream_t stream = 0) const noexcept
+    {
+        return value_store_.load_factor(stream);
+    }
 
     /*! \brief get the the total number of bytes occupied by this data structure
      * \return bytes

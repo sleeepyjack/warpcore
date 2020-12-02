@@ -1,125 +1,79 @@
-#include <iostream>
-#include <algorithm>
-#include <numeric>
-#include <vector>
+#include "common.cuh"
 #include "warpcore.cuh"
 #include "../../ext/hpc_helpers/include/io_helpers.h"
-
-template<class T>
-uint64_t num_unique(const std::vector<T>& v) noexcept
-{
-    T * keys_d = nullptr;
-    cudaMalloc(&keys_d, sizeof(T) * v.size()); CUERR
-    cudaMemcpy(keys_d, v.data(), sizeof(T) * v.size(), H2D); CUERR
-
-    auto set = warpcore::HashSet<T>(v.size());
-
-    set.insert(keys_d, v.size());
-
-    cudaFree(keys_d);
-
-    return set.size();
-}
+#include <chrono>
+#include <iostream>
+#include <vector>
 
 template<
-    class Key,
-    class Count,
-    class Table>
+    class HashTable>
 HOSTQUALIFIER INLINEQUALIFIER
 void counting_benchmark(
-    std::vector<Key> keys_h,
-    float load,
-    uint8_t dev_id = 0,
+    const typename HashTable::key_type * keys_d,
+    const uint64_t max_keys,
+    std::vector<uint64_t> input_sizes,
+    std::vector<float> load_factors,
     bool print_headers = true,
-    uint8_t iters = 5)
+    uint8_t iters = 5,
+    std::chrono::milliseconds thermal_backoff = std::chrono::milliseconds(100))
 {
-    cudaSetDevice(dev_id); CUERR
+    using key_t = typename HashTable::key_type;
+    using count_t = typename HashTable::value_type;
 
-    uint64_t size = num_unique(keys_h);
-    uint64_t capacity = size/load;
+    count_t* counts_d = nullptr;
+    cudaMalloc(&counts_d, sizeof(count_t)*max_keys); CUERR
 
-    Key* keys_d = nullptr; cudaMalloc(&keys_d, sizeof(Key)*keys_h.size()); CUERR
-    Count* counts_d = nullptr; cudaMalloc(&counts_d, sizeof(Count)*keys_h.size()); CUERR
+    const auto max_input_size =
+        *std::max_element(input_sizes.begin(), input_sizes.end());
+    const auto min_load_factor =
+        *std::min_element(load_factors.begin(), load_factors.end());
 
-    cudaMemcpy(keys_d, keys_h.data(), sizeof(Key)*keys_h.size(), H2D); CUERR
-
-    Table hash_table(capacity);
-
-    float insert_time = 0.0;
-    for(uint8_t i = 0; i < iters; i++)
+    if(max_input_size > max_keys)
     {
-        hash_table.init();
-        cudaEvent_t insert_start, insert_stop;
-        float t;
-        cudaEventCreate(&insert_start);
-        cudaEventCreate(&insert_stop);
-        cudaEventRecord(insert_start, 0);
-        hash_table.insert(keys_d, keys_h.size());
-        cudaEventRecord(insert_stop, 0);
-        cudaEventSynchronize(insert_stop);
-        cudaEventElapsedTime(&t, insert_start, insert_stop);
-        cudaDeviceSynchronize(); CUERR
-        insert_time += t;
-    }
-    insert_time /= iters;
-
-    float query_time = 0.0;
-    for(uint8_t i = 0; i < iters; i++)
-    {
-        cudaEvent_t query_start, query_stop;
-        float t;
-        cudaEventCreate(&query_start);
-        cudaEventCreate(&query_stop);
-        cudaEventRecord(query_start, 0);
-        hash_table.retrieve(keys_d, keys_h.size(), counts_d);
-        cudaEventRecord(query_stop, 0);
-        cudaEventSynchronize(query_stop);
-        cudaEventElapsedTime(&t, query_start, query_stop);
-        cudaDeviceSynchronize(); CUERR
-        query_time += t;
-    }
-    query_time /= iters;
-
-    uint64_t ips = keys_h.size()/insert_time*1000;
-    uint64_t qps = keys_h.size()/query_time*1000;
-    float itp = helpers::B2GB(sizeof(key_t)*keys_h.size()) / (insert_time/1000);
-    float qtp = helpers::B2GB(sizeof(key_t)*keys_h.size()) / (query_time/1000);
-    float actual_load = float(hash_table.size())/float(capacity);
-
-    if(print_headers)
-    {
-        const char d = ' ';
-
-        std::cout << std::fixed
-            << "N=" << keys_h.size()
-            << d << "C=" << capacity
-            << d << "bits_key=" << sizeof(Key)*8
-            << d << "bits_count=" << sizeof(Count)*8
-            << d << "load=" << actual_load
-            << d << "IPS=" << ips
-            << d << "QPS=" << qps
-            << d << "insert_GB/s=" << itp
-            << d << "query_GB/s=" << qtp
-            << d << "status=" << hash_table.pop_status() << std::endl;
-    }
-    else
-    {
-        const char d = ' ';
-
-        std::cout << std::fixed
-                  << keys_h.size()
-                  << d << capacity
-                  << d << sizeof(Key)*8
-                  << d << sizeof(Count)*8
-                  << d << actual_load
-                  << d << ips
-                  << d << qps
-                  << d << itp
-                  << d << qtp
-                  << d << hash_table.pop_status() << std::endl;
+        std::cerr << "Maximum input size exceeded." << std::endl;
+        exit(1);
     }
 
-    cudaFree(keys_d); CUERR
+    const uint64_t max_unique_size = num_unique(keys_d, max_input_size);
+
+    if(!sufficient_memory_oa<HashTable>(max_unique_size / min_load_factor))
+    {
+        std::cerr << "Not enough GPU memory." << std::endl;
+        exit(1);
+    }
+
+    for(auto size : input_sizes)
+    {
+        for(auto load : load_factors)
+        {
+            const uint64_t unique_size = num_unique(keys_d, size);
+            const uint64_t capacity = unique_size/load;
+
+            HashTable hash_table(capacity);
+
+            Output<key_t> output;
+            output.sample_size = size;
+            output.key_capacity = hash_table.capacity();
+
+            output.insert_ms = benchmark_insert(
+                hash_table, keys_d, size,
+                iters, thermal_backoff);
+
+            output.query_ms = benchmark_query(
+                hash_table, keys_d, counts_d, size,
+                iters, thermal_backoff);
+
+            output.key_load_factor = hash_table.load_factor();
+            output.density = output.key_load_factor;
+            output.status = hash_table.pop_status();
+
+            if(print_headers)
+                output.print_with_headers();
+            else
+                output.print_without_headers();
+        }
+    }
+
     cudaFree(counts_d); CUERR
 }
 
@@ -127,42 +81,25 @@ int main(int argc, char* argv[])
 {
     using key_t = uint32_t;
     using count_t = uint32_t;
-    using hash_table_t = warpcore::CountingHashTable<key_t, count_t>;
 
     const uint64_t max_keys = 1UL << 28;
+
+    const bool print_headers = true;
+
     uint64_t dev_id = 0;
-    std::vector<key_t> keys;
-
     if(argc > 2) dev_id = std::atoi(argv[2]);
+    cudaSetDevice(dev_id); CUERR
 
+    key_t * keys_d = nullptr;
     if(argc > 1)
-    {
-        keys = helpers::load_binary<key_t>(argv[1], max_keys);
-    }
+        keys_d = load_keys<key_t>(argv[1], max_keys);
     else
-    {
-        keys.resize(max_keys);
+        keys_d = generate_keys<key_t>(max_keys, 8);
 
-        key_t * keys_d = nullptr;
-        cudaMalloc(&keys_d, sizeof(key_t) * max_keys); CUERR
+    using hash_table_t = warpcore::CountingHashTable<key_t, count_t>;
 
-        helpers::lambda_kernel
-        <<<SDIV(max_keys, 1024), 1024>>>
-        ([=] DEVICEQUALIFIER
-        {
-            const uint64_t tid = blockDim.x * blockIdx.x + threadIdx.x;
+    counting_benchmark<hash_table_t>(
+        keys_d, max_keys, {max_keys}, {0.9}, print_headers);
 
-            if(tid < max_keys)
-            {
-                // 8 values per key
-                keys_d[tid] = (tid % (max_keys / 8)) + 1;
-            }
-        });
-
-        cudaMemcpy(keys.data(), keys_d, sizeof(key_t) * max_keys, D2H); CUERR
-
-        cudaFree(keys_d); CUERR
-    }
-
-    counting_benchmark<key_t, count_t, hash_table_t>(keys, 0.9, dev_id);
+    cudaFree(keys_d); CUERR
 }

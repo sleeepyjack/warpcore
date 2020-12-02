@@ -64,6 +64,8 @@ public:
     static constexpr Status invalid_phase_overlap() noexcept { return Status(one << 10); }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status max_values_for_key_reached() noexcept { return Status(one << 11); }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    static constexpr Status invalid_value() noexcept { return Status(one << 12); }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     static constexpr Status error_mask() noexcept
@@ -121,6 +123,8 @@ public:
     constexpr bool has_invalid_phase_overlap() const noexcept { return status_ & invalid_phase_overlap().status_; }
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr bool has_max_values_for_key_reached() const noexcept { return status_ & max_values_for_key_reached().status_; }
+    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    constexpr bool has_invalid_value() const noexcept { return status_ & invalid_value().status_; }
 
     HOSTDEVICEQUALIFIER INLINEQUALIFIER
     constexpr Status& operator=(const Status& a) noexcept
@@ -238,6 +242,8 @@ OStream& operator<<(OStream& os, Status status)
         msg.push_back("invalid phase overlap");
     if(status.has_max_values_for_key_reached())
         msg.push_back("max values for key reached");
+    if(status.has_invalid_value())
+        msg.push_back("invalid value");
     // if(!status.has_any())
     //     msg.push_back("none");
 

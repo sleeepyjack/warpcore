@@ -47,6 +47,53 @@ void for_each(
 
 template<
     class Func,
+    class Core>
+GLOBALQUALIFIER
+void for_each_unique_key(
+    Func f,
+    const Core core)
+{
+    using index_type = typename Core::index_type;
+    using probing_scheme_type = typename Core::probing_scheme_type;
+
+    const index_t tid = helpers::global_thread_id();
+    const index_t gid = tid / Core::cg_size();
+    const auto group =
+        cg::tiled_partition<Core::cg_size()>(cg::this_thread_block());
+
+    if(gid < core.capacity())
+    {
+        // for valid entry in table check if this entry is the first of its key
+        auto search_key = core.table_[gid].key;
+        if(core.is_valid_key(search_key))
+        {
+            probing_scheme_type iter(core.capacity(), core.capacity(), group);
+
+            for(index_type i = iter.begin(search_key, core.seed_); i != iter.end(); i = iter.next())
+            {
+                const auto table_key = core.table_[i].key;
+                const auto hit = (table_key == search_key);
+                const auto hit_mask = group.ballot(hit);
+
+                const auto leader = ffs(hit_mask) - 1;
+
+                // check if search_key is the first entry for this key
+                if(group.thread_rank() == leader && i == gid)
+                {
+                    f(table_key);
+                }
+
+                if(group.any(hit))
+                {
+                    return;
+                }
+            }
+        }
+    }
+}
+
+template<
+    class Func,
     class Core,
     class StatusHandler = defaults::status_handler_t>
 GLOBALQUALIFIER
@@ -358,6 +405,53 @@ void size(
             {
                 atomicAdd(&smem, active_threads.size());
             }
+        }
+
+        block.sync();
+
+        if(block.thread_rank() == 0 && smem != 0)
+        {
+            atomicAdd(num_out, smem);
+        }
+    }
+}
+
+// for Core = MultiBucketHashTable
+template<class Core>
+GLOBALQUALIFIER
+void num_values(
+    index_t * const num_out,
+    const Core core)
+{
+    __shared__ index_t smem;
+
+    const index_t tid = helpers::global_thread_id();
+    const auto block = cg::this_thread_block();
+
+    if(tid < core.capacity())
+    {
+        const bool empty = !core.is_valid_key(core.table_[tid].key);
+
+        if(block.thread_rank() == 0)
+        {
+            smem = 0;
+        }
+
+        block.sync();
+
+        index_t value_count = 0;
+        if(!empty)
+        {
+            const auto bucket = core.table_[tid].value;
+            #pragma unroll
+            for(int b = 0; b < core.bucket_size(); ++b) {
+                const auto& value = bucket[b];
+                if(value != core.empty_value())
+                    ++value_count;
+            }
+
+            // TODO warp reduce
+            atomicAdd(&smem, value_count);
         }
 
         block.sync();

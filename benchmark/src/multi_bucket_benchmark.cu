@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-template<class HashTable, int BucketSize>
+template<class HashTable>
 HOSTQUALIFIER INLINEQUALIFIER
 void multi_value_benchmark(
     const typename HashTable::key_type * keys_d,
@@ -42,7 +42,11 @@ void multi_value_benchmark(
         exit(1);
     }
 
-    if(!sufficient_memory_oa<HashTable>(max_input_size / min_load_factor))
+    const float bucket_factor =
+        float(sizeof(key_t) + sizeof(value_t)) /
+             (sizeof(key_t) + sizeof(value_t)*HashTable::bucket_size());
+
+    if(!sufficient_memory_oa<HashTable>(max_input_size * bucket_factor / min_load_factor))
     {
         std::cerr << "Not enough GPU memory." << std::endl;
         exit(1);
@@ -52,17 +56,23 @@ void multi_value_benchmark(
     {
         for(auto load : load_factors)
         {
-            const std::uint64_t capacity = float(size) / BucketSize / load;
+            const std::uint64_t capacity = size * bucket_factor / load;
 
             HashTable hash_table(capacity);
 
             Output<key_t,value_t> output;
             output.sample_size = size;
             output.key_capacity = hash_table.capacity();
+            output.value_capacity = hash_table.value_capacity();
 
             output.insert_ms = benchmark_insert(
                 hash_table, keys_d, values_d, size,
                 iters, thermal_backoff);
+
+            // std::cerr << "keys in table: " << hash_table.num_keys() << '\n';
+
+            // auto key_set = hash_table.get_key_set();
+            // std::cerr << "keys in set: " << key_set.size() << '\n';
 
             output.query_ms = benchmark_query_multi(
                 hash_table, query_keys_d, size,
@@ -73,8 +83,10 @@ void multi_value_benchmark(
             //     hash_table, query_keys_d, offsets_d, values_d,
             //     iters, thermal_backoff);
 
-            output.key_load_factor = hash_table.load_factor();
-            output.density = output.key_load_factor;
+            output.key_load_factor = hash_table.key_load_factor();
+            output.value_load_factor = hash_table.value_load_factor();
+            output.density = hash_table.storage_density();
+            output.relative_density = hash_table.relative_storage_density();
             output.status = hash_table.pop_status();
 
             if(print_headers)
@@ -110,34 +122,65 @@ int main(int argc, char* argv[])
     else
         keys_d = generate_keys<key_t>(max_keys, 8);
 
-    using mv_hash_table_t = MultiValueHashTable<
+    using mb1_hash_table_t = MultiBucketHashTable<
         key_t,
         value_t,
         defaults::empty_key<key_t>(),
         defaults::tombstone_key<key_t>(),
+        defaults::empty_key<value_t>(),
         defaults::probing_scheme_t<key_t, 8>,
-        storage::key_value::AoSStore<key_t, value_t>>;
+        storage::key_value::AoSStore<key_t, ArrayBucket<value_t,1>>>;
 
-    // using mb_hash_table_t = MultiBucketHashTable<
-    //     key_t,
-    //     value_t,
-    //     defaults::empty_key<key_t>(),
-    //     defaults::tombstone_key<key_t>(),
-    //     defaults::empty_key<value_t>(),
-    //     defaults::probing_scheme_t<key_t, 8>,
-    //     storage::key_value::AoSStore<key_t, ArrayBucket<value_t,2>>>;
+    using mb2_hash_table_t = MultiBucketHashTable<
+        key_t,
+        value_t,
+        defaults::empty_key<key_t>(),
+        defaults::tombstone_key<key_t>(),
+        defaults::empty_key<value_t>(),
+        defaults::probing_scheme_t<key_t, 8>,
+        storage::key_value::AoSStore<key_t, ArrayBucket<value_t,2>>>;
 
-    multi_value_benchmark<mv_hash_table_t, 1>(
+    using mb4_hash_table_t = MultiBucketHashTable<
+        key_t,
+        value_t,
+        defaults::empty_key<key_t>(),
+        defaults::tombstone_key<key_t>(),
+        defaults::empty_key<value_t>(),
+        defaults::probing_scheme_t<key_t, 8>,
+        storage::key_value::AoSStore<key_t, ArrayBucket<value_t,4>>>;
+
+    using mb8_hash_table_t = MultiBucketHashTable<
+        key_t,
+        value_t,
+        defaults::empty_key<key_t>(),
+        defaults::tombstone_key<key_t>(),
+        defaults::empty_key<value_t>(),
+        defaults::probing_scheme_t<key_t, 8>,
+        storage::key_value::AoSStore<key_t, ArrayBucket<value_t,8>>>;
+
+    multi_value_benchmark<mb1_hash_table_t>(
         keys_d, max_keys,
         {max_keys},
         {0.8},
         print_headers);
 
-    // multi_value_benchmark<mb_hash_table_t, mb_hash_table_t::bucket_size()>(
-    //     keys_d, max_keys,
-    //     {max_keys},
-    //     {0.8},
-    //     print_headers);
+    multi_value_benchmark<mb2_hash_table_t>(
+        keys_d, max_keys,
+        {max_keys},
+        {0.8},
+        print_headers);
+
+    multi_value_benchmark<mb4_hash_table_t>(
+        keys_d, max_keys,
+        {max_keys},
+        {0.8},
+        print_headers);
+
+    multi_value_benchmark<mb8_hash_table_t>(
+        keys_d, max_keys,
+        {max_keys},
+        {0.8},
+        print_headers);
 
     cudaFree(keys_d); CUERR
 }
