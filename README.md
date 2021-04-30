@@ -42,7 +42,7 @@ Developement mainly takes place on our in-house `gitlab` instance. However, we p
 ### Adding `warpcore` to a CMake Project
 
 `warpcore` is designed to make it easy to include within another CMake project.
- The `CMakeLists.txt` exports a `warpcore` target that can be linked into a target to setup include directories, dependencies, and compile flags necessary to use `warpcore` in your project.
+ The `CMakeLists.txt` exports a `warpcore` target that can be linked<sup>[1](#link-footnote)</sup> into a target to setup include directories, dependencies, and compile flags necessary to use `warpcore` in your project.
 
 
 We recommend using [CMake Package Manager (CPM)](https://github.com/TheLartians/CPM.cmake) to fetch `warpcore` into your project.
@@ -64,6 +64,25 @@ target_link_libraries(my_library warpcore)
 This will take care of downloading `warpcore` from GitHub and making the headers available in a location that can be found by CMake. Linking against the `warpcore` target will provide everything needed for `warpcore` to be used by the `my_library` target.
 
 <a name="link-footnote">1</a>: `warpcore` is header-only and therefore there is no binary component to "link" against. The linking terminology comes from CMake's `target_link_libraries` which is still used even for header-only library targets.
+
+## Building `warpcore`
+
+Since `warpcore` is header-only, there is nothing to build to use it.
+
+To build the tests, benchmarks, and examples:
+
+```
+cd $WARPCORE_ROOT
+mkdir -p build
+cd build
+cmake .. -DWARPCORE_BUILD_TESTS=ON -DDWARPCORE_BUILD_BENCHMARKS=ON -DDWARPCORE_BUILD_EXAMPLES=ON
+make
+```
+Binaries will be built into:
+- `build/tests/`
+- `build/benchmarks/`
+- `build/examples/`
+
 
 ## [Documentation](docs/index.html)
 
