@@ -17,6 +17,7 @@ endif()
 
 ###################################################################################################
 # Auto-detect available GPU compute architectures
+
 set(GPU_ARCHS "" CACHE STRING "List of GPU architectures (semicolon-separated) to be compiled for. Empty string means to auto-detect the GPUs on the current system")
 
 if("${GPU_ARCHS}" STREQUAL "")
@@ -50,6 +51,7 @@ CPMAddPackage(
 
 ###################################################################################################
 # - warpcore target   -----------------------------------------------------------------------------
+
 add_library(warpcore INTERFACE)
 target_include_directories(warpcore INTERFACE
                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
@@ -70,9 +72,9 @@ set(WARPCORE_TESTS_BINARY_DIR "${CMAKE_BINARY_DIR}/tests")
 set(WARPCORE_BENCHMARKS_BINARY_DIR "${CMAKE_BINARY_DIR}/benchmarks")
 set(WARPCORE_EXAMPLES_BINARY_DIR "${CMAKE_BINARY_DIR}/examples")
 
-option(WARPCORE_BUILD_TESTS "Configure CMake to build tests" ON)
-option(WARPCORE_BUILD_BENCHMARKS "Configure CMake to build benchmarks" ON)
-option(WARPCORE_BUILD_EXAMPLES "Configure CMake to build examples" ON)
+option(WARPCORE_BUILD_TESTS "Configure CMake to build tests" OFF)
+option(WARPCORE_BUILD_BENCHMARKS "Configure CMake to build benchmarks" OFF)
+option(WARPCORE_BUILD_EXAMPLES "Configure CMake to build examples" OFF)
 
 if(WARPCORE_BUILD_TESTS)
     add_subdirectory(tests)
