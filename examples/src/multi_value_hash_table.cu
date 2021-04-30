@@ -1,8 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-#include <multi_value_hash_table.cuh>
-#include "../../ext/hpc_helpers/include/timers.cuh"
+#include <warpcore/multi_value_hash_table.cuh>
+#include <helpers/timers.cuh>
 
 int main ()
 {

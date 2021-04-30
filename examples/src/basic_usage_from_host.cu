@@ -1,6 +1,6 @@
 #include <iostream>
-#include "single_value_hash_table.cuh"
-#include "../../ext/hpc_helpers/include/timers.cuh"
+#include <warpcore/single_value_hash_table.cuh>
+#include <helpers/timers.cuh>
 
 // This example shows the basic usage of a single value hash table using
 // host-sided table operations provided by warpcore

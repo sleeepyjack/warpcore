@@ -1,8 +1,8 @@
 #include <iostream>
 #include <numeric>
-#include <warpcore.cuh>
-#include <kiss_rng.cuh>
-#include <random_distributions.cuh>
+#include <warpcore/random_distributions.cuh>
+#include <helpers/cuda_helpers.cuh>
+#include <helpers/timers.cuh>
 
 // This example shows the easy generation of gigabytes of unique random values
 // in only a few milliseconds using WarpCore's BloomFilter.
@@ -66,8 +66,7 @@ int main()
     // define the data types to be generated
     using data_t = std::uint64_t;
     using index_t = std::uint64_t;
-    // defined in util/kiss_rng.cuh
-    using rng_t = Kiss<std::uint64_t>;
+    using rng_t = kiss::Kiss<std::uint64_t>;
 
     // number of unique random values to generate
     static constexpr index_t n = 1UL << 28;
@@ -79,10 +78,10 @@ int main()
     cudaMalloc(&data_d, sizeof(data_t)*n); CUERR
 
     // generate the values and measure throughput
-    THROUGHPUTSTART(generate)
+    helpers::GpuTimer generate_timer("generate");
     // defined in util/random_distributions.cuh
-    unique_distribution<data_t, rng_t>(data_d, n, seed); CUERR
-    THROUGHPUTSTOP(generate, sizeof(data_t), n)
+    warpcore::unique_distribution<data_t, rng_t>(data_d, n, seed); CUERR
+    generate_timer.print_throughput(sizeof(data_t), n);
 
     // check if the generated values are unique
     {

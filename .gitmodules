@@ -1,6 +1,0 @@
-[submodule "ext/kiss_rng"]
-	path = ext/kiss_rng
-	url = https://github.com/sleeepyjack/kiss_rng.git
-[submodule "ext/hpc_helpers"]
-	path = ext/hpc_helpers
-	url = https://gitlab.rlp.net/pararch/hpc_helpers

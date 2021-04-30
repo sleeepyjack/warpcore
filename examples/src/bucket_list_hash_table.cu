@@ -1,8 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-#include <bucket_list_hash_table.cuh>
-#include "../../ext/hpc_helpers/include/timers.cuh"
+#include <warpcore/bucket_list_hash_table.cuh>
+#include <helpers/timers.cuh>
 
 int main ()
 {

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm>
-#include "warpcore.cuh"
+#include <warpcore/warpcore.cuh>
 
 // This example implements a filtered histogram over a multi-set of keys
 // using warpcore. The task is to output the counts of all distinct keys

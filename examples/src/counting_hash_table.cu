@@ -1,5 +1,6 @@
 #include <iostream>
-#include "counting_hash_table.cuh"
+#include <warpcore/counting_hash_table.cuh>
+#include <helpers/timers.cuh>
 
 // This example shows the basic usage of a single value hash table using
 // host-sided table operations provided by warpcore
