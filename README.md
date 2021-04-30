@@ -113,7 +113,7 @@ warpcore Copyright (C) 2018-2021 [Daniel Jünger](https://github.com/sleeepyjack
 
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it under certain
-conditions. See the file [LICENSE](LICENSE.txt) for details.
+conditions. See the file [LICENSE](LICENSE) for details.
 
 [repository]: https://github.com/sleeepyjack/warpcore
 
