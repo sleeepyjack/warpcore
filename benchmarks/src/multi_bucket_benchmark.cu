@@ -1,3 +1,4 @@
+#include <warpcore/multi_bucket_hash_table.cuh>
 #include "../include/benchmark_common.cuh"
 
 template<class HashTable>

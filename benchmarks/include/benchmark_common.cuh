@@ -1,7 +1,7 @@
 #ifndef WARPCORE_BENCHMARK_COMMON_CUH
 #define WARPCORE_BENCHMARK_COMMON_CUH
 
-#include <warpcore/warpcore.cuh>
+#include <warpcore/hash_set.cuh>
 #include <helpers/io_helpers.h>
 #include <helpers/cuda_helpers.cuh>
 

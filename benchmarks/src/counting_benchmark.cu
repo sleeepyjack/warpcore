@@ -1,3 +1,4 @@
+#include <warpcore/counting_hash_table.cuh>
 #include "../include/benchmark_common.cuh"
 
 template<class HashTable>

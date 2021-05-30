@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <iostream>
 #include <kiss/kiss.cuh>
-#include "warpcore.cuh"
+#include <warpcore/bloom_filter.cuh>
 
 namespace warpcore
 {

@@ -1,5 +1,5 @@
 #include <iostream>
-#include <warpcore/warpcore.cuh>
+#include <warpcore/bloom_filter.cuh>
 #include <helpers/timers.cuh>
 
 double binom(

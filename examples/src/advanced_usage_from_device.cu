@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
-#include <warpcore/warpcore.cuh>
+#include <warpcore/counting_hash_table.cuh>
+#include <warpcore/bloom_filter.cuh>
 #include <helpers/timers.cuh>
 
 // This example implements a filtered histogram over a multi-set of keys
