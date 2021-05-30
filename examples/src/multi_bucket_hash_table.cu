@@ -1,16 +1,18 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-#include <multi_bucket_hash_table.cuh>
-#include "../../ext/hpc_helpers/include/timers.cuh"
+#include <warpcore/multi_bucket_hash_table.cuh>
+#include <helpers/timers.cuh>
 
 int main ()
 {
     using namespace warpcore;
 
+    // key/value types
     using key_t = std::uint32_t;
     using value_t = std::uint64_t;
 
+    // configure the hash table
     using hash_table_t = MultiBucketHashTable<
         key_t,
         value_t,
@@ -29,12 +31,12 @@ int main ()
     const index_t max_buckets = size_unique_keys * SDIV(max_values_per_key,4);
     const float load_factor = 0.95;
 
-    helpers::GpuTimer timer("init_table");
+    helpers::GpuTimer init_table_timer("init_table");
     hash_table_t hash_table(max_buckets / load_factor, defaults::seed<key_t>(), max_values_per_key);
-    timer.print();
+    init_table_timer.print();
     cudaDeviceSynchronize(); CUERR
 
-    helpers::GpuTimer timer2("init_data");
+    helpers::GpuTimer init_data_timer("init_data");
     key_t * keys_unique_h = nullptr;
     cudaMallocHost(&keys_unique_h, sizeof(key_t) * size_unique_keys); CUERR
     key_t * keys_unique_d = nullptr;
@@ -92,14 +94,13 @@ int main ()
 
     cudaMemset(values_out_d, 0, sizeof(value_t)*size); CUERR
     cudaMemset(offsets_out_d, 0, sizeof(index_t)*(size_unique_keys+1)); CUERR
-    timer2.print();
-    CUERR
+    init_data_timer.print();
 
     const size_t batch_size = 1UL << 15;
     const size_t full_batches = size / batch_size;
     const size_t last_batch_size = size % batch_size;
 
-    helpers::GpuTimer timer3("insert");
+    helpers::GpuTimer insert_timer("insert");
     for(size_t b=0; b<full_batches; ++b)
     {
         hash_table.insert<status_handler_t>(
@@ -120,12 +121,12 @@ int main ()
             defaults::probing_length(),
             status_d + full_batches*batch_size);
     }
-    timer3.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+    insert_timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
     cudaDeviceSynchronize(); CUERR
 
     cudaMemcpy(status_h, status_d, sizeof(status_t)*size, D2H); CUERR
 
-    std::cout << "table status " << hash_table.peek_status() << std::endl;
+    std::cout << "table errors " << hash_table.peek_status().get_errors() << std::endl;
     index_t errors = 0;
     for(index_t i = 0; i < size; ++i)
     {
@@ -134,7 +135,10 @@ int main ()
         if(status_h[i].has_any_errors())
         {
             if(errors++ < 10)
-                std::cout << "STATUS: i " << i << " key " << keys_in_h[i] << " status " << status_h[i] << std::endl;
+                std::cout <<
+                    "STATUS: i " << i <<
+                    " key " << keys_in_h[i] <<
+                    " status " << status_h[i] << std::endl;
         }
     }
     if(errors >= 10)
@@ -170,20 +174,19 @@ int main ()
 
     std::cout << "retrieved keys " << count_unique_keys << std::endl;
 
-    {
-        helpers::GpuTimer timer("retrieve");
-        hash_table.retrieve<status_handler_t>(
-            keys_unique_d,
-            count_unique_keys,
-            offsets_out_d,
-            offsets_out_d+1,
-            values_out_d,
-            value_size,
-            0,
-            defaults::probing_length(),
-            status_d);
-        timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
-    }
+    helpers::GpuTimer retrieve_timer("retrieve");
+    hash_table.retrieve<status_handler_t>(
+        keys_unique_d,
+        count_unique_keys,
+        offsets_out_d,
+        offsets_out_d+1,
+        values_out_d,
+        value_size,
+        0,
+        defaults::probing_length(),
+        status_d);
+    retrieve_timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+
     cudaDeviceSynchronize(); CUERR
 
     std::cout << "retrieved values " << value_size << std::endl;
@@ -217,16 +220,19 @@ int main ()
 
     cudaMemcpy(status_h, status_d, sizeof(status_t)*size, D2H); CUERR
 
-    std::cout << "table status " << hash_table.peek_status() << std::endl;
+    std::cout << "table errors " << hash_table.peek_status().get_errors() << std::endl;
 
     errors = 0;
     for(index_t i = 0; i < size; ++i)
     {
 
-        if(status_h[i].has_any())
+        if(status_h[i].has_any_errors())
         {
             if(errors++ < 10)
-                std::cout << "STATUS: i " << i << " key " << keys_in_h[i] << " status " << status_h[i] << std::endl;
+                std::cout <<
+                "STATUS: i " << i <<
+                " key " << keys_in_h[i] <<
+                " status " << status_h[i] << std::endl;
         }
     }
     if(errors >= 10)

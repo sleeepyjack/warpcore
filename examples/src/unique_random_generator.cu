@@ -78,16 +78,13 @@ int main()
     cudaMalloc(&data_d, sizeof(data_t)*n); CUERR
 
     // generate the values and measure throughput
-    helpers::GpuTimer generate_timer("generate");
+    helpers::GpuTimer timer("generate");
     // defined in util/random_distributions.cuh
     warpcore::unique_distribution<data_t, rng_t>(data_d, n, seed); CUERR
-    generate_timer.print_throughput(sizeof(data_t), n);
+    timer.print_throughput(sizeof(data_t), n);
 
     // check if the generated values are unique
-    {
-        helpers::GpuTimer timer("test");
-        std::cout << "TEST PASSED: " << std::boolalpha << check_unique(data_d, n) << std::endl;
-    }
+    std::cout << "TEST PASSED: " << std::boolalpha << check_unique(data_d, n) << std::endl;
 
     // free any allocated memory
     cudaFree(data_d); CUERR

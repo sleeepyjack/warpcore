@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <warpcore/warpcore.cuh>
+#include <helpers/timers.cuh>
 
 // This example implements a filtered histogram over a multi-set of keys
 // using warpcore. The task is to output the counts of all distinct keys
@@ -147,10 +148,15 @@ int main()
     hash_table_t hash_table(capacity);
 
     // INSERT the input keys using our custom filter/count kernel
+
+    helpers::GpuTimer timer("count");
+
     filter_and_count
     <key_t, bloom_filter_t, hash_table_t>
     <<<SDIV(input_size, 1024), 1024>>>
     (keys_in_d, input_size, bloom_filter, hash_table);
+
+    timer.print();
 
     cudaDeviceSynchronize(); CUERR
 
@@ -183,7 +189,7 @@ int main()
     std::cout << "number of unwanted keys: " << num_unwanted_keys << std::endl;
 
     // check for any errors
-    std::cout << "hash table errors: " << hash_table.pop_status() << std::endl;
+    std::cout << "hash table errors: " << hash_table.pop_status().get_errors() << std::endl;
 
     // free all allocated recources
     cudaFreeHost(keys_in_h);

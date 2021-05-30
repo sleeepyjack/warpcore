@@ -30,14 +30,13 @@ int main ()
     const index_t key_capacity = float(size_unique_keys) / key_load_factor;
     const index_t value_capacity = float(size) / value_load_factor;
 
-    helpers::GpuTimer timer("init_table");
+    helpers::GpuTimer init_table_timer("init_table");
     hash_table_t hash_table(key_capacity, value_capacity);
-    timer.print();
-    CUERR
+    init_table_timer.print();
 
     std::cout << hash_table.peek_status() << std::endl;
 
-    helpers::GpuTimer timer2("init_data");
+    helpers::GpuTimer init_data_timer("init_data");
     key_t * keys_unique_h = nullptr;
     cudaMallocHost(&keys_unique_h, sizeof(key_t) * size_unique_keys); CUERR
     key_t * keys_unique_d = nullptr;
@@ -96,10 +95,9 @@ int main ()
     cudaMemset(values_out_d, 0, sizeof(value_t)*size); CUERR
     cudaMemset(offsets_out_d, 0, sizeof(index_t)*(size_unique_keys+1)); CUERR
     cudaMemcpy(status_d, status_h, sizeof(status_t)*size, H2D); CUERR
-    timer2.print();
-    CUERR
+    init_data_timer.print();
 
-    helpers::GpuTimer timer3("insert");
+    helpers::GpuTimer insert_timer("insert");
     hash_table.insert<status_handler_t>(
         keys_in_d,
         values_in_d,
@@ -107,20 +105,23 @@ int main ()
         0,
         defaults::probing_length(),
         status_d);
-    timer3.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+    insert_timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
     cudaDeviceSynchronize(); CUERR
 
     cudaMemcpy(status_h, status_d, sizeof(status_t)*size, D2H); CUERR
 
-    std::cout << "table status " << hash_table.peek_status() << std::endl;
+    std::cout << "table errors " << hash_table.peek_status().get_errors() << std::endl;
     index_t errors = 0;
     for(index_t i = 0; i < size; ++i)
     {
 
-        if(status_h[i].has_any())
+        if(status_h[i].has_any_errors())
         {
             if(errors++ < 10)
-                std::cout << "STATUS: i " << i << " key " << keys_in_h[i] << " status " << status_h[i] << std::endl;
+                std::cout <<
+                    "STATUS: i " << i <<
+                    " key " << keys_in_h[i] <<
+                    " status " << status_h[i] << std::endl;
         }
     }
     if(errors >= 10)
@@ -147,36 +148,34 @@ int main ()
 
     index_t value_size = 0;
 
-    {
-        helpers::GpuTimer timer("retrieve_dummy");
-        hash_table.retrieve<status_handler_t>(
-            keys_unique_d,
-            size_unique_keys,
-            offsets_out_d,
-            offsets_out_d+1,
-            values_out_d,
-            value_size,
-            0,
-            defaults::probing_length(),
-            status_d);
-        timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
-    }
+    helpers::GpuTimer retrieve_dummy_timer("retrieve_dummy");
+    hash_table.retrieve<status_handler_t>(
+        keys_unique_d,
+        size_unique_keys,
+        offsets_out_d,
+        offsets_out_d+1,
+        values_out_d,
+        value_size,
+        0,
+        defaults::probing_length(),
+        status_d);
+    retrieve_dummy_timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+
     cudaDeviceSynchronize(); CUERR
 
-    {
-        helpers::GpuTimer timer("retrieve");
-        hash_table.retrieve<status_handler_t>(
-            keys_unique_d,
-            size_unique_keys,
-            offsets_out_d,
-            offsets_out_d+1,
-            values_out_d,
-            value_size,
-            0,
-            defaults::probing_length(),
-            status_d);
-        timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
-    }
+    helpers::GpuTimer retrieve_timer("retrieve");
+    hash_table.retrieve<status_handler_t>(
+        keys_unique_d,
+        size_unique_keys,
+        offsets_out_d,
+        offsets_out_d+1,
+        values_out_d,
+        value_size,
+        0,
+        defaults::probing_length(),
+        status_d);
+    retrieve_timer.print_throughput((sizeof(key_t)+sizeof(value_t)), size);
+
     cudaDeviceSynchronize(); CUERR
 
     std::cout << "retrieved values " << value_size << std::endl;

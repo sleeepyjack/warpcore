@@ -61,11 +61,12 @@ int main()
         helpers::GpuTimer timer("insert");
         // INSERT the input data into the hash_table
         hash_table.insert(keys_d, values_d, input_size);
+        timer.print();
     } CUERR
 
     cudaDeviceSynchronize(); CUERR
     // check if any errors occured
-    std::cout  << "insertion errors: " << hash_table.pop_status() << std::endl;
+    std::cout  << "insertion errors: " << hash_table.pop_status().get_errors() << std::endl;
 
     std::cout << "load " << hash_table.load_factor() << std::endl;
     std::cout << "size " << hash_table.size() << std::endl;
@@ -81,10 +82,11 @@ int main()
         // RETRIEVE the corresponding values of the rear half of the input keys
         // from the hash table
         hash_table.retrieve(keys_d, input_size, result_d);
+        timer.print();
     } CUERR
 
     // check again if any errors occured
-    std::cout << "retrieval errors: " << hash_table.pop_status() << std::endl;
+    std::cout << "retrieval errors: " << hash_table.pop_status().get_errors() << std::endl;
 
     // allocate host-sided memory to copy the result back to the host
     // in order to perform a unit test
