@@ -1,0 +1,4 @@
+<map id="warpcore::MultiBucketHashTable::value_capacity" name="warpcore::MultiBucketHashTable::value_capacity">
+<area shape="rect" id="node1" title="get the maximum value capacity of the hash table" alt="" coords="5,5,205,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#a68705e31798bf6cc056d6591b8791e96" title="get bucket size" alt="" coords="253,5,453,47"/>
+</map>

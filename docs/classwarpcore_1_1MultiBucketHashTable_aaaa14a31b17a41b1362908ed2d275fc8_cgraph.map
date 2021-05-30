@@ -1,0 +1,4 @@
+<map id="warpcore::MultiBucketHashTable::is_tombstone_key" name="warpcore::MultiBucketHashTable::is_tombstone_key">
+<area shape="rect" id="node1" title="checks if key is equal to TombstoneKey" alt="" coords="5,5,205,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#ac21fce4f6a4415eac0a4fcba11ac0f99" title="get tombstone key" alt="" coords="253,5,453,47"/>
+</map>

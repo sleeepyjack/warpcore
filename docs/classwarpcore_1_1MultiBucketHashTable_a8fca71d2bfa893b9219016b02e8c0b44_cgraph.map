@@ -1,0 +1,14 @@
+<map id="warpcore::MultiBucketHashTable::storage_density" name="warpcore::MultiBucketHashTable::storage_density">
+<area shape="rect" id="node1" title="current storage density of the hash table" alt="" coords="5,71,205,112"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#a42391d051be5a37e72f36d1d55a59c2a" title="get the total number of bytes occupied by this data structure" alt="" coords="253,5,453,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiBucketHashTable.html#a96ba176ee5c5c59d8ef2ec7d1c3d5145" title="number of unique keys inside the table" alt="" coords="253,71,453,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1MultiBucketHashTable.html#a1aca7419b29062d71f6f0a026b32dd8b" title="total number of values inside the table" alt="" coords="253,136,453,177"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1MultiBucketHashTable.html#a916f0ce284a4b6518a9392f502b78840" title="applies a funtion over all values of a specified key" alt="" coords="501,136,701,177"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1MultiBucketHashTable.html#a68705e31798bf6cc056d6591b8791e96" title="get bucket size" alt="" coords="749,5,949,47"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1MultiBucketHashTable.html#aeda9e90b86f34f8efb3a2b158f990bc9" title="get the key capacity of the hash table" alt="" coords="749,71,949,112"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1MultiBucketHashTable.html#a01191413592a1a788216a36f69746ab4" title="get empty value" alt="" coords="749,136,949,177"/>
+<area shape="rect" id="node9" href="$classwarpcore_1_1MultiBucketHashTable.html#a5f92208f43728898f45cddc73d3e3885" title="checks if key is equal to EmptyKey" alt="" coords="749,201,949,243"/>
+<area shape="rect" id="node11" href="$classwarpcore_1_1MultiBucketHashTable.html#a45b07ee1cd3bbab4c5ae09935a8aff56" title="checks if key is not equal to (EmptyKey||TombstoneKey)" alt="" coords="749,267,949,308"/>
+<area shape="rect" id="node10" href="$classwarpcore_1_1MultiBucketHashTable.html#a12af4f8be135d8811b70aca2052a58fe" title="get empty key" alt="" coords="997,201,1197,243"/>
+<area shape="rect" id="node12" href="$classwarpcore_1_1MultiBucketHashTable.html#ac21fce4f6a4415eac0a4fcba11ac0f99" title="get tombstone key" alt="" coords="997,267,1197,308"/>
+</map>

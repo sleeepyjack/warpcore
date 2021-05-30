@@ -93,9 +93,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>index_type</b> = ind
 <tr class="memitem:ace3917bfbc275542adfcab08112a6e92"><td class="memItemLeft" align="right" valign="top"><a id="ace3917bfbc275542adfcab08112a6e92"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>status_type</b> = <a class="el" href="classwarpcore_1_1Status.html">Status</a></td></tr>
 <tr class="separator:ace3917bfbc275542adfcab08112a6e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588acfac8741ca75ddaa4771a7723416"><td class="memItemLeft" align="right" valign="top"><a id="a588acfac8741ca75ddaa4771a7723416"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>key_set_type</b> = <a class="el" href="classwarpcore_1_1HashSet.html">HashSet</a>&lt; Key, EmptyKey, TombstoneKey, <a class="el" href="classwarpcore_1_1probing__schemes_1_1DoubleHashing.html">defaults::probing_scheme_t</a>&lt; Key, 1 &gt; &gt;</td></tr>
-<tr class="separator:a588acfac8741ca75ddaa4771a7723416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec2e679134bd598f31bd01dbde774742"><td class="memItemLeft" align="right" valign="top"><a id="aec2e679134bd598f31bd01dbde774742"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>probing_scheme_type</b> = ProbingScheme</td></tr>
+<tr class="separator:aec2e679134bd598f31bd01dbde774742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -147,9 +147,6 @@ __host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr class="memitem:ab0b0fabd71a8937fca8c790b2a4864ee"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1MultiValueHashTable.html#ab0b0fabd71a8937fca8c790b2a4864ee">for_each</a> (Func f, const key_type *const keys_in, const index_type num_in, const cudaStream_t stream=0, const index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *const status_out=nullptr, const index_type smem_bytes=0) const noexcept</td></tr>
 <tr class="memdesc:ab0b0fabd71a8937fca8c790b2a4864ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">applies a funtion over all key value pairs  <a href="classwarpcore_1_1MultiValueHashTable.html#ab0b0fabd71a8937fca8c790b2a4864ee">More...</a><br /></td></tr>
 <tr class="separator:ab0b0fabd71a8937fca8c790b2a4864ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02f28e1495d63c3541009865b87ea59f"><td class="memItemLeft" align="right" valign="top">const __host__ <a class="el" href="classwarpcore_1_1HashSet.html">key_set_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f">get_key_set</a> (const cudaStream_t stream=0, const float size_fraction=0.9) const noexcept</td></tr>
-<tr class="memdesc:a02f28e1495d63c3541009865b87ea59f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code><a class="el" href="classwarpcore_1_1HashSet.html" title="hash set">warpcore::HashSet</a></code> of unique keys inside the table  <a href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f">More...</a><br /></td></tr>
-<tr class="separator:a02f28e1495d63c3541009865b87ea59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec537b17501127cd2bb44f60b90aecfa"><td class="memItemLeft" align="right" valign="top">__host__ index_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa">num_keys</a> (const cudaStream_t stream=0) const noexcept</td></tr>
 <tr class="memdesc:aec537b17501127cd2bb44f60b90aecfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of unique keys inside the table  <a href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa">More...</a><br /></td></tr>
 <tr class="separator:aec537b17501127cd2bb44f60b90aecfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -404,18 +401,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff_icgraph" id="classwarpcore_1_1MultiValueHashTable_ae4ceca02c7bd32ee58171b5aa1ee47ff_icgraph">
-<area shape="rect" title="get the capacity of the hash table" alt="" coords="965,221,1157,263"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,131,917,172"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,201,437,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a8abd31b493048670295af663d50d1c9e" title="current load factor of the hash table" alt="" coords="485,255,677,296"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a1be160768bafcae409e3a37ee2829d9f" title="number of values stored inside the hash table" alt="" coords="725,305,917,347"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,9,677,51"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,133,677,175"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,39,197,80"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,136,437,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#afba396891eeb4902e22b112bbafe7945" title="number of values stored inside the hash table \info alias for size()" alt="" coords="485,320,677,361"/>
+<area shape="rect" title="get the capacity of the hash table" alt="" coords="965,181,1157,223"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,68,917,109"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a8abd31b493048670295af663d50d1c9e" title="current load factor of the hash table" alt="" coords="485,185,677,227"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="725,305,917,347"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a1be160768bafcae409e3a37ee2829d9f" title="number of values stored inside the hash table" alt="" coords="725,240,917,281"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,68,677,109"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,160,197,201"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#afba396891eeb4902e22b112bbafe7945" title="number of values stored inside the hash table \info alias for size()" alt="" coords="485,251,677,292"/>
 </map>
 </div>
 
@@ -453,10 +449,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_a299089aab58c35b5f65638bc3ec0569e_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_a299089aab58c35b5f65638bc3ec0569e_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_a299089aab58c35b5f65638bc3ec0569e_icgraph" id="classwarpcore_1_1MultiValueHashTable_a299089aab58c35b5f65638bc3ec0569e_icgraph">
-<area shape="rect" title="get cooperative group size" alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a2121e41e089fd4ec029b382f52c8b717" title="insert a set of keys into the hash table" alt="" coords="5,5,197,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a95c52ddbf4d9ae84240b3c94ef6cb833" title="number of values associated to a set of keys \info this function returns only num_out if num_per_key_..." alt="" coords="5,71,197,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ac5f44931cff592aff6264d9b74231b08" title="retrieve a set of keys from the hash table" alt="" coords="5,136,197,177"/>
+<area shape="rect" title="get cooperative group size" alt="" coords="485,104,677,145"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a2121e41e089fd4ec029b382f52c8b717" title="insert a set of keys into the hash table" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a95c52ddbf4d9ae84240b3c94ef6cb833" title="number of values associated to a set of keys \info this function returns only num_out if num_per_key_..." alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ac5f44931cff592aff6264d9b74231b08" title="retrieve a set of keys from the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,201,437,243"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,201,197,243"/>
 </map>
 </div>
 
@@ -500,13 +498,11 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="973,71,1165,112"/>
 <area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#acbcf649a55f735827a3729bdcd5493d1" title="constructor" alt="" coords="725,5,925,47"/>
 <area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="729,176,921,217"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,104,437,145"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,296,677,337"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,108,437,149"/>
 <area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,176,677,217"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,235,437,276"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,300,437,341"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,268,197,309"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,169,437,211"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,239,437,280"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,173,437,215"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,239,197,280"/>
 </map>
 </div>
 
@@ -775,93 +771,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d_icgraph" id="classwarpcore_1_1MultiValueHashTable_a0372f315323a792c0a2924a32ce2c78d_icgraph">
-<area shape="rect" title="applies a funtion over all values of a specified key" alt="" coords="725,136,917,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,39,677,80"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,136,677,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,201,437,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,104,197,145"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,136,437,177"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a02f28e1495d63c3541009865b87ea59f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02f28e1495d63c3541009865b87ea59f">&#9670;&nbsp;</a></span>get_key_set()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Key , class Value , Key EmptyKey = defaults::empty_key&lt;Key&gt;(), Key TombstoneKey = defaults::tombstone_key&lt;Key&gt;(), class ProbingScheme  = defaults::probing_scheme_t&lt;Key, 8&gt;, class TableStorage  = defaults::table_storage_t&lt;Key, Value&gt;, index_t TempMemoryBytes = defaults::temp_memory_bytes()&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const __host__ <a class="el" href="classwarpcore_1_1HashSet.html">key_set_type</a> <a class="el" href="classwarpcore_1_1MultiValueHashTable.html">warpcore::MultiValueHashTable</a>&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;::get_key_set </td>
-          <td>(</td>
-          <td class="paramtype">const cudaStream_t&#160;</td>
-          <td class="paramname"><em>stream</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>size_fraction</em> = <code>0.9</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><code><a class="el" href="classwarpcore_1_1HashSet.html" title="hash set">warpcore::HashSet</a></code> of unique keys inside the table </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">size_fraction</td><td>capacity of the hash set in relation to the number of unique keys inside the table </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="classwarpcore_1_1HashSet.html" title="hash set">warpcore::HashSet</a></code> </dd></dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_cgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_cgraph" id="classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_cgraph">
-<area shape="rect" title="warpcore::HashSet of unique keys inside the table" alt="" coords="5,235,197,276"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="245,104,437,145"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="265,201,417,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table" alt="" coords="245,267,437,308"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a15b81a16c6fbdb88dee1fd8c05a9fdbd" title="get the status of the hash table" alt="" coords="265,332,417,373"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table" alt="" coords="485,5,677,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a" title="checks if key is equal to EmptyKey" alt="" coords="485,71,677,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="485,136,677,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#afe401d003c9b03d05270adaf932a541a" title="get empty key" alt="" coords="725,71,917,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a4eeec7f55e0f48b901507a5b63a7981e" title="get tombstone key" alt="" coords="725,136,917,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2" title="checks if key is equal to EmptyKey" alt="" coords="505,201,657,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="505,267,657,308"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="745,201,897,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="745,267,897,308"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_icgraph" alt=""/></div>
-<map name="classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_icgraph" id="classwarpcore_1_1MultiValueHashTable_a02f28e1495d63c3541009865b87ea59f_icgraph">
-<area shape="rect" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,5,677,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
+<area shape="rect" title="applies a funtion over all values of a specified key" alt="" coords="725,104,917,145"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,73,677,115"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,136,437,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,136,197,177"/>
 </map>
 </div>
 
@@ -1163,15 +1078,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_ab0911b242549df8b7ba680914c08d02a_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_ab0911b242549df8b7ba680914c08d02a_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_ab0911b242549df8b7ba680914c08d02a_icgraph" id="classwarpcore_1_1MultiValueHashTable_ab0911b242549df8b7ba680914c08d02a_icgraph">
-<area shape="rect" title="checks if key is equal to EmptyKey" alt="" coords="965,167,1157,208"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,108,917,149"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,201,437,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,9,677,51"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,135,677,176"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,39,197,80"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" title="checks if key is equal to EmptyKey" alt="" coords="965,103,1157,144"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,71,917,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,71,677,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
 </map>
 </div>
 
@@ -1290,15 +1203,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_adea8bae0455998d261c2a204f3758920_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_adea8bae0455998d261c2a204f3758920_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_adea8bae0455998d261c2a204f3758920_icgraph" id="classwarpcore_1_1MultiValueHashTable_adea8bae0455998d261c2a204f3758920_icgraph">
-<area shape="rect" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="965,167,1157,208"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,108,917,149"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,201,437,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,9,677,51"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,135,677,176"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,39,197,80"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="965,103,1157,144"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,71,917,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,71,677,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
 </map>
 </div>
 
@@ -1391,10 +1302,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa_icgraph" id="classwarpcore_1_1MultiValueHashTable_aec537b17501127cd2bb44f60b90aecfa_icgraph">
-<area shape="rect" title="number of unique keys inside the table" alt="" coords="725,39,917,80"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,5,677,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="485,71,677,112"/>
+<area shape="rect" title="number of unique keys inside the table" alt="" coords="485,39,677,80"/>
 <area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,71,437,112"/>
 <area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
 </map>
 </div>
@@ -2013,24 +1923,19 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889_cgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889_cgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889_cgraph" id="classwarpcore_1_1MultiValueHashTable_af061f628a389bb2444044ebf77558889_cgraph">
-<area shape="rect" title="retrieves all elements from the hash table" alt="" coords="5,199,197,240"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,165,437,207"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,231,437,272"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,121,917,163"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,165,677,207"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table" alt="" coords="965,5,1157,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a" title="checks if key is equal to EmptyKey" alt="" coords="965,71,1157,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="965,136,1157,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#afe401d003c9b03d05270adaf932a541a" title="get empty key" alt="" coords="1205,71,1397,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a4eeec7f55e0f48b901507a5b63a7981e" title="get tombstone key" alt="" coords="1205,136,1397,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,231,677,272"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="745,201,897,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table" alt="" coords="725,267,917,308"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a15b81a16c6fbdb88dee1fd8c05a9fdbd" title="get the status of the hash table" alt="" coords="745,332,897,373"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2" title="checks if key is equal to EmptyKey" alt="" coords="985,201,1137,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="985,267,1137,308"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="1225,201,1377,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="1225,267,1377,308"/>
+<area shape="rect" title="retrieves all elements from the hash table" alt="" coords="5,136,197,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,77,437,119"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,195,437,236"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,71,917,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,77,677,119"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table" alt="" coords="965,136,1157,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a" title="checks if key is equal to EmptyKey" alt="" coords="965,5,1157,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="965,71,1157,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#afe401d003c9b03d05270adaf932a541a" title="get empty key" alt="" coords="1205,5,1397,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a4eeec7f55e0f48b901507a5b63a7981e" title="get tombstone key" alt="" coords="1205,71,1397,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a299089aab58c35b5f65638bc3ec0569e" title="get cooperative group size" alt="" coords="485,195,677,236"/>
+<area shape="rect" href="classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer" alt="" coords="508,260,655,301"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table" alt="" coords="485,325,677,367"/>
 </map>
 </div>
 
@@ -2092,21 +1997,11 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294_cgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294_cgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294_cgraph" id="classwarpcore_1_1MultiValueHashTable_adc688c169bfd040d34b2f7480d631294_cgraph">
-<area shape="rect" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="5,235,197,276"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="245,235,437,276"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="485,104,677,145"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="505,201,657,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table" alt="" coords="485,267,677,308"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a15b81a16c6fbdb88dee1fd8c05a9fdbd" title="get the status of the hash table" alt="" coords="505,332,657,373"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table" alt="" coords="725,5,917,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a" title="checks if key is equal to EmptyKey" alt="" coords="725,71,917,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="725,136,917,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#afe401d003c9b03d05270adaf932a541a" title="get empty key" alt="" coords="965,71,1157,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a4eeec7f55e0f48b901507a5b63a7981e" title="get tombstone key" alt="" coords="965,136,1157,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2" title="checks if key is equal to EmptyKey" alt="" coords="745,201,897,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="745,267,897,308"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="985,201,1137,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="985,267,1137,308"/>
+<area shape="rect" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="5,104,197,145"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ae4ceca02c7bd32ee58171b5aa1ee47ff" title="get the capacity of the hash table" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a299089aab58c35b5f65638bc3ec0569e" title="get cooperative group size" alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer" alt="" coords="268,136,415,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#aec537b17501127cd2bb44f60b90aecfa" title="number of unique keys inside the table" alt="" coords="245,201,437,243"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2263,17 +2158,15 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1MultiValueHashTable_a4eeec7f55e0f48b901507a5b63a7981e_icgraph.png" border="0" usemap="#classwarpcore_1_1MultiValueHashTable_a4eeec7f55e0f48b901507a5b63a7981e_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1MultiValueHashTable_a4eeec7f55e0f48b901507a5b63a7981e_icgraph" id="classwarpcore_1_1MultiValueHashTable_a4eeec7f55e0f48b901507a5b63a7981e_icgraph">
-<area shape="rect" title="get tombstone key" alt="" coords="1205,135,1397,176"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a8db7985471f05ea6e812870b12766b2c" title="checks if key is equal to TombstoneKey" alt="" coords="965,101,1157,143"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="965,167,1157,208"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,108,917,149"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,201,437,243"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,9,677,51"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,135,677,176"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,39,197,80"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" title="get tombstone key" alt="" coords="1205,71,1397,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a8db7985471f05ea6e812870b12766b2c" title="checks if key is equal to TombstoneKey" alt="" coords="965,37,1157,79"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="965,103,1157,144"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="725,71,917,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,136,437,177"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,71,677,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,5,437,47"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,71,437,112"/>
+<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
 </map>
 </div>
 

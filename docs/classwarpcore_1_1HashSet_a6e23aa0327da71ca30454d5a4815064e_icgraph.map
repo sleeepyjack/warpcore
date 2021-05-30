@@ -1,16 +1,13 @@
 <map id="warpcore::HashSet::tombstone_key" name="warpcore::HashSet::tombstone_key">
-<area shape="rect" id="node1" title="get tombstone key" alt="" coords="1152,67,1304,108"/>
-<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="739,5,891,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a41943b97bab382d38d17b7b222907f80" title="checks if key is equal to TombstoneKey" alt="" coords="952,67,1104,108"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="952,133,1104,175"/>
-<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="739,71,891,112"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="739,136,891,177"/>
-<area shape="rect" id="node11" href="$classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="739,201,891,243"/>
-<area shape="rect" id="node12" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="725,267,904,294"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="505,71,657,112"/>
-<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,136,677,177"/>
-<area shape="rect" id="node9" href="$classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,136,437,177"/>
-<area shape="rect" id="node10" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,136,197,177"/>
-<area shape="rect" id="node13" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="505,260,657,301"/>
-<area shape="rect" id="node14" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="265,260,417,301"/>
+<area shape="rect" id="node1" title="get tombstone key" alt="" coords="832,67,984,108"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="419,5,571,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#a41943b97bab382d38d17b7b222907f80" title="checks if key is equal to TombstoneKey" alt="" coords="632,67,784,108"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="632,133,784,175"/>
+<area shape="rect" id="node5" href="$classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="419,71,571,112"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="419,136,571,177"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="419,201,571,243"/>
+<area shape="rect" id="node9" href="$classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="405,267,584,294"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="205,71,357,112"/>
+<area shape="rect" id="node10" href="$classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="205,260,357,301"/>
+<area shape="rect" id="node11" href="$classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="5,260,157,301"/>
 </map>

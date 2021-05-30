@@ -70,6 +70,7 @@ $(function() {
 , <a class="el" href="classwarpcore_1_1BucketListHashTable.html#ad8b42b071bdf053a1ccd42b001212fc6">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
 , <a class="el" href="classwarpcore_1_1CountingHashTable.html#acb401fb2d38c59e086a1bedf68d4815f">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#ae21bfb96f28d7b097841d6a6874c16d5">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#a04e9f4cd06dc0c55c052991058e30efe">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#ac12fa1b729821808ce4627c49bbc4d25">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#adb573d3eb31825a4741ee7953bd69396">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#a269ad2dfbb2f4ba86aa0746d1db6d019">warpcore::storage::multi_value::BucketListStore&lt; Value, BucketIndexBits, ValueCounterBits, BucketSizeBits &gt;</a>
@@ -91,6 +92,7 @@ $(function() {
 , <a class="el" href="classwarpcore_1_1BucketListHashTable.html#afd7403fb1e7a22bdf59b7f6143c1f420">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
 , <a class="el" href="classwarpcore_1_1CountingHashTable.html#a2cad25fea134d836cf1b75f67d6b38ac">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#aff4064d67bbf0be8fc40bd34cbac30f8">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#abd60992f9e6418a2ca792a6058aa2dab">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
@@ -102,6 +104,7 @@ $(function() {
 , <a class="el" href="classwarpcore_1_1BucketListHashTable.html#a21b8552468f9254a2e7d5f81b0d0e29c">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
 , <a class="el" href="classwarpcore_1_1CountingHashTable.html#abd203ab693aa931917013e11c23d444c">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#ac1b20d9d5305bbd8e7fca93aa580c984">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#aaf740cdc01783f7ce60329ce5c2d8610">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a5ab9221422cf32364464b44be66075dd">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#ad27e3e8fab3e2725d8437e4252566768">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1storage_1_1multi__value_1_1BucketListStore.html#aa4ac88f26d621b59508ec65c6f31fbec">warpcore::storage::multi_value::BucketListStore&lt; Value, BucketIndexBits, ValueCounterBits, BucketSizeBits &gt;</a>
@@ -109,17 +112,23 @@ $(function() {
 <li>is_empty_key()
 : <a class="el" href="classwarpcore_1_1CountingHashTable.html#a7cf82f559b57bed446328aab53ffcdd2">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#a5f92208f43728898f45cddc73d3e3885">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a5c600de998d35683755bf372283cb6f9">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
+<li>is_empty_value()
+: <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#a5de5c4185fbf950436085e04b8909ce7">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+</li>
 <li>is_initialized()
 : <a class="el" href="classwarpcore_1_1BucketListHashTable.html#abcfec81d3cac942d01868bb05080beab">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#a0bb44fea03366344789015ec9d53bbb4">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a44f45da1cebbcc45a01072d4d22514ba">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#ae366b3fd0d7edbac68a939fe580df9a4">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 <li>is_tombstone_key()
 : <a class="el" href="classwarpcore_1_1CountingHashTable.html#ad4faa63cd0e6613135c12733c2d9fb6f">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#a41943b97bab382d38d17b7b222907f80">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#aaaa14a31b17a41b1362908ed2d275fc8">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#a8db7985471f05ea6e812870b12766b2c">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a245e2f6c5cb92c467b90335ba8048566">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
@@ -127,8 +136,12 @@ $(function() {
 : <a class="el" href="classwarpcore_1_1BucketListHashTable.html#a65ff00b50f0f0b5d31454d4b0bed36c7">warpcore::BucketListHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ValueStore, ProbingScheme &gt;</a>
 , <a class="el" href="classwarpcore_1_1CountingHashTable.html#a28bd96a747e0acd2f0136d74a44612d4">warpcore::CountingHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7">warpcore::HashSet&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;</a>
+, <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#a45b07ee1cd3bbab4c5ae09935a8aff56">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920">warpcore::MultiValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 , <a class="el" href="classwarpcore_1_1SingleValueHashTable.html#a4af1dc4ff96f4289f3b1010df216627f">warpcore::SingleValueHashTable&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
+</li>
+<li>is_valid_value()
+: <a class="el" href="classwarpcore_1_1MultiBucketHashTable.html#a782fd58856702958e1a0e27f9757507e">warpcore::MultiBucketHashTable&lt; Key, Value, EmptyKey, TombstoneKey, EmptyValue, ProbingScheme, TableStorage, TempMemoryBytes &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

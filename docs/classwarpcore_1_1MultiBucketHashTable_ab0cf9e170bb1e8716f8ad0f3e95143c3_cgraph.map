@@ -1,0 +1,5 @@
+<map id="warpcore::MultiBucketHashTable::size" name="warpcore::MultiBucketHashTable::size">
+<area shape="rect" id="node1" title="number of values stored inside the hash table" alt="" coords="5,39,205,80"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#aeda9e90b86f34f8efb3a2b158f990bc9" title="get the key capacity of the hash table" alt="" coords="253,5,453,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1storage_1_1CyclicStore.html#ab475e047f32b8a8358ea6b78dfe2536d" title="atomically fetches the next slot in the buffer" alt="" coords="280,71,427,112"/>
+</map>

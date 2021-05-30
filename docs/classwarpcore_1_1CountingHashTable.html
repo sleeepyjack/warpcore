@@ -114,17 +114,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2cad25fea134d836cf1b75f67d6b38ac"><td class="memItemLeft" align="right" valign="top">__device__ status_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#a2cad25fea134d836cf1b75f67d6b38ac">insert</a> (key_type key_in, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1CountingHashTable.html#a5efe6f4060321596322a99a28fcaef93">cg_size</a>()&gt; &amp;group, index_type probing_length=defaults::probing_length()) noexcept</td></tr>
 <tr class="memdesc:a2cad25fea134d836cf1b75f67d6b38ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts a key into the hash table  <a href="classwarpcore_1_1CountingHashTable.html#a2cad25fea134d836cf1b75f67d6b38ac">More...</a><br /></td></tr>
 <tr class="separator:a2cad25fea134d836cf1b75f67d6b38ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36d896f2f66465925ea21a9f01bb12f3"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
-<tr class="memitem:a36d896f2f66465925ea21a9f01bb12f3"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#a36d896f2f66465925ea21a9f01bb12f3">insert</a> (key_type *keys_in, index_type num_in, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) noexcept</td></tr>
-<tr class="memdesc:a36d896f2f66465925ea21a9f01bb12f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a set of keys into the hash table  <a href="classwarpcore_1_1CountingHashTable.html#a36d896f2f66465925ea21a9f01bb12f3">More...</a><br /></td></tr>
-<tr class="separator:a36d896f2f66465925ea21a9f01bb12f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90809daf9f0cbcde4ac65ad7ac9e242"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
+<tr class="memitem:ad90809daf9f0cbcde4ac65ad7ac9e242"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#ad90809daf9f0cbcde4ac65ad7ac9e242">insert</a> (const key_type *keys_in, index_type num_in, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) noexcept</td></tr>
+<tr class="memdesc:ad90809daf9f0cbcde4ac65ad7ac9e242"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a set of keys into the hash table  <a href="classwarpcore_1_1CountingHashTable.html#ad90809daf9f0cbcde4ac65ad7ac9e242">More...</a><br /></td></tr>
+<tr class="separator:ad90809daf9f0cbcde4ac65ad7ac9e242"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab156b6726ca60e401fae990274b40cfc"><td class="memItemLeft" align="right" valign="top">__device__ status_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#ab156b6726ca60e401fae990274b40cfc">retrieve</a> (key_type key_in, value_type &amp;value_out, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1CountingHashTable.html#a5efe6f4060321596322a99a28fcaef93">cg_size</a>()&gt; &amp;group, index_type probing_length=defaults::probing_length()) const noexcept</td></tr>
 <tr class="memdesc:ab156b6726ca60e401fae990274b40cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieves a key from the hash table  <a href="classwarpcore_1_1CountingHashTable.html#ab156b6726ca60e401fae990274b40cfc">More...</a><br /></td></tr>
 <tr class="separator:ab156b6726ca60e401fae990274b40cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9abe12f3b4110a53e0cfc89a480a798f"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
-<tr class="memitem:a9abe12f3b4110a53e0cfc89a480a798f"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#a9abe12f3b4110a53e0cfc89a480a798f">retrieve</a> (key_type *keys_in, index_type num_in, value_type *values_out, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) const noexcept</td></tr>
-<tr class="memdesc:a9abe12f3b4110a53e0cfc89a480a798f"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a set of keys from the hash table  <a href="classwarpcore_1_1CountingHashTable.html#a9abe12f3b4110a53e0cfc89a480a798f">More...</a><br /></td></tr>
-<tr class="separator:a9abe12f3b4110a53e0cfc89a480a798f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9b77beb564979c221880c47ed41682"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
+<tr class="memitem:a0c9b77beb564979c221880c47ed41682"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#a0c9b77beb564979c221880c47ed41682">retrieve</a> (const key_type *keys_in, index_type num_in, value_type *values_out, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) const noexcept</td></tr>
+<tr class="memdesc:a0c9b77beb564979c221880c47ed41682"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a set of keys from the hash table  <a href="classwarpcore_1_1CountingHashTable.html#a0c9b77beb564979c221880c47ed41682">More...</a><br /></td></tr>
+<tr class="separator:a0c9b77beb564979c221880c47ed41682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aade49f5de5f2144d57cdcfe8b7ad6663"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1CountingHashTable.html#aade49f5de5f2144d57cdcfe8b7ad6663">retrieve_all</a> (key_type *keys_out, value_type *values_out, index_t &amp;num_out, cudaStream_t stream=0) const noexcept</td></tr>
 <tr class="memdesc:aade49f5de5f2144d57cdcfe8b7ad6663"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieves all elements from the hash table  <a href="classwarpcore_1_1CountingHashTable.html#aade49f5de5f2144d57cdcfe8b7ad6663">More...</a><br /></td></tr>
 <tr class="separator:aade49f5de5f2144d57cdcfe8b7ad6663"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -433,8 +433,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classwarpcore_1_1CountingHashTable_a5efe6f4060321596322a99a28fcaef93_icgraph.png" border="0" usemap="#classwarpcore_1_1CountingHashTable_a5efe6f4060321596322a99a28fcaef93_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1CountingHashTable_a5efe6f4060321596322a99a28fcaef93_icgraph" id="classwarpcore_1_1CountingHashTable_a5efe6f4060321596322a99a28fcaef93_icgraph">
 <area shape="rect" title="get cooperative group size" alt="" coords="268,39,483,80"/>
-<area shape="rect" href="classwarpcore_1_1CountingHashTable.html#a36d896f2f66465925ea21a9f01bb12f3" title="insert a set of keys into the hash table" alt="" coords="5,5,220,47"/>
-<area shape="rect" href="classwarpcore_1_1CountingHashTable.html#a9abe12f3b4110a53e0cfc89a480a798f" title="retrieve a set of keys from the hash table" alt="" coords="5,71,220,112"/>
+<area shape="rect" href="classwarpcore_1_1CountingHashTable.html#ad90809daf9f0cbcde4ac65ad7ac9e242" title="insert a set of keys into the hash table" alt="" coords="5,5,220,47"/>
+<area shape="rect" href="classwarpcore_1_1CountingHashTable.html#a0c9b77beb564979c221880c47ed41682" title="retrieve a set of keys from the hash table" alt="" coords="5,71,220,112"/>
 </map>
 </div>
 
@@ -808,8 +808,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a36d896f2f66465925ea21a9f01bb12f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36d896f2f66465925ea21a9f01bb12f3">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
+<a id="ad90809daf9f0cbcde4ac65ad7ac9e242"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad90809daf9f0cbcde4ac65ad7ac9e242">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -824,7 +824,7 @@ template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1CountingHashTable.html">warpcore::CountingHashTable</a>&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">key_type *&#160;</td>
+          <td class="paramtype">const key_type *&#160;</td>
           <td class="paramname"><em>keys_in</em>, </td>
         </tr>
         <tr>
@@ -884,8 +884,8 @@ template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1CountingHashTable_a36d896f2f66465925ea21a9f01bb12f3_cgraph.png" border="0" usemap="#classwarpcore_1_1CountingHashTable_a36d896f2f66465925ea21a9f01bb12f3_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1CountingHashTable_a36d896f2f66465925ea21a9f01bb12f3_cgraph" id="classwarpcore_1_1CountingHashTable_a36d896f2f66465925ea21a9f01bb12f3_cgraph">
+<div class="center"><img src="classwarpcore_1_1CountingHashTable_ad90809daf9f0cbcde4ac65ad7ac9e242_cgraph.png" border="0" usemap="#classwarpcore_1_1CountingHashTable_ad90809daf9f0cbcde4ac65ad7ac9e242_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1CountingHashTable_ad90809daf9f0cbcde4ac65ad7ac9e242_cgraph" id="classwarpcore_1_1CountingHashTable_ad90809daf9f0cbcde4ac65ad7ac9e242_cgraph">
 <area shape="rect" title="insert a set of keys into the hash table" alt="" coords="5,5,220,47"/>
 <area shape="rect" href="classwarpcore_1_1CountingHashTable.html#a5efe6f4060321596322a99a28fcaef93" title="get cooperative group size" alt="" coords="268,5,483,47"/>
 <area shape="rect" href="classwarpcore_1_1SingleValueHashTable.html#a9e333c031a91f261db157871eab074c0" title="get cooperative group size" alt="" coords="531,5,729,47"/>
@@ -1247,8 +1247,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a9abe12f3b4110a53e0cfc89a480a798f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9abe12f3b4110a53e0cfc89a480a798f">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[1/2]</span></h2>
+<a id="a0c9b77beb564979c221880c47ed41682"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c9b77beb564979c221880c47ed41682">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1263,7 +1263,7 @@ template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1CountingHashTable.html">warpcore::CountingHashTable</a>&lt; Key, Value, EmptyKey, TombstoneKey, ProbingScheme, TableStorage, TempMemoryBytes &gt;::retrieve </td>
           <td>(</td>
-          <td class="paramtype">key_type *&#160;</td>
+          <td class="paramtype">const key_type *&#160;</td>
           <td class="paramname"><em>keys_in</em>, </td>
         </tr>
         <tr>
@@ -1330,8 +1330,8 @@ template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1CountingHashTable_a9abe12f3b4110a53e0cfc89a480a798f_cgraph.png" border="0" usemap="#classwarpcore_1_1CountingHashTable_a9abe12f3b4110a53e0cfc89a480a798f_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1CountingHashTable_a9abe12f3b4110a53e0cfc89a480a798f_cgraph" id="classwarpcore_1_1CountingHashTable_a9abe12f3b4110a53e0cfc89a480a798f_cgraph">
+<div class="center"><img src="classwarpcore_1_1CountingHashTable_a0c9b77beb564979c221880c47ed41682_cgraph.png" border="0" usemap="#classwarpcore_1_1CountingHashTable_a0c9b77beb564979c221880c47ed41682_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1CountingHashTable_a0c9b77beb564979c221880c47ed41682_cgraph" id="classwarpcore_1_1CountingHashTable_a0c9b77beb564979c221880c47ed41682_cgraph">
 <area shape="rect" title="retrieve a set of keys from the hash table" alt="" coords="5,5,220,47"/>
 <area shape="rect" href="classwarpcore_1_1CountingHashTable.html#a5efe6f4060321596322a99a28fcaef93" title="get cooperative group size" alt="" coords="268,5,483,47"/>
 <area shape="rect" href="classwarpcore_1_1SingleValueHashTable.html#a9e333c031a91f261db157871eab074c0" title="get cooperative group size" alt="" coords="531,5,729,47"/>

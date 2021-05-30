@@ -1,0 +1,4 @@
+<map id="warpcore::MultiBucketHashTable::for_each_bucket" name="warpcore::MultiBucketHashTable::for_each_bucket">
+<area shape="rect" id="node1" title="applies a funtion over all key bucket pairs inside the table" alt="" coords="5,5,205,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#aeda9e90b86f34f8efb3a2b158f990bc9" title="get the key capacity of the hash table" alt="" coords="253,5,453,47"/>
+</map>

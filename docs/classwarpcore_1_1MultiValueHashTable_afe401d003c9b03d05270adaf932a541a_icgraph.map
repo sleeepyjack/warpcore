@@ -2,14 +2,12 @@
 <area shape="rect" id="node1" title="get empty key" alt="" coords="1213,71,1405,112"/>
 <area shape="rect" id="node2" href="$classwarpcore_1_1MultiValueHashTable.html#ac12fa1b729821808ce4627c49bbc4d25" title="(re)initialize the hash table" alt="" coords="973,5,1165,47"/>
 <area shape="rect" id="node4" href="$classwarpcore_1_1MultiValueHashTable.html#ab0911b242549df8b7ba680914c08d02a" title="checks if key is equal to EmptyKey" alt="" coords="973,136,1165,177"/>
-<area shape="rect" id="node13" href="$classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="973,71,1165,112"/>
+<area shape="rect" id="node11" href="$classwarpcore_1_1MultiValueHashTable.html#adea8bae0455998d261c2a204f3758920" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="973,71,1165,112"/>
 <area shape="rect" id="node3" href="$classwarpcore_1_1MultiValueHashTable.html#acbcf649a55f735827a3729bdcd5493d1" title="constructor" alt="" coords="725,5,925,47"/>
 <area shape="rect" id="node5" href="$classwarpcore_1_1MultiValueHashTable.html#a0372f315323a792c0a2924a32ce2c78d" title="applies a funtion over all values of a specified key" alt="" coords="729,176,921,217"/>
-<area shape="rect" id="node10" href="$classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,104,437,145"/>
-<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,296,677,337"/>
-<area shape="rect" id="node9" href="$classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,176,677,217"/>
-<area shape="rect" id="node11" href="$classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,235,437,276"/>
-<area shape="rect" id="node7" href="$classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,300,437,341"/>
-<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,268,197,309"/>
-<area shape="rect" id="node12" href="$classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,169,437,211"/>
+<area shape="rect" id="node7" href="$classwarpcore_1_1MultiValueHashTable.html#a18aa96cecfd5b5cf0d65424a92784b07" title="inserts a key into the hash table" alt="" coords="245,108,437,149"/>
+<area shape="rect" id="node6" href="$classwarpcore_1_1MultiValueHashTable.html#ada2a3052b76a7d71bab214b1f466e4da" title="total number of values inside the table" alt="" coords="485,176,677,217"/>
+<area shape="rect" id="node8" href="$classwarpcore_1_1MultiValueHashTable.html#a7f64ccf2789b8eaf65251600bb36ca23" title="retrieves all values to a corresponding key" alt="" coords="245,239,437,280"/>
+<area shape="rect" id="node10" href="$classwarpcore_1_1MultiValueHashTable.html#a7f8d4c186530fe60ead1e52f9629622c" title="current storage density of the hash table" alt="" coords="245,173,437,215"/>
+<area shape="rect" id="node9" href="$classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,239,197,280"/>
 </map>

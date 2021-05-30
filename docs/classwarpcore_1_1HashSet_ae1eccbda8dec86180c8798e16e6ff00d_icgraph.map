@@ -1,6 +1,6 @@
 <map id="warpcore::HashSet::cg_size" name="warpcore::HashSet::cg_size">
 <area shape="rect" id="node1" title="get cooperative group size" alt="" coords="205,71,357,112"/>
 <area shape="rect" id="node2" href="$classwarpcore_1_1HashSet.html#a0480bc6e9197ccc13a50155d830adfb4" title="erases a set of keys from the hash table" alt="" coords="5,5,157,47"/>
-<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#aa5f8752a439792aa532d04abb50b0f26" title="insert a set of keys into the hash set" alt="" coords="5,71,157,112"/>
-<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#a0012b8162ac192387bafc44bc773f70a" title="retrieve a set of keys from the hash table" alt="" coords="5,136,157,177"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1HashSet.html#aed6e24ea8dd832110137dbf9895fac71" title="insert a set of keys into the hash set" alt="" coords="5,71,157,112"/>
+<area shape="rect" id="node4" href="$classwarpcore_1_1HashSet.html#a9eff9979d70ed297a8daebed90fdf1b9" title="retrieve a set of keys from the hash table" alt="" coords="5,136,157,177"/>
 </map>

@@ -115,17 +115,17 @@ __host__&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <tr class="memitem:af54d9aecfefb13e451e0580a38702f54"><td class="memItemLeft" align="right" valign="top">__device__ <a class="el" href="classwarpcore_1_1Status.html">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54">insert</a> (key_type key_in, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1HashSet.html#ae1eccbda8dec86180c8798e16e6ff00d">cg_size</a>()&gt; &amp;group, index_type probing_length=defaults::probing_length()) noexcept</td></tr>
 <tr class="memdesc:af54d9aecfefb13e451e0580a38702f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts a key into the hash set  <a href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54">More...</a><br /></td></tr>
 <tr class="separator:af54d9aecfefb13e451e0580a38702f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5f8752a439792aa532d04abb50b0f26"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
-<tr class="memitem:aa5f8752a439792aa532d04abb50b0f26"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#aa5f8752a439792aa532d04abb50b0f26">insert</a> (key_type *keys_in, index_type num_in, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) noexcept</td></tr>
-<tr class="memdesc:aa5f8752a439792aa532d04abb50b0f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a set of keys into the hash set  <a href="classwarpcore_1_1HashSet.html#aa5f8752a439792aa532d04abb50b0f26">More...</a><br /></td></tr>
-<tr class="separator:aa5f8752a439792aa532d04abb50b0f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6e24ea8dd832110137dbf9895fac71"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
+<tr class="memitem:aed6e24ea8dd832110137dbf9895fac71"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#aed6e24ea8dd832110137dbf9895fac71">insert</a> (const key_type *keys_in, index_type num_in, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) noexcept</td></tr>
+<tr class="memdesc:aed6e24ea8dd832110137dbf9895fac71"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a set of keys into the hash set  <a href="classwarpcore_1_1HashSet.html#aed6e24ea8dd832110137dbf9895fac71">More...</a><br /></td></tr>
+<tr class="separator:aed6e24ea8dd832110137dbf9895fac71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3be33bdea6aabe4075b7e6f9a3741021"><td class="memItemLeft" align="right" valign="top">__device__ <a class="el" href="classwarpcore_1_1Status.html">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021">retrieve</a> (Key key_in, bool &amp;flag_out, const cg::thread_block_tile&lt; <a class="el" href="classwarpcore_1_1HashSet.html#ae1eccbda8dec86180c8798e16e6ff00d">cg_size</a>()&gt; &amp;group, index_type probing_length=defaults::probing_length()) const noexcept</td></tr>
 <tr class="memdesc:a3be33bdea6aabe4075b7e6f9a3741021"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieves a key from the hash set  <a href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021">More...</a><br /></td></tr>
 <tr class="separator:a3be33bdea6aabe4075b7e6f9a3741021"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0012b8162ac192387bafc44bc773f70a"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
-<tr class="memitem:a0012b8162ac192387bafc44bc773f70a"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#a0012b8162ac192387bafc44bc773f70a">retrieve</a> (key_type *keys_in, index_type num_in, bool *flags_out, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) const noexcept</td></tr>
-<tr class="memdesc:a0012b8162ac192387bafc44bc773f70a"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a set of keys from the hash table  <a href="classwarpcore_1_1HashSet.html#a0012b8162ac192387bafc44bc773f70a">More...</a><br /></td></tr>
-<tr class="separator:a0012b8162ac192387bafc44bc773f70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eff9979d70ed297a8daebed90fdf1b9"><td class="memTemplParams" colspan="2">template&lt;class StatusHandler  = defaults::status_handler_t&gt; </td></tr>
+<tr class="memitem:a9eff9979d70ed297a8daebed90fdf1b9"><td class="memTemplItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#a9eff9979d70ed297a8daebed90fdf1b9">retrieve</a> (const key_type *keys_in, index_type num_in, bool *flags_out, cudaStream_t stream=0, index_type probing_length=defaults::probing_length(), typename StatusHandler::base_type *status_out=nullptr) const noexcept</td></tr>
+<tr class="memdesc:a9eff9979d70ed297a8daebed90fdf1b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieve a set of keys from the hash table  <a href="classwarpcore_1_1HashSet.html#a9eff9979d70ed297a8daebed90fdf1b9">More...</a><br /></td></tr>
+<tr class="separator:a9eff9979d70ed297a8daebed90fdf1b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a178adc0aac5636950e84134bc851cc"><td class="memItemLeft" align="right" valign="top">__host__ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc">retrieve_all</a> (key_type *keys_out, index_type &amp;num_out, cudaStream_t stream=0) const noexcept</td></tr>
 <tr class="memdesc:a6a178adc0aac5636950e84134bc851cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">retrieves all elements from the hash set  <a href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc">More...</a><br /></td></tr>
 <tr class="separator:a6a178adc0aac5636950e84134bc851cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -450,8 +450,8 @@ Here is the caller graph for this function:</div>
 <map name="classwarpcore_1_1HashSet_ae1eccbda8dec86180c8798e16e6ff00d_icgraph" id="classwarpcore_1_1HashSet_ae1eccbda8dec86180c8798e16e6ff00d_icgraph">
 <area shape="rect" title="get cooperative group size" alt="" coords="205,71,357,112"/>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#a0480bc6e9197ccc13a50155d830adfb4" title="erases a set of keys from the hash table" alt="" coords="5,5,157,47"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aa5f8752a439792aa532d04abb50b0f26" title="insert a set of keys into the hash set" alt="" coords="5,71,157,112"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a0012b8162ac192387bafc44bc773f70a" title="retrieve a set of keys from the hash table" alt="" coords="5,136,157,177"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#aed6e24ea8dd832110137dbf9895fac71" title="insert a set of keys into the hash set" alt="" coords="5,71,157,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a9eff9979d70ed297a8daebed90fdf1b9" title="retrieve a set of keys from the hash table" alt="" coords="5,136,157,177"/>
 </map>
 </div>
 
@@ -489,23 +489,20 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1HashSet_ab28ac96cb8e02dd35b2ba73334175ab7_icgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_ab28ac96cb8e02dd35b2ba73334175ab7_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1HashSet_ab28ac96cb8e02dd35b2ba73334175ab7_icgraph" id="classwarpcore_1_1HashSet_ab28ac96cb8e02dd35b2ba73334175ab7_icgraph">
-<area shape="rect" title="get empty key" alt="" coords="1173,187,1325,229"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6654bf5c2c17b0676d6fd4867fa991cd" title="(re)initialize the hash set" alt="" coords="952,64,1125,91"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2" title="checks if key is equal to EmptyKey" alt="" coords="963,187,1115,229"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="963,253,1115,294"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aff2bcd0720090d1dcfc03d0e7d9a1eab" title="constructor" alt="" coords="739,57,891,98"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#ae21bfb96f28d7b097841d6a6874c16d5" title="(re)initialize the hash set" alt="" coords="728,5,901,32"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="739,122,891,163"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="739,187,891,229"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="739,253,891,294"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,187,677,229"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,187,437,229"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,187,197,229"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="739,371,891,413"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="725,319,904,345"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="505,374,657,415"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="505,309,657,350"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="265,309,417,350"/>
+<area shape="rect" title="get empty key" alt="" coords="853,187,1005,229"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a6654bf5c2c17b0676d6fd4867fa991cd" title="(re)initialize the hash set" alt="" coords="632,64,805,91"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#af07ed139aa043222f6f25058cf7c53e2" title="checks if key is equal to EmptyKey" alt="" coords="643,187,795,229"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="643,253,795,294"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#aff2bcd0720090d1dcfc03d0e7d9a1eab" title="constructor" alt="" coords="419,57,571,98"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#ae21bfb96f28d7b097841d6a6874c16d5" title="(re)initialize the hash set" alt="" coords="408,5,581,32"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="419,122,571,163"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="419,187,571,229"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="419,253,571,294"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="419,371,571,413"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="405,319,584,345"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="205,374,357,415"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="205,309,357,350"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="5,309,157,350"/>
 </map>
 </div>
 
@@ -858,8 +855,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aa5f8752a439792aa532d04abb50b0f26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5f8752a439792aa532d04abb50b0f26">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
+<a id="aed6e24ea8dd832110137dbf9895fac71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed6e24ea8dd832110137dbf9895fac71">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -874,7 +871,7 @@ template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
         <tr>
           <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1HashSet.html">warpcore::HashSet</a>&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">key_type *&#160;</td>
+          <td class="paramtype">const key_type *&#160;</td>
           <td class="paramname"><em>keys_in</em>, </td>
         </tr>
         <tr>
@@ -934,8 +931,8 @@ template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26_cgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26_cgraph" id="classwarpcore_1_1HashSet_aa5f8752a439792aa532d04abb50b0f26_cgraph">
+<div class="center"><img src="classwarpcore_1_1HashSet_aed6e24ea8dd832110137dbf9895fac71_cgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_aed6e24ea8dd832110137dbf9895fac71_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1HashSet_aed6e24ea8dd832110137dbf9895fac71_cgraph" id="classwarpcore_1_1HashSet_aed6e24ea8dd832110137dbf9895fac71_cgraph">
 <area shape="rect" title="insert a set of keys into the hash set" alt="" coords="5,5,157,47"/>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#ae1eccbda8dec86180c8798e16e6ff00d" title="get cooperative group size" alt="" coords="205,5,357,47"/>
 </map>
@@ -1005,17 +1002,6 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="205,71,357,112"/>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="405,5,557,47"/>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="405,71,557,112"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54_icgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54_icgraph" alt=""/></div>
-<map name="classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54_icgraph" id="classwarpcore_1_1HashSet_af54d9aecfefb13e451e0580a38702f54_icgraph">
-<area shape="rect" title="inserts a key into the hash set" alt="" coords="725,5,877,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,5,677,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
 </map>
 </div>
 
@@ -1093,13 +1079,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1HashSet_af07ed139aa043222f6f25058cf7c53e2_icgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_af07ed139aa043222f6f25058cf7c53e2_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1HashSet_af07ed139aa043222f6f25058cf7c53e2_icgraph" id="classwarpcore_1_1HashSet_af07ed139aa043222f6f25058cf7c53e2_icgraph">
-<area shape="rect" title="checks if key is equal to EmptyKey" alt="" coords="925,71,1077,112"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="725,5,877,47"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="725,71,877,112"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="725,136,877,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,71,677,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,71,437,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,71,197,112"/>
+<area shape="rect" title="checks if key is equal to EmptyKey" alt="" coords="205,71,357,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="5,5,157,47"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="5,71,157,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="5,136,157,177"/>
 </map>
 </div>
 
@@ -1188,18 +1171,15 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1HashSet_aeec18cd128763576033aab044471ffa7_icgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_aeec18cd128763576033aab044471ffa7_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1HashSet_aeec18cd128763576033aab044471ffa7_icgraph" id="classwarpcore_1_1HashSet_aeec18cd128763576033aab044471ffa7_icgraph">
-<area shape="rect" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="952,136,1104,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="739,5,891,47"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="739,71,891,112"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="739,136,891,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="739,201,891,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="725,267,904,294"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="505,71,657,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,136,677,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,136,437,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,136,197,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="505,260,657,301"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="265,260,417,301"/>
+<area shape="rect" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="632,136,784,177"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="419,5,571,47"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="419,71,571,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="419,136,571,177"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="419,201,571,243"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="405,267,584,294"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="205,71,357,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="205,260,357,301"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="5,260,157,301"/>
 </map>
 </div>
 
@@ -1299,17 +1279,6 @@ template&lt;class Key , Key EmptyKey = defaults::empty_key&lt;Key&gt;(), Key Tom
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the status </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd_icgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd_icgraph" alt=""/></div>
-<map name="classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd_icgraph" id="classwarpcore_1_1HashSet_a15b81a16c6fbdb88dee1fd8c05a9fdbd_icgraph">
-<area shape="rect" title="get the status of the hash table" alt="" coords="725,5,877,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,5,677,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,5,437,47"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,5,197,47"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -1350,8 +1319,100 @@ template&lt;class Key , Key EmptyKey = defaults::empty_key&lt;Key&gt;(), Key Tom
 
 </div>
 </div>
+<a id="a9eff9979d70ed297a8daebed90fdf1b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eff9979d70ed297a8daebed90fdf1b9">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key , Key EmptyKey = defaults::empty_key&lt;Key&gt;(), Key TombstoneKey = defaults::tombstone_key&lt;Key&gt;(), class ProbingScheme  = defaults::probing_scheme_t&lt;Key, 16&gt;, index_t TempMemoryBytes = defaults::temp_memory_bytes()&gt; </div>
+<div class="memtemplate">
+template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1HashSet.html">warpcore::HashSet</a>&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;::retrieve </td>
+          <td>(</td>
+          <td class="paramtype">const key_type *&#160;</td>
+          <td class="paramname"><em>keys_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">index_type&#160;</td>
+          <td class="paramname"><em>num_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>flags_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cudaStream_t&#160;</td>
+          <td class="paramname"><em>stream</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">index_type&#160;</td>
+          <td class="paramname"><em>probing_length</em> = <code>defaults::probing_length()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">typename StatusHandler::base_type *&#160;</td>
+          <td class="paramname"><em>status_out</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>retrieve a set of keys from the hash table </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">StatusHandler</td><td>handles returned status per key (see <code><a class="el" href="namespacewarpcore_1_1status__handlers.html" title="status handlers to use for per key status information">status_handlers</a></code>) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">keys_in</td><td>pointer to keys to retrieve from the hash table </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num_in</td><td>number of keys to retrieve </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">flags_out</td><td>flags membership of <code>keys_in</code> in the set </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">probing_length</td><td>maximum number of probing attempts </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">status_out</td><td>status information (per key) </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classwarpcore_1_1HashSet_a9eff9979d70ed297a8daebed90fdf1b9_cgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_a9eff9979d70ed297a8daebed90fdf1b9_cgraph" alt=""/></div>
+<map name="classwarpcore_1_1HashSet_a9eff9979d70ed297a8daebed90fdf1b9_cgraph" id="classwarpcore_1_1HashSet_a9eff9979d70ed297a8daebed90fdf1b9_cgraph">
+<area shape="rect" title="retrieve a set of keys from the hash table" alt="" coords="5,5,157,47"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#ae1eccbda8dec86180c8798e16e6ff00d" title="get cooperative group size" alt="" coords="205,5,357,47"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a3be33bdea6aabe4075b7e6f9a3741021"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3be33bdea6aabe4075b7e6f9a3741021">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be33bdea6aabe4075b7e6f9a3741021">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1419,98 +1480,6 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="205,71,357,112"/>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#ab28ac96cb8e02dd35b2ba73334175ab7" title="get empty key" alt="" coords="405,5,557,47"/>
 <area shape="rect" href="classwarpcore_1_1HashSet.html#a6e23aa0327da71ca30454d5a4815064e" title="get tombstone key" alt="" coords="405,71,557,112"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a0012b8162ac192387bafc44bc773f70a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0012b8162ac192387bafc44bc773f70a">&#9670;&nbsp;</a></span>retrieve() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Key , Key EmptyKey = defaults::empty_key&lt;Key&gt;(), Key TombstoneKey = defaults::tombstone_key&lt;Key&gt;(), class ProbingScheme  = defaults::probing_scheme_t&lt;Key, 16&gt;, index_t TempMemoryBytes = defaults::temp_memory_bytes()&gt; </div>
-<div class="memtemplate">
-template&lt;class StatusHandler  = defaults::status_handler_t&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">__host__ void <a class="el" href="classwarpcore_1_1HashSet.html">warpcore::HashSet</a>&lt; Key, EmptyKey, TombstoneKey, ProbingScheme, TempMemoryBytes &gt;::retrieve </td>
-          <td>(</td>
-          <td class="paramtype">key_type *&#160;</td>
-          <td class="paramname"><em>keys_in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">index_type&#160;</td>
-          <td class="paramname"><em>num_in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool *&#160;</td>
-          <td class="paramname"><em>flags_out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">cudaStream_t&#160;</td>
-          <td class="paramname"><em>stream</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">index_type&#160;</td>
-          <td class="paramname"><em>probing_length</em> = <code>defaults::probing_length()</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">typename StatusHandler::base_type *&#160;</td>
-          <td class="paramname"><em>status_out</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>retrieve a set of keys from the hash table </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">StatusHandler</td><td>handles returned status per key (see <code><a class="el" href="namespacewarpcore_1_1status__handlers.html" title="status handlers to use for per key status information">status_handlers</a></code>) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">keys_in</td><td>pointer to keys to retrieve from the hash table </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">num_in</td><td>number of keys to retrieve </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">flags_out</td><td>flags membership of <code>keys_in</code> in the set </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>CUDA stream in which this operation is executed in </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">probing_length</td><td>maximum number of probing attempts </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">status_out</td><td>status information (per key) </td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a_cgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a_cgraph" alt=""/></div>
-<map name="classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a_cgraph" id="classwarpcore_1_1HashSet_a0012b8162ac192387bafc44bc773f70a_cgraph">
-<area shape="rect" title="retrieve a set of keys from the hash table" alt="" coords="5,5,157,47"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#ae1eccbda8dec86180c8798e16e6ff00d" title="get cooperative group size" alt="" coords="205,5,357,47"/>
 </map>
 </div>
 
@@ -1722,20 +1691,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwarpcore_1_1HashSet_a6e23aa0327da71ca30454d5a4815064e_icgraph.png" border="0" usemap="#classwarpcore_1_1HashSet_a6e23aa0327da71ca30454d5a4815064e_icgraph" alt=""/></div>
 <map name="classwarpcore_1_1HashSet_a6e23aa0327da71ca30454d5a4815064e_icgraph" id="classwarpcore_1_1HashSet_a6e23aa0327da71ca30454d5a4815064e_icgraph">
-<area shape="rect" title="get tombstone key" alt="" coords="1152,67,1304,108"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="739,5,891,47"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a41943b97bab382d38d17b7b222907f80" title="checks if key is equal to TombstoneKey" alt="" coords="952,67,1104,108"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="952,133,1104,175"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="739,71,891,112"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="739,136,891,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="739,201,891,243"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="725,267,904,294"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="505,71,657,112"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#a02f28e1495d63c3541009865b87ea59f" title="warpcore::HashSet of unique keys inside the table" alt="" coords="485,136,677,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#adc688c169bfd040d34b2f7480d631294" title="retrieve all unqiue keys \info this method has a dry&#45;run mode where it only calculates the needed arr..." alt="" coords="245,136,437,177"/>
-<area shape="rect" href="classwarpcore_1_1MultiValueHashTable.html#af061f628a389bb2444044ebf77558889" title="retrieves all elements from the hash table" alt="" coords="5,136,197,177"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="505,260,657,301"/>
-<area shape="rect" href="classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="265,260,417,301"/>
+<area shape="rect" title="get tombstone key" alt="" coords="832,67,984,108"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a255b77ba7f1ba8a1faabddfd92ae976c" title="erases a key from the hash table" alt="" coords="419,5,571,47"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a41943b97bab382d38d17b7b222907f80" title="checks if key is equal to TombstoneKey" alt="" coords="632,67,784,108"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#aeec18cd128763576033aab044471ffa7" title="checks if key is equal to (EmptyKey||TombstoneKey)" alt="" coords="632,133,784,175"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a8719aee40fca90a39085ac0253bbdd01" title="applies a funtion on all keys inside the table" alt="" coords="419,71,571,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#af54d9aecfefb13e451e0580a38702f54" title="inserts a key into the hash set" alt="" coords="419,136,571,177"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a3be33bdea6aabe4075b7e6f9a3741021" title="retrieves a key from the hash set" alt="" coords="419,201,571,243"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a06649688aa7e9f6538965f1dec18c82b" title="number of key/value pairs stored inside the hash set" alt="" coords="405,267,584,294"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a6a178adc0aac5636950e84134bc851cc" title="retrieves all elements from the hash set" alt="" coords="205,71,357,112"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a7ad4ad097ae0e332c4f24d867e6c411f" title="current load factor of the hash set" alt="" coords="205,260,357,301"/>
+<area shape="rect" href="classwarpcore_1_1HashSet.html#a178dec74a9404d6b89f37febec381dca" title="current storage density of the hash set" alt="" coords="5,260,157,301"/>
 </map>
 </div>
 

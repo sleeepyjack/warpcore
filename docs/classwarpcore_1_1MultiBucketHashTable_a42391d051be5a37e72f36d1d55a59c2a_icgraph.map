@@ -1,0 +1,4 @@
+<map id="warpcore::MultiBucketHashTable::bytes_total" name="warpcore::MultiBucketHashTable::bytes_total">
+<area shape="rect" id="node1" title="get the total number of bytes occupied by this data structure" alt="" coords="253,5,453,47"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#a8fca71d2bfa893b9219016b02e8c0b44" title="current storage density of the hash table" alt="" coords="5,5,205,47"/>
+</map>

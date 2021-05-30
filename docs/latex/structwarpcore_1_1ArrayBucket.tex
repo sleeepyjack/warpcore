@@ -1,0 +1,93 @@
+\hypertarget{structwarpcore_1_1ArrayBucket}{}\doxysection{warpcore\+::Array\+Bucket$<$ Value, Bucket\+Size $>$ Struct Template Reference}
+\label{structwarpcore_1_1ArrayBucket}\index{warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_a7c7bfa7f006655422ac3b23f30787a68}\label{structwarpcore_1_1ArrayBucket_a7c7bfa7f006655422ac3b23f30787a68}} 
+using {\bfseries value\+\_\+type} = Value
+\item 
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_a94bac0c20f74c81b80f9bd601244ebf1}\label{structwarpcore_1_1ArrayBucket_a94bac0c20f74c81b80f9bd601244ebf1}} 
+using {\bfseries index\+\_\+type} = std\+::uint32\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_a718e8ed7c490df87068ba738e50d026e}\label{structwarpcore_1_1ArrayBucket_a718e8ed7c490df87068ba738e50d026e}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ {\bfseries Array\+Bucket} (value\+\_\+type value) noexcept
+\item 
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_a53b552aca205e875f534d03de170f691}\label{structwarpcore_1_1ArrayBucket_a53b552aca205e875f534d03de170f691}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ {\bfseries Array\+Bucket} (const \mbox{\hyperlink{structwarpcore_1_1ArrayBucket}{Array\+Bucket}} \&other) noexcept
+\item 
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_ad5856829525ab5e2d39a37f228973194}\label{structwarpcore_1_1ArrayBucket_ad5856829525ab5e2d39a37f228973194}} 
+\+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ \mbox{\hyperlink{structwarpcore_1_1ArrayBucket}{Array\+Bucket}} \& {\bfseries operator=} (const \mbox{\hyperlink{structwarpcore_1_1ArrayBucket}{Array\+Bucket}} \&other) noexcept
+\item 
+constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ value\+\_\+type \& \mbox{\hyperlink{structwarpcore_1_1ArrayBucket_a0cc345e7a6ab2c2727c1902634af25d9}{operator\mbox{[}$\,$\mbox{]}}} (const index\+\_\+type i) noexcept
+\begin{DoxyCompactList}\small\item\em accessor \end{DoxyCompactList}\item 
+constexpr const \+\_\+\+\_\+device\+\_\+\+\_\+ value\+\_\+type \& \mbox{\hyperlink{structwarpcore_1_1ArrayBucket_aaadc3d15fbda4934f216cd94a5359dc5}{operator\mbox{[}$\,$\mbox{]}}} (const index\+\_\+type i) const noexcept
+\begin{DoxyCompactList}\small\item\em const accessor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{structwarpcore_1_1ArrayBucket_abb25e2cd6306c7b7f81a9ead9293225a}{bucket\+\_\+size}} () noexcept
+\begin{DoxyCompactList}\small\item\em get bucket size \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_ad4f7f8785b8fd134bb177f8088703cbc}\label{structwarpcore_1_1ArrayBucket_ad4f7f8785b8fd134bb177f8088703cbc}} 
+value\+\_\+type {\bfseries values\+\_\+} \mbox{[}Bucket\+Size\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_abb25e2cd6306c7b7f81a9ead9293225a}\label{structwarpcore_1_1ArrayBucket_abb25e2cd6306c7b7f81a9ead9293225a}} 
+\index{warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}!bucket\_size@{bucket\_size}}
+\index{bucket\_size@{bucket\_size}!warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}}
+\doxysubsubsection{\texorpdfstring{bucket\_size()}{bucket\_size()}}
+{\footnotesize\ttfamily template$<$class Value , std\+::uint32\+\_\+t Bucket\+Size = 1$>$ \\
+static constexpr \+\_\+\+\_\+host\+\_\+\+\_\+\+\_\+\+\_\+device\+\_\+\+\_\+ index\+\_\+type \mbox{\hyperlink{structwarpcore_1_1ArrayBucket}{warpcore\+::\+Array\+Bucket}}$<$ Value, Bucket\+Size $>$\+::bucket\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+get bucket size 
+
+\begin{DoxyReturn}{Returns}
+bucket size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_aaadc3d15fbda4934f216cd94a5359dc5}\label{structwarpcore_1_1ArrayBucket_aaadc3d15fbda4934f216cd94a5359dc5}} 
+\index{warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class Value , std\+::uint32\+\_\+t Bucket\+Size = 1$>$ \\
+constexpr const \+\_\+\+\_\+device\+\_\+\+\_\+ value\+\_\+type\& \mbox{\hyperlink{structwarpcore_1_1ArrayBucket}{warpcore\+::\+Array\+Bucket}}$<$ Value, Bucket\+Size $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+const accessor 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em i} & index to access \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value at position {\ttfamily i} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structwarpcore_1_1ArrayBucket_a0cc345e7a6ab2c2727c1902634af25d9}\label{structwarpcore_1_1ArrayBucket_a0cc345e7a6ab2c2727c1902634af25d9}} 
+\index{warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!warpcore::ArrayBucket$<$ Value, BucketSize $>$@{warpcore::ArrayBucket$<$ Value, BucketSize $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class Value , std\+::uint32\+\_\+t Bucket\+Size = 1$>$ \\
+constexpr \+\_\+\+\_\+device\+\_\+\+\_\+ value\+\_\+type\& \mbox{\hyperlink{structwarpcore_1_1ArrayBucket}{warpcore\+::\+Array\+Bucket}}$<$ Value, Bucket\+Size $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const index\+\_\+type}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+accessor 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em i} & index to access \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value at position {\ttfamily i} 
+\end{DoxyReturn}

@@ -1,0 +1,5 @@
+<map id="warpcore::MultiBucketHashTable::num_occupied" name="warpcore::MultiBucketHashTable::num_occupied">
+<area shape="rect" id="node1" title="number of occupied slots in the hash table" alt="" coords="253,43,453,84"/>
+<area shape="rect" id="node2" href="$classwarpcore_1_1MultiBucketHashTable.html#a59732df83c3d585bf2857b50f5464ce0" title="current load factor of the hash table" alt="" coords="5,5,205,47"/>
+<area shape="rect" id="node3" href="$classwarpcore_1_1MultiBucketHashTable.html#ad6d66dcac533c153971180d46b404a0e" title="current relative storage density of the hash table" alt="" coords="5,71,205,127"/>
+</map>
