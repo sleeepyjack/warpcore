@@ -28,7 +28,7 @@ endif()
 ###################################################################################################
 # - find packages we depend on --------------------------------------------------------------------
 
-find_package(CUDAToolkit 11.2 REQUIRED)
+find_package(CUDAToolkit 11.0 REQUIRED)
 
 # package manager
 include(cmake/CPM.cmake)
