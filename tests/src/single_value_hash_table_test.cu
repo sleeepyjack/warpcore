@@ -1,4 +1,4 @@
-#include <catch.hpp>
+#include <catch2/catch_all.hpp>
 #include <warpcore/single_value_hash_table.cuh>
 
 TEMPLATE_TEST_CASE_SIG(

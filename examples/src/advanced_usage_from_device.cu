@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <random>
 #include <warpcore/counting_hash_table.cuh>
 #include <warpcore/bloom_filter.cuh>
 #include <helpers/timers.cuh>
@@ -103,7 +104,9 @@ int main()
     }
 
     // randomly permute the input data
-    std::random_shuffle(keys_in_h, keys_in_h+input_size);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::shuffle(keys_in_h, keys_in_h+input_size, gen);
 
     // subsequently copy the input keys to the CUDA device
     cudaMemcpy(keys_in_d, keys_in_h, sizeof(key_t)*input_size, cudaMemcpyHostToDevice);

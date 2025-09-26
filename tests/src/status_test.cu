@@ -1,4 +1,4 @@
-#include <catch.hpp>
+#include <catch2/catch_all.hpp>
 #include <warpcore/base.cuh>
 
 TEST_CASE("Status", "[status]")

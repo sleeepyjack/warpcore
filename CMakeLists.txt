@@ -1,5 +1,19 @@
 cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 
+# Set policy for FetchContent timestamps
+if(POLICY CMP0135)
+    cmake_policy(SET CMP0135 NEW)
+endif()
+
+# Use environment variables for compilers if set, otherwise use defaults
+# This must be done before the project() call
+if(DEFINED ENV{CC} AND NOT "$ENV{CC}" STREQUAL "")
+    set(CMAKE_C_COMPILER $ENV{CC})
+endif()
+if(DEFINED ENV{CXX} AND NOT "$ENV{CXX}" STREQUAL "")
+    set(CMAKE_CXX_COMPILER $ENV{CXX})
+endif()
+
 project(warpcore VERSION 0.0.1 LANGUAGES CXX CUDA)
 
 ###################################################################################################
@@ -41,12 +55,14 @@ include(cmake/ConfigureExecutable.cmake)
 CPMAddPackage(
   NAME helpers
   URL https://gitlab.rlp.net/pararch/hpc_helpers/-/archive/restructure/hpc_helpers-restructure.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP ON
 )
 
 # lightweight GPU RNG
 CPMAddPackage(
   NAME kiss_rng
   URL https://github.com/sleeepyjack/kiss_rng/archive/refs/heads/master.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP ON
 )
 
 ###################################################################################################
@@ -61,11 +77,14 @@ target_link_libraries(warpcore INTERFACE helpers kiss_rng CUDA::cudart)
 ###################################################################################################
 # - build options ---------------------------------------------------------------------------------
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_C_COMPILER $ENV{CC})
-set(CMAKE_CXX_COMPILER $ENV{CXX})
+
+set(CMAKE_CUDA_STANDARD 17)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_EXTENSIONS OFF)
+
 set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-extended-lambda --expt-relaxed-constexpr")
 
 set(WARPCORE_TESTS_BINARY_DIR "${CMAKE_BINARY_DIR}/tests")

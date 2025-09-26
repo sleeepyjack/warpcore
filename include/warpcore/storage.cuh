@@ -1375,7 +1375,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      * \return load factor
      */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    HOSTQUALIFIER INLINEQUALIFIER
     float load_factor(const cudaStream_t stream = 0) const noexcept
     {
         index_type load = 0;
@@ -1392,7 +1392,7 @@ public:
      * \param[in] stream CUDA stream in which this operation is executed in
      * \return bytes
      */
-    HOSTDEVICEQUALIFIER INLINEQUALIFIER
+    HOSTQUALIFIER INLINEQUALIFIER
     index_type bytes_occupied(const cudaStream_t stream = 0) const noexcept
     {
          index_type occupied = 0;

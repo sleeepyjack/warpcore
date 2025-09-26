@@ -1,4 +1,4 @@
-#include <catch.hpp>
+#include <catch2/catch_all.hpp>
 #include <warpcore/base.cuh>
 
 namespace wcps = warpcore::probing_schemes;
