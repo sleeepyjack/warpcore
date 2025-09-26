@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    std::string test_result = test_result = (tp == n) ? "pass" : "fail";
+    std::string test_result = (tp == n) ? "pass" : "fail";
     test_result += " (" + std::to_string(tp) + "/" + std::to_string(n) + ")";
     std::cout << "test: " << test_result << std::endl;
 
