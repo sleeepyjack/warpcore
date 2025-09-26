@@ -132,7 +132,7 @@ BibTeX:
 }
 ```
 ***
-warpcore Copyright (C) 2018-2021 [Daniel Jünger](https://github.com/sleeepyjack)
+warpcore Copyright (C) 2018-2025 [Daniel Jünger](https://github.com/sleeepyjack)
 
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it under certain
