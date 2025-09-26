@@ -76,7 +76,7 @@ To build the tests, benchmarks, and examples:
 cd $WARPCORE_ROOT
 mkdir -p build
 cd build
-cmake .. -DWARPCORE_BUILD_TESTS=ON -DDWARPCORE_BUILD_BENCHMARKS=ON -DDWARPCORE_BUILD_EXAMPLES=ON
+cmake .. -DWARPCORE_BUILD_TESTS=ON -DWARPCORE_BUILD_BENCHMARKS=ON -DWARPCORE_BUILD_EXAMPLES=ON
 make
 ```
 Binaries will be built into:
