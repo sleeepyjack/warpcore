@@ -26,7 +26,7 @@ Developement mainly takes place on our in-house GitLab instance. However, we pla
 ## Requirements
 - [CUDA-capable device](https://developer.nvidia.com/cuda-gpus) with device architecture 6.0 or higher (Pascal+; see [link](https://en.wikipedia.org/wiki/CUDA#GPUs_supported))
 - [NVIDIA CUDA toolkit/compiler](https://developer.nvidia.com/cuda-toolkit) version $\ge$ v11.2
-- C++14 or higher
+- C++17 or higher
 
 ## Dependencies
 - [hpc_helpers](https://gitlab.rlp.net/pararch/hpc_helpers) - utils, timers, etc.
